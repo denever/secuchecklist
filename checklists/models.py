@@ -1,10 +1,10 @@
 from django.db import models
-from django.core.execptions import ValidationError
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
 class CheckList(models.Model):
-    title = models.CharField(max_lenghth=200)
+    title = models.CharField(max_length=200)
     date = models.DateTimeField('date')
 
 class BooleanCheck(models.Model):
