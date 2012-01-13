@@ -5,15 +5,21 @@ from django.core.exceptions import ValidationError
 
 class Checklist(models.Model):
     title = models.CharField(max_length=200)
-    date = models.DateTimeField('date')
-
+    date = models.DateTimeField('Creation date')
+    
     def __unicode__(self):
         return self.title
 
 class Check(models.Model):
+    answertypes = (
+        ('BO', 'Boolean check'),
+        ('MC', 'Multiple check'),
+        ('PC', 'Percentage check'),
+        )
+    
     checklist = models.ForeignKey(Checklist)
     descr = models.CharField(max_length=200)
-    answertype = models.CharField(max_length=200)
+    answertype = models.CharField(max_length=2, choices=answertypes)
 
     def __unicode__(self):
         return self.descr
