@@ -12,41 +12,68 @@ class Checklist(models.Model):
     def __unicode__(self):
         return self.title
 
-class Check(models.Model):
-    answertypes = (
-        ('BO', 'Boolean check'),
-        ('MC', 'Multiple check'),
-        ('PC', 'Percentage check'),
-        )
-    
+class BooleanCheck(models.Model):
     checklist = models.ForeignKey(Checklist)
     descr = models.CharField(max_length=200)
-    answertype = models.CharField(max_length=2, choices=answertypes)
 
     def __unicode__(self):
         return self.descr
 
+class SingleCheck(models.Model):
+    checklist = models.ForeignKey(Checklist)
+    descr = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.descr
+
+class SingleChoice(models.Model):
+    singlecheck = models.ForeignKey(SingleCheck)
+    descr = models.CharField(max_length=200)
+    value = models.IntegerField()
+
+class MultipleCheck(models.Model):
+    checklist = models.ForeignKey(Checklist)
+    descr = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.descr
+
+class MultipleChoice(models.Model):
+    multiplecheck = models.ForeignKey(MultipleCheck)
+    descr = models.CharField(max_length=200)
+    value = models.IntegerField()
+
+class NumericCheck(models.Model):
+    checklist = models.ForeignKey(Checklist)
+    descr = models.CharField(max_length=200)
+    minvalue = models.IntegerField()
+    maxvalue = models.IntegerField()
+
+    def __unicode__(self):
+        return self.descr
+
+class Customer(models.Model):
+    name = models.CharField(max_length=200)
+    surname = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    piva = models.CharField(max_length=200)
+
+class ChecklistResult(models.Model):
+    checklist = models.ForeignKey(Checklist)
+    customer = models.ForeignKey(Customer)
+
 class BooleanCheckResult(models.Model):
-    check = models.ForeignKey(Check)
+    checklistresult = models.ForeignKey(ChecklistResult)
     value = models.BooleanField()
 
-    def __unicode__(self):
-        return self.check.descr
+class SingleCheckResult(models.Model):
+    checklistresult = models.ForeignKey(ChecklistResult)
+    value = models.IntegerField()
 
 class MultipleCheckResult(models.Model):
-    check = models.ForeignKey(Check)
-    values = models.CommaSeparatedIntegerField(max_length=20)
+    checklistresult = models.ForeignKey(ChecklistResult)
+    values = models.CommaSeparatedIntegerField(max_length=200)
 
-    def __unicode__(self):
-        return self.check.descr
-
-def validate_percentage(value):
-    if value < 0 or value > 100:
-        raise ValidationError(u'%s out of range')
-
-class PercentageCheckResult(models.Model):
-    check = models.ForeignKey(Check)
-    value = models.SmallIntegerField(validators=[validate_percentage])
-
-    def __unicode__(self):
-        return self.check.descr
+class NumericCheckResult(models.Model):
+    checklistresult = models.ForeignKey(ChecklistResult)
+    value = models.IntegerField()
