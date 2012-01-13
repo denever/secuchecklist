@@ -5,8 +5,10 @@ from django.core.exceptions import ValidationError
 
 class Checklist(models.Model):
     title = models.CharField(max_length=200)
-    date = models.DateTimeField('Creation date')
-    
+    creation_date = models.DateTimeField('Creation date')
+    expire_date = models.DateTimeField('Expire date')
+    active = models.BooleanField()
+
     def __unicode__(self):
         return self.title
 
