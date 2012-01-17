@@ -24,7 +24,7 @@ class NumericCheckInline(admin.StackedInline):
 
 admin.site.register(BooleanCheck)
 
-class SingleChoiceInline(admin.StackedInline):
+class SingleChoiceInline(admin.TabularInline):
     model = SingleChoice
     extra = 3
 
@@ -40,7 +40,7 @@ class SingleCheckAdmin(admin.ModelAdmin):
 admin.site.register(SingleCheck, SingleCheckAdmin)
 
 
-class MultipleChoiceInline(admin.StackedInline):
+class MultipleChoiceInline(admin.TabularInline):
     model = MultipleChoice
     extra = 3
 
