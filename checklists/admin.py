@@ -4,12 +4,14 @@ from checklists.models import FiguraPrevenzione
 from checklists.models import MansioneOmogenea
 from checklists.models import FigureAziendaPrevenzione
 from checklists.models import SettoreAteco
+from checklists.models import Certificazione
 
 from django.contrib import admin
 
 admin.site.register(FiguraPrevenzione)
 admin.site.register(MansioneOmogenea)
 admin.site.register(SettoreAteco)
+admin.site.register(Certificazione)
 
 class LavoratoreAdmin(admin.ModelAdmin):
     list_display = ('cognome', 'nome', 'mansione_omogenea')
