@@ -7,6 +7,10 @@ from checklists.models import SettoreAteco
 
 from django.contrib import admin
 
+admin.site.register(FiguraPrevenzione)
+admin.site.register(MansioneOmogenea)
+admin.site.register(SettoreAteco)
+
 class LavoratoreAdmin(admin.ModelAdmin):
     list_display = ('cognome', 'nome', 'mansione_omogenea')
     list_filter = ['cognome', 'nome', 'mansione_omogenea']
@@ -25,17 +29,33 @@ class LavoratoreAdmin(admin.ModelAdmin):
                            'nazionalita',
                            'forma_contrattuale',
                            'sorveglianza_sanitaria',
-                           'computo_lavorator'
+                           'computo_lavoratori'
                            ]
                 }
          )
         ]
 
-admin.site.register(Lavoratore)
-admin.site.register(FiguraPrevenzione)
-admin.site.register(MansioneOmogenea)
-admin.site.register(FigureAziendaPrevenzione)
-admin.site.register(SettoreAteco)
+admin.site.register(Lavoratore, LavoratoreAdmin)
+
+class FigureAziendaPrevenzioneAdmin(admin.ModelAdmin):
+    list_display = ('cognome', 'nome', 'figura')
+    list_filter = ['cognome', 'nome', 'figura']
+    search_fields = ['cognome', 'nome', 'figura']
+    date_hierarchy = 'data_nascita'
+
+    fieldsets = [
+        (None, {'fields': ['azienda',
+                           'figura',
+                           'cognome',
+                           'nome',
+                           'data_nascita',
+                           'telefono',
+                           ]
+                }
+         )
+        ]
+
+admin.site.register(FigureAziendaPrevenzione, FigureAziendaPrevenzioneAdmin)
 
 class AziendaAdmin(admin.ModelAdmin):
     list_display = ('ragione_sociale', 'data_registrazione')
