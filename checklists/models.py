@@ -11,6 +11,27 @@ class SettoreAteco(models.Model):
     def __unicode__(self):
         return self.titolo
 
+class MansioneOmogenea(models.Model):
+    titolo = models.CharField(max_length=200)
+    descrizione = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.titolo
+
+class FiguraPrevenzione(models.Model):
+    titolo = models.CharField(max_length=200)
+    descrizione = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.titolo
+
+class Certificazione(models.Model):
+    sigla = models.CharField(max_length=200)
+    descrizione = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.sigla
+
 class Azienda(models.Model):
     ragione_sociale = models.CharField(max_length=200)
     sede_legale_amministrativa = models.CharField(max_length=200)
@@ -22,7 +43,7 @@ class Azienda(models.Model):
     posizione_inps = models.CharField('Posizione INPS', max_length=200)
     ccnl = models.CharField('CCNL', max_length=200)
     settore_ateco = models.ForeignKey(SettoreAteco)
-    certificazioni = models.CharField(max_length=200)
+    certificazioni = models.ManyToManyField(Certificazione)
     superficie_insediamento = models.CharField(max_length=200)
     data_registrazione = models.DateTimeField('Data registrazione')
     cpi = models.CharField('CPI', max_length=200)
@@ -35,13 +56,6 @@ class Azienda(models.Model):
 
     def __unicode__(self):
         return self.ragione_sociale
-
-class MansioneOmogenea(models.Model):
-    titolo = models.CharField(max_length=200)
-    descrizione = models.CharField(max_length=200)
-
-    def __unicode__(self):
-        return self.titolo
 
 class Lavoratore(models.Model):
     gender_choices = (
@@ -63,13 +77,6 @@ class Lavoratore(models.Model):
 
     def __unicode__(self):
         return u'%s %s (%s)' % (self.cognome, self.nome, self.mansione_omogenea)
-
-class FiguraPrevenzione(models.Model):
-    titolo = models.CharField(max_length=200)
-    descrizione = models.CharField(max_length=200)
-
-    def __unicode__(self):
-        return self.titolo
 
 class FigureAziendaPrevenzione(models.Model):
     azienda = models.ForeignKey(Azienda)
