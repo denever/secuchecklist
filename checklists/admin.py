@@ -1,72 +1,80 @@
-from checklists.models import Checklist
-from checklists.models import BooleanCheck
-from checklists.models import SingleCheck, SingleChoice
-from checklists.models import MultipleCheck, MultipleChoice
-from checklists.models import NumericCheck
+from checklists.models import Azienda
+from checklists.models import Lavoratore
+from checklists.models import FiguraPrevenzione
+from checklists.models import MansioneOmogenea
+from checklists.models import FigureAziendaPrevenzione
+from checklists.models import SettoreAteco
 
 from django.contrib import admin
 
-class BooleanCheckInline(admin.StackedInline):
-    model = BooleanCheck
-    extra = 1
-
-class SingleCheckInline(admin.StackedInline):
-    model = SingleCheck
-    extra = 1
-    
-class MultipleCheckInline(admin.StackedInline):
-    model = MultipleCheck
-    extra = 1
-
-class NumericCheckInline(admin.StackedInline):
-    model = NumericCheck
-    extra = 1
-
-admin.site.register(BooleanCheck)
-
-class SingleChoiceInline(admin.TabularInline):
-    model = SingleChoice
-    extra = 3
-
-class SingleCheckAdmin(admin.ModelAdmin):
-    list_display = ('descr', 'checklist')
-    search_fields = ['descr']
+class LavoratoreAdmin(admin.ModelAdmin):
+    list_display = ('cognome', 'nome', 'mansione_omogenea')
+    list_filter = ['cognome', 'nome', 'mansione_omogenea']
+    search_fields = ['cognome', 'nome', 'mansione_omogenea']
+    date_hierarchy = 'data_nascita'
 
     fieldsets = [
-        (None, {'fields': ['checklist','descr']}),
+        (None, {'fields': ['azienda',
+                           'cognome',
+                           'nome',
+                           'data_nascita',
+                           'sesso',
+                           'mansione',
+                           'mansione_omogenea',
+                           'reparto',
+                           'nazionalita',
+                           'forma_contrattuale',
+                           'sorveglianza_sanitaria',
+                           'computo_lavorator'
+                           ]
+                }
+         )
         ]
-    inlines = [SingleChoiceInline]
 
-admin.site.register(SingleCheck, SingleCheckAdmin)
+admin.site.register(Lavoratore)
+admin.site.register(FiguraPrevenzione)
+admin.site.register(MansioneOmogenea)
+admin.site.register(FigureAziendaPrevenzione)
+admin.site.register(SettoreAteco)
 
-
-class MultipleChoiceInline(admin.TabularInline):
-    model = MultipleChoice
-    extra = 3
-
-class MultipleCheckAdmin(admin.ModelAdmin):
-    list_display = ('descr',)
-    search_fields = ['descr']
+class AziendaAdmin(admin.ModelAdmin):
+    list_display = ('ragione_sociale', 'data_registrazione')
+    list_filter = ['data_registrazione']
+    search_fields = ['ragione_sociale']
+    date_hierarchy = 'data_registrazione'
 
     fieldsets = [
-        (None, {'fields': ['checklist','descr']}),
+        (None, {'fields': ['ragione_sociale',
+                           'data_registrazione',
+                           'telefono',
+                           'fax',
+                           'email'
+                           ]
+                }
+         ),
+        ('Dati legali', {'fields': ['sede_legale_amministrativa',
+                                    'sede_insediamento_produttivo',
+                                    'iscrizione_ciiaa',
+                                    'codice_fiscale',
+                                    'partita_iva',
+                                    'posizione_inail',
+                                    'posizione_inps',
+                                    'ccnl',
+                                    'settore_ateco',
+                                    'certificazioni'
+                                    ],
+                          'classes': ['collapse']
+                         }
+         ),
+        ('Insediamento', {'fields': ['superficie_insediamento',
+                                     'cpi',
+                                     'uso_macchine',
+                                     'sostanze_pericolose',
+                                     'sorveglianza_sanitaria'
+                                     ],
+                          'classes': ['collapse']
+                          }
+         )
         ]
-    inlines = [MultipleChoiceInline]
 
-admin.site.register(MultipleCheck, MultipleCheckAdmin)
-admin.site.register(NumericCheck)
-
-class ChecklistAdmin(admin.ModelAdmin):
-    list_display = ('title', 'creation_date', 'expire_date')
-    list_filter = ['creation_date']
-    search_fields = ['title']
-    date_hierarchy = 'creation_date'
-
-    fieldsets = [
-        (None, {'fields': ['title']}),
-        ('Date information', {'fields': ['creation_date', 'expire_date'], 'classes': ['collapse']}),
-        ]
-    inlines = [BooleanCheckInline, SingleCheckInline,
-               MultipleCheckInline, NumericCheckInline]
-
-admin.site.register(Checklist, ChecklistAdmin)
+admin.site.register(Azienda, AziendaAdmin)
