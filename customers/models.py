@@ -63,6 +63,9 @@ class Staff(models.Model):
     health_care = models.CharField('Sorveglianza sanitaria', max_length=200)
     workers_count = models.BooleanField('Computo lavoratori')
 
+    standard_task = models.ManyToManyField(StandardTask, through='Employ',
+                                    verbose_name='Mansione Omogenea')
+
     def __unicode__(self):
         return u'%s %s' % (self.surname, self.name) # mansione omogenea
 
@@ -96,9 +99,9 @@ class CustomerCompany(models.Model):
         return self.firm
 
 class Employ(models.Model):
-    company = models.ForeignKey(CustomerCompany)
-    staff = models.ForeignKey(Staff)
-    standard_task = models.ForeignKey(StandardTask)
-    role = models.ForeignKey(Role)
-    security_duty = models.ForeignKey(SecurityDuty)
-    date = models.DateField()
+    company = models.ForeignKey(CustomerCompany, null=False)
+    staff = models.ForeignKey(Staff, primary_key=True)
+    standard_task = models.ForeignKey(StandardTask, null=False)
+    role = models.ForeignKey(Role, null=False)
+    security_duty = models.ForeignKey(SecurityDuty, null=True)
+    date = models.DateField(auto_now_add=True)
