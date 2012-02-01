@@ -32,32 +32,12 @@ class Certificazione(models.Model):
     def __unicode__(self):
         return self.sigla
 
-class ResultChecklistGenerica(models.Model):
-    nome = models.CharField(max_length=200)
-    data_compilazione = models.DateTimeField('Data registrazione')
-    data_modifica = models.DateTimeField('Data registrazione')
+class Reparto(models.Model):
+    titolo = models.CharField(max_length=200)
     descrizione = models.CharField(max_length=200)
 
     def __unicode__(self):
-        return '%s (%s)' % (self.nome, self.data_compilazione)
-
-class ResultChecklistReparto(models.Model):
-    nome = models.CharField(max_length=200)
-    data_compilazione = models.DateTimeField('Data compilazione')
-    data_modifica = models.DateTimeField('Data modifica')
-    descrizione = models.CharField(max_length=200)
-
-    def __unicode__(self):
-        return '%s (%s)' % (self.nome, self.data_compilazione)
-
-class ResultChecklistMansioneOmogenea(models.Model):
-    nome = models.CharField(max_length=200)
-    data_compilazione = models.DateTimeField('Data compilazione')
-    data_modifica = models.DateTimeField('Data modifica')
-    descrizione = models.CharField(max_length=200)
-
-    def __unicode__(self):
-        return '%s (%s)' % (self.nome, self.data_compilazione)
+        return self.titolo
 
 class Azienda(models.Model):
     ragione_sociale = models.CharField(max_length=200)
@@ -81,22 +61,10 @@ class Azienda(models.Model):
     fax = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
 
-    checklist_generiche = models.ManyToManyField(ResultChecklistGenerica)
-    checklist_reparti = models.ManyToManyField(ResultChecklistReparto)
-    checklist_mansioni = models.ManyToManyField(ResultChecklistMansioneOmogenea)
-
     def __unicode__(self):
         return self.ragione_sociale
 
-class Reparto(models.Model):
-    azienda = models.ForeignKey(Azienda)
-    titolo = models.CharField(max_length=200)
-    descrizione = models.CharField(max_length=200)
-
-    def __unicode__(self):
-        return self.titolo
-
-class Lavoratore(models.Model):
+class Personale(models.Model):
     gender_choices = (
         (u'M', u'Maschio'),
         (u'F', u'Femmina'),
@@ -106,10 +74,8 @@ class Lavoratore(models.Model):
     nome = models.CharField(max_length=200)
     cognome = models.CharField(max_length=200)
     data_nascita = models.DateField('Data di nascita')
+    telefono = models.CharField(max_length=200)
     sesso = models.CharField(max_length=2, choices=gender_choices)
-    mansione = models.CharField(max_length=200)
-    mansione_omogenea = models.ForeignKey(MansioneOmogenea)
-    reparto = models.ManyToManyField(Reparto)
     nazionalita = models.CharField("Nazionalità", max_length=200)
     forma_contrattuale = models.CharField(max_length=200)
     sorveglianza_sanitaria = models.CharField(max_length=200)
@@ -117,14 +83,3 @@ class Lavoratore(models.Model):
 
     def __unicode__(self):
         return u'%s %s (%s)' % (self.cognome, self.nome, self.mansione_omogenea)
-
-class FigureAziendaPrevenzione(models.Model):
-    azienda = models.ForeignKey(Azienda)
-    figura = models.ForeignKey(FiguraPrevenzione)
-    nome = models.CharField(max_length=200)
-    cognome = models.CharField(max_length=200)
-    data_nascita = models.DateField('Data registrazione')
-    telefono = models.CharField(max_length=200)
-
-    def __unicode__(self):
-        return u'%s %s (%s)' % (self.cognome, self.nome, self.figura)
