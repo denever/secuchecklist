@@ -93,7 +93,7 @@ class CustomerCompany(models.Model):
     fax = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
 
-    employes = models.ManyToManyField(Staff, through='Employ')
+    employees = models.ManyToManyField(Staff, through='Employ')
     
     def __unicode__(self):
         return self.firm
