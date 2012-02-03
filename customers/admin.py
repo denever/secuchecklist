@@ -75,7 +75,7 @@ class CustomerCompanyAdmin(admin.ModelAdmin):
                                      ],
                           'classes': ['collapse']
                           }
-         )
+         ),
         ]
 
 admin.site.register(CustomerCompany, CustomerCompanyAdmin)
