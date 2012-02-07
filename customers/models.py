@@ -59,7 +59,7 @@ class CustomerCompany(models.Model):
     inail_pos = models.CharField('Posizione INAIL', max_length=200)
     inps_pos = models.CharField('Posizione INPS', max_length=200)
     ccnl = models.CharField('CCNL', max_length=200)
-    ateco_sector = models.OneToOneField(AtecoSector, verbose_name='Settore Ateco 2007')
+    ateco_sector = models.ForeignKey(AtecoSector, verbose_name='Settore Ateco 2007')
     certifications = models.ManyToManyField(Certification, verbose_name='Certificazioni')
     settlement_size = models.CharField(max_length=200)
     record_date = models.DateTimeField('Data registrazione')
