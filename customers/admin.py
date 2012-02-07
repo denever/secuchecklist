@@ -30,10 +30,15 @@ class StaffAdmin(admin.ModelAdmin):
                            'nationality',
                            'collagreement',
                            'health_care',
-                           'workers_count'
+                           'workers_count',
+                           'company',
+                           'standard_task',
+                           'department',
+                           'role',
+                           'security_duty',
                            ]
                 }
-         )
+         ),
         ]
 
 admin.site.register(Staff, StaffAdmin)
