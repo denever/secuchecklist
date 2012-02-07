@@ -47,40 +47,6 @@ class Department(models.Model):
     def __unicode__(self):
         return self.name
 
-class Staff(models.Model):
-    gender_choices = (
-        (u'M', u'Maschio'),
-        (u'F', u'Femmina'),
-        )
-
-    name = models.CharField('Nome', max_length=200)
-    surname = models.CharField('Cognome', max_length=200)
-    birth_date = models.DateField('Data di nascita')
-    phone = models.CharField('Telefono', max_length=200)
-    gender = models.CharField('Sesso', max_length=2, choices=gender_choices)
-    nationality = models.CharField("Nazionalità", max_length=200)
-    collagreement = models.CharField('Forma contrattuale', max_length=200)
-    health_care = models.CharField('Sorveglianza sanitaria', max_length=200)
-    workers_count = models.BooleanField('Computo lavoratori')
-
-    def company(self): # Azienda
-        return Employ.objects.get(staff=self).company
-
-    def standard_task(self): # Mansione Omogenea
-        return Employ.objects.get(staff=self).standard_task
-    
-    def security_duty(self): # Figura Prevenzione
-        return Employ.objects.get(staff=self).security_duty
-
-    def role(self): # Mansione aziendale
-        return Employ.objects.get(staff=self).role
-    
-    def employment_date(self): # Data assunzione
-        return Employ.objects.get(staff=self).date
-    
-    def __unicode__(self):
-        return u'%s %s' % (self.surname, self.name) # mansione omogenea
-
 class CustomerCompany(models.Model):
     firm = models.CharField('Ragione sociale', max_length=200)
     registered_office = models.CharField('Sede legale amministrativa',
@@ -105,22 +71,43 @@ class CustomerCompany(models.Model):
     fax = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
 
-    employees = models.ManyToManyField(Staff, through='Employ')
-
-    def workers_count(self):
-        return self.employees.object.filter(workers_count=True).count()
-
     def departments(self):
-        return Employ.objects.get(company=self)        
-    
+        return list(set([staff.department for staff in self.staff_set.all()]))
+
+    def standard_tasks(self):
+        return list(set([staff.standard_task for staff in self.staff_set.all()]))
+
+    def roles(self):
+        return list(set([staff.role for staff in self.staff_set.all()]))
+
+    def security_duties(self):
+        return list(set([staff.security_duty for staff in self.staff_set.all()]))
+
     def __unicode__(self):
         return self.firm
 
-class Employ(models.Model):
-    company = models.ForeignKey(CustomerCompany, null=False)
-    staff = models.ForeignKey(Staff, primary_key=True)
-    standard_task = models.ForeignKey(StandardTask, null=False)
-    department = models.ForeignKey(Department, null=False)
-    role = models.ForeignKey(Role, null=False)
-    security_duty = models.ForeignKey(SecurityDuty, null=True)
-    date = models.DateField(auto_now_add=True)
+class Staff(models.Model):
+    gender_choices = (
+        (u'M', u'Maschio'),
+        (u'F', u'Femmina'),
+        )
+
+    name = models.CharField('Nome', max_length=200)
+    surname = models.CharField('Cognome', max_length=200)
+    birth_date = models.DateField('Data di nascita')
+    phone = models.CharField('Telefono', max_length=200)
+    gender = models.CharField('Sesso', max_length=2, choices=gender_choices)
+    nationality = models.CharField("Nazionalità", max_length=200)
+    collagreement = models.CharField('Forma contrattuale', max_length=200)
+    health_care = models.CharField('Sorveglianza sanitaria', max_length=200)
+    workers_count = models.BooleanField('Computo lavoratori')
+
+    company = models.ForeignKey(CustomerCompany, null=False, verbose_name='Azienda')
+    standard_task = models.ForeignKey(StandardTask, null=False, verbose_name='Mansione Omogenea')
+    department = models.ForeignKey(Department, null=False, verbose_name='Reparto')
+    role = models.ForeignKey(Role, null=False, verbose_name='Mansione')
+    security_duty = models.ForeignKey(SecurityDuty, null=True, verbose_name='Figura Prevenzione')
+    date = models.DateField(auto_now_add=True, verbose_name='Data assunzione')
+
+    def __unicode__(self):
+        return u'%s %s' % (self.surname, self.name) # mansione omogenea
