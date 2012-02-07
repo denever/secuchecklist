@@ -1,0 +1,13 @@
+{% if company %}
+<h1>{{ company.firm }}</h1>
+<h2>Info</h2>
+<h2>Staff</h2>
+<ul>
+  {% for staff in staff_list %}
+  <li><a href='/customers/staff/{{ staff.id }}/'>{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No company are available.</p>
+{% endif %}
+

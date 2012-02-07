@@ -1,0 +1,9 @@
+{% if cc_list %}
+<ul>
+  {% for cc in cc_list %}
+  <li><a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No companies are available.</p>
+{% endif %}
