@@ -3,7 +3,7 @@
 <h2>Info</h2>
 <h2>Staff</h2>
 <ul>
-  {% for staff in staff_list %}
+  {% for staff in company.staff_set.all %}
   <li><a href='/customers/staff/{{ staff.id }}/'>{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</a></li>
   {% endfor %}
 </ul>
