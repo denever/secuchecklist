@@ -32,6 +32,9 @@ class SecurityDuty(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'SecurityDuties'        
+
 class Certification(models.Model):
     short_name = models.CharField('Sigla', max_length=200)
     name = models.CharField('Nome', max_length=200)
