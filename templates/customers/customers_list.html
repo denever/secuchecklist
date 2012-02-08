@@ -1,9 +1,14 @@
+{% extends "customers/base.html" %}
+{% block title %} Gestione Personale Azienda: {{ staff.company.firm }} {% endblock %}
+{% block content %}
+<h1> Customers available </h1>
 {% if cc_list %}
 <ul>
   {% for cc in cc_list %}
-  <li><a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a></li>
+  <li><a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a> ({{ cc.ateco_sector }})</li>
   {% endfor %}
 </ul>
 {% else %}
 <p>No companies are available.</p>
 {% endif %}
+{% endblock %}

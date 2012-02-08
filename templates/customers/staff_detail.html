@@ -1,6 +1,22 @@
-{% if staff %}
-{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})
-{% else %}
-<p>No staff are available.</p>
-{% endif %}
-
+{% extends "customers/base.html" %}
+{% block title %} Gestione Personale Azienda: {{ staff.company.firm }} {% endblock %}
+{% block content %}
+<h1>{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</h1>
+<ul>
+<li>Nome: {{ staff.name }}</li>
+<li>Cognome: {{ staff.surname }} </li>
+<li>Data di nascita: {{ staff.birth_date }} </li>
+<li>Telefono: {{ staff.phone }} </li>
+<li>Sesso: {{ staff.gender }} </li>
+<li>Nazionalità: {{ staff.nationality }} </li>
+<li>Forma contrattuale: {{ staff.collagreement }} </li>
+<li>Sorveglianza sanitaria: {{ staff.health_care }} </li>
+<li>Computo lavoratori: {{ staff.workers_count }} </li>
+<li>Azienda: {{ staff.company }} </li>
+<li>Mansione Omogenea: {{ staff.standard_task }} </li>
+<li>Reparto: {{ staff.department }} </li>
+<li>Mansione: {{ staff.role }} </li>
+<li>Figura Prevenzione: {{ staff.security_duty }} </li>
+<li>Data assunzione: {{ staff.date }} </li>
+</ul>
+{% endblock %}
