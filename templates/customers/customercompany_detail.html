@@ -31,10 +31,30 @@
 <li>Email: <a href="mailto:{{ company.email }}">{{ company.email }}</a></li>
 <li>Numero di lavoratori: {{ company.workers_count }}</li>
 </ul>
-<h2>Staff</h2>
-<ul>
+
+<h2>Organigramma</h2>
+<table>
+  <thead>
+    <tr>
+      <td>Personale</td>
+      <td>Mansione Omogenea</td>
+      <td>Figura prevenzione</td>
+    </tr>
+  </thead>
+  <tbody>
   {% for staff in company.staff_set.all %}
-  <li><a href='/customers/staff/{{ staff.id }}/'>{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</a></li>
+  <tr>
+    <td>
+      <a href='/customers/staff/{{ staff.id }}/'>{{ staff.surname }} {{ staff.name }}</a>
+    </td>
+    <td>
+      {{ staff.standard_task }}
+    </td>
+    <td>
+      {{ staff.security_duty }}
+    </td>
+  </tr>
   {% endfor %}
-</ul>
+  </tbody>
+</table>
 {% endblock %}
