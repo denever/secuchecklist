@@ -7,7 +7,7 @@ def list(request):
     # tmpl = loader.get_template('customers/customers_list.html')
     # cnt = Context({'cc_list': ccs})
     # return HttpResponse(tmpl.render(cnt))
-    return render_to_response('customers/customers_list.html', {'cc_list': ccs})
+    return render_to_response('customers/customercompany_list.html', {'cc_list': ccs})
 
 def customer_detail(request, customer_id):
     # cc = CustomerCompany.objects.get(id=customer_id)
@@ -19,7 +19,7 @@ def customer_detail(request, customer_id):
     #         })
     # return HttpResponse(tmpl.render(cnt))
     cc = get_object_or_404(CustomerCompany, pk=customer_id)
-    return render_to_response('customers/customer_detail.html', {'company': cc})
+    return render_to_response('customers/customercompany_detail.html', {'company': cc})
 
 def staff_detail(request, staff_id):
 #    s = Staff.objects.get(id=staff_id)
