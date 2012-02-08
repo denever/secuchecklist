@@ -61,15 +61,15 @@ class CustomerCompany(models.Model):
     ccnl = models.CharField('CCNL', max_length=200)
     ateco_sector = models.ForeignKey(AtecoSector, verbose_name='Settore Ateco 2007')
     certifications = models.ManyToManyField(Certification, verbose_name='Certificazioni')
-    settlement_size = models.CharField(max_length=200)
+    settlement_size = models.CharField('Superficie insediamento', max_length=200)
     record_date = models.DateTimeField('Data registrazione')
     cpi = models.CharField('CPI', max_length=200)
     machine_use = models.BooleanField('Uso macchine')
     dangerous_substances = models.BooleanField('Sostanze pericolose')
     health_surveillance = models.BooleanField('Sorveglianza sanitaria')
-    phone = models.CharField(max_length=200)
-    fax = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200)
+    phone = models.CharField('Telefono', max_length=200)
+    fax = models.CharField('Fax', max_length=200)
+    email = models.EmailField('Email', max_length=200)
 
     def departments(self):
         return list(set([staff.department for staff in self.staff_set.all()]))
@@ -83,8 +83,16 @@ class CustomerCompany(models.Model):
     def security_duties(self):
         return list(set([staff.security_duty for staff in self.staff_set.all()]))
 
+    def workers_count(self):
+        return self.staff_set.filter(workers_count=True).count()
+
     def __unicode__(self):
         return self.firm
+
+    class Meta:
+        ordering = ['-record_date']
+        verbose_name_plural = 'CustomerCompanies'
+        get_latest_by = 'record_date'
 
 class Staff(models.Model):
     gender_choices = (
@@ -111,3 +119,6 @@ class Staff(models.Model):
 
     def __unicode__(self):
         return u'%s %s' % (self.surname, self.name) # mansione omogenea
+
+    class Meta:
+        ordering = ['surname','name']
