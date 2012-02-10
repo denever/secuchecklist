@@ -119,7 +119,7 @@ class Staff(models.Model):
     department = models.ForeignKey(Department, null=False, verbose_name='Reparto')
     role = models.ForeignKey(Role, null=False, verbose_name='Mansione')
     security_duty = models.ForeignKey(SecurityDuty, null=True, verbose_name='Figura Prevenzione')
-    date = models.DateField(verbose_name='Data assunzione')
+    employ_date = models.DateField(verbose_name='Data assunzione')
 
     def __unicode__(self):
         return u'%s %s' % (self.surname, self.name) # mansione omogenea
