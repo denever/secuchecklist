@@ -8,12 +8,15 @@
 
 <body>
     <div id="sidebar">
-        {% block sidebar %}
         <ul>
-            <li><a href="/">Home</a></li>
+            <li><a href="/accounts/profile">My Profile</a></li>
             <li><a href="/customers/">Customers</a></li>
-        </ul>
+        {% block sidebar %}
+	    
         {% endblock %}
+            <li><a href="/accounts/logout/">Logout</a></li>	    	    
+
+	</ul>
     </div>
 
     <div id="content">
