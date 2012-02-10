@@ -28,6 +28,7 @@ class StaffAdmin(admin.ModelAdmin):
                            'birth_date',
                            'gender',
                            'nationality',
+                           'employ_date',
                            'collagreement',
                            'health_care',
                            'workers_count',
@@ -50,8 +51,8 @@ class CustomerCompanyAdmin(admin.ModelAdmin):
     date_hierarchy = 'record_date'
 
     fieldsets = [
-        (None, {'fields': ['firm',
-                           'record_date',
+        (None, {'fields': ['record_by',
+                           'firm',
                            'phone',
                            'fax',
                            'email'
