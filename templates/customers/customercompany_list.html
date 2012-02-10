@@ -3,11 +3,20 @@
 {% block content %}
 <h1> Customers available </h1>
 {% if cc_list %}
-<ul>
-  {% for cc in cc_list %}
-  <li><a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a> ({{ cc.ateco_sector }})</li>
+  <table>
+    {% for cc in cc_list %}
+    <tr>
+      <td>
+	<a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a>
+      </td>
+      <td>
+      ({{ cc.ateco_sector }})
+      </td>
+      <td>
+	{{ cc.record_date }}
+      </td>
+    <tr>
   {% endfor %}
-</ul>
 {% else %}
 <p>No companies are available.</p>
 {% endif %}
