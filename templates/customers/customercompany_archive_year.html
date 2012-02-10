@@ -1,0 +1,19 @@
+{% extends "customers/base.html" %}
+{% block title %} Gestione Personale Azienda: {{ staff.company.firm }} {% endblock %}
+{% block content %}
+<h1> Customers registered in {{ year }} </h1>
+  <table>
+    {% for cc in object_list %}
+    <tr>
+      <td>
+	<a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a>
+      </td>
+      <td>
+	({{ cc.ateco_sector }})
+      </td>
+      <td>
+	{{ cc.record_date }}
+      </td>
+    <tr>
+    {% endfor %}
+{% endblock %}
