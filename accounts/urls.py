@@ -1,8 +1,9 @@
+from django.contrib.auth.decorators import login_required, permission_required
 from django.conf.urls.defaults import patterns, include, url
 from accounts.views import ProfileView
 
 urlpatterns = patterns('',
-                       (r'^profile/$', ProfileView.as_view(),
+                       (r'^profile/$', login_required(ProfileView.as_view()),
                         {'template_name': 'accounts/profile.html'}),
                        (r'^login/$', 'django.contrib.auth.views.login',
                         {'template_name': 'accounts/login.html'}),
