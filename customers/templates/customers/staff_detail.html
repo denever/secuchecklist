@@ -1,4 +1,4 @@
-{% extends "customers/base.html" %}
+{% extends "customers/base-customers.html" %}
 {% block title %} Gestione Personale Azienda: {{ staff.company.firm }} {% endblock %}
 {% block content %}
 <h1>{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</h1>
@@ -17,6 +17,6 @@
 <li>Reparto: {{ staff.department }} </li>
 <li>Mansione: {{ staff.role }} </li>
 <li>Figura Prevenzione: {{ staff.security_duty }} </li>
-<li>Data assunzione: {{ staff.date }} </li>
+<li>Data assunzione: {{ staff.employ_date }} </li>
 </ul>
 {% endblock %}
