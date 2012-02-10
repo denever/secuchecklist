@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+    <title>{% block title %}Login{% endblock %}</title>
+</head>
+
+<body>
+{% load url from future %}
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+<div id='login'>
+  <div class='inner'>
+    <h3>Logout</h3>    
+  </div>
+</div>  
+
