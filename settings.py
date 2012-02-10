@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     #'checklists',
     'customers',
+    'accounts'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -146,3 +147,5 @@ LOGGING = {
         },
     }
 }
+
+AUTH_PROFILE_MODULE = "accounts.UserProfile"
