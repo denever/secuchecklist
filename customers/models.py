@@ -94,7 +94,7 @@ class CustomerCompany(models.Model):
         return self.firm
 
     class Meta:
-        ordering = ['-record_date']
+        ordering = ['record_date']
         verbose_name_plural = 'CustomerCompanies'
         get_latest_by = 'record_date'
 
