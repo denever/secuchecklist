@@ -1,10 +1,10 @@
 {% extends "customers/base.html" %}
-{% block title %} Gestione Personale Azienda: {{ staff.company.firm }} {% endblock %}
+{% block title %} Gestione Azienda{% endblock %}
 {% block content %}
 <h1> Customers available </h1>
-{% if cc_list %}
+{% if companies %}
   <table>
-    {% for cc in cc_list %}
+    {% for cc in companies %}
     <tr>
       <td>
 	<a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a>

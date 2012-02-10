@@ -9,7 +9,8 @@ class CustomerCompanyYearView(YearArchiveView):
 
 class CustomerCompanyListView(ListView):
     queryset = CustomerCompany.objects.all()
-
+    context_object_name = 'companies'
+    
 class CustomerCompanyDetailView(DetailView):
     model=CustomerCompany
     context_object_name = 'company'
