@@ -65,7 +65,7 @@ class CustomerCompany(models.Model):
     ateco_sector = models.ForeignKey(AtecoSector, verbose_name='Settore Ateco 2007')
     certifications = models.ManyToManyField(Certification, verbose_name='Certificazioni')
     settlement_size = models.CharField('Superficie insediamento', max_length=200)
-    record_date = models.DateTimeField('Data registrazione')
+    record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
     cpi = models.CharField('CPI', max_length=200)
     machine_use = models.BooleanField('Uso macchine')
     dangerous_substances = models.BooleanField('Sostanze pericolose')
@@ -118,7 +118,7 @@ class Staff(models.Model):
     department = models.ForeignKey(Department, null=False, verbose_name='Reparto')
     role = models.ForeignKey(Role, null=False, verbose_name='Mansione')
     security_duty = models.ForeignKey(SecurityDuty, null=True, verbose_name='Figura Prevenzione')
-    date = models.DateField(auto_now_add=True, verbose_name='Data assunzione')
+    date = models.DateField(verbose_name='Data assunzione')
 
     def __unicode__(self):
         return u'%s %s' % (self.surname, self.name) # mansione omogenea
