@@ -5,10 +5,12 @@ from customers.views import CustomerCompanyYearView
 from customers.views import CustomerCompanyListView
 from customers.views import CustomerCompanyDetailView
 from customers.views import StaffDetailView
+from customers.views import CustomerCompanyCreateView
 
 urlpatterns = patterns('customers.views',
                        url(r'^$', login_required(CustomerCompanyListView.as_view())),
                        url(r'^(?P<pk>\d+)/$', login_required(CustomerCompanyDetailView.as_view())),
                        url(r'^staff/(?P<pk>\d+)/$', login_required(StaffDetailView.as_view())),
                        url(r'year/(?P<year>\d{4})/$', login_required(CustomerCompanyYearView.as_view())),
+                       url(r'^create/$', login_required(CustomerCompanyCreateView.as_view())),
                        )
