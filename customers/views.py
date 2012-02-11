@@ -1,6 +1,10 @@
 # Create your views here.
-from django.views.generic import DetailView, ListView, YearArchiveView
+from django.views.generic import DetailView
+from django.views.generic import ListView
+from django.views.generic import YearArchiveView
+from django.views.generic import CreateView
 from customers.models import *
+from customers.forms import CustomerCompanyForm
 
 class CustomerCompanyYearView(YearArchiveView):
     queryset = CustomerCompany.objects.all()
@@ -18,3 +22,8 @@ class CustomerCompanyDetailView(DetailView):
 class StaffDetailView(DetailView):
     model=Staff
     context_object_name = 'staff'    
+
+class CustomerCompanyCreateView(CreateView):
+    form_class = CustomerCompanyForm
+    template_name = 'customers/customercompany_create_form.html'
+    success_url = '/customers/create'
