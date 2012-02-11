@@ -1,5 +1,6 @@
 import re
 from django.forms import ValidationError
+from django.utils.translation import ugettext_lazy as _
 from django.forms.fields import Field, RegexField, Select
 
 phone_digits_re = re.compile(r'^((\+|00)39\s)?[0-9]{2,4}\s[0-9]{5,8}$')
