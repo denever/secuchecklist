@@ -87,7 +87,7 @@ class CustomerCompany(models.Model):
     phone = models.CharField('Telefono', max_length=200)
     fax = models.CharField('Fax', max_length=200)
     email = models.EmailField('Email', max_length=200)
-    record_by = models.ForeignKey('accounts.UserProfile')
+    record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
 
     def departments(self):
         return list(set([staff.department for staff in self.staff_set.all()]))
