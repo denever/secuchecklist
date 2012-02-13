@@ -7,6 +7,10 @@ from customers.views import CustomerCompanyDetailView
 from customers.views import StaffDetailView
 from customers.views import CustomerCompanyCreateView
 from customers.views import StaffCreateView
+from customers.views import CustomerCompanyUpdateView
+from customers.views import StaffUpdateView
+from customers.views import CustomerCompanyDeleteView
+from customers.views import StaffDeleteView
 
 urlpatterns = patterns('customers.views',
                        url(r'^$', login_required(CustomerCompanyListView.as_view())),
@@ -14,5 +18,9 @@ urlpatterns = patterns('customers.views',
                        url(r'^staff/(?P<pk>\d+)/$', login_required(StaffDetailView.as_view())),
                        url(r'year/(?P<year>\d{4})/$', login_required(CustomerCompanyYearView.as_view())),
                        url(r'^create/$', login_required(CustomerCompanyCreateView.as_view())),
-                       url(r'^create_staff/$', login_required(StaffCreateView.as_view())),                       
+                       url(r'^create_staff/$', login_required(StaffCreateView.as_view())),
+                       url(r'^update/(?P<pk>\d+)/$', login_required(CustomerCompanyUpdateView.as_view())),
+                       url(r'^update_staff/(?P<pk>\d+)/$', login_required(StaffUpdateView.as_view())),
+                       url(r'^delete/(?P<pk>\d+)/$', login_required(CustomerCompanyDeleteView.as_view())),
+                       url(r'^delete_staff/(?P<pk>\d+)/$', login_required(StaffDeleteView.as_view())),
                        )
