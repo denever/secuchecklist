@@ -1,4 +1,20 @@
 {% extends "customers/base-customers.html" %}
+{% load adminmedia %} /* At the top of the template. */
+
+/* In the head section of the template. */
+{% block extra_head %}
+<script type="text/javascript">
+window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{% endfilter %}";
+</script>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/widgets.css"/>
+
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+
+{{ form.media }}
+
+{% endblock %}
 {% block title %} Registrazione Personale {% endblock %}
 {% block content %}
 <h1>Registrazione Personale</h1>
