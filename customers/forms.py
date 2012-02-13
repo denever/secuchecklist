@@ -12,7 +12,7 @@ class CustomerCompanyForm(forms.ModelForm):
 
     class Meta:
         model = CustomerCompany
-        fields = (#'record_by',
+        fields = (
                   'firm',
                   'phone',
                   'fax',
@@ -32,7 +32,7 @@ class CustomerCompanyForm(forms.ModelForm):
                   'machine_use',
                   'dangerous_substances',
                   'health_surveillance')
-        
+
 class StaffForm(forms.ModelForm):
     phone = ITPhoneNumberField(label='Telefono', required=False)
 
