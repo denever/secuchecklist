@@ -3,6 +3,8 @@ from django.views.generic import DetailView
 from django.views.generic import ListView
 from django.views.generic import YearArchiveView
 from django.views.generic import CreateView
+from django.views.generic import UpdateView
+from django.views.generic import DeleteView
 from customers.models import *
 from customers.forms import CustomerCompanyForm
 from customers.forms import StaffForm
@@ -17,11 +19,11 @@ class CustomerCompanyListView(ListView):
     context_object_name = 'companies'
 
 class CustomerCompanyDetailView(DetailView):
-    model=CustomerCompany
+    model = CustomerCompany
     context_object_name = 'company'
 
 class StaffDetailView(DetailView):
-    model=Staff
+    model = Staff
     context_object_name = 'staff'
 
 class CustomerCompanyCreateView(CreateView):
@@ -29,7 +31,37 @@ class CustomerCompanyCreateView(CreateView):
     template_name = 'customers/customercompany_create_form.html'
     success_url = '/customers/'
 
+    def get_initial(self):
+        super(CustomerCompanyCreateView, self).get_initial()
+        user_profile = self.request.user.get_profile()
+        self.initial = {'record_by': user_profile}
+        return self.initial
+
 class StaffCreateView(CreateView):
     form_class = StaffForm
     template_name = 'customers/staff_create_form.html'
+    success_url = '/customers/'
+
+class CustomerCompanyUpdateView(UpdateView):
+    model = CustomerCompany
+    form_class = CustomerCompanyForm
+    template_name = 'customers/customercompany_update_form.html'
+    success_url = '/customers/'
+
+class StaffUpdateView(UpdateView):
+    model = Staff
+    form_class = StaffForm
+    template_name = 'customers/staff_update_form.html'
+    success_url = '/customers/'
+
+class CustomerCompanyDeleteView(DeleteView):
+    model = CustomerCompany
+    form_class = CustomerCompanyForm
+    template_name = 'customers/customercompany_delete_form.html'
+    success_url = '/customers/'
+
+class StaffDeleteView(DeleteView):
+    model = Staff
+    form_class = StaffForm
+    template_name = 'customers/staff_delete_form.html'
     success_url = '/customers/'
