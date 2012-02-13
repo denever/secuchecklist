@@ -1,5 +1,8 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
+{% block customermenu %}
+	<li><a href="/customers/create_staff/">Aggiungi Personale</a></li>
+{% endblock %}	
 {% block content %}
 <h1>{{ company.firm }}</h1>
 <h2>Info</h2>
