@@ -33,7 +33,7 @@ class SecurityDuty(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'SecurityDuties'        
+        verbose_name_plural = 'SecurityDuties'
 
 class Certification(models.Model):
     short_name = models.CharField('Sigla', max_length=200)
@@ -49,6 +49,20 @@ class Department(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class CollaborationAgreement(models.Model):
+    name = models.CharField('Nome forma contrattuale', max_length=200)
+    description = models.CharField('Descrizione', max_length=200)
+
+    class Meta:
+        verbose_name = 'Forma Contrattuale'
+        verbose_name_plural = 'Forme Contrattuali'
+
+class Nationality(models.Model):
+    nationality = models.CharField("Nazionalità", max_length=200)
+
+    class Meta:
+        verbose_name_plural = 'Nationalities'
 
 class CustomerCompany(models.Model):
     firm = models.CharField('Ragione sociale', max_length=200)
@@ -107,10 +121,12 @@ class Staff(models.Model):
     name = models.CharField('Nome', max_length=200)
     surname = models.CharField('Cognome', max_length=200)
     birth_date = models.DateField('Data di nascita')
-    phone = models.CharField('Telefono', max_length=200)
+    phone = models.CharField('Telefono', max_length=200, null=True, blank=True)
     gender = models.CharField('Sesso', max_length=2, choices=gender_choices)
-    nationality = models.CharField("Nazionalità", max_length=200)
-    collagreement = models.CharField('Forma contrattuale', max_length=200)
+    nationality = models.ForeignKey(Nationality,
+                                    verbose_name='Nazionalità')
+    collagreement = models.ForeignKey(CollaborationAgreement,
+                                      verbose_name='Forma Contrattuale')
     health_care = models.CharField('Sorveglianza sanitaria', max_length=200)
     workers_count = models.BooleanField('Computo lavoratori')
 
@@ -118,8 +134,8 @@ class Staff(models.Model):
     standard_task = models.ForeignKey(StandardTask, null=False, verbose_name='Mansione Omogenea')
     department = models.ForeignKey(Department, null=False, verbose_name='Reparto')
     role = models.ForeignKey(Role, null=False, verbose_name='Mansione')
-    security_duty = models.ForeignKey(SecurityDuty, null=True, verbose_name='Figura Prevenzione')
-    employ_date = models.DateField(verbose_name='Data assunzione')
+    security_duty = models.ForeignKey(SecurityDuty, null=True, verbose_name='Figura Prevenzione', blank=True)
+    employ_date = models.DateField(verbose_name='Data assunzione', null=True, blank=True)
 
     def __unicode__(self):
         return u'%s %s' % (self.surname, self.name) # mansione omogenea
