@@ -23,4 +23,5 @@ urlpatterns = patterns('customers.views',
                        url(r'^update_staff/(?P<pk>\d+)/$', login_required(StaffUpdateView.as_view())),
                        url(r'^delete/(?P<pk>\d+)/$', login_required(CustomerCompanyDeleteView.as_view())),
                        url(r'^delete_staff/(?P<pk>\d+)/$', login_required(StaffDeleteView.as_view())),
+                       url(r'^(?P<company>\d+)/add_staff/$', login_required(StaffCreateView.as_view())),
                        )
