@@ -1,0 +1,9 @@
+{% extends "customers/base-customers.html" %}
+{% block title %} Registrazione Azienda {% endblock %}
+{% block content %}
+<h1>Registrazione Azienda</h1>
+<form action="{{ form.success_url }}" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}
