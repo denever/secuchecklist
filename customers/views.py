@@ -5,6 +5,7 @@ from django.views.generic import YearArchiveView
 from django.views.generic import CreateView
 from customers.models import *
 from customers.forms import CustomerCompanyForm
+from customers.forms import StaffForm
 
 class CustomerCompanyYearView(YearArchiveView):
     queryset = CustomerCompany.objects.all()
@@ -27,3 +28,8 @@ class CustomerCompanyCreateView(CreateView):
     form_class = CustomerCompanyForm
     template_name = 'customers/customercompany_create_form.html'
     success_url = '/customers/create'
+
+class StaffCreateView(CreateView):
+    form_class = StaffForm
+    template_name = 'customers/staff_create_form.html'
+    success_url = '/customers/create_staff'
