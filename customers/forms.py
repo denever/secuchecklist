@@ -12,7 +12,7 @@ class CustomerCompanyForm(forms.ModelForm):
 
     class Meta:
         model = CustomerCompany
-        fields = ('record_by',
+        fields = (#'record_by',
                   'firm',
                   'phone',
                   'fax',
