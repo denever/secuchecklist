@@ -15,21 +15,21 @@ class CustomerCompanyYearView(YearArchiveView):
 class CustomerCompanyListView(ListView):
     queryset = CustomerCompany.objects.all()
     context_object_name = 'companies'
-    
+
 class CustomerCompanyDetailView(DetailView):
     model=CustomerCompany
     context_object_name = 'company'
 
 class StaffDetailView(DetailView):
     model=Staff
-    context_object_name = 'staff'    
+    context_object_name = 'staff'
 
 class CustomerCompanyCreateView(CreateView):
     form_class = CustomerCompanyForm
     template_name = 'customers/customercompany_create_form.html'
-    success_url = '/customers/create'
+    success_url = '/customers/'
 
 class StaffCreateView(CreateView):
     form_class = StaffForm
     template_name = 'customers/staff_create_form.html'
-    success_url = '/customers/create_staff'
+    success_url = '/customers/'
