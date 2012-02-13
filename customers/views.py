@@ -31,11 +31,10 @@ class CustomerCompanyCreateView(CreateView):
     template_name = 'customers/customercompany_create_form.html'
     success_url = '/customers/'
 
-    def get_initial(self):
-        super(CustomerCompanyCreateView, self).get_initial()
-        user_profile = self.request.user.get_profile()
-        self.initial = {'record_by': user_profile}
-        return self.initial
+    def form_valid(self, form):
+        self.company = form.save(commit=False)
+        self.company.record_by = self.request.user.get_profile()
+        return super(CustomerCompanyCreateView, self).form_valid(form)
 
 class StaffCreateView(CreateView):
     form_class = StaffForm
