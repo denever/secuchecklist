@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.localflavor.it.forms import ITSocialSecurityNumberField, ITVatNumberField
-from itphone_field import ITPhoneNumberField
-from customers.models import CustomerCompany, Staff
+from customers.widgets import ITPhoneNumberField
+from customers.models import CustomerCompany, Staff, Nationality
 from django.contrib.admin import widgets
 
 class CustomerCompanyForm(forms.ModelForm):
@@ -15,10 +15,10 @@ class CustomerCompanyForm(forms.ModelForm):
         exclude = ('record_by')
 
 class StaffForm(forms.ModelForm):
-    phone = ITPhoneNumberField()
-    
+    phone = ITPhoneNumberField(required=False)
+
     class Meta:
         model = Staff
         widgets = {'birth_date': widgets.AdminDateWidget(),
-                   'employ_date':widgets.AdminDateWidget(),
+                   'employ_date': widgets.AdminDateWidget(),
                    }
