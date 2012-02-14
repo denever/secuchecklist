@@ -1,4 +1,5 @@
 # Create your views here.
+from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
 from django.views.generic import ListView
 from django.views.generic import YearArchiveView
@@ -40,6 +41,16 @@ class StaffCreateView(CreateView):
     form_class = StaffForm
     template_name = 'customers/staff_create_form.html'
     success_url = '/customers/'
+
+    # def get_initial(self):
+    #     super(StaffCreateView, self).get_initial()
+    #     self.initial['company'] = self.kwargs['company']
+    #     return self.initial
+
+    def form_valid(self, form):
+        self.staff = form.save(commit=False)
+        self.staff.company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return super(StaffCreateView, self).form_valid(form)
 
 class CustomerCompanyUpdateView(UpdateView):
     model = CustomerCompany
