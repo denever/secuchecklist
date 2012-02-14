@@ -58,11 +58,17 @@ class CollaborationAgreement(models.Model):
         verbose_name = 'Forma Contrattuale'
         verbose_name_plural = 'Forme Contrattuali'
 
+    def __unicode__(self):
+        return self.name
+
 class Nationality(models.Model):
     nationality = models.CharField("Nazionalità", max_length=200)
 
     class Meta:
         verbose_name_plural = 'Nationalities'
+
+    def __unicode__(self):
+        return self.nationality
 
 class CustomerCompany(models.Model):
     firm = models.CharField('Ragione sociale', max_length=200)
