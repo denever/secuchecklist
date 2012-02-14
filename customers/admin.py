@@ -8,6 +8,8 @@ from customers.models import Nationality
 from customers.models import CollaborationAgreement
 from customers.models import Staff
 from customers.models import CustomerCompany
+from customers.models import HealthSurveillance
+from customers.models import CPISettlement
 
 from django.contrib import admin
 
@@ -19,6 +21,8 @@ admin.site.register(Certification)
 admin.site.register(Department)
 admin.site.register(Nationality)
 admin.site.register(CollaborationAgreement)
+admin.site.register(HealthSurveillance)
+admin.site.register(CPISettlement)
 
 class StaffAdmin(admin.ModelAdmin):
     list_display = ('surname', 'name') #, 'mansione_omogenea')
@@ -34,7 +38,7 @@ class StaffAdmin(admin.ModelAdmin):
                            'nationality',
                            'employ_date',
                            'collagreement',
-                           'health_care',
+                           'health_surveillance',
                            'workers_count',
                            'company',
                            'standard_task',
