@@ -41,3 +41,18 @@ class StaffForm(forms.ModelForm):
         widgets = {'birth_date': widgets.AdminDateWidget(),
                    'employ_date': widgets.AdminDateWidget(),
                    }
+        fields = (
+                  'surname',
+                  'name',
+                  'birth_date',
+                  'gender',
+                  'nationality',
+                  'employ_date',
+                  'collagreement',
+                  'health_care',
+                  'workers_count',
+                  'standard_task',
+                  'department',
+                  'role',
+                  'security_duty',
+                  )
