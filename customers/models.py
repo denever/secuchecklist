@@ -76,9 +76,9 @@ class CustomerCompany(models.Model):
                                                   max_length=200)
     settlement = models.CharField('Sede insediamento produttivo',
                                                     max_length=200)
-    ciiaa = models.CharField('Iscrizione CIIAA', max_length=200)
-    tax_code = models.CharField('Codice fiscale', max_length=200)
-    vat_code = models.CharField('Partita IVA', max_length=200)
+    ciiaa = models.CharField('Iscrizione CIIAA', max_length=200, unique=True)
+    tax_code = models.CharField('Codice fiscale', max_length=200, unique=True)
+    vat_code = models.CharField('Partita IVA', max_length=200, unique=True)
     inail_pos = models.CharField('Posizione INAIL', max_length=200)
     inps_pos = models.CharField('Posizione INPS', max_length=200)
     ccnl = models.CharField('CCNL', max_length=200)
