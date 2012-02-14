@@ -43,13 +43,6 @@ class Certification(models.Model):
     def __unicode__(self):
         return self.short_name
 
-class Department(models.Model):
-    name = models.CharField('Nome reparto', max_length=200)
-    description = models.CharField('Descrizione', max_length=200)
-
-    def __unicode__(self):
-        return self.name
-
 class CollaborationAgreement(models.Model):
     name = models.CharField('Nome forma contrattuale', max_length=200)
     description = models.CharField('Descrizione', max_length=200)
@@ -70,6 +63,20 @@ class Nationality(models.Model):
     def __unicode__(self):
         return self.nationality
 
+class HealthSurveillance(models.Model):
+    name = models.CharField('Nome sorveglianza sanitaria', max_length=200)
+    description = models.CharField('Descrizione', max_length=200)
+    
+    def __unicode__(self):
+        return self.name
+
+class CPISettlement(models.Model):
+    name = models.CharField('Insediamento CPI', max_length=200)
+    description = models.CharField('Descrizione', max_length=200)
+
+    def __unicode__(self):
+        return self.name
+    
 class CustomerCompany(models.Model):
     firm = models.CharField('Ragione sociale', max_length=200)
     registered_office = models.CharField('Sede legale amministrativa',
@@ -85,7 +92,7 @@ class CustomerCompany(models.Model):
     ateco_sector = models.ForeignKey(AtecoSector, verbose_name='Settore Ateco 2007')
     certifications = models.ManyToManyField(Certification, verbose_name='Certificazioni')
     settlement_size = models.CharField('Superficie insediamento', max_length=200)
-    record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
+
     cpi = models.CharField('CPI', max_length=200)
     machine_use = models.BooleanField('Uso macchine')
     dangerous_substances = models.BooleanField('Sostanze pericolose')
@@ -93,10 +100,12 @@ class CustomerCompany(models.Model):
     phone = models.CharField('Telefono', max_length=200)
     fax = models.CharField('Fax', max_length=200)
     email = models.EmailField('Email', max_length=200)
-    record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
 
-    def departments(self):
-        return list(set([staff.department for staff in self.staff_set.all()]))
+    record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
+    record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
+
+    # def departments(self):
+    #     return list(set([staff.department for staff in self.staff_set.all()]))
 
     def standard_tasks(self):
         return list(set([staff.standard_task for staff in self.staff_set.all()]))
@@ -118,6 +127,18 @@ class CustomerCompany(models.Model):
         verbose_name_plural = 'CustomerCompanies'
         get_latest_by = 'record_date'
 
+class Department(models.Model):
+    company = models.ForeignKey(CustomerCompany, null=False, verbose_name='Azienda')
+    name = models.CharField('Nome reparto', max_length=200)
+    description = models.CharField('Descrizione', max_length=200)
+    size = models.CharField('Superficie', max_length=200)
+
+    record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
+    record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
+
+    def __unicode__(self):
+        return self.name
+
 class Staff(models.Model):
     gender_choices = (
         (u'M', u'Maschio'),
@@ -133,7 +154,7 @@ class Staff(models.Model):
                                     verbose_name='Nazionalità')
     collagreement = models.ForeignKey(CollaborationAgreement,
                                       verbose_name='Forma Contrattuale')
-    health_care = models.CharField('Sorveglianza sanitaria', max_length=200)
+    health_surveillance = models.ForeignKey(HealthSurveillance, verbose_name='Sorveglianza Sanitaria')
     workers_count = models.BooleanField('Computo lavoratori')
 
     company = models.ForeignKey(CustomerCompany, null=False, verbose_name='Azienda')
@@ -143,8 +164,12 @@ class Staff(models.Model):
     security_duty = models.ForeignKey(SecurityDuty, null=True, verbose_name='Figura Prevenzione', blank=True)
     employ_date = models.DateField(verbose_name='Data assunzione', null=True, blank=True)
 
+    record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
+    record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
+
     def __unicode__(self):
         return u'%s %s' % (self.surname, self.name) # mansione omogenea
 
     class Meta:
         ordering = ['surname','name']
+        unique_together = ('surname','name', 'birth_date')
