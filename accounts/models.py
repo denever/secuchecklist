@@ -12,3 +12,5 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.username
     
+class Activity(models.Model):
+    date = models.DateTimeField('Data registrazione', auto_now_add=True)
