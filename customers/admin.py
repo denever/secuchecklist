@@ -4,6 +4,8 @@ from customers.models import Role
 from customers.models import SecurityDuty
 from customers.models import Certification
 from customers.models import Department
+from customers.models import Nationality
+from customers.models import CollaborationAgreement
 from customers.models import Staff
 from customers.models import CustomerCompany
 
@@ -15,6 +17,8 @@ admin.site.register(Role)
 admin.site.register(SecurityDuty)
 admin.site.register(Certification)
 admin.site.register(Department)
+admin.site.register(Nationality)
+admin.site.register(CollaborationAgreement)
 
 class StaffAdmin(admin.ModelAdmin):
     list_display = ('surname', 'name') #, 'mansione_omogenea')
