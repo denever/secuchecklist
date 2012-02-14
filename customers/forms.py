@@ -49,7 +49,7 @@ class StaffForm(forms.ModelForm):
                   'nationality',
                   'employ_date',
                   'collagreement',
-                  'health_care',
+                  'health_surveillance',
                   'workers_count',
                   'standard_task',
                   'department',
