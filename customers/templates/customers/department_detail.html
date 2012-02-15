@@ -1,0 +1,35 @@
+{% extends "customers/base-customers.html" %}
+{% block title %} Gestione Personale Azienda: {{ department.company.firm }} {% endblock %}
+{% block content %}
+<h1>{{ department.company.firm }}</h1>
+<ul>
+<li>Dipartimento: {{ department.name }}</li>
+<li>Superficie: {{ department.size }} </li>
+<li>Descrizione: {{ department.description }} </li>
+</ul>
+<table>
+  <thead>
+    <tr>
+      <td>Personale</td>
+      <td>Mansione Omogenea</td>
+      <td>Figura prevenzione</td>
+    </tr>
+  </thead>
+  <tbody>
+  {% for staff in department.staff_set.all %}
+  <tr>
+    <td>
+      <a href="{% url staff-detail staff.id %}">{{ staff.surname }} {{ staff.name }}</a>
+    </td>
+    <td>
+      {{ staff.standard_task }}
+    </td>
+    <td>
+      {{ staff.security_duty }}
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
