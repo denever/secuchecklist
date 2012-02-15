@@ -93,7 +93,7 @@ class CustomerCompany(models.Model):
     certifications = models.ManyToManyField(Certification, verbose_name='Certificazioni')
     settlement_size = models.CharField('Superficie insediamento', max_length=200)
 
-    cpi = models.CharField('CPI', max_length=200)
+    cpi = models.ForeignKey(CPISettlement, verbose_name='Insediamento CPI')
     machine_use = models.BooleanField('Uso macchine')
     dangerous_substances = models.BooleanField('Sostanze pericolose')
     health_surveillance = models.BooleanField('Sorveglianza sanitaria')
@@ -154,7 +154,7 @@ class Staff(models.Model):
                                     verbose_name='Nazionalità')
     collagreement = models.ForeignKey(CollaborationAgreement,
                                       verbose_name='Forma Contrattuale')
-    health_surveillance = models.ForeignKey(HealthSurveillance, verbose_name='Sorveglianza Sanitaria')
+    health_surveillance = models.ManyToManyField(HealthSurveillance, verbose_name='Sorveglianza Sanitaria')
     workers_count = models.BooleanField('Computo lavoratori')
 
     company = models.ForeignKey(CustomerCompany, null=False, verbose_name='Azienda')
