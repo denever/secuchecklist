@@ -49,6 +49,7 @@ class StaffCreateView(CreateView):
 
     def form_valid(self, form):
         self.staff = form.save(commit=False)
+        self.staff.record_by = self.request.user.get_profile()        
         self.staff.company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         return super(StaffCreateView, self).form_valid(form)
 
