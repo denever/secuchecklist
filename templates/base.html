@@ -33,12 +33,18 @@
     </div>
     {% endif %}      
 
-    <div id="sidebar" class="span-4 box">	
-      {% block sidebar %}      
+    <div id="mainmenu" class="span-4 box">	
+      {% block mainmenu %}      
       {% endblock %}
     </div>      
-    <div id="main-content" class="span-16">
+
+    <div id="main-content" class="span-12">
       {% block content %}{% endblock %}
     </div>
+
+    <div id="submenu" class="span-4 box last">	
+      {% block submenu %}      
+      {% endblock %}
+    </div>      
 </body>
 </html>
