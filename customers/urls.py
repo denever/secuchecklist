@@ -11,16 +11,58 @@ from customers.views import CustomerCompanyUpdateView
 from customers.views import StaffUpdateView
 from customers.views import CustomerCompanyDeleteView
 from customers.views import StaffDeleteView
+from customers.views import WorkingEnvironmentEditView
 
 urlpatterns = patterns('customers.views',
-                       url(r'^$', login_required(CustomerCompanyListView.as_view())),
-                       url(r'^(?P<pk>\d+)/$', login_required(CustomerCompanyDetailView.as_view())),
-                       url(r'^staff/(?P<pk>\d+)/$', login_required(StaffDetailView.as_view())),
-                       url(r'year/(?P<year>\d{4})/$', login_required(CustomerCompanyYearView.as_view())),
-                       url(r'^create/$', login_required(CustomerCompanyCreateView.as_view())),
-                       url(r'^(?P<company>\d+)/add_staff/$', login_required(StaffCreateView.as_view())),
-                       url(r'^update/(?P<pk>\d+)/$', login_required(CustomerCompanyUpdateView.as_view())),
-                       url(r'^update_staff/(?P<pk>\d+)/$', login_required(StaffUpdateView.as_view())),
-                       url(r'^delete/(?P<pk>\d+)/$', login_required(CustomerCompanyDeleteView.as_view())),
-                       url(r'^delete_staff/(?P<pk>\d+)/$', login_required(StaffDeleteView.as_view())),
+                       url(r'^$', login_required(CustomerCompanyListView.as_view()),
+                           name='customers'),
+
+                       url(r'^(?P<pk>\d+)/$',
+                           login_required(CustomerCompanyDetailView.as_view()),
+                           name = 'company-detail'),
+
+                       url(r'^staff/(?P<pk>\d+)/$', 
+                           login_required(StaffDetailView.as_view()),
+                           name = 'staff-detail'
+                           ),
+
+                       url(r'year/(?P<year>\d{4})/$', 
+                           login_required(CustomerCompanyYearView.as_view()),
+                           name = 'company-year'
+                           ),
+
+                       url(r'^create/$', 
+                           login_required(CustomerCompanyCreateView.as_view()),
+                           name = 'company-create'
+                           ),
+
+                       url(r'^(?P<company>\d+)/add_staff/$', 
+                           login_required(StaffCreateView.as_view()),
+                           name = 'add-staff'
+                           ),
+
+                       url(r'^update/(?P<pk>\d+)/$', 
+                           login_required(CustomerCompanyUpdateView.as_view()),
+                           name = 'edit-company'
+                           ),
+                       
+                       url(r'^update_staff/(?P<pk>\d+)/$',
+                           login_required(StaffUpdateView.as_view()),
+                           name = 'edit-staff'
+                           ),
+                       
+                       url(r'^delete/(?P<pk>\d+)/$',
+                           login_required(CustomerCompanyDeleteView.as_view()),
+                           name = 'delete-company'
+                           ),
+
+                       url(r'^delete_staff/(?P<pk>\d+)/$', 
+                           login_required(StaffDeleteView.as_view()),
+                           name = 'delete-staff'
+                           ),
+
+                       url(r'^(?P<pk>\d+)/working_env/$', 
+                           login_required(WorkingEnvironmentEditView.as_view()),
+                           name = 'set-working-env'
+                           ),
                        )
