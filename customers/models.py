@@ -100,6 +100,8 @@ class CustomerCompany(models.Model):
     phone = models.CharField('Telefono', max_length=200)
     fax = models.CharField('Fax', max_length=200)
     email = models.EmailField('Email', max_length=200)
+    working_environment = models.TextField("Descrizione generale dell'ambiente di lavoro", 
+                                           null=True, blank=True)
 
     record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
     record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
@@ -127,12 +129,8 @@ class CustomerCompany(models.Model):
         verbose_name_plural = 'CustomerCompanies'
         get_latest_by = 'record_date'
 
-class WorkingEnvironment(models.Model):
-    company = models.ForeignKey(CustomerCompany, verbose_name='Azienda')
-    description = models.TextField("Descrizione generale dell'ambiente di lavoro")
-
 class Department(models.Model):
-    working_env = models.ForeignKey(WorkingEnvironment, verbose_name='Ambiente di Lavoro')
+    company = models.ForeignKey(CustomerCompany, verbose_name='Azienda')
     name = models.CharField('Nome reparto', max_length=200)
     description = models.TextField('Descrizione del reparto')
     size = models.PositiveIntegerField('Superficie mq.')
