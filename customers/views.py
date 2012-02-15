@@ -11,6 +11,7 @@ from customers.models import *
 from customers.forms import CustomerCompanyForm
 from customers.forms import StaffForm
 from customers.forms import WorkingEnvironmentForm
+from customers.forms import DepartmentForm
 
 class CustomerCompanyYearView(YearArchiveView):
     queryset = CustomerCompany.objects.all()
@@ -64,7 +65,7 @@ class CustomerCompanyUpdateView(UpdateView):
     def form_valid(self, form):
         self.success_url = reverse('company-detail', args=self.kwargs['pk'])
         return super(CustomerCompanyUpdateView, self).form_valid(form)
-        
+
 class StaffUpdateView(UpdateView):
     model = Staff
     form_class = StaffForm
@@ -73,7 +74,7 @@ class StaffUpdateView(UpdateView):
 
     def form_valid(self, form):
         self.success_url = reverse('staff-detail', args=self.kwargs['company'])
-        return super(StaffCreateView, self).form_valid(form)
+        return super(StaffUpdateView, self).form_valid(form)
 
 class CustomerCompanyDeleteView(DeleteView):
     model = CustomerCompany
@@ -97,3 +98,34 @@ class WorkingEnvironmentEditView(UpdateView):
     def form_valid(self, form):
         self.success_url = reverse('company-detail', args=[self.kwargs['pk']])
         return super(WorkingEnvironmentEditView, self).form_valid(form)
+
+class DepartmentCreateView(CreateView):
+    form_class = DepartmentForm
+    template_name = 'customers/department_create_form.html'
+
+    def form_valid(self, form):
+        self.department = form.save(commit=False)
+        self.department.record_by = self.request.user.get_profile()
+        self.department.company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        self.success_url = reverse('department-detail', args=self.kwargs['company'])
+        return super(DepartmentCreateView, self).form_valid(form)
+
+class DepartmentDetailView(DetailView):
+    model = Department
+    context_object_name = 'department'
+
+class DepartmentUpdateView(UpdateView):
+    model = Department
+    form_class = DepartmentForm
+    template_name = 'customers/department_update_form.html'
+    success_url = '/customers/'
+
+    def form_valid(self, form):
+        self.success_url = reverse('department-detail', args=self.kwargs['company'])
+        return super(DepartmentUpdateView, self).form_valid(form)
+
+class DepartmentDeleteView(DeleteView):
+    model = Department
+    form_class = DepartmentForm
+    template_name = 'customers/department_delete_form.html'
+    success_url = '/customers/'
