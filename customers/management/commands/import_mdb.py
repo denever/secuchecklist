@@ -7,7 +7,6 @@ from customers.models import AtecoSector, Certification, CPISettlement, HealthSu
 import pyodbc
 import os.path
 
-
 class Command(BaseCommand):
     args = '<filename.mdb>'
     help = 'Import data from mdb files'
@@ -18,26 +17,22 @@ class Command(BaseCommand):
         conn = pyodbc.connect(connect_str)
         src_cur = conn.cursor()
 
-        src_cur.execute('select descrizione from SettoriATECO')
+        src_cur.execute('select * from SettoriATECO')
         for desc in src_cur:
-            print desc[0]
-            # obj = AtecoSector(name=desc[0], description=desc[0])
-            # obj.save()
-            
-        src_cur.execute('select descrizione from Certificazioni')
-        for desc in src_cur:
-            print desc[0]
-            # obj = Certification(short_name=desc[0], name=desc[0], description=desc[0])
-            # obj.save()
+            obj = AtecoSector(name=desc[2], description=desc[2])
+            obj.save()
 
-        src_cur.execute('select descrizione from InsediamentiCPI')
+        src_cur.execute('select * from Certificazioni')
         for desc in src_cur:
-            print desc[0]
-            # obj = CPISettlement(name=desc[0], description=desc[0])
-            # obj.save()
+            obj = Certification(short_name=desc[1], name=desc[1], description=desc[1])
+            obj.save()
 
-        src_cur.execute('select descrizione from SorvSani')
+        src_cur.execute('select * from InsediamentiCPI')
         for desc in src_cur:
-            print desc[0]
-            # obj = HealthSurveillance(name=desc[0], description=desc[0])
-            # obj.save()
+            obj = CPISettlement(name=desc[1], description=desc[1])
+            obj.save()
+
+        src_cur.execute('select * from SorvSani')
+        for desc in src_cur:
+            obj = HealthSurveillance(name=desc[1], description=desc[1])
+            obj.save()
