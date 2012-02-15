@@ -9,6 +9,7 @@ from django.views.generic import DeleteView
 from customers.models import *
 from customers.forms import CustomerCompanyForm
 from customers.forms import StaffForm
+from customers.forms import WorkingEnvironmentForm
 
 class CustomerCompanyYearView(YearArchiveView):
     queryset = CustomerCompany.objects.all()
@@ -76,3 +77,14 @@ class StaffDeleteView(DeleteView):
     form_class = StaffForm
     template_name = 'customers/staff_delete_form.html'
     success_url = '/customers/'
+
+class WorkingEnvironmentCreateView(CreateView):
+    form_class = WorkingEnvironmentForm
+    template_name = 'customers/workingenvironment_create_form.html'
+    success_url = '/customers/'
+
+    def form_valid(self, form):
+        self.working_environment = form.save(commit=False)
+        self.working_environment.company = get_object_or_404(CustomerCompany,
+                                                             id=self.kwargs['company'])
+        return super(WorkingEnvironmentCreateView, self).form_valid(form)

@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.localflavor.it.forms import ITSocialSecurityNumberField, ITVatNumberField
 from customers.widgets import ITPhoneNumberField
 from customers.models import CustomerCompany, Staff, Nationality
+from customers.models import WorkingEnvironment
 from django.contrib.admin import widgets
 
 class CustomerCompanyForm(forms.ModelForm):
@@ -56,3 +57,8 @@ class StaffForm(forms.ModelForm):
                   'role',
                   'security_duty',
                   )
+
+class WorkingEnvironmentForm(forms.ModelForm):
+    class Meta:
+        model = WorkingEnvironment
+        exclude = ('company')
