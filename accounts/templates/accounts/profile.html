@@ -5,15 +5,18 @@
     <p>Welcome, new user. Please log in.</p>
 {% endif %}
 {% block title %} Profilo {{ user.get_full_name }} {% endblock %}
-{% block sidebar %}
+{% block mainmenu %}
       <ul>
-	<li><a href="/">Home</a></li>
-	<li><a href="/customers/">Customers</a></li>
 	<li><a href="/accounts/profile/">Profile</a></li>
-	<li><a href="/customers/create/">Aggiungi Azienda</a></li>	
+	<li><a href="/customers/">Customers</a></li>
 	<li><a href="/accounts/logout">Logout</a></li>
       </ul>
 {% endblock %}
+{% block submenu %}
+      <ul>
+	<li><a href="/customers/create/">Aggiungi Azienda</a></li>
+      </ul>	
+{% endblock %}    
 {% block content %}
 <h2> Your Customers </h2>
   <table>

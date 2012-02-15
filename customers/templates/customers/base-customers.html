@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% block title %} Gestione Aziende Clienti {% endblock %}
 {% block title2 %} Gestione Aziende Clienti {% endblock %}
-{% block sidebar %}
+{% block mainmenu %}
       <ul>
-	<li><a href="/">Home</a></li>
-	<li><a href="/customers/">Customers</a></li>
 	<li><a href="/accounts/profile/">Profile</a></li>
-	{% block customermenu %} {% endblock %}
+	<li><a href="/customers/">Customers</a></li>
 	<li><a href="/accounts/logout">Logout</a></li>
       </ul>
 {% endblock %}

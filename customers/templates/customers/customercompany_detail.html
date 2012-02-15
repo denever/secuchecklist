@@ -1,7 +1,25 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
-{% block customermenu %}
-	<li><a href="/customers/{{ company.id }}/add_staff/">Aggiungi Personale</a></li>
+{% block submenu %}
+	<li>
+	  <a href="/customers/{{ company.id }}/set_wenv/">
+	    Descrizione Ambiente di Lavoro
+	  </a>
+	</li>
+	<li>
+	  <a href="/customers/{{ company.id }}/add_dep/">
+	    Aggiungi Reparto
+	</a>
+	</li>
+        <li>
+	  <a href="/customers/{{ company.id }}/add_staff/">
+	    Aggiungi Personale
+	</a>
+        <li>
+	  <a href="/customers/{{ company.id }}/add_secduty/">
+	    Aggiungi Figura Prevenzione
+	</a>
+	</li>
 {% endblock %}	
 {% block content %}
 <h1>{{ company.firm }}</h1>
