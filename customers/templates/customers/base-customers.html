@@ -3,8 +3,8 @@
 {% block title2 %} Gestione Aziende Clienti {% endblock %}
 {% block mainmenu %}
       <ul>
-	<li><a href="/accounts/profile/">Profile</a></li>
-	<li><a href="/customers/">Customers</a></li>
-	<li><a href="/accounts/logout">Logout</a></li>
+        <li><a href="{% url profile %}">Profile</a></li>
+        <li><a href="{% url customers %}">Customers</a></li>
+        <li><a href="{% url logout %}">Logout</a></li>
       </ul>
 {% endblock %}

@@ -7,29 +7,30 @@
 {% block title %} Profilo {{ user.get_full_name }} {% endblock %}
 {% block mainmenu %}
       <ul>
-	<li><a href="/accounts/profile/">Profile</a></li>
-	<li><a href="/customers/">Customers</a></li>
-	<li><a href="/accounts/logout">Logout</a></li>
+        <li><a href="{% url profile %}">Profile</a></li>
+        <li><a href="{% url customers %}">Customers</a></li>
+        <li><a href="{% url logout %}">Logout</a></li>
       </ul>
 {% endblock %}
 {% block submenu %}
       <ul>
-	<li><a href="/customers/create/">Aggiungi Azienda</a></li>
-      </ul>	
-{% endblock %}    
+        <li><a href="{% url company-create %}">Aggiungi Azienda</a></li>
+        <li><a href="{% url change-passwd %}">Cambia password</a></li>
+      </ul>
+{% endblock %}
 {% block content %}
 <h2> Your Customers </h2>
   <table>
     {% for cc in user.get_profile.customercompany_set.all %}
     <tr>
       <td>
-	<a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a>
+        <a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a>
       </td>
       <td>
       ({{ cc.ateco_sector }})
       </td>
       <td>
-	{{ cc.record_date }}
+        {{ cc.record_date }}
       </td>
     <tr>
   {% endfor %}

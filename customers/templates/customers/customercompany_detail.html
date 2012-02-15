@@ -1,26 +1,26 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
 {% block submenu %}
-	<li>
-	  <a href="/customers/{{ company.id }}/set_wenv/">
-	    Descrizione Ambiente di Lavoro
-	  </a>
-	</li>
-	<li>
-	  <a href="/customers/{{ company.id }}/add_dep/">
-	    Aggiungi Reparto
-	</a>
-	</li>
         <li>
-	  <a href="/customers/{{ company.id }}/add_staff/">
-	    Aggiungi Personale
-	</a>
+          <a href="{% url set-working-env company.id %}">
+            Descrizione Ambiente di Lavoro
+          </a>
+        </li>
         <li>
-	  <a href="/customers/{{ company.id }}/add_secduty/">
-	    Aggiungi Figura Prevenzione
-	</a>
-	</li>
-{% endblock %}	
+          <a href="{% url add-dep company.id %}">
+            Aggiungi Reparto
+        </a>
+        </li>
+        <li>
+          <a href="{% url add-staff company.id %}">
+            Aggiungi Personale
+        </a>
+        <li>
+          <a href="{% url add-secduty company.id %}">
+            Aggiungi Figura Prevenzione
+        </a>
+        </li>
+{% endblock %}
 {% block content %}
 <h1>{{ company.firm }}</h1>
 <h2>Info</h2>
@@ -66,7 +66,7 @@
   {% for staff in company.staff_set.all %}
   <tr>
     <td>
-      <a href='/customers/staff/{{ staff.id }}/'>{{ staff.surname }} {{ staff.name }}</a>
+      <a href="{% url staff-detail staff.id %}">{{ staff.surname }} {{ staff.name }}</a>
     </td>
     <td>
       {{ staff.standard_task }}

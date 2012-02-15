@@ -7,7 +7,7 @@
     {% for cc in companies %}
     <tr>
       <td>
-	<a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a>
+	<a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
       </td>
       <td>
       ({{ cc.ateco_sector }})

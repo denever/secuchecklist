@@ -11,7 +11,7 @@
   {% for staff in company.staff_set.all %}
   <tr>
     <td>
-      <a href='/customers/staff/{{ staff.id }}/'>{{ staff.surname }} {{ staff.name }}</a>
+      <a href="{% url staff-detail staff.id %}">{{ staff.surname }} {{ staff.name }}</a>
     </td>
     <td>
       {{ staff.standard_task }}
