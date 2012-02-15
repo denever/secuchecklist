@@ -1,5 +1,6 @@
 # Create your views here.
 from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
 from django.views.generic import DetailView
 from django.views.generic import ListView
 from django.views.generic import YearArchiveView
@@ -41,7 +42,6 @@ class CustomerCompanyCreateView(CreateView):
 class StaffCreateView(CreateView):
     form_class = StaffForm
     template_name = 'customers/staff_create_form.html'
-    success_url = '/customers/'
 
     # def get_initial(self):
     #     super(StaffCreateView, self).get_initial()
@@ -50,8 +50,9 @@ class StaffCreateView(CreateView):
 
     def form_valid(self, form):
         self.staff = form.save(commit=False)
-        self.staff.record_by = self.request.user.get_profile()        
+        self.staff.record_by = self.request.user.get_profile()
         self.staff.company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        self.success_url = reverse('staff-detail', args=self.kwargs['company'])
         return super(StaffCreateView, self).form_valid(form)
 
 class CustomerCompanyUpdateView(UpdateView):
@@ -60,11 +61,19 @@ class CustomerCompanyUpdateView(UpdateView):
     template_name = 'customers/customercompany_update_form.html'
     success_url = '/customers/'
 
+    def form_valid(self, form):
+        self.success_url = reverse('company-detail', args=self.kwargs['pk'])
+        return super(CustomerCompanyUpdateView, self).form_valid(form)
+        
 class StaffUpdateView(UpdateView):
     model = Staff
     form_class = StaffForm
     template_name = 'customers/staff_update_form.html'
     success_url = '/customers/'
+
+    def form_valid(self, form):
+        self.success_url = reverse('staff-detail', args=self.kwargs['company'])
+        return super(StaffCreateView, self).form_valid(form)
 
 class CustomerCompanyDeleteView(DeleteView):
     model = CustomerCompany
@@ -80,13 +89,11 @@ class StaffDeleteView(DeleteView):
 
 class WorkingEnvironmentEditView(UpdateView):
     form_class = WorkingEnvironmentForm
-    model = CustomerCompany    
+    model = CustomerCompany
     template_name = 'customers/workingenvironment_create_form.html'
     success_url = '/customers/'
     context_object_name = 'company'
 
     def form_valid(self, form):
-        self.working_environment = form.save(commit=False)
-        self.working_environment.company = get_object_or_404(CustomerCompany,
-                                                             id=self.kwargs['company'])
-        return super(WorkingEnvironmentCreateView, self).form_valid(form)
+        self.success_url = reverse('company-detail', args=[self.kwargs['pk']])
+        return super(WorkingEnvironmentEditView, self).form_valid(form)
