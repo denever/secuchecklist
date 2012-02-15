@@ -12,6 +12,8 @@ from customers.views import StaffUpdateView
 from customers.views import CustomerCompanyDeleteView
 from customers.views import StaffDeleteView
 from customers.views import WorkingEnvironmentEditView
+from customers.views import DepartmentCreateView
+from customers.views import DepartmentDetailView
 
 urlpatterns = patterns('customers.views',
                        url(r'^$', login_required(CustomerCompanyListView.as_view()),
@@ -65,4 +67,15 @@ urlpatterns = patterns('customers.views',
                            login_required(WorkingEnvironmentEditView.as_view()),
                            name = 'set-working-env'
                            ),
+
+                       url(r'^(?P<company>\d+)/add_department/$',
+                           login_required(DepartmentCreateView.as_view()),
+                           name = 'add-department'
+                           ),
+
+                       url(r'^department/(?P<pk>\d+)/$', 
+                           login_required(DepartmentDetailView.as_view()),
+                           name = 'department-detail'
+                           ),
+
                        )
