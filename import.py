@@ -11,7 +11,8 @@ for desc in src_cur:
 
 src_cur.execute('select descrizione from Certificazioni')
 for desc in src_cur:
-    obj = Certification(name=desc[0], description=desc[0])
+    print desc[0]
+    obj = Certification(short_name=desc[0], name=desc[0], description=desc[0])
     obj.save()
 
 src_cur.execute('select descrizione from InsediamentiCPI')
