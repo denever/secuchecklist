@@ -78,10 +78,12 @@ class StaffDeleteView(DeleteView):
     template_name = 'customers/staff_delete_form.html'
     success_url = '/customers/'
 
-class WorkingEnvironmentCreateView(CreateView):
+class WorkingEnvironmentEditView(UpdateView):
     form_class = WorkingEnvironmentForm
+    model = CustomerCompany    
     template_name = 'customers/workingenvironment_create_form.html'
     success_url = '/customers/'
+    context_object_name = 'company'
 
     def form_valid(self, form):
         self.working_environment = form.save(commit=False)
