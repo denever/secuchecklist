@@ -66,7 +66,7 @@ class Nationality(models.Model):
 class HealthSurveillance(models.Model):
     name = models.CharField('Nome sorveglianza sanitaria', max_length=200)
     description = models.CharField('Descrizione', max_length=200)
-    
+
     def __unicode__(self):
         return self.name
 
@@ -76,7 +76,7 @@ class CPISettlement(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
 class CustomerCompany(models.Model):
     firm = models.CharField('Ragione sociale', max_length=200)
     registered_office = models.CharField('Sede legale amministrativa',
@@ -91,7 +91,7 @@ class CustomerCompany(models.Model):
     ccnl = models.CharField('CCNL', max_length=200)
     ateco_sector = models.ForeignKey(AtecoSector, verbose_name='Settore Ateco 2007')
     certifications = models.ManyToManyField(Certification, verbose_name='Certificazioni')
-    settlement_size = models.CharField('Superficie insediamento', max_length=200)
+    settlement_size = models.PositiveIntegerField('Superficie insediamento mq.')
 
     cpi = models.ForeignKey(CPISettlement, verbose_name='Insediamento CPI')
     machine_use = models.BooleanField('Uso macchine')
@@ -127,11 +127,15 @@ class CustomerCompany(models.Model):
         verbose_name_plural = 'CustomerCompanies'
         get_latest_by = 'record_date'
 
+class WorkingEnvironment(models.Model):
+    company = models.ForeignKey(CustomerCompany, verbose_name='Azienda')
+    description = models.TextField("Descrizione generale dell'ambiente di lavoro")
+
 class Department(models.Model):
-    company = models.ForeignKey(CustomerCompany, null=False, verbose_name='Azienda')
+    working_env = models.ForeignKey(WorkingEnvironment, verbose_name='Ambiente di Lavoro')
     name = models.CharField('Nome reparto', max_length=200)
-    description = models.CharField('Descrizione', max_length=200)
-    size = models.CharField('Superficie', max_length=200)
+    description = models.TextField('Descrizione del reparto')
+    size = models.PositiveIntegerField('Superficie mq.')
 
     record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
     record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
