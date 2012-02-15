@@ -100,7 +100,7 @@ class CustomerCompany(models.Model):
     phone = models.CharField('Telefono', max_length=200)
     fax = models.CharField('Fax', max_length=200)
     email = models.EmailField('Email', max_length=200)
-    working_environment = models.TextField("Descrizione generale dell'ambiente di lavoro", 
+    working_environment = models.TextField("Descrizione generale dell'ambiente di lavoro",
                                            null=True, blank=True)
 
     record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
@@ -137,6 +137,11 @@ class Department(models.Model):
 
     record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
     record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
+
+    class Meta:
+        ordering = ['name']
+        unique_together = ('company','name')
+        get_latest_by = 'record_date'
 
     def __unicode__(self):
         return self.name
