@@ -1,5 +1,32 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Personale Azienda: {{ staff.company.firm }} {% endblock %}
+{% block submenu %}
+        <li>
+          <a href="{% url company-detail company.id %}">
+            {{ company.firm }}
+          </a>
+        </li>
+        <li>
+          <a href="{% url set-working-env company.id %}">
+            Ambiente di Lavoro
+          </a>
+        </li>
+        <li>
+          <a href="{% url add-staff company.id %}">
+	    Aggiungi Personale
+        </a>
+        </li>	  
+        <li>
+          <a href="{% url staff-list company.id %}">
+	    Organigramma
+          </a>
+        </li>	  
+        <li>
+          <a href="{% url add-staff company.id %}">
+	    Figure Prevenzione
+        </a>
+        </li>
+{% endblock %}
 {% block content %}
 <h1>{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</h1>
 <ul>
