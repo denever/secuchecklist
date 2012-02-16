@@ -50,17 +50,17 @@ urlpatterns = patterns('customers.views',
 
 		       url(r'^(?P<company>\d+)/add_staff/$',
 			   login_required(StaffCreateView.as_view()),
-			   name = 'add-staff'
+			   name = 'staff-add'
 			   ),
 
-		       url(r'^update/(?P<pk>\d+)/$',
+		       url(r'^(?P<pk>\d+)/update/$',
 			   login_required(CustomerCompanyUpdateView.as_view()),
-			   name = 'edit-company'
+			   name = 'company-edit'
 			   ),
 
 		       url(r'^update_staff/(?P<pk>\d+)/$',
 			   login_required(StaffUpdateView.as_view()),
-			   name = 'edit-staff'
+			   name = 'staff-edit'
 			   ),
 
 		       url(r'^delete/(?P<pk>\d+)/$',
@@ -70,7 +70,7 @@ urlpatterns = patterns('customers.views',
 
 		       url(r'^delete_staff/(?P<pk>\d+)/$',
 			   login_required(StaffDeleteView.as_view()),
-			   name = 'delete-staff'
+			   name = 'staff-delete'
 			   ),
 
 		       url(r'^(?P<pk>\d+)/working_env/$',
@@ -80,10 +80,10 @@ urlpatterns = patterns('customers.views',
 
 		       url(r'^(?P<company>\d+)/add_department/$',
 			   login_required(DepartmentCreateView.as_view()),
-			   name = 'add-department'
+			   name = 'department-add'
 			   ),
 
-		       url(r'^department/(?P<pk>\d+)/$',
+		       url(r'^(?P<company>\d+)/department/(?P<pk>\d+)/$',
 			   login_required(DepartmentDetailView.as_view()),
 			   name = 'department-detail'
 			   ),
