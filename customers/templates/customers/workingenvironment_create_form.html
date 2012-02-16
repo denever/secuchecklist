@@ -7,7 +7,7 @@
           </a>
         </li>
         <li>
-          <a href="{% url add-department company.id %}">
+          <a href="{% url department-add company.id %}">
             Aggiungi Reparto
         </a>
         </li>
@@ -22,11 +22,12 @@
         </li>
 {% endblock %}
 {% block content %}
-<h1>Registrazione Personale</h1>
+<h1>Ambiente di Lavoro</h1>
 <form action="{{ form.success_url }}" method="post">{% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
+<h1>Reparti</h1>
 <table>
   <thead>
     <tr>
@@ -38,7 +39,7 @@
   {% for department in company.department_set.all %}
   <tr>
     <td>
-      <a href="{% url department-detail department.id %}">{{ department.name }}</a>
+      <a href="{% url department-detail company.id department.id %}">{{ department.name }}</a>
     </td>
     <td>
       {{ department.size }}
@@ -47,5 +48,4 @@
   {% endfor %}
   </tbody>
 </table>
-
 {% endblock %}

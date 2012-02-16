@@ -2,7 +2,9 @@
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
 {% block submenu %}
 	<li>
-	  {{ company.firm }}
+	  <a href="{% url company-edit company.id %}">	  
+	    Modifica Anagrafica
+	  </a>
 	</li>
 	<li>
 	  <a href="{% url set-working-env company.id %}">
@@ -15,14 +17,14 @@
 	</a>
 	</li>
 	<li>
-	  <a href="{% url add-staff company.id %}">
+	  <a href="{% url staff-add company.id %}">
 	    Figure Prevenzione
 	</a>
 	</li>
 {% endblock %}
 {% block content %}
 <h1>{{ company.firm }}</h1>
-<h2>Info</h2>
+<h2>Anagrafica</h2>
 <ul>
 <li>Ragione sociale: {{ company.firm }}</li>
 <li>Sede legale amministrativa: {{ company.registered_office }}</li>

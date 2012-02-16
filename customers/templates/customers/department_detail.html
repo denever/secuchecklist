@@ -1,5 +1,26 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Personale Azienda: {{ department.company.firm }} {% endblock %}
+{% block submenu %}
+        <li>
+          <a href="{% url company-detail company.id %}">
+            {{ company.firm }}
+          </a>
+        </li>
+        <li>
+          <a href="{% url set-working-env company.id %}">
+	    Ambiente di Lavoro
+        </a>
+        </li>
+        <li>
+          <a href="{% url staff-list company.id %}">
+            Organigramma
+        </a>
+        <li>
+          <a href="{% url staff-list company.id %}">
+            Figure Prevenzione
+        </a>
+        </li>
+{% endblock %}
 {% block content %}
 <h1>{{ department.company.firm }}</h1>
 <ul>
