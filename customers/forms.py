@@ -5,7 +5,7 @@ from customers.models import CustomerCompany, Staff, Nationality, Department
 from django.contrib.admin import widgets
 
 class CustomerCompanyForm(forms.ModelForm):
-    tax_code = ITSocialSecurityNumberField(label='Codice Fiscale')
+    tax_code = ITVatNumberField(label='Codice Fiscale')
     vat_code = ITVatNumberField(label='Partita IVA')
     phone = ITPhoneNumberField(label='Telefono')
     fax = ITPhoneNumberField(label='Fax')
