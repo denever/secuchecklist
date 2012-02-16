@@ -2,22 +2,22 @@
 {% block title %} Registrazione Personale {% endblock %}
 {% block submenu %}
         <li>
-          <a href="{% url company-detail company.id %}/">
+          <a href="{% url company-detail company.id %}">
             {{ company.firm }}
           </a>
         </li>
         <li>
-          <a href="{% url add-dep company.id %}">
+          <a href="{% url add-department company.id %}">
             Aggiungi Reparto
         </a>
         </li>
         <li>
-          <a href="{% url add-staff company.id %}">
-            Aggiungi Personale
+          <a href="{% url staff-list company.id %}">
+            Organigramma
         </a>
         <li>
-          <a href="{% url add-secduty company.id %}">
-            Aggiungi Figura Prevenzione
+          <a href="{% url staff-list company.id %}">
+            Figure Prevenzione
         </a>
         </li>
 {% endblock %}
@@ -27,4 +27,25 @@
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
+<table>
+  <thead>
+    <tr>
+      <td>Nome Reparto</td>
+      <td>Superficie</td>
+    </tr>
+  </thead>
+  <tbody>
+  {% for department in company.department_set.all %}
+  <tr>
+    <td>
+      <a href="{% url department-detail department.id %}">{{ department.name }}</a>
+    </td>
+    <td>
+      {{ department.size }}
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}
