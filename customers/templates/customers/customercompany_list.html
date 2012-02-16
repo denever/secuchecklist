@@ -1,5 +1,13 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Azienda{% endblock %}
+{% block submenu %}
+      <ul>
+	<li>
+	  <a href="{% url company-create %}">Aggiungi Azienda
+	  </a>
+	</li>
+      </ul>
+{% endblock %}
 {% block content %}
 <h1> Customers available </h1>
 {% if companies %}
