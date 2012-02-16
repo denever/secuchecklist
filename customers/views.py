@@ -30,6 +30,11 @@ class StaffDetailView(DetailView):
     model = Staff
     context_object_name = 'staff'
 
+    def get_context_data(self, **kwargs):
+        context = super(StaffDetailView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
 class CustomerCompanyCreateView(CreateView):
     form_class = CustomerCompanyForm
     template_name = 'customers/customercompany_create_form.html'
@@ -48,12 +53,16 @@ class StaffCreateView(CreateView):
     #     super(StaffCreateView, self).get_initial()
     #     self.initial['company'] = self.kwargs['company']
     #     return self.initial
+    def get_context_data(self, **kwargs):
+        context = super(StaffCreateView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
 
     def form_valid(self, form):
         self.staff = form.save(commit=False)
         self.staff.record_by = self.request.user.get_profile()
         self.staff.company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
-        self.success_url = reverse('staff-detail', args=self.kwargs['company'])
+        self.success_url = reverse('staff-list', args=self.kwargs['company'])
         return super(StaffCreateView, self).form_valid(form)
 
 class CustomerCompanyUpdateView(UpdateView):
@@ -110,6 +119,11 @@ class DepartmentCreateView(CreateView):
         self.success_url = reverse('department-detail', args=self.kwargs['company'])
         return super(DepartmentCreateView, self).form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super(DepartmentCreateView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
 class DepartmentDetailView(DetailView):
     model = Department
     context_object_name = 'department'
@@ -129,3 +143,15 @@ class DepartmentDeleteView(DeleteView):
     form_class = DepartmentForm
     template_name = 'customers/department_delete_form.html'
     success_url = '/customers/'
+
+class StaffListView(ListView):
+    context_object_name = 'staff_set'
+
+    def get_queryset(self):
+        company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return company.staff_set.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(StaffListView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
