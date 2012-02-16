@@ -1,25 +1,24 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
 {% block submenu %}
-        <li>
-          <a href="{% url set-working-env company.id %}">
-            Descrizione Ambiente di Lavoro
-          </a>
-        </li>
-        <li>
-          <a href="{% url add-dep company.id %}">
-            Aggiungi Reparto
-        </a>
-        </li>
-        <li>
-          <a href="{% url add-staff company.id %}">
-            Aggiungi Personale
-        </a>
-        <li>
-          <a href="{% url add-secduty company.id %}">
-            Aggiungi Figura Prevenzione
-        </a>
-        </li>
+	<li>
+	  {{ company.firm }}
+	</li>
+	<li>
+	  <a href="{% url set-working-env company.id %}">
+	    Ambiente di Lavoro
+	  </a>
+	</li>
+	<li>
+	  <a href="{% url staff-list company.id %}">
+	    Organigramma
+	</a>
+	</li>
+	<li>
+	  <a href="{% url add-staff company.id %}">
+	    Figure Prevenzione
+	</a>
+	</li>
 {% endblock %}
 {% block content %}
 <h1>{{ company.firm }}</h1>
@@ -52,30 +51,4 @@
 <li>Email: <a href="mailto:{{ company.email }}">{{ company.email }}</a></li>
 <li>Numero di lavoratori: {{ company.workers_count }}</li>
 </ul>
-
-<h2>Organigramma</h2>
-<table>
-  <thead>
-    <tr>
-      <td>Personale</td>
-      <td>Mansione Omogenea</td>
-      <td>Figura prevenzione</td>
-    </tr>
-  </thead>
-  <tbody>
-  {% for staff in company.staff_set.all %}
-  <tr>
-    <td>
-      <a href="{% url staff-detail staff.id %}">{{ staff.surname }} {{ staff.name }}</a>
-    </td>
-    <td>
-      {{ staff.standard_task }}
-    </td>
-    <td>
-      {{ staff.security_duty }}
-    </td>
-  </tr>
-  {% endfor %}
-  </tbody>
-</table>
 {% endblock %}
