@@ -10,6 +10,7 @@ from customers.models import Staff
 from customers.models import CustomerCompany
 from customers.models import HealthSurveillance
 from customers.models import CPISettlement
+from customers.models import CompanySecurityDuty
 
 from django.contrib import admin
 
@@ -23,6 +24,7 @@ admin.site.register(Nationality)
 admin.site.register(CollaborationAgreement)
 admin.site.register(HealthSurveillance)
 admin.site.register(CPISettlement)
+admin.site.register(CompanySecurityDuty)
 
 class StaffAdmin(admin.ModelAdmin):
     list_display = ('surname', 'name') #, 'mansione_omogenea')
@@ -44,7 +46,6 @@ class StaffAdmin(admin.ModelAdmin):
                            'standard_task',
                            'department',
                            'role',
-                           'security_duty',
                            ]
                 }
          ),
