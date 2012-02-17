@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.views.generic import DetailView
 from django.views.generic import ListView
 from django.views.generic import YearArchiveView
+from django.views.generic import MonthArchiveView
 from django.views.generic import CreateView
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView
@@ -18,10 +19,32 @@ class CustomerCompanyYearView(YearArchiveView):
     queryset = CustomerCompany.objects.all()
     date_field = 'record_date'
     make_object_list = True
+    context_object_name = 'companies'
+
+    def get_context_data(self, **kwargs):
+        context = super(CustomerCompanyYearView, self).get_context_data(**kwargs)
+        context['months'] = [  date.strftime('%b') for date in context['date_list'] ]
+        return context
+
+class CustomerCompanyMonthView(MonthArchiveView):
+    queryset = CustomerCompany.objects.all()
+    date_field = 'record_date'
+    make_object_list = True
+    context_object_name = 'companies'
+
+    def get_context_data(self, **kwargs):
+        context = super(CustomerCompanyMonthView, self).get_context_data(**kwargs)
+        context['years'] = [ date.year for date in CustomerCompany.objects.dates('record_date', 'year')]
+        return context
 
 class CustomerCompanyListView(ListView):
     queryset = CustomerCompany.objects.all()
     context_object_name = 'companies'
+
+    def get_context_data(self, **kwargs):
+        context = super(CustomerCompanyListView, self).get_context_data(**kwargs)
+        context['years'] = [ date.year for date in CustomerCompany.objects.dates('record_date', 'year')]
+        return context
 
 class CustomerCompanyDetailView(DetailView):
     model = CustomerCompany
