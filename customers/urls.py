@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from customers.models import CustomerCompany, Staff
 
 from customers.views import CustomerCompanyYearView
+from customers.views import CustomerCompanyMonthView
 from customers.views import CustomerCompanyListView
 from customers.views import CustomerCompanyDetailView
 from customers.views import CustomerCompanyCreateView
@@ -44,6 +45,11 @@ urlpatterns = patterns('customers.views',
                        url(r'year/(?P<year>\d{4})/$',
                            login_required(CustomerCompanyYearView.as_view()),
                            name = 'company-year'
+                           ),
+
+                       url(r'month/(?P<year>\d{4})/(?P<month>[A-Za-z]{3})/$',
+                           login_required(CustomerCompanyMonthView.as_view()),
+                           name = 'company-month'
                            ),
 
                        url(r'^create/$',
