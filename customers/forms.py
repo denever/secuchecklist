@@ -1,8 +1,14 @@
 from django import forms
-from django.contrib.localflavor.it.forms import ITSocialSecurityNumberField, ITVatNumberField
-from customers.widgets import ITPhoneNumberField
-from customers.models import CustomerCompany, Staff, Nationality, Department
 from django.contrib.admin import widgets
+from django.contrib.localflavor.it.forms import ITSocialSecurityNumberField, ITVatNumberField
+
+from customers.widgets import ITPhoneNumberField
+
+from customers.models import CustomerCompany
+from customers.models import Staff
+from customers.models import Nationality
+from customers.models import Department
+from customers.models import CompanySecurityDuty
 
 class CustomerCompanyForm(forms.ModelForm):
     tax_code = ITVatNumberField(label='Codice Fiscale')
@@ -54,7 +60,6 @@ class StaffForm(forms.ModelForm):
                   'standard_task',
                   'department',
                   'role',
-                  'security_duty',
                   )
 
 class WorkingEnvironmentForm(forms.ModelForm):
@@ -65,4 +70,12 @@ class WorkingEnvironmentForm(forms.ModelForm):
 class DepartmentForm(forms.ModelForm):
     class Meta:
         model = Department
+        exclude = ('company', 'record_by')
+
+class CompanySecurityDutyForm(forms.ModelForm):
+    internal_phone = ITPhoneNumberField(label='Telefono interno')
+    external_phone = ITPhoneNumberField(label='Telefono esterno')
+
+    class Meta:
+        model = CompanySecurityDuty
         exclude = ('company', 'record_by')
