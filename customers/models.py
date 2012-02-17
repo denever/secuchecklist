@@ -5,28 +5,28 @@ from django.core.exceptions import ValidationError
 # Create your models here.
 
 class AtecoSector(models.Model):
-    name = models.CharField('Nome', max_length=200)
+    name = models.CharField('Nome', unique=True, max_length=200)
     description = models.CharField('Descrizione', max_length=200)
 
     def __unicode__(self):
         return self.name
 
 class StandardTask(models.Model):
-    name = models.CharField('Mansione omogenea', max_length=200)
+    name = models.CharField('Mansione omogenea', unique=True, max_length=200)
     description = models.CharField('Descrizione', max_length=200)
 
     def __unicode__(self):
         return self.name
 
 class Role(models.Model):
-    name = models.CharField('Mansione', max_length=200)
+    name = models.CharField('Mansione', unique=True, max_length=200)
     description = models.CharField('Descrizione', max_length=200)
 
     def __unicode__(self):
         return self.name
 
 class SecurityDuty(models.Model):
-    name = models.CharField('Figura prevenzione', max_length=200)
+    name = models.CharField('Figura prevenzione', unique=True, max_length=200)
     description = models.CharField('Descrizione', max_length=200)
 
     def __unicode__(self):
@@ -36,9 +36,12 @@ class SecurityDuty(models.Model):
         verbose_name_plural = 'SecurityDuties'
 
 class Certification(models.Model):
-    short_name = models.CharField('Sigla', max_length=200)
-    name = models.CharField('Nome', max_length=200)
+    short_name = models.CharField('Sigla', unique=True, max_length=200)
+    name = models.CharField('Nome', unique=True, max_length=200)
     description = models.CharField('Descrizione', max_length=200)
+
+    class Meta:
+        unique_together = ('short_name','name')
 
     def __unicode__(self):
         return self.short_name
@@ -55,7 +58,7 @@ class CollaborationAgreement(models.Model):
         return self.name
 
 class Nationality(models.Model):
-    nationality = models.CharField("Nazionalità", max_length=200)
+    nationality = models.CharField("Nazionalità", max_length=200, unique=True)
 
     class Meta:
         verbose_name_plural = 'Nationalities'
@@ -64,14 +67,14 @@ class Nationality(models.Model):
         return self.nationality
 
 class HealthSurveillance(models.Model):
-    name = models.CharField('Nome sorveglianza sanitaria', max_length=200)
+    name = models.CharField('Nome sorveglianza sanitaria', max_length=200, unique=True)
     description = models.CharField('Descrizione', max_length=200)
 
     def __unicode__(self):
         return self.name
 
 class CPISettlement(models.Model):
-    name = models.CharField('Insediamento CPI', max_length=200)
+    name = models.CharField('Insediamento CPI', max_length=200, unique=True)
     description = models.CharField('Descrizione', max_length=200)
 
     def __unicode__(self):
@@ -168,7 +171,6 @@ class Staff(models.Model):
     standard_task = models.ForeignKey(StandardTask, null=False, verbose_name='Mansione Omogenea')
     department = models.ForeignKey(Department, null=False, verbose_name='Reparto')
     role = models.ForeignKey(Role, null=False, verbose_name='Mansione')
-    security_duty = models.ForeignKey(SecurityDuty, null=True, verbose_name='Figura Prevenzione', blank=True)
     employ_date = models.DateField(verbose_name='Data assunzione', null=True, blank=True)
 
     record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
@@ -180,3 +182,21 @@ class Staff(models.Model):
     class Meta:
         ordering = ['surname','name']
         unique_together = ('surname','name', 'birth_date')
+
+class CompanySecurityDuty(models.Model):
+    company = models.ForeignKey(CustomerCompany, verbose_name='Azienda')
+    security_duty = models.ForeignKey(SecurityDuty, verbose_name='Figura Prevenzione')
+    surname = models.CharField('Cognome', max_length=200)
+    name = models.CharField('Nome', max_length=200)
+    internal_phone = models.CharField('Telefono interno', max_length=200, null=True, blank=True)
+    external_phone = models.CharField('Telefono esterno', max_length=200, null=True, blank=True)
+    email = models.EmailField('Email', max_length=200)
+
+    record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
+    record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
+
+    def __unicode__(self):
+        return u'%s %s (%s)' % (self.surname, self.name, self.security_duty)
+
+    class Meta:
+        verbose_name_plural = 'CompanySecurityDuties'
