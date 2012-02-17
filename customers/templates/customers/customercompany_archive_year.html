@@ -1,19 +1,43 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Personale Azienda: {{ staff.company.firm }} {% endblock %}
+{% block submenu %}
+      <ul>
+        <li>
+          <a href="{% url company-create %}">Aggiungi Azienda
+          </a>
+        </li>
+        {% for month in months %}
+        <li>
+          <a href="{% url company-month year month %}">{{ month }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+{% endblock %}
 {% block content %}
 <h1> Customers registered in {{ year }} </h1>
-  <table>
-    {% for cc in object_list %}
-    <tr>
-      <td>
-	<a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
-      </td>
-      <td>
-	({{ cc.ateco_sector }})
-      </td>
-      <td>
-	{{ cc.record_date }}
-      </td>
-    <tr>
-    {% endfor %}
+        <table>
+          <thead>
+            <tr>
+              <td>Azienda</td>
+              <td>Settore ATECO 2007</td>
+              <td>Data registrazione</td>
+            </tr>
+          </thead>
+          <tbody>
+          {% for cc in companies %}
+          <tr>
+            <td>
+              <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+            </td>
+            <td>
+              ({{ cc.ateco_sector }})
+            </td>
+            <td>
+              {{ cc.record_date }}
+            </td>
+          <tr>
+            {% endfor %}
+          </tbody>
+        </table>
 {% endblock %}
