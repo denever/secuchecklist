@@ -1,31 +1,47 @@
 {% extends "customers/base-customers.html" %}
-{% block title %} Gestione Azienda{% endblock %}
+{% block title %} Gestione Azienda {% endblock %}
 {% block submenu %}
       <ul>
-	<li>
-	  <a href="{% url company-create %}">Aggiungi Azienda
-	  </a>
-	</li>
+        <li>
+          <a href="{% url company-create %}">Aggiungi Azienda
+          </a>
+        </li>
+        {% for year in years %}
+        <li>
+          <a href="{% url company-year year %}">{{ year }}
+          </a>
+        </li>
+        {% endfor %}
       </ul>
 {% endblock %}
 {% block content %}
-<h1> Customers available </h1>
-{% if companies %}
-  <table>
-    {% for cc in companies %}
-    <tr>
-      <td>
-	<a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
-      </td>
-      <td>
-      ({{ cc.ateco_sector }})
-      </td>
-      <td>
-	{{ cc.record_date }}
-      </td>
-    <tr>
-  {% endfor %}
-{% else %}
-<p>No companies are available.</p>
-{% endif %}
+        <h1> Customers available </h1>
+        {% if companies %}
+        <table>
+          <thead>
+            <tr>
+              <td>Azienda</td>
+              <td>Settore ATECO 2007</td>
+              <td>Data registrazione</td>
+            </tr>
+          </thead>
+          <tbody>
+          {% for cc in companies %}
+          <tr>
+            <td>
+              <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+            </td>
+            <td>
+              ({{ cc.ateco_sector }})
+            </td>
+            <td>
+              {{ cc.record_date }}
+            </td>
+          <tr>
+            {% endfor %}
+          </tbody>
+        </table>
+            {% else %}
+            <p>No companies are available.</p>
+            {% endif %}
 {% endblock %}

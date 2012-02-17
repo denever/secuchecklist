@@ -1,25 +1,25 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
 {% block submenu %}
-	<li>
-	  <a href="{% url company-detail company.id %}">
-	    {{ company.firm }}
-	  </a>
-	</li>
-	<li>
-	  <a href="{% url set-working-env company.id %}">
-	    Ambiente di Lavoro
-	  </a>
-	</li>
-	<li>
-	  <a href="{% url staff-list company.id %}">
-	    Organigramma
-	</a>
-	<li>
-	  <a href="{% url companysecurityduty-add company.id %}">
-	    Aggiungi Figura Prevenzione
-	</a>
-	</li>
+        <li>
+          <a href="{% url company-detail company.id %}">
+            {{ company.firm }}
+          </a>
+        </li>
+        <li>
+          <a href="{% url set-working-env company.id %}">
+            Ambiente di Lavoro
+          </a>
+        </li>
+        <li>
+          <a href="{% url staff-list company.id %}">
+            Organigramma
+        </a>
+        <li>
+          <a href="{% url companysecurityduty-add company.id %}">
+            Aggiungi Figura Prevenzione
+        </a>
+        </li>
 {% endblock %}
 {% block content %}
 <h2>Figure Prevenzione</h2>
@@ -40,7 +40,7 @@
       {{ secduty.security_duty }}
     </td>
     <td>
-	{{ secduty.surname }} {{ secduty.name }}
+        {{ secduty.surname }} {{ secduty.name }}
     </td>
     <td>
       {{ secduty.internal_phone }}
