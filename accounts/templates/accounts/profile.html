@@ -19,19 +19,98 @@
       </ul>
 {% endblock %}
 {% block content %}
-<h2> Your Customers </h2>
-  <table>
-    {% for cc in user.get_profile.customercompany_set.all %}
-    <tr>
-      <td>
-        <a href='/customers/{{ cc.id }}/'>{{ cc.firm }}</a>
-      </td>
-      <td>
-      ({{ cc.ateco_sector }})
-      </td>
-      <td>
-        {{ cc.record_date }}
-      </td>
-    <tr>
-  {% endfor %}
+      <h2> Your Customers </h2>
+        <table>
+          <thead>
+            <tr>
+              <td>Azienda</td>
+              <td>Settore ATECO 2007</td>
+              <td>Data registrazione</td>
+            </tr>
+          </thead>
+          <tbody>
+	    {% for cc in user.get_profile.customercompany_set.all %}
+          <tr>
+            <td>
+              <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+            </td>
+            <td>
+              ({{ cc.ateco_sector }})
+            </td>
+            <td>
+              {{ cc.record_date }}
+            </td>
+          <tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      <h2> Staff registered by you </h2>
+        <table>
+	  <thead>
+	    <tr>
+	      <td>Azienda</td>	      
+	      <td>Personale</td>
+	      <td>Mansione Omogenea</td>
+	      <td>Mansione</td>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for staff in user.get_profile.staff_set.all %}
+          <tr>
+            <td>
+              <a href="{% url company-detail staff.company.id %}">{{ staff.company.firm }}</a>
+            </td>
+	    <td>
+	      <a href="{% url staff-detail staff.company.id staff.id %}">
+		{{ staff.surname }} {{ staff.name }}</a>
+	    </td>
+	    <td>
+	      {{ staff.standard_task }}
+	    </td>
+	    <td>
+	      {{ staff.role }}
+	    </td>
+	  </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      <h2> Companysecurityduty registered by you </h2>
+        <table>
+	  <thead>
+	    <tr>
+	      <td>Azienda</td>	      
+	      <td>Figura</td>
+	      <td>Nome e Cognome</td>
+	      <td>Telefono interno</td>
+	      <td>Telefono esterno</td>
+	      <td>Email</td>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for secduty in user.get_profile.companysecurityduty_set.all %}
+            <tr>
+              <td>
+		<a href="{% url company-detail secduty.company.id %}">
+		  {{ secduty.company.firm }}
+		</a>
+              </td>
+	      <td>
+		{{ secduty.security_duty }}
+	      </td>
+	      <td>
+		{{ secduty.surname }} {{ secduty.name }}
+	      </td>
+	      <td>
+		{{ secduty.internal_phone }}
+	      </td>
+	      <td>
+		{{ secduty.external_phone }}
+	      </td>
+	      <td>
+		<a href="mailto:{{ company.email }}">{{ secduty.email }}</a>
+	      </td>
+	    </tr>
+          {% endfor %}
+          </tbody>
+        </table>
 {% endblock %}
