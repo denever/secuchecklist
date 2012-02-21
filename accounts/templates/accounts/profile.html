@@ -1,116 +1,139 @@
 {% extends "base.html" %}
-{% if user.is_authenticated %}
-    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
-{% else %}
-    <p>Welcome, new user. Please log in.</p>
-{% endif %}
+{% block extra_head %}
+<link href="/static/autocomplete/css/jquery-ui.css" type="text/css" media="all" rel="stylesheet">
+<script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+<style type="text/css" title="currentStyle">
+@import "/static/datatables/css/demo_table.css";
+</style>
+{% endblock %}
 {% block title %} Profilo {{ user.get_full_name }} {% endblock %}
+{% block title2 %} Profilo {{ user.get_full_name }} {% endblock %}
 {% block mainmenu %}
-      <ul>
-        <li><a href="{% url profile %}">Profile</a></li>
-        <li><a href="{% url customers %}">Customers</a></li>
-        <li><a href="{% url logout %}">Logout</a></li>
-      </ul>
+<ul>
+  <li><a href="{% url profile %}">Profile</a></li>
+  <li><a href="{% url customers %}">Customers</a></li>
+  <li><a href="{% url logout %}">Logout</a></li>
+</ul>
 {% endblock %}
 {% block submenu %}
-      <ul>
-        <li><a href="{% url company-create %}">Aggiungi Azienda</a></li>
-        <li><a href="{% url change-passwd %}">Cambia password</a></li>
-      </ul>
+<ul>
+  <li><a href="{% url company-create %}">Aggiungi Azienda</a></li>
+  <li><a href="{% url change-passwd %}">Cambia password</a></li>
+</ul>
 {% endblock %}
 {% block content %}
-      <h2> Your Customers </h2>
-        <table>
-          <thead>
-            <tr>
-              <td>Azienda</td>
-              <td>Settore ATECO 2007</td>
-              <td>Data registrazione</td>
-            </tr>
-          </thead>
-          <tbody>
-	    {% for cc in user.get_profile.customercompany_set.all %}
-          <tr>
-            <td>
-              <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
-            </td>
-            <td>
-              ({{ cc.ateco_sector }})
-            </td>
-            <td>
-              {{ cc.record_date }}
-            </td>
-          <tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      <h2> Staff registered by you </h2>
-        <table>
-	  <thead>
-	    <tr>
-	      <td>Azienda</td>	      
-	      <td>Personale</td>
-	      <td>Mansione Omogenea</td>
-	      <td>Mansione</td>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    {% for staff in user.get_profile.staff_set.all %}
-          <tr>
-            <td>
-              <a href="{% url company-detail staff.company.id %}">{{ staff.company.firm }}</a>
-            </td>
-	    <td>
-	      <a href="{% url staff-detail staff.company.id staff.id %}">
-		{{ staff.surname }} {{ staff.name }}</a>
-	    </td>
-	    <td>
-	      {{ staff.standard_task }}
-	    </td>
-	    <td>
-	      {{ staff.role }}
-	    </td>
-	  </tr>
-          {% endfor %}
-          </tbody>
-        </table>
-      <h2> Companysecurityduty registered by you </h2>
-        <table>
-	  <thead>
-	    <tr>
-	      <td>Azienda</td>	      
-	      <td>Figura</td>
-	      <td>Nome e Cognome</td>
-	      <td>Telefono interno</td>
-	      <td>Telefono esterno</td>
-	      <td>Email</td>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    {% for secduty in user.get_profile.companysecurityduty_set.all %}
-            <tr>
-              <td>
-		<a href="{% url company-detail secduty.company.id %}">
-		  {{ secduty.company.firm }}
-		</a>
-              </td>
-	      <td>
-		{{ secduty.security_duty }}
-	      </td>
-	      <td>
-		{{ secduty.surname }} {{ secduty.name }}
-	      </td>
-	      <td>
-		{{ secduty.internal_phone }}
-	      </td>
-	      <td>
-		{{ secduty.external_phone }}
-	      </td>
-	      <td>
-		<a href="mailto:{{ company.email }}">{{ secduty.email }}</a>
-	      </td>
-	    </tr>
-          {% endfor %}
-          </tbody>
-        </table>
+<script>
+  $(document).ready( function () {
+  $('#mycompanies').dataTable();
+  $('#mystaff').dataTable();
+  $('#mysecduty').dataTable();
+  } );
+  $(function() {
+  $( "#accordion" ).accordion();
+  });
+</script>
+<div id="accordion">
+  <h3><a href="#">Clienti</a></h3>
+  <div>
+    <table id="mycompanies" class="display">
+      <thead>
+        <tr>
+          <th>Azienda</th>
+          <th>Settore ATECO 2007</th>
+          <th>Data registrazione</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cc in user.get_profile.customercompany_set.all %}
+        <tr>
+          <td>
+            <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+          </td>
+          <td>
+            ({{ cc.ateco_sector }})
+          </td>
+          <td>
+            {{ cc.record_date }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <h3><a href="#">Personale</a></h3>
+  <div>
+    <table id="mystaff" class="display">
+      <thead>
+        <tr>
+          <th>Azienda</th>
+          <th>Personale</th>
+          <th>Mansione Omogenea</th>
+          <th>Mansione</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for staff in user.get_profile.staff_set.all %}
+        <tr>
+          <td>
+            <a href="{% url company-detail staff.company.id %}">{{ staff.company.firm }}</a>
+          </td>
+          <td>
+            <a href="{% url staff-detail staff.company.id staff.id %}">
+              {{ staff.surname }} {{ staff.name }}</a>
+          </td>
+          <td>
+            {{ staff.standard_task }}
+          </td>
+          <td>
+            {{ staff.role }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <h3><a href="#">Figure prevenzione</a></h3>
+  <div>
+    <table id="mysecduty" class="display">
+      <thead>
+        <tr>
+          <th>Azienda</th>
+          <th>Figura</th>
+          <th>Nome e Cognome</th>
+          <th>Telefono interno</th>
+          <th>Telefono esterno</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for secduty in user.get_profile.companysecurityduty_set.all %}
+        <tr>
+          <td>
+            <a href="{% url company-detail secduty.company.id %}">
+              {{ secduty.company.firm }}
+            </a>
+          </td>
+          <td>
+            {{ secduty.security_duty }}
+          </td>
+          <td>
+            {{ secduty.surname }} {{ secduty.name }}
+          </td>
+          <td>
+            {{ secduty.internal_phone }}
+          </td>
+          <td>
+            {{ secduty.external_phone }}
+          </td>
+          <td>
+            <a href="mailto:{{ company.email }}">{{ secduty.email }}</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 {% endblock %}
