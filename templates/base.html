@@ -24,27 +24,27 @@
       {% block errorbox %}
       {% endblock %}
     </div>
-    {% endif %}      
+    {% endif %}
 
     {% if success %}
     <div id="success-content" class="span-24 success last">
       {% block successbox %}
       {% endblock %}
     </div>
-    {% endif %}      
+    {% endif %}
 
-    <div id="mainmenu" class="span-4 box">	
-      {% block mainmenu %}      
+    <div id="mainmenu" class="span-2 box">
+      {% block mainmenu %}
       {% endblock %}
-    </div>      
+    </div>
 
-    <div id="main-content" class="span-12">
+    <div id="main-content" class="span-16">
       {% block content %}{% endblock %}
     </div>
 
-    <div id="submenu" class="span-4 box last">	
-      {% block submenu %}      
+    <div id="submenu" class="span-2 box last">
+      {% block submenu %}
       {% endblock %}
-    </div>      
+    </div>
 </body>
 </html>
