@@ -1,4 +1,5 @@
 {% extends "customers/base-customers.html" %}
+{% block extra_head %}{{ form.media }}{% endblock %}
 {% block title %} Registrazione Personale {% endblock %}
 {% block submenu %}
         <li>
@@ -31,8 +32,8 @@
 <table>
   <thead>
     <tr>
-      <td>Nome Reparto</td>
-      <td>Superficie</td>
+      <th>Nome Reparto</th>
+      <th>Superficie</th>
     </tr>
   </thead>
   <tbody>
