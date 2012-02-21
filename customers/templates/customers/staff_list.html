@@ -1,5 +1,15 @@
 {% extends "customers/base-customers.html" %}
-{% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
+{% block extra_head %}
+<link href="/static/autocomplete/css/jquery-ui.css" type="text/css" media="all" rel="stylesheet">
+<script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+<style type="text/css" title="currentStyle">
+@import "/static/datatables/css/demo_table.css";
+</style>
+{% endblock %}
+{% block title %} Azienda: {{ company.firm }} {% endblock %}
+{% block title2 %} Azienda: {{ company.firm }} {% endblock %}
 {% block submenu %}
         <li>
           <a href="{% url company-detail company.id %}">
@@ -22,8 +32,13 @@
         </li>
 {% endblock %}
 {% block content %}
+<script>
+  $(document).ready( function () {
+  $('#staff').dataTable();
+  } );
+</script>
 <h2>Organigramma</h2>
-<table>
+<table id="staff" class="display">
   <thead>
     <tr>
       <th>Personale</th>
