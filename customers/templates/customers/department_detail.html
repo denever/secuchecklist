@@ -8,7 +8,7 @@
         </li>
         <li>
           <a href="{% url set-working-env company.id %}">
-	    Ambiente di Lavoro
+            Ambiente di Lavoro
         </a>
         </li>
         <li>
@@ -31,16 +31,16 @@
 <table>
   <thead>
     <tr>
-      <td>Personale</td>
-      <td>Mansione Omogenea</td>
-      <td>Figura prevenzione</td>
+      <th>Personale</th>
+      <th>Mansione Omogenea</th>
+      <th>Figura prevenzione</th>
     </tr>
   </thead>
   <tbody>
   {% for staff in department.staff_set.all %}
   <tr>
     <td>
-      <a href="{% url staff-detail staff.id %}">{{ staff.surname }} {{ staff.name }}</a>
+      <a href="{% url staff-detail company.id staff.id %}">{{ staff.surname }} {{ staff.name }}</a>
     </td>
     <td>
       {{ staff.standard_task }}
@@ -52,5 +52,4 @@
   {% endfor %}
   </tbody>
 </table>
-
 {% endblock %}
