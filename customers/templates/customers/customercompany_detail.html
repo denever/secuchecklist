@@ -1,56 +1,61 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
+{% block title2 %} Anagrafica: {{ company.firm }} {% endblock %}
 {% block submenu %}
-	<li>
-	  <a href="{% url company-edit company.id %}">	  
-	    Modifica Anagrafica
-	  </a>
-	</li>
-	<li>
-	  <a href="{% url set-working-env company.id %}">
-	    Ambiente di Lavoro
-	  </a>
-	</li>
-	<li>
-	  <a href="{% url staff-list company.id %}">
-	    Organigramma
-	</a>
-	</li>
-	<li>
-	  <a href="{% url companysecurityduty-list company.id %}">
-	    Figure Prevenzione
-	</a>
-	</li>
+        <li>
+          <a href="{% url company-edit company.id %}">
+            Modifica Anagrafica
+          </a>
+        </li>
+        <li>
+          <a href="{% url set-working-env company.id %}">
+            Ambiente di Lavoro
+          </a>
+        </li>
+        <li>
+          <a href="{% url staff-list company.id %}">
+            Organigramma
+        </a>
+        </li>
+        <li>
+          <a href="{% url companysecurityduty-list company.id %}">
+            Figure Prevenzione
+        </a>
+        </li>
 {% endblock %}
 {% block content %}
-<h1>{{ company.firm }}</h1>
-<h2>Anagrafica</h2>
-<ul>
-<li>Ragione sociale: {{ company.firm }}</li>
-<li>Sede legale amministrativa: {{ company.registered_office }}</li>
-<li>Sede insediamento produttivo: {{ company.settlement }}</li>
-<li>Iscrizione CIIAA: {{ company.ciiaa }}</li>
-<li>Codice fiscale: {{ company.tax_code }}</li>
-<li>Partita IVA: {{ company.vat_code }}</li>
-<li>Posizione INAIL: {{ company.inail_pos }}</li>
-<li>Posizione INPS: {{ company.inps_pos }}</li>
-<li>CCNL: {{ company.ccnl }}</li>
-<li>Settore Ateco 2007: {{ company.ateco_sector }}</li>
-<li>Certificazioni:
-  <ul>
-  {% for cert in company.certifications.all %}
-  <li>{{ cert }} </li>
-  {% endfor %}
-  </ul>
-<li>Data registrazione: {{ company.record_date }}</li>
-<li>CPI: {{ company.cpi }}</li>
-<li>Uso macchine: {{ company.machine_use }}</li>
-<li>Sostanze pericolose: {{ company.dangerous_substances }}</li>
-<li>Sorveglianza sanitaria: {{ company.health_surveillance }}</li>
-<li>Superficie insediamento: {{ company.settlement_size }}</li>
-<li>Telefono: {{ company.phone }}</li>
-<li>Fax: {{ company.fax }}</li>
-<li>Email: <a href="mailto:{{ company.email }}">{{ company.email }}</a></li>
-<li>Numero di lavoratori: {{ company.workers_count }}</li>
-</ul>
+        <ul>
+          <li>Ragione sociale: {{ company.firm }}</li>
+          <li>Sede legale amministrativa: {{ company.registered_office }}</li>
+          <li>Sede insediamento produttivo: {{ company.settlement }}</li>
+          <li>Iscrizione CIIAA: {{ company.ciiaa }}</li>
+          <li>Codice fiscale: {{ company.tax_code }}</li>
+          <li>Partita IVA: {{ company.vat_code }}</li>
+          <li>Posizione INAIL: {{ company.inail_pos }}</li>
+          <li>Posizione INPS: {{ company.inps_pos }}</li>
+          <li>CCNL: {{ company.ccnl }}</li>
+          <li>Settore Ateco 2007: {{ company.ateco_sector }}</li>
+          <li>Certificazioni:
+            <ul>
+              {% for cert in company.certifications.all %}
+              <li>{{ cert }} </li>
+              {% endfor %}
+            </ul>
+          <li>Data registrazione: {{ company.record_date }}</li>
+          <li>CPI: {{ company.cpi }}</li>
+          {% if company.machine_use %}
+          <li>Uso macchine: Sì</li>
+          {% endif %}
+          {% if company.dangerous_substances %}
+          <li>Sostanze pericolose: Sì</li>
+          {% endif %}
+          {% if company.health_surveillance %}
+          <li>Sorveglianza sanitaria: Sì</li>
+          {% endif %}
+          <li>Superficie insediamento: {{ company.settlement_size }}</li>
+          <li>Telefono: {{ company.phone }}</li>
+          <li>Fax: {{ company.fax }}</li>
+          <li>Email: <a href="mailto:{{ company.email }}">{{ company.email }}</a></li>
+          <li>Numero di lavoratori: {{ company.workers_count }}</li>
+        </ul>
 {% endblock %}
