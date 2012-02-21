@@ -75,6 +75,9 @@ STATICFILES_DIRS = (
     '/home/denever/work/secuchecklist/static',
 )
 
+# Autocomplete media location prefix
+AUTOCOMPLETE_MEDIA_PREFIX = '/static/autocomplete/'
+
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
