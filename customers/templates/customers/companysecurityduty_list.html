@@ -1,5 +1,15 @@
 {% extends "customers/base-customers.html" %}
+{% block extra_head %}
+<link href="/static/autocomplete/css/jquery-ui.css" type="text/css" media="all" rel="stylesheet">
+<script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+<style type="text/css" title="currentStyle">
+@import "/static/css/mytable.css";
+</style>
+{% endblock %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
+{% block title2 %} Figure Prevenzione: {{ company.firm }} {% endblock %}
 {% block submenu %}
         <li>
           <a href="{% url company-detail company.id %}">
@@ -22,15 +32,19 @@
         </li>
 {% endblock %}
 {% block content %}
-<h2>Figure Prevenzione</h2>
-<table>
+<script>
+  $(document).ready( function () {
+  $('#secduties').dataTable();
+  } );
+</script>  
+<table id="secduties" class="display">
   <thead>
     <tr>
-      <td>Figura</td>
-      <td>Nome e Cognome</td>
-      <td>Telefono interno</td>
-      <td>Telefono esterno</td>
-      <td>Email</td>
+      <th>Figura</th>
+      <th>Nome e Cognome</th>
+      <th>Telefono interno</th>
+      <th>Telefono esterno</th>
+      <th>Email</th>
     </tr>
   </thead>
   <tbody>
