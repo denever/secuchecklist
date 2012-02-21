@@ -10,6 +10,9 @@ from customers.models import Nationality
 from customers.models import Department
 from customers.models import CompanySecurityDuty
 
+# using autocomplete widgets
+from autocomplete import widgets as autocomplete_widgets
+
 class CustomerCompanyForm(forms.ModelForm):
     tax_code = ITVatNumberField(label='Codice Fiscale')
     vat_code = ITVatNumberField(label='Partita IVA')
@@ -38,6 +41,10 @@ class CustomerCompanyForm(forms.ModelForm):
                   'machine_use',
                   'dangerous_substances',
                   'health_surveillance')
+
+        widgets = {'ateco_sector': autocomplete_widgets.AutocompleteWidget('atecosector'),
+                   'cpi': autocomplete_widgets.AutocompleteWidget('cpisettlement')
+                   }
 
 class StaffForm(forms.ModelForm):
     phone = ITPhoneNumberField(label='Telefono', required=False)
