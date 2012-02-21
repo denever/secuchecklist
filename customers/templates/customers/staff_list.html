@@ -13,11 +13,11 @@
         </li>
         <li>
           <a href="{% url staff-add company.id %}">
-	    Aggiungi Personale
+            Aggiungi Personale
         </a>
         <li>
           <a href="{% url companysecurityduty-list company.id %}">
-	    Figure Prevenzione
+            Figure Prevenzione
         </a>
         </li>
 {% endblock %}
@@ -26,9 +26,9 @@
 <table>
   <thead>
     <tr>
-      <td>Personale</td>
-      <td>Mansione Omogenea</td>
-      <td>Mansione</td>
+      <th>Personale</th>
+      <th>Mansione Omogenea</th>
+      <th>Mansione</th>
     </tr>
   </thead>
   <tbody>
@@ -36,7 +36,7 @@
   <tr>
     <td>
       <a href="{% url staff-detail company.id staff.id %}">
-	{{ staff.surname }} {{ staff.name }}</a>
+        {{ staff.surname }} {{ staff.name }}</a>
     </td>
     <td>
       {{ staff.standard_task }}
