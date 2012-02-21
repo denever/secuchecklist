@@ -5,7 +5,7 @@
 <script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 <style type="text/css" title="currentStyle">
-@import "/static/css/mytable.css";
+@import "/static/datatables/css/demo_table.css";
 </style>
 {% endblock %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
@@ -36,7 +36,7 @@
   $(document).ready( function () {
   $('#secduties').dataTable();
   } );
-</script>  
+</script>
 <table id="secduties" class="display">
   <thead>
     <tr>
