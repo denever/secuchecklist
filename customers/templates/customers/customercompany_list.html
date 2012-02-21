@@ -1,5 +1,15 @@
 {% extends "customers/base-customers.html" %}
-{% block title %} Gestione Azienda {% endblock %}
+{% block extra_head %}
+<link href="/static/autocomplete/css/jquery-ui.css" type="text/css" media="all" rel="stylesheet">
+<script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+<style type="text/css" title="currentStyle">
+@import "/static/datatables/css/demo_table.css";
+</style>
+{% endblock %}
+{% block title %} Anagrafica Aziende {% endblock %}
+{% block title2 %} Anagrafica Aziende {% endblock %}
 {% block submenu %}
       <ul>
         <li>
@@ -15,14 +25,18 @@
       </ul>
 {% endblock %}
 {% block content %}
-        <h1> Customers available </h1>
-        {% if companies %}
-        <table>
+<script>
+  $(document).ready( function () {
+  $('#companies').dataTable();
+  } );
+</script>
+  {% if companies %}
+        <table id="companies" class="display">
           <thead>
             <tr>
-              <td>Azienda</td>
-              <td>Settore ATECO 2007</td>
-              <td>Data registrazione</td>
+              <th>Azienda</th>
+              <th>Settore ATECO 2007</th>
+              <th>Data registrazione</th>
             </tr>
           </thead>
           <tbody>
@@ -37,8 +51,8 @@
             <td>
               {{ cc.record_date }}
             </td>
-          <tr>
-            {% endfor %}
+          </tr>
+          {% endfor %}
           </tbody>
         </table>
             {% else %}
