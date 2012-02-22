@@ -11,25 +11,27 @@
 {% block title %} Azienda: {{ company.firm }} {% endblock %}
 {% block title2 %} Azienda: {{ company.firm }} {% endblock %}
 {% block submenu %}
-        <li>
-          <a href="{% url company-detail company.id %}">
-            {{ company.firm }}
-          </a>
-        </li>
-        <li>
-          <a href="{% url set-working-env company.id %}">
-            Ambiente di Lavoro
-          </a>
-        </li>
-        <li>
-          <a href="{% url staff-add company.id %}">
-            Aggiungi Personale
-        </a>
-        <li>
-          <a href="{% url companysecurityduty-list company.id %}">
-            Figure Prevenzione
-        </a>
-        </li>
+<ul class="menu">
+  <li>
+    <a href="{% url company-detail company.id %}">
+      {{ company.firm }}
+    </a>
+  </li>
+  <li>
+    <a href="{% url set-working-env company.id %}">
+      Ambiente di Lavoro
+    </a>
+  </li>
+  <li>
+    <a href="{% url staff-add company.id %}">
+      Aggiungi Personale
+    </a>
+  <li>
+    <a href="{% url companysecurityduty-list company.id %}">
+      Figure Prevenzione
+    </a>
+  </li>
+</ul>
 {% endblock %}
 {% block content %}
 <script>
@@ -50,7 +52,7 @@
   {% for staff in staff_set %}
   <tr>
     <td>
-      <a href="{% url staff-detail company.id staff.id %}">
+      <a class="tablelink" href="{% url staff-detail company.id staff.id %}">
         {{ staff.surname }} {{ staff.name }}</a>
     </td>
     <td>
