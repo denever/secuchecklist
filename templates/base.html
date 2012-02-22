@@ -2,14 +2,14 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <!-- Framework CSS Blueprint -->
-    <link rel="stylesheet" href="{{ STATIC_URL }}blueprint/screen.css" type="text/css" media= "screen, projection" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}blueprint/print.css" type="text/css" media= "print" />
- <!--[if IE]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
-
- <!-- Import fancy-type plugin. -->
- <link rel="stylesheet" href="{{ STATIC_URL }}blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
- {% block extra_head %}{% endblock %}
+  <link href="/static/css/blueprint.reset.css" type="text/css" media="all" rel="stylesheet">
+  <link href="/static/css/blueprint.grid.css" type="text/css" media="all" rel="stylesheet">
+  <link href="/static/css/blueprint.typography.css" type="text/css" media="all" rel="stylesheet">
+  <link href="/static/css/style.css" type="text/css" media="all" rel="stylesheet">
+  <link href="/static/css/jquery.ui.base.css" type="text/css" media="all" rel="stylesheet">
+  <script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
+    {% block extra_head %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -33,18 +33,21 @@
     </div>
     {% endif %}
 
-    <div id="mainmenu" class="span-2 menubox">
+    <div id="mainmenu" class="span-2 gridbox">
       {% block mainmenu %}
       {% endblock %}
     </div>
 
-    <div id="main-content" class="span-16">
+    <div id="main-content" class="span-20">
+      <div id="submenu" class="toolbarbox last">
+	{% block submenu %}
+	{% endblock %}
+      </div>
       {% block content %}{% endblock %}
-    </div>
-
-    <div id="submenu" class="span-2 menubox last">
-      {% block submenu %}
-      {% endblock %}
+      <div id="toolbar" class="toolbarbox last">
+	{% block toolbar %}
+	{% endblock %}
+      </div>
     </div>
 </body>
 </html>
