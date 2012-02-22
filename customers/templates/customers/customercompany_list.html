@@ -1,8 +1,5 @@
 {% extends "customers/base-customers.html" %}
 {% block extra_head %}
-<link href="/static/autocomplete/css/jquery-ui.css" type="text/css" media="all" rel="stylesheet">
-<script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
-<script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 <style type="text/css" title="currentStyle">
 @import "/static/datatables/css/demo_table.css";
@@ -11,18 +8,22 @@
 {% block title %} Anagrafica Aziende {% endblock %}
 {% block title2 %} Anagrafica Aziende {% endblock %}
 {% block submenu %}
-      <ul>
-        <li>
-          <a href="{% url company-create %}">Aggiungi Azienda
-          </a>
-        </li>
-        {% for year in years %}
-        <li>
-          <a href="{% url company-year year %}">{{ year }}
-          </a>
-        </li>
-        {% endfor %}
+      <ul class="menu">
+	{% for year in years %}
+	<li>
+	  <a href="{% url company-year year %}">{{ year }}
+	  </a>
+	</li>
+	{% endfor %}
       </ul>
+{% endblock %}
+{% block toolbar %}
+<ul class="menu">
+  <li>
+    <a href="{% url company-create %}">Aggiungi Azienda
+    </a>
+  </li>
+</ul>      
 {% endblock %}
 {% block content %}
 <script>
@@ -30,32 +31,34 @@
   $('#companies').dataTable();
   } );
 </script>
+<div class="gridbox">
   {% if companies %}
-        <table id="companies" class="display">
-          <thead>
-            <tr>
-              <th>Azienda</th>
-              <th>Settore ATECO 2007</th>
-              <th>Data registrazione</th>
-            </tr>
-          </thead>
-          <tbody>
-          {% for cc in companies %}
-          <tr>
-            <td>
-              <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
-            </td>
-            <td>
-              ({{ cc.ateco_sector }})
-            </td>
-            <td>
-              {{ cc.record_date }}
-            </td>
-          </tr>
-          {% endfor %}
-          </tbody>
-        </table>
-            {% else %}
-            <p>No companies are available.</p>
-            {% endif %}
+  <table id="companies" class="display">
+    <thead>
+      <tr>
+	<th>Azienda</th>
+	<th>Settore ATECO 2007</th>
+	<th>Data registrazione</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cc in companies %}
+      <tr>
+	<td>
+	  <a class="tablelink" href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+	</td>
+	<td>
+	  ({{ cc.ateco_sector }})
+	</td>
+	<td>
+	  {{ cc.record_date }}
+	</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No companies are available.</p>
+  {% endif %}
+</div>
 {% endblock %}
