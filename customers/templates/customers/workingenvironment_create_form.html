@@ -3,33 +3,23 @@
 <link href="/static/autocomplete/css/jquery-ui.css" type="text/css" media="all" rel="stylesheet">
 <script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/static/datatables/js/jquery.dataTables.js" charset="utf-8" >
+</script>
 {{ form.media }}
 <style type="text/css" title="currentStyle">
 @import "/static/datatables/css/demo_table.css";
 </style>
 {% endblock %}
-{% block title %} Registrazione Personale {% endblock %}
-{% block submenu %}
-        <li>
-          <a href="{% url company-detail company.id %}">
-            {{ company.firm }}
-          </a>
-        </li>
-        <li>
-          <a href="{% url department-add company.id %}">
-            Aggiungi Reparto
-        </a>
-        </li>
-        <li>
-          <a href="{% url staff-list company.id %}">
-            Organigramma
-        </a>
-        <li>
-          <a href="{% url companysecurityduty-list company.id %}">
-            Figure Prevenzione
-        </a>
-        </li>
+{% block title %} Ambiente di Lavoro {{ company.firm }} {% endblock %}
+{% block title2 %} Ambiente di Lavoro {{ company.firm }} {% endblock %}
+{% block toolbar %}
+<ul class="menu">
+  <li>
+    <a href="{% url department-add company.id %}">
+      Aggiungi Reparto
+    </a>
+  </li>
+</ul>
 {% endblock %}
 {% block content %}
 <script>
@@ -37,12 +27,13 @@
   $('#deps').dataTable();
   } );
 </script>
-
-<h1>Ambiente di Lavoro</h1>
+<div id="workenv" class="gridbox">
 <form action="{{ form.success_url }}" method="post">{% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
+</div>
+<div class="gridbox">
 <h1>Reparti</h1>
 <table id="deps" class="display">
   <thead>
@@ -64,4 +55,5 @@
   {% endfor %}
   </tbody>
 </table>
+</div>
 {% endblock %}
