@@ -2,9 +2,28 @@
 {% block title %} Gestione Aziende Clienti {% endblock %}
 {% block title2 %} Gestione Aziende Clienti {% endblock %}
 {% block mainmenu %}
-      <ul>
-        <li><a href="{% url profile %}">Profilo</a></li>
-        <li><a href="{% url customers %}">Anagrafica</a></li>
-        <li><a href="{% url logout %}">Esci</a></li>
-      </ul>
+<ul class="menu">
+  <li><a href="{% url profile %}">Profilo</a></li>
+  <li><a href="{% url customers %}">Anagrafica</a></li>
+  <li><a href="{% url logout %}">Esci</a></li>
+</ul>
 {% endblock %}
+{% block submenu %}
+<ul id="submenu" class="menu">
+  <li>
+    <a href="{% url company-detail company.id %}">
+      {{ company.firm }}
+    </a>
+  </li>
+  <li>
+    <a href="{% url staff-list company.id %}">
+      Organigramma
+    </a>
+  <li>
+    <a href="{% url companysecurityduty-list company.id %}">
+      Figure Prevenzione
+    </a>
+  </li>
+</ul>
+{% endblock %}
+</div>
