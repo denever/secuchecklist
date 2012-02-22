@@ -1,0 +1,66 @@
+ul.menu {
+    list-style: none;
+    list-style-position: outside;
+    margin: 0;
+    padding-left: 0.2em;
+}
+
+a.visited {
+    color:#06c;
+}
+
+a {
+    color:#06c;
+}
+
+#mainmenu li {
+    display: inline;
+}
+
+#submenu li {
+    display: inline;
+    margin-right: 0.1em;
+}
+
+#submenu a {
+    text-decoration: none;
+}
+
+#toolbar li {
+    display: inline;
+}
+
+#toolbar a {
+    text-decoration: none;
+}
+
+#mainmenu a {
+    text-decoration: none;
+}
+
+a.tablelink{
+    text-decoration: none;
+}
+
+#mainmenu a.visited {
+    color: black;
+    }
+
+#mainmenu li.active {
+    background: #fff;
+    top: 1px;
+    border-bottom: 0;
+    color: #5f95ef;
+}
+
+.gridbox {
+    background:#e5eCf9;
+    margin-bottom: 0.2em;
+}
+
+/* Use a .box to create a padded box inside a column.  */
+.toolbarbox {
+    background:#e5eCf9;
+    padding: 0.2em;
+    margin-bottom: 0.2em;
+}
