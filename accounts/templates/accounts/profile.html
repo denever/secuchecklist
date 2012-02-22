@@ -1,24 +1,21 @@
 {% extends "base.html" %}
 {% block extra_head %}
-<link href="/static/autocomplete/css/jquery-ui.css" type="text/css" media="all" rel="stylesheet">
-<script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
-<script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
+<link href="/static/css/jquery.ui.accordion.css" type="text/css" media="all" rel="stylesheet">
+<link href="/static/css/jquery.ui.theme.css" type="text/css" media="all" rel="stylesheet">
+<link href="/static/datatables/css/demo_table.css" type="text/css" media="all" rel="stylesheet">
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
-<style type="text/css" title="currentStyle">
-@import "/static/datatables/css/demo_table.css";
-</style>
 {% endblock %}
 {% block title %} Profilo {{ user.get_full_name }} {% endblock %}
 {% block title2 %} Profilo {{ user.get_full_name }} {% endblock %}
 {% block mainmenu %}
-<ul>
+<ul class="menu">
   <li><a href="{% url profile %}">Profile</a></li>
   <li><a href="{% url customers %}">Customers</a></li>
   <li><a href="{% url logout %}">Logout</a></li>
 </ul>
 {% endblock %}
 {% block submenu %}
-<ul>
+<ul class="menu">
   <li><a href="{% url company-create %}">Aggiungi Azienda</a></li>
   <li><a href="{% url change-passwd %}">Cambia password</a></li>
 </ul>
