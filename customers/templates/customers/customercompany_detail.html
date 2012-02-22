@@ -24,6 +24,7 @@
         </li>
 {% endblock %}
 {% block content %}
+	<div class="gridbox">
         <ul>
           <li>Ragione sociale: {{ company.firm }}</li>
           <li>Sede legale amministrativa: {{ company.registered_office }}</li>
@@ -58,4 +59,5 @@
           <li>Email: <a href="mailto:{{ company.email }}">{{ company.email }}</a></li>
           <li>Numero di lavoratori: {{ company.workers_count }}</li>
         </ul>
+	</div>
 {% endblock %}
