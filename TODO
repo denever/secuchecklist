@@ -1,15 +1,11 @@
 FATTO: admin per tutte le nuove classi aggiuntes
-
-FATTO: tudiare come caricare i dati nel db (usare mysql e poi caricarli li?)
+FATTO: Studiare come caricare i dati nel db (usare mysql e poi caricarli li?)
 FATTO: Aggiungere command a manage:
 FATTO 1) Per popolare il database con dati fake.
 FATTO 2) Per caricare i dati che vengono da stradivari.
-
-FATTO: Migliorare vinconi unicità partita iva, ragione sociale, e codice fiscale.
-
+FATTO: Migliorare vincoli unicità partita iva, ragione sociale, e codice fiscale.
 FATTO Aggiungere creazione reparto direttamente legato ad azienda.
 FATTO Quando si aggiunge un personale all'azienda la select deve avere solo i reparti dell'azienda.
-Completare un sistema di logging delle attività per un profilo.
 FATTO Modifica azienda più elaborata:
 FATTO 1) Aggiunta Figura prevezione
 FATTO 2) Aggiunta Lavoratore
@@ -18,22 +14,19 @@ FATTO 4) fare un menu a parte per l'azienda
 
 FATTO: Studiarsi i nomi del url per ristrutturare tutti gli url con {{ url nome url }}
 FATTO: Vedere anche il passaggio di valori agli url.
-
-Studiarsi internazionalizzazione
-
-FATTO Aggiunta di reparti va nella vista ambiente di lavoro.
-FATTO Una lista di reparti nella vista ambiente di lavoro.
-FATTO la success_url per un CreateDepartment view è l'ambiente di lavoro
-
+FATTO: Aggiunta di reparti va nella vista ambiente di lavoro.
+FATTO: Una lisata di reparti nella vista ambiente di lavoro.
+FATTO: la success_url per un CreateDepartment view è l'ambiente di lavoro
+FATTO: 1) Sistemare figure prevenzione
 FATTO 1) Sistemare figure prevenzione
 2) Aggiungere edit/delete alle liste
 3) Trovare icone da usare (frose blueprint?)
 4) Gestire viste annuali
-5) organizzare tabelle per anno.
+5) Organizzare tabelle per anno.
 6) risitemare il printing dei tempalte per le TextView e per i booleani ed altri simili casi
 (magari ristudiarsi i template per campire come stampare oppurtamente i booleani e simili)
 7) Aggiungere tooltip e vedere se funziona a questo scopo helptext nel model layer
-8) Usare ajax per suggerire nomi dei reparti
+8) Usare ajax per suggerire nomi dei reparti durante la creazione di un reparto.
 9) Usare ajax per suggerire Settore Ateco e Insediamento CPI
 10) Studiare meglio i permessi
 11) Integrare i permessi nei template
@@ -41,3 +34,26 @@ FATTO 1) Sistemare figure prevenzione
 13) error reporting via email.
 14) Riempire profilo
 15) Riempire customers first page con viste per data.
+
+Aggiungere dipendenze aptitude install python-pyodbc libmdbodbc1 mdbtools
+Completare un sistema di logging delle attività per un profilo.
+Studiarsi internazionalizzazione
+
+Aggiungere dipendenza da python-pip e da django-autocomplete
+Studiarsi jquery-ui oltre che jquery
+FATTO: Aggiungere form media in tutte le form
+
+
+    {% if error %}
+    <div id="error-content" class="span-24 error last">
+      {% block errorbox %}
+      {% endblock %}
+    </div>
+    {% endif %}
+
+    {% if success %}
+    <div id="success-content" class="span-24 success last">
+      {% block successbox %}
+      {% endblock %}
+    </div>
+    {% endif %}
