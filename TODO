@@ -7,25 +7,25 @@ FATTO 2) Per caricare i dati che vengono da stradivari.
 
 FATTO: Migliorare vinconi unicità partita iva, ragione sociale, e codice fiscale.
 
-Aggiungere creazione reparto direttamente legato ad azienda.
-Quando si aggiunge un personale all'azienda la select deve avere solo i reparti dell'azienda.
+FATTO Aggiungere creazione reparto direttamente legato ad azienda.
+FATTO Quando si aggiunge un personale all'azienda la select deve avere solo i reparti dell'azienda.
 Completare un sistema di logging delle attività per un profilo.
-Modifica azienda più elaborata:
-1) Aggiunta Figura prevezione
-2) Aggiunta Lavoratore
-3) aggiunta reparto
-4) fare un menu a parte per l'azienda
+FATTO Modifica azienda più elaborata:
+FATTO 1) Aggiunta Figura prevezione
+FATTO 2) Aggiunta Lavoratore
+FATTO 3) aggiunta reparto
+FATTO 4) fare un menu a parte per l'azienda
 
 FATTO: Studiarsi i nomi del url per ristrutturare tutti gli url con {{ url nome url }}
 FATTO: Vedere anche il passaggio di valori agli url.
 
 Studiarsi internazionalizzazione
 
-Aggiunta di reparti va nella vista ambiente di lavoro.
-Una lisata di reparti nella vista ambiente di lavoro.
-la success_url per un CreateDepartment view è l'ambiente di lavoro
+FATTO Aggiunta di reparti va nella vista ambiente di lavoro.
+FATTO Una lista di reparti nella vista ambiente di lavoro.
+FATTO la success_url per un CreateDepartment view è l'ambiente di lavoro
 
-1) Sistemare figure prevenzione
+FATTO 1) Sistemare figure prevenzione
 2) Aggiungere edit/delete alle liste
 3) Trovare icone da usare (frose blueprint?)
 4) Gestire viste annuali

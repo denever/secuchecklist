@@ -41,6 +41,6 @@ window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{%
 <h1>Registrazione Personale</h1>
 <form action="{{ form.success_url }}" method="post">{% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="Submit" />
+<input type="submit" value="Aggiungi"/>
 </form>
 {% endblock %}
