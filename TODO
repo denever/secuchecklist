@@ -26,8 +26,8 @@ FATTO 1) Sistemare figure prevenzione
 6) risitemare il printing dei tempalte per le TextView e per i booleani ed altri simili casi
 (magari ristudiarsi i template per campire come stampare oppurtamente i booleani e simili)
 7) Aggiungere tooltip e vedere se funziona a questo scopo helptext nel model layer
-8) Usare ajax per suggerire nomi dei reparti durante la creazione di un reparto.
-9) Usare ajax per suggerire Settore Ateco e Insediamento CPI
+FATTO 8) Usare ajax per suggerire nomi dei reparti durante la creazione di un reparto.
+FATTO 9) Usare ajax per suggerire Settore Ateco e Insediamento CPI
 10) Studiare meglio i permessi
 11) Integrare i permessi nei template
 12) Gestire error list con blueprint
