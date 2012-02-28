@@ -22,15 +22,19 @@
       Ambiente di Lavoro
     </a>
   </li>
+    <a href="{% url companysecurityduty-list company.id %}">
+      Figure Prevenzione
+    </a>
+  </li>
+</ul>
+{% endblock %}
+{% block toolbar %}
+<ul class="menu">
   <li>
     <a href="{% url staff-add company.id %}">
       Aggiungi Personale
     </a>
   <li>
-    <a href="{% url companysecurityduty-list company.id %}">
-      Figure Prevenzione
-    </a>
-  </li>
 </ul>
 {% endblock %}
 {% block content %}
@@ -39,18 +43,19 @@
   $('#staff').dataTable();
   } );
 </script>
-<h2>Organigramma</h2>
-<table id="staff" class="display">
-  <thead>
-    <tr>
-      <th>Personale</th>
-      <th>Mansione Omogenea</th>
-      <th>Mansione</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for staff in staff_set %}
-  <tr>
+<div class="gridbox">
+  <h2>Organigramma</h2>
+  <table id="staff" class="display">
+    <thead>
+      <tr>
+	<th>Personale</th>
+	<th>Mansione Omogenea</th>
+	<th>Mansione</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for staff in staff_set %}
+      <tr>
     <td>
       <a class="tablelink" href="{% url staff-detail company.id staff.id %}">
         {{ staff.surname }} {{ staff.name }}</a>
@@ -61,8 +66,9 @@
     <td>
       {{ staff.role }}
     </td>
-  </tr>
-  {% endfor %}
-  </tbody>
-</table>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
