@@ -1,3 +1,59 @@
+body {
+    margin: 0;
+    padding: 0 0 20px;
+    background: transparent url('../images/body_bg.jpg') no-repeat center top;
+    min-height: 100%;
+    font-family: "Arial", "Helvetica", "Verdana", "sans-serif";
+    font-size: 10px;
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 956px;
+    position: relative;
+}
+
+#banner {
+    height: 125px;
+}
+
+#content-wrapper {
+    background: none;
+}
+
+#content {
+    background: url('../images/content_body_bg.png') no-repeat 0 13px;
+    zoom: 1;
+}
+
+#content .content {
+    min-height: 380px;
+    background: url('../images/dot.png') repeat-y 203px 0;
+}
+
+.content {
+    padding: 0 3px 0 3px;
+    overflow: visible;
+}
+
+#application-content {
+    background: white;
+    padding: 5px;
+    margin: 0 -1px;
+}
+
+.content #mainmenu {
+    float: left;
+}
+
+#maincontent {
+    background: white;
+    padding: 15px;
+    float: right;
+/*    width: 780px;*/
+    width: 85%;
+}
+
 ul.menu {
     list-style: none;
     list-style-position: outside;
@@ -12,9 +68,15 @@ a.visited {
 a {
     color:#06c;
 }
+#mainmenu {
+    float: left;
+}
+
+#maincontent {
+    float: right;
+}
 
 #mainmenu li {
-    display: inline;
 }
 
 #submenu li {
