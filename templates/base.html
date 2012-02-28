@@ -2,11 +2,10 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <link href="/static/css/blueprint.reset.css" type="text/css" media="all" rel="stylesheet">
-  <link href="/static/css/blueprint.grid.css" type="text/css" media="all" rel="stylesheet">
-  <link href="/static/css/blueprint.typography.css" type="text/css" media="all" rel="stylesheet">
-  <link href="/static/css/style.css" type="text/css" media="all" rel="stylesheet">
-  <link href="/static/css/jquery.ui.base.css" type="text/css" media="all" rel="stylesheet">
+  <link href="/static/css/style.css" type="text/css" media="all" rel="stylesheet"/>
+  <link href="/static/css/jquery.ui.base.css" type="text/css" media="all" rel="stylesheet"/>
+  <link href="/static/css/jquery.ui.accordion.css" type="text/css" media="all" rel="stylesheet"/>
+  <link href="/static/css/jquery.ui.theme.css" type="text/css" media="all" rel="stylesheet"/>
   <script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
   <script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
     {% block extra_head %}{% endblock %}
@@ -14,40 +13,47 @@
 </head>
 
 <body>
-  <div class="container">
-    <div id="header" class="span-24 last">
-      <h1>{% block title2 %} {% endblock %}
+  <script>
+    $(function() {
+    $( "#mainmenuacco" ).accordion({collapsible: true});
+    });
+  </script>
+  <div id="wrapper">
+    <div id="banner">
+      {% block banner %} {% endblock %}
     </div>
+    <div id="content-wrapper">
+      <div id="content">
+	<div class="content-top">
+	</div>
+	<div class="content">
+	  
+	  <div id="mainmenu">
+	    <div id="mainmenuacco">
 
-    {% if error %}
-    <div id="error-content" class="span-24 error last">
-      {% block errorbox %}
-      {% endblock %}
-    </div>
-    {% endif %}
+	      {% block accountmenu %}
+	      <h3><a href="#">Profilo</a></h3>
+	      <div>
+		<a href="{% url logout %}">Logout</a>
+	      </div>
+	      {% endblock %}
+	      
+	      {% block customersmenu %}
+	      <h3><a href="#">Anagrafica</a></h3>
+	      <div>
+	      </div>
+	      {% endblock %}
 
-    {% if success %}
-    <div id="success-content" class="span-24 success last">
-      {% block successbox %}
-      {% endblock %}
-    </div>
-    {% endif %}
+	    </div>
+	  </div>
 
-    <div id="mainmenu" class="span-2 gridbox">
-      {% block mainmenu %}
-      {% endblock %}
-    </div>
+	  <div id="maincontent">
+	    {% block content %}{% endblock %}
+	  </div>
 
-    <div id="main-content" class="span-20">
-      <div id="submenu" class="toolbarbox last">
-	{% block submenu %}
-	{% endblock %}
+	</div>
       </div>
-      {% block content %}{% endblock %}
-      <div id="toolbar" class="toolbarbox last">
-	{% block toolbar %}
-	{% endblock %}
-      </div>
     </div>
+  </div>
 </body>
 </html>
