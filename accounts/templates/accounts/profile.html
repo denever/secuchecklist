@@ -20,6 +20,9 @@
   <li><a href="{% url change-passwd %}">Cambia password</a></li>
 </ul>
 {% endblock %}
+{% block toolbar %}
+Ultimo login: {{ user.last_login }}
+{% endblock %}
 {% block content %}
 <script>
   $(document).ready( function () {
