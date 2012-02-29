@@ -3,6 +3,7 @@
 <script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+<link href="/static/datatables/css/demo_table.css" type="text/css" media="all" rel="stylesheet"/>
 {% endblock %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
 {% block title2 %} Figure Prevenzione: {{ company.firm }} {% endblock %}
@@ -21,8 +22,8 @@
       </a>
     </li>
     <li>
-      <a href="{% url department-add company.id %}">
-        Aggiungi Reparto
+      <a href="{% url set-working-env company.id %}">
+        Ambiente di Lavoro
       </a>
     </li>
     <li>
