@@ -8,27 +8,27 @@
   <ul class="menu">
     <li>
       <a href="{% url customers %}">
-	Aziende
+        Aziende
       </a>
     </li>
     <li>
       <a href="{% url company-edit company.id %}">
-	Modifica Azienda
+        Modifica Azienda
       </a>
     </li>
     <li>
       <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
+        Ambiente di Lavoro
       </a>
     </li>
     <li>
       <a href="{% url staff-list company.id %}">
-	    Organigramma
+            Organigramma
       </a>
     </li>
     <li>
       <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
+        Figure Prevenzione
       </a>
     </li>
   </ul>
@@ -50,9 +50,9 @@
     <li>Settore Ateco 2007: {{ company.ateco_sector }}</li>
     <li>Certificazioni:
       <ul>
-	{% for cert in company.certifications.all %}
-	<li>{{ cert }} </li>
-	{% endfor %}
+        {% for cert in company.certifications.all %}
+        <li>{{ cert }} </li>
+        {% endfor %}
       </ul>
     <li>Data registrazione: {{ company.record_date }}</li>
     <li>CPI: {{ company.cpi }}</li>
