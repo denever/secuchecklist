@@ -1,4 +1,8 @@
 {% extends "customers/base-customers.html" %}
+{% block extra_head %}
+<link href="/static/datatables/css/demo_table.css" type="text/css" media="all" rel="stylesheet"/>
+<script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+{% endblock %}
 {% block title %} Gestione Personale Azienda: {{ department.company.firm }} {% endblock %}
 {% block customersmenu %}
 <h3><a href="#">Anagrafica</a></h3>
@@ -21,7 +25,7 @@
     </li>
     <li>
       <a href="{% url staff-list company.id %}">
-            Organigramma
+        Organigramma
       </a>
     </li>
     <li>
@@ -34,34 +38,59 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ department.company.firm }}</h1>
-<ul>
-<li>Dipartimento: {{ department.name }}</li>
-<li>Superficie: {{ department.size }} </li>
-<li>Descrizione: {{ department.description }} </li>
-</ul>
-<table>
-  <thead>
-    <tr>
-      <th>Personale</th>
-      <th>Mansione Omogenea</th>
-      <th>Figura prevenzione</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for staff in department.staff_set.all %}
-  <tr>
-    <td>
-      <a href="{% url staff-detail company.id staff.id %}">{{ staff.surname }} {{ staff.name }}</a>
-    </td>
-    <td>
-      {{ staff.standard_task }}
-    </td>
-    <td>
-      {{ staff.security_duty }}
-    </td>
-  </tr>
-  {% endfor %}
-  </tbody>
-</table>
+<script>
+  $(document).ready( function () {
+  $('#staff').dataTable({
+  "bJQueryUI": true,
+  "aoColumns": [/* Personale */ null,
+  /* Mansione Omogenea */ null,
+  /* Figura prevenzione */ null,
+  /* Azioni */ { "bSearchable": false,
+  "bVisible": true,
+  "bSortable": false,
+  "mDataProp": null,
+  },
+  ],
+  }
+  );
+  } );
+</script>
+<div class="gridbox">
+  <ul>
+    <li>Dipartimento: {{ department.name }}</li>
+    <li>Superficie: {{ department.size }} </li>
+    <li>Descrizione: {{ department.description }} </li>
+  </ul>
+</div>
+
+<div class="gridbox">
+  <table id="staff" class="display">
+    <thead>
+      <tr>
+        <th>Personale</th>
+        <th>Mansione Omogenea</th>
+        <th>Figura prevenzione</th>
+        <th>Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for staff in department.staff_set.all %}
+      <tr>
+        <td>
+          <a href="{% url staff-detail company.id staff.id %}">{{ staff.surname }} {{ staff.name }}</a>
+        </td>
+        <td>
+          {{ staff.standard_task }}
+        </td>
+        <td>
+          {{ staff.security_duty }}
+        </td>
+        <td>
+          <a title="Elimina dal reparto" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url staff-delete company.id staff.id %}"></a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
