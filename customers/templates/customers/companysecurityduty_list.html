@@ -41,7 +41,21 @@
 {% block content %}
 <script>
   $(document).ready( function () {
-  $('#secduties').dataTable({"bJQueryUI": true});
+  $('#secduties').dataTable({"bJQueryUI": true,
+  "aoColumns": [
+  /* Figura */ null,
+  /* Nome e Cognome */ null,
+  /* Telefono interno */ null,
+  /* Telefono esterno */ null,
+  /* Email */ null,
+  /* Azioni */ { "bSearchable": false,
+  "bVisible": true,
+  "bSortable": false,
+  "mDataProp": null,
+  },
+  ],
+  }
+  );
   } );
 </script>
 <div class="gridbox">
@@ -53,6 +67,7 @@
 	<th>Telefono interno</th>
 	<th>Telefono esterno</th>
 	<th>Email</th>
+	<th>Azioni</th>
     </tr>
     </thead>
     <tbody>
@@ -63,7 +78,7 @@
 	</td>
 	<td>
 	  {{ secduty.surname }} {{ secduty.name }}
-    </td>
+	</td>
 	<td>
 	  {{ secduty.internal_phone }}
 	</td>
@@ -72,6 +87,11 @@
 	</td>
 	<td>
 	  <a href="mailto:{{ company.email }}">{{ secduty.email }}</a>
+	</td>
+	<td>
+	  <a title="modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url companysecurityduty-edit company.id secduty.id %}">
+	    <a title="elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url companysecurityduty-delete secduty.id %}">
+	    </a>
 	</td>
       </tr>
       {% endfor %}
