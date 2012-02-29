@@ -12,27 +12,27 @@
   <ul class="menu">
     <li>
       <a href="{% url customers %}">
-	Aziende
+        Aziende
       </a>
     </li>
     <li>
       <a href="{% url company-detail company.id %}">
-	Azienda corrente
+        Azienda corrente
       </a>
     </li>
     <li>
       <a href="{% url department-add company.id %}">
-	Aggiungi Reparto
+        Aggiungi Reparto
       </a>
     </li>
     <li>
       <a href="{% url staff-list company.id %}">
-	Organigramma
+        Organigramma
       </a>
     </li>
     <li>
       <a href="{% url companysecurityduty-add company.id %}">
-	Aggiungi Figura Prevenzione
+        Aggiungi Figura Prevenzione
       </a>
     </li>
   </ul>
@@ -62,37 +62,37 @@
   <table id="secduties" class="display">
     <thead>
       <tr>
-	<th>Figura</th>
-	<th>Nome e Cognome</th>
-	<th>Telefono interno</th>
-	<th>Telefono esterno</th>
-	<th>Email</th>
-	<th>Azioni</th>
+        <th>Figura</th>
+        <th>Nome e Cognome</th>
+        <th>Telefono interno</th>
+        <th>Telefono esterno</th>
+        <th>Email</th>
+        <th>Azioni</th>
     </tr>
     </thead>
     <tbody>
       {% for secduty in companysecurityduty_set %}
       <tr>
-	<td>
-	  {{ secduty.security_duty }}
-	</td>
-	<td>
-	  {{ secduty.surname }} {{ secduty.name }}
-	</td>
-	<td>
-	  {{ secduty.internal_phone }}
-	</td>
-	<td>
-	  {{ secduty.external_phone }}
-	</td>
-	<td>
-	  <a href="mailto:{{ company.email }}">{{ secduty.email }}</a>
-	</td>
-	<td>
-	  <a title="modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url companysecurityduty-edit company.id secduty.id %}">
-	    <a title="elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url companysecurityduty-delete secduty.id %}">
-	    </a>
-	</td>
+        <td>
+          {{ secduty.security_duty }}
+        </td>
+        <td>
+          {{ secduty.surname }} {{ secduty.name }}
+        </td>
+        <td>
+          {{ secduty.internal_phone }}
+        </td>
+        <td>
+          {{ secduty.external_phone }}
+        </td>
+        <td>
+          <a href="mailto:{{ company.email }}">{{ secduty.email }}</a>
+        </td>
+        <td>
+          <a title="modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url companysecurityduty-edit company.id secduty.id %}">
+            <a title="elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url companysecurityduty-delete company.id secduty.id %}">
+            </a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
