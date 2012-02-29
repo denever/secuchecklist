@@ -40,9 +40,21 @@
 {% endblock %}
 {% block content %}
 <script>
-  $(document).ready( function () {
-  $('#staff').dataTable({"bJQueryUI": true});
-  } );
+    $(document).ready( function () {
+			   $('#staff').dataTable({
+						     "bJQueryUI": true,
+						     "aoColumns": [/* Personale */ null,
+							 /* Mansione Omogenea */ null,
+							 /* Mansione */ null,
+							 /* Azioni */ { "bSearchable": false,
+									"bVisible": true,
+									"bSortable": false,
+									"mDataProp": null,
+								      },
+						     ],
+						 }
+						);
+		       } );
 </script>
 <div class="gridbox">
   <h2>Organigramma</h2>
@@ -52,6 +64,7 @@
 	<th>Personale</th>
 	<th>Mansione Omogenea</th>
 	<th>Mansione</th>
+	<th>Azioni</th>
       </tr>
     </thead>
     <tbody>
@@ -66,6 +79,10 @@
 	</td>
 	<td>
 	  {{ staff.role }}
+	</td>
+	<td>
+	  <a title="modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url staff-edit staff.id %}">
+	    <a title="elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url staff-delete staff.id %}"></a>
 	</td>
       </tr>
       {% endfor %}
