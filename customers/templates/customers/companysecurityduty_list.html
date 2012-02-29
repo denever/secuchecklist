@@ -1,45 +1,47 @@
 {% extends "customers/base-customers.html" %}
 {% block extra_head %}
-<link href="/static/autocomplete/css/jquery-ui.css" type="text/css" media="all" rel="stylesheet">
 <script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
-<style type="text/css" title="currentStyle">
-@import "/static/datatables/css/demo_table.css";
-</style>
 {% endblock %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
 {% block title2 %} Figure Prevenzione: {{ company.firm }} {% endblock %}
-{% block submenu %}
-<ul class="menu">
-  <li>
-    <a href="{% url company-detail company.id %}">
-      {{ company.firm }}
-    </a>
-  </li>
-  <li>
-    <a href="{% url set-working-env company.id %}">
-      Ambiente di Lavoro
-    </a>
-  </li>
-  <li>
-    <a href="{% url staff-list company.id %}">
-      Organigramma
-    </a>
-</ul>
-{% endblock %}
-{% block toolbar %}
-<ul class="menu">
-  <li>
-    <a href="{% url companysecurityduty-add company.id %}">
-      Aggiungi Figura Prevenzione
-    </a>
-</ul>
+{% block customersmenu %}
+<h3><a href="#">Anagrafica</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url customers %}">
+	Aziende
+      </a>
+    </li>
+    <li>
+      <a href="{% url company-detail company.id %}">
+	Azienda corrente
+      </a>
+    </li>
+    <li>
+      <a href="{% url department-add company.id %}">
+	Aggiungi Reparto
+      </a>
+    </li>
+    <li>
+      <a href="{% url staff-list company.id %}">
+	Organigramma
+      </a>
+    </li>
+    <li>
+      <a href="{% url companysecurityduty-add company.id %}">
+	Aggiungi Figura Prevenzione
+      </a>
+    </li>
+  </ul>
+</div>
 {% endblock %}
 {% block content %}
 <script>
   $(document).ready( function () {
-  $('#secduties').dataTable();
+  $('#secduties').dataTable({"bJQueryUI": true});
   } );
 </script>
 <div class="gridbox">
