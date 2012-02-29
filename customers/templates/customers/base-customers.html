@@ -1,29 +1,14 @@
 {% extends "base.html" %}
 {% block title %} Gestione Aziende Clienti {% endblock %}
 {% block title2 %} Gestione Aziende Clienti {% endblock %}
-{% block mainmenu %}
-<ul class="menu">
-  <li><a href="{% url profile %}">Profilo</a></li>
-  <li><a href="{% url customers %}">Anagrafica</a></li>
-  <li><a href="{% url logout %}">Esci</a></li>
-</ul>
+{% block extrascript %}
+  $("#mainmenuacco").accordion("option", "active", 1);
 {% endblock %}
-{% block submenu %}
-<ul id="submenu" class="menu">
-  <li>
-    <a href="{% url company-detail company.id %}">
-      {{ company.firm }}
-    </a>
-  </li>
-  <li>
-    <a href="{% url staff-list company.id %}">
-      Organigramma
-    </a>
-  <li>
-    <a href="{% url companysecurityduty-list company.id %}">
-      Figure Prevenzione
-    </a>
-  </li>
-</ul>
-{% endblock %}
+{% block customersmenu %}
+<h3><a href="#">Anagrafica</a></h3>
+<div>
+  <ul class="menu">
+    <li><a href="{% url customers %}">Aziende</a></li>
+  </ul>
 </div>
+{% endblock %}
