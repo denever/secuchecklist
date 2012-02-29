@@ -1,9 +1,6 @@
 {% extends "customers/base-customers.html" %}
 {% block extra_head %}
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
-<style type="text/css" title="currentStyle">
-@import "/static/datatables/css/demo_table.css";
-</style>
 {% endblock %}
 {% block title %} Anagrafica Aziende {% endblock %}
 {% block title2 %} Anagrafica Aziende {% endblock %}
@@ -23,12 +20,12 @@
     <a href="{% url company-create %}">Aggiungi Azienda
     </a>
   </li>
-</ul>      
+</ul>
 {% endblock %}
 {% block content %}
 <script>
   $(document).ready( function () {
-  $('#companies').dataTable();
+  $('#companies').dataTable({"bJQueryUI": true});
   } );
 </script>
 <div class="gridbox">
