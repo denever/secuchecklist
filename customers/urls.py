@@ -25,6 +25,8 @@ from customers.views import DepartmentDeleteView
 
 from customers.views import CompanySecurityDutyCreateView
 from customers.views import CompanySecurityDutyListView
+from customers.views import CompanySecurityDutyUpdateView
+from customers.views import CompanySecurityDutyDeleteView
 
 urlpatterns = patterns('customers.views',
 		       url(r'^$', login_required(CustomerCompanyListView.as_view()),
@@ -74,7 +76,7 @@ urlpatterns = patterns('customers.views',
 			   name = 'staff-edit'
 			   ),
 
-		       url(r'^delete/(?P<pk>\d+)/$',
+		       url(r'^delete_company/(?P<pk>\d+)/$',
 			   login_required(CustomerCompanyDeleteView.as_view()),
 			   name = 'company-delete'
 			   ),
@@ -99,7 +101,7 @@ urlpatterns = patterns('customers.views',
 			   name = 'department-edit'
 			   ),
 
-		       url(r'^(?P<company>\d+)/delete_department/(?P<pk>\d+)/$',
+		       url(r'^delete_department/(?P<pk>\d+)/$',
 			   login_required(DepartmentDeleteView.as_view()),
 			   name = 'department-delete'
 			   ),
@@ -122,5 +124,15 @@ urlpatterns = patterns('customers.views',
 		       url(r'^(?P<company>\d+)/secduties/$',
 			   login_required(CompanySecurityDutyListView.as_view()),
 			   name = 'companysecurityduty-list'
+			   ),
+
+		       url(r'^(?P<company>\d+)/update_secduties/(?P<pk>\d+)/$',
+			   login_required(CompanySecurityDutyUpdateView.as_view()),
+			   name = 'companysecurityduty-edit'
+			   ),
+
+		       url(r'^delete_secduties/(?P<pk>\d+)/$',
+			   login_required(CompanySecurityDutyDeleteView.as_view()),
+			   name = 'companysecurityduty-delete'
 			   ),
 		       )
