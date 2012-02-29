@@ -13,22 +13,22 @@
   <ul class="menu">
     <li>
       <a href="{% url company-detail company.id %}">
-	{{ company.firm }}
+        {{ company.firm }}
       </a>
     </li>
     <li>
       <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
+        Ambiente di Lavoro
       </a>
     </li>
     <li>
       <a href="{% url staff-add company.id %}">
-	Aggiungi Personale
+        Aggiungi Personale
       </a>
     </li>
     <li>
       <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
+        Figure Prevenzione
       </a>
     </li>
   </ul>
@@ -41,49 +41,49 @@
 {% block content %}
 <script>
     $(document).ready( function () {
-			   $('#staff').dataTable({
-						     "bJQueryUI": true,
-						     "aoColumns": [/* Personale */ null,
-							 /* Mansione Omogenea */ null,
-							 /* Mansione */ null,
-							 /* Azioni */ { "bSearchable": false,
-									"bVisible": true,
-									"bSortable": false,
-									"mDataProp": null,
-								      },
-						     ],
-						 }
-						);
-		       } );
+                           $('#staff').dataTable({
+                                                     "bJQueryUI": true,
+                                                     "aoColumns": [/* Personale */ null,
+                                                         /* Mansione Omogenea */ null,
+                                                         /* Mansione */ null,
+                                                         /* Azioni */ { "bSearchable": false,
+                                                                        "bVisible": true,
+                                                                        "bSortable": false,
+                                                                        "mDataProp": null,
+                                                                      },
+                                                     ],
+                                                 }
+                                                );
+                       } );
 </script>
 <div class="gridbox">
   <h2>Organigramma</h2>
   <table id="staff" class="display">
     <thead>
       <tr>
-	<th>Personale</th>
-	<th>Mansione Omogenea</th>
-	<th>Mansione</th>
-	<th>Azioni</th>
+        <th>Personale</th>
+        <th>Mansione Omogenea</th>
+        <th>Mansione</th>
+        <th>Azioni</th>
       </tr>
     </thead>
     <tbody>
       {% for staff in staff_set %}
       <tr>
-	<td>
-	  <a class="tablelink" href="{% url staff-detail company.id staff.id %}">
-	    {{ staff.surname }} {{ staff.name }}</a>
-	</td>
-	<td>
-	  {{ staff.standard_task }}
-	</td>
-	<td>
-	  {{ staff.role }}
-	</td>
-	<td>
-	  <a title="modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url staff-edit company.id staff.id %}">
-	    <a title="elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url staff-delete company.id staff.id %}"></a>
-	</td>
+        <td>
+          <a class="tablelink" href="{% url staff-detail company.id staff.id %}">
+            {{ staff.surname }} {{ staff.name }}</a>
+        </td>
+        <td>
+          {{ staff.standard_task }}
+        </td>
+        <td>
+          {{ staff.role }}
+        </td>
+        <td>
+          <a title="modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url staff-edit company.id staff.id %}">
+            <a title="elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url staff-delete company.id staff.id %}"></a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
