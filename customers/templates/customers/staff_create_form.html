@@ -17,30 +17,40 @@ window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{%
 {% endblock %}
 {% block title %} Registrazione Personale {% endblock %}
 
-{% block submenu %}
-        <li>
-          <a href="{% url company-detail company.id %}">
-            {{ company.firm }}
-          </a>
-        </li>
-        <li>
-          <a href="{% url set-working-env company.id %}">
-            Ambiente di Lavoro
-          </a>
-        </li>
-        <li>
-          <a href="{% url staff-list company.id %}">
+{% block customersmenu %}
+<h3><a href="#">Anagrafica</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url customers %}">
+        Aziende
+      </a>
+    </li>
+    <li>
+      <a href="{% url company-detail company.id %}">
+        Azienda corrente
+      </a>
+    </li>
+    <li>
+      <a href="{% url set-working-env company.id %}">
+        Ambiente di Lavoro
+      </a>
+    </li>
+    <li>
+      <a href="{% url staff-list company.id %}">
             Organigramma
-        </a>
-	</li>
-        <li>
-          <a href="{% url companysecurityduty-list company.id %}">
-	    Figure Prevenzione
-        </a>
-        </li>
+      </a>
+    </li>
+    <li>
+      <a href="{% url companysecurityduty-list company.id %}">
+        Figure Prevenzione
+      </a>
+    </li>
+  </ul>
+</div>
 {% endblock %}
+
 {% block content %}
-<h1>Registrazione Personale</h1>
 <form action="{{ form.success_url }}" method="post">{% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Aggiungi"/>
