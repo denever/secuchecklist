@@ -56,16 +56,16 @@
     <tbody>
       {% for staff in staff_set %}
       <tr>
-    <td>
-      <a class="tablelink" href="{% url staff-detail company.id staff.id %}">
-	{{ staff.surname }} {{ staff.name }}</a>
-    </td>
-    <td>
-      {{ staff.standard_task }}
-    </td>
-    <td>
-      {{ staff.role }}
-    </td>
+	<td>
+	  <a class="tablelink" href="{% url staff-detail company.id staff.id %}">
+	    {{ staff.surname }} {{ staff.name }}</a>
+	</td>
+	<td>
+	  {{ staff.standard_task }}
+	</td>
+	<td>
+	  {{ staff.role }}
+	</td>
       </tr>
       {% endfor %}
     </tbody>
