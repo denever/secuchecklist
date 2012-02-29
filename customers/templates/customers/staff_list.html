@@ -1,46 +1,46 @@
 {% extends "customers/base-customers.html" %}
 {% block extra_head %}
-<link href="/static/autocomplete/css/jquery-ui.css" type="text/css" media="all" rel="stylesheet">
 <script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
-<style type="text/css" title="currentStyle">
-@import "/static/datatables/css/demo_table.css";
-</style>
 {% endblock %}
 {% block title %} Azienda: {{ company.firm }} {% endblock %}
 {% block title2 %} Azienda: {{ company.firm }} {% endblock %}
-{% block submenu %}
-<ul class="menu">
-  <li>
-    <a href="{% url company-detail company.id %}">
-      {{ company.firm }}
-    </a>
-  </li>
-  <li>
-    <a href="{% url set-working-env company.id %}">
-      Ambiente di Lavoro
-    </a>
-  </li>
-    <a href="{% url companysecurityduty-list company.id %}">
-      Figure Prevenzione
-    </a>
-  </li>
-</ul>
+{% block customersmenu %}
+<h3><a href="#">Anagrafica</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url company-detail company.id %}">
+	{{ company.firm }}
+      </a>
+    </li>
+    <li>
+      <a href="{% url set-working-env company.id %}">
+	Ambiente di Lavoro
+      </a>
+    </li>
+    <li>
+      <a href="{% url staff-add company.id %}">
+	Aggiungi Personale
+      </a>
+    </li>
+    <li>
+      <a href="{% url companysecurityduty-list company.id %}">
+	Figure Prevenzione
+      </a>
+    </li>
+  </ul>
+</div>
 {% endblock %}
 {% block toolbar %}
 <ul class="menu">
-  <li>
-    <a href="{% url staff-add company.id %}">
-      Aggiungi Personale
-    </a>
-  <li>
 </ul>
 {% endblock %}
 {% block content %}
 <script>
   $(document).ready( function () {
-  $('#staff').dataTable();
+  $('#staff').dataTable({"bJQueryUI": true});
   } );
 </script>
 <div class="gridbox">
@@ -58,7 +58,7 @@
       <tr>
     <td>
       <a class="tablelink" href="{% url staff-detail company.id staff.id %}">
-        {{ staff.surname }} {{ staff.name }}</a>
+	{{ staff.surname }} {{ staff.name }}</a>
     </td>
     <td>
       {{ staff.standard_task }}
