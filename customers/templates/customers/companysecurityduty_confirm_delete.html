@@ -20,7 +20,7 @@
     </li>
     <li>
       <a href="{% url staff-list company.id %}">
-	    Organigramma
+	Organigramma
       </a>
     </li>
     <li>
@@ -36,7 +36,7 @@
 <div class="gridbox">
   <h1>Sei sicuro?</h1>
   <p>
-     Sei sicuro di voler cancellare il reparto {{ department.name }} ?
+     Sei sicuro di voler cancellare <em>{{ companysecurityduty.surname }} {{ companysecurityduty.name }}</em> come <strong>{{ companysecurityduty.security_duty }}</strong>?
   </p>
   <form action="" method="post">{% csrf_token %}
     <div>
