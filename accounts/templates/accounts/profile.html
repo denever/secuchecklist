@@ -1,24 +1,27 @@
 {% extends "base.html" %}
 {% block extra_head %}
-<link href="/static/css/jquery.ui.accordion.css" type="text/css" media="all" rel="stylesheet">
-<link href="/static/css/jquery.ui.theme.css" type="text/css" media="all" rel="stylesheet">
-<link href="/static/datatables/css/demo_table.css" type="text/css" media="all" rel="stylesheet">
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 {% endblock %}
 {% block title %} Profilo {{ user.get_full_name }} {% endblock %}
 {% block title2 %} Profilo {{ user.get_full_name }} {% endblock %}
-{% block mainmenu %}
-<ul class="menu">
-  <li><a href="{% url profile %}">Profile</a></li>
-  <li><a href="{% url customers %}">Customers</a></li>
-  <li><a href="{% url logout %}">Logout</a></li>
-</ul>
-{% endblock %}
-{% block submenu %}
-<ul class="menu">
-  <li><a href="{% url company-create %}">Aggiungi Azienda</a></li>
-  <li><a href="{% url change-passwd %}">Cambia password</a></li>
-</ul>
+{% block accountmenu %}
+<h3><a href="#">Profilo</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url profile %}">Profilo</a>
+    </li>
+    <li>
+      <a href="{% url company-create %}">Aggiungi Azienda</a>
+    </li>
+    <li>
+      <a href="{% url change-passwd %}">Cambia password</a>
+    </li>
+    <li>
+      <a href="{% url logout %}">Logout</a>
+    </li>
+  </ul>
+</div>
 {% endblock %}
 {% block toolbar %}
 Ultimo login: {{ user.last_login }}
@@ -26,9 +29,9 @@ Ultimo login: {{ user.last_login }}
 {% block content %}
 <script>
   $(document).ready( function () {
-  $('#mycompanies').dataTable();
-  $('#mystaff').dataTable();
-  $('#mysecduty').dataTable();
+  $('#mycompanies').dataTable({"bJQueryUI": true});
+  $('#mystaff').dataTable({"bJQueryUI": true});
+  $('#mysecduty').dataTable({"bJQueryUI": true});
   } );
   $(function() {
   $( "#accordion" ).accordion({collapsible: true});
