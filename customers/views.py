@@ -124,6 +124,11 @@ class StaffUpdateView(UpdateView):
     template_name = 'customers/staff_update_form.html'
     success_url = '/customers/'
 
+    def get_context_data(self, **kwargs):
+        context = super(StaffUpdateView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
     def form_valid(self, form):
         self.success_url = reverse('staff-detail', args=self.kwargs['company'])
         return super(StaffUpdateView, self).form_valid(form)
@@ -187,6 +192,11 @@ class DepartmentUpdateView(UpdateView):
         self.success_url = reverse('department-detail', args=self.kwargs['company'])
         return super(DepartmentUpdateView, self).form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super(DepartmentUpdateView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
 class DepartmentDeleteView(DeleteView):
     model = Department
     form_class = DepartmentForm
@@ -234,6 +244,11 @@ class CompanySecurityDutyUpdateView(UpdateView):
     form_class = CompanySecurityDutyForm
     template_name = 'customers/companysecurityduty_update_form.html'
     success_url = '/customers/'
+
+    def get_context_data(self, **kwargs):
+        context = super(CompanySecurityDutyUpdateView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
 
     def form_valid(self, form):
         self.success_url = reverse('companysecurityduty-list', args=self.kwargs['company'])
