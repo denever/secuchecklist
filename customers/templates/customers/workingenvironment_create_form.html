@@ -1,13 +1,8 @@
 {% extends "customers/base-customers.html" %}
 {% block extra_head %}
-<script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
-<script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/static/datatables/js/jquery.dataTables.js" charset="utf-8" >
 </script>
 {{ form.media }}
-<style type="text/css" title="currentStyle">
-@import "/static/datatables/css/demo_table.css";
-</style>
 {% endblock %}
 {% block title %} Ambiente di Lavoro {{ company.firm }} {% endblock %}
 {% block title2 %} Ambiente di Lavoro {{ company.firm }} {% endblock %}
@@ -45,14 +40,24 @@
 {% endblock %}
 {% block content %}
 <script>
-  $(document).ready( function () {
-  $('#deps').dataTable( {
-  "aoColumns": [
-  /* Nome reparto */ null,
-  /* Superficie */ null,
-  /* Azioni */ { "bSearchable": false, "bVisible": true }
-  ]});  
-  } );
+    $(document).ready( function () {
+	$('#deps').dataTable(
+	    {
+		"bJQueryUI": true,
+		"aoColumns": [
+		    /* Nome reparto */ null,
+		    /* Superficie */ null,
+		    /* Azioni */ { "bSearchable": false,
+				   "bVisible": true,
+				   "bSortable": false,
+				   "mDataProp": null,
+				 },
+		],
+		"sDom": '<"toolbar">frtip'
+	    }
+	);
+	$("div.toolbar").html('	<span class="ui-icon ui-icon-pencil"></span>');
+    } );
 </script>
 <div id="workenv" class="gridbox">
 <form action="{{ form.success_url }}" method="post">{% csrf_token %}
@@ -67,26 +72,24 @@
     <tr>
       <th>Nome Reparto</th>
       <th>Superficie</th>
-      <th colspan="2">Azioni</th>      
+      <th>Azioni</th>
     </tr>
   </thead>
   <tbody>
-  {% for department in company.department_set.all %}
-  <tr>
-    <td>
-      <a href="{% url department-detail company.id department.id %}">{{ department.name }}</a>
-    </td>
-    <td>
-      {{ department.size }}
-    </td>
-    <td class="ui-state-default ui-corner-all" title=".ui-icon-pencil">
-      <span class="ui-icon ui-icon-pencil"></span>
-    </td>
-    <td class="ui-state-default ui-corner-all" title=".ui-icon-trash">
-      <span class="ui-icon ui-icon-trash"></span>
-    </td>
-  </tr>
-  {% endfor %}
+    {% for department in company.department_set.all %}
+    <tr>
+      <td>
+	<a href="{% url department-detail company.id department.id %}">{{ department.name }}</a>
+      </td>
+      <td>
+	{{ department.size }}
+      </td>
+      <td>
+	<a title="modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url department-edit company.id department.id %}">
+	<a title="elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url department-delete company.id department.id %}"></a>
+      </td>
+    </tr>
+    {% endfor %}
   </tbody>
 </table>
 </div>
