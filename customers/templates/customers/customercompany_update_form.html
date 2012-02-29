@@ -2,27 +2,37 @@
 {% block extra_head %} {{ form.media }} {% endblock %}
 {% block title %} Modifica Anagrafica {% endblock %}
 {% block title2 %} {{ company.firm }} {% endblock %}
-{% block submenu %}
-        <li>
-          <a href="{% url company-detail company.id %}">
-          {{ company.firm }}
-          </a>
-        </li>
-        <li>
-          <a href="{% url set-working-env company.id %}">
-            Ambiente di Lavoro
-          </a>
-        </li>
-        <li>
-          <a href="{% url staff-list company.id %}">
-            Organigramma
-        </a>
-        </li>
-        <li>
-          <a href="{% url companysecurityduty-list company.id %}">
-            Figure Prevenzione
-        </a>
-        </li>
+{% block customersmenu %}
+<h3><a href="#">Anagrafica</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url customers %}">
+	Aziende
+      </a>
+    </li>
+    <li>
+      <a href="{% url company-detail company.id %}">
+	Azienda corrente
+      </a>
+    </li>
+    <li>
+      <a href="{% url set-working-env company.id %}">
+	Ambiente di Lavoro
+      </a>
+    </li>
+    <li>
+      <a href="{% url staff-list company.id %}">
+	    Organigramma
+      </a>
+    </li>
+    <li>
+      <a href="{% url companysecurityduty-list company.id %}">
+	Figure Prevenzione
+      </a>
+    </li>
+  </ul>
+</div>
 {% endblock %}
 {% block content %}
 <h1>Registrazione Azienda</h1>
