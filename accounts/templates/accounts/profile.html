@@ -42,26 +42,26 @@ Ultimo login: {{ user.last_login }}
   <div>
     <table id="mycompanies" class="display">
       <thead>
-        <tr>
-          <th>Azienda</th>
-          <th>Settore ATECO 2007</th>
-          <th>Data registrazione</th>
-        </tr>
+	<tr>
+	  <th>Azienda</th>
+	  <th>Settore ATECO 2007</th>
+	  <th>Data registrazione</th>
+	</tr>
       </thead>
       <tbody>
-        {% for cc in user.get_profile.customercompany_set.all %}
-        <tr>
-          <td>
-            <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
-          </td>
-          <td>
-            ({{ cc.ateco_sector }})
-          </td>
-          <td>
-            {{ cc.record_date }}
-          </td>
-        </tr>
-        {% endfor %}
+	{% for cc in user.get_profile.customercompany_set.all %}
+	<tr>
+	  <td>
+	    <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+	  </td>
+	  <td>
+	    ({{ cc.ateco_sector }})
+	  </td>
+	  <td>
+	    {{ cc.record_date }}
+	  </td>
+	</tr>
+	{% endfor %}
       </tbody>
     </table>
   </div>
@@ -69,31 +69,31 @@ Ultimo login: {{ user.last_login }}
   <div>
     <table id="mystaff" class="display">
       <thead>
-        <tr>
-          <th>Azienda</th>
-          <th>Personale</th>
-          <th>Mansione Omogenea</th>
-          <th>Mansione</th>
-        </tr>
+	<tr>
+	  <th>Azienda</th>
+	  <th>Personale</th>
+	  <th>Mansione Omogenea</th>
+	  <th>Mansione</th>
+	</tr>
       </thead>
       <tbody>
-        {% for staff in user.get_profile.staff_set.all %}
-        <tr>
-          <td>
-            <a href="{% url company-detail staff.company.id %}">{{ staff.company.firm }}</a>
-          </td>
-          <td>
-            <a href="{% url staff-detail staff.company.id staff.id %}">
-              {{ staff.surname }} {{ staff.name }}</a>
-          </td>
-          <td>
-            {{ staff.standard_task }}
-          </td>
-          <td>
-            {{ staff.role }}
-          </td>
-        </tr>
-        {% endfor %}
+	{% for staff in user.get_profile.staff_set.all %}
+	<tr>
+	  <td>
+	    <a href="{% url company-detail staff.company.id %}">{{ staff.company.firm }}</a>
+	  </td>
+	  <td>
+	    <a href="{% url staff-detail staff.company.id staff.id %}">
+	      {{ staff.surname }} {{ staff.name }}</a>
+	  </td>
+	  <td>
+	    {{ staff.standard_task }}
+	  </td>
+	  <td>
+	    {{ staff.role }}
+	  </td>
+	</tr>
+	{% endfor %}
       </tbody>
     </table>
   </div>
@@ -101,40 +101,40 @@ Ultimo login: {{ user.last_login }}
   <div>
     <table id="mysecduty" class="display">
       <thead>
-        <tr>
-          <th>Azienda</th>
-          <th>Figura</th>
-          <th>Nome e Cognome</th>
-          <th>Telefono interno</th>
-          <th>Telefono esterno</th>
-          <th>Email</th>
-        </tr>
+	<tr>
+	  <th>Azienda</th>
+	  <th>Figura</th>
+	  <th>Nome e Cognome</th>
+	  <th>Telefono interno</th>
+	  <th>Telefono esterno</th>
+	  <th>Email</th>
+	</tr>
       </thead>
       <tbody>
-        {% for secduty in user.get_profile.companysecurityduty_set.all %}
-        <tr>
-          <td>
-            <a href="{% url company-detail secduty.company.id %}">
-              {{ secduty.company.firm }}
-            </a>
-          </td>
-          <td>
-            {{ secduty.security_duty }}
-          </td>
-          <td>
-            {{ secduty.surname }} {{ secduty.name }}
-          </td>
-          <td>
-            {{ secduty.internal_phone }}
-          </td>
-          <td>
-            {{ secduty.external_phone }}
-          </td>
-          <td>
-            <a href="mailto:{{ company.email }}">{{ secduty.email }}</a>
-          </td>
-        </tr>
-        {% endfor %}
+	{% for secduty in user.get_profile.companysecurityduty_set.all %}
+	<tr>
+	  <td>
+	    <a href="{% url company-detail secduty.company.id %}">
+	      {{ secduty.company.firm }}
+	    </a>
+	  </td>
+	  <td>
+	    {{ secduty.security_duty }}
+	  </td>
+	  <td>
+	    {{ secduty.surname }} {{ secduty.name }}
+	  </td>
+	  <td>
+	    {{ secduty.internal_phone }}
+	  </td>
+	  <td>
+	    {{ secduty.external_phone }}
+	  </td>
+	  <td>
+	    <a href="mailto:{{ company.email }}">{{ secduty.email }}</a>
+	  </td>
+	</tr>
+	{% endfor %}
       </tbody>
     </table>
   </div>
