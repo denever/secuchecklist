@@ -1,34 +1,40 @@
 {% extends "customers/base-customers.html" %}
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
 {% block title2 %} Anagrafica: {{ company.firm }} {% endblock %}
-{% block submenu %}
-<ul id="submenu" class="menu">
-	<li>
-	  <a href="{% url set-working-env company.id %}">
-	    Ambiente di Lavoro
-	  </a>
-	</li>
-	<li>
-	  <a href="{% url staff-list company.id %}">
+
+{% block customersmenu %}
+<h3><a href="#">Anagrafica</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url customers %}">
+	Aziende
+      </a>
+    </li>
+    <li>
+      <a href="{% url company-edit company.id %}">
+	Modifica Azienda
+      </a>
+    </li>
+    <li>
+      <a href="{% url set-working-env company.id %}">
+	Ambiente di Lavoro
+      </a>
+    </li>
+    <li>
+      <a href="{% url staff-list company.id %}">
 	    Organigramma
-	</a>
-	</li>
-	<li>
-	  <a href="{% url companysecurityduty-list company.id %}">
-	    Figure Prevenzione
-	</a>
-	</li>
-</ul>
+      </a>
+    </li>
+    <li>
+      <a href="{% url companysecurityduty-list company.id %}">
+	Figure Prevenzione
+      </a>
+    </li>
+  </ul>
+</div>
 {% endblock %}
-{% block toolbar %}
-<ul id="toolbar" class="menu">
-  <li>
-    <a href="{% url company-edit company.id %}">
-      Modifica Anagrafica
-    </a>
-  </li>
-</ul>
-{% endblock %}
+
 {% block content %}
 <div class="gridbox">
   <ul>
