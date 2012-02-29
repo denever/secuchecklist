@@ -71,14 +71,14 @@ urlpatterns = patterns('customers.views',
                            name = 'company-edit'
                            ),
 
-                       url(r'^update_staff/(?P<pk>\d+)/$',
-                           login_required(StaffUpdateView.as_view()),
-                           name = 'staff-edit'
-                           ),
-
                        url(r'^delete_company/(?P<pk>\d+)/$',
                            login_required(CustomerCompanyDeleteView.as_view()),
                            name = 'company-delete'
+                           ),
+
+                       url(r'^(?P<company>\d+)/update_staff/(?P<pk>\d+)/$',
+                           login_required(StaffUpdateView.as_view()),
+                           name = 'staff-edit'
                            ),
 
                        url(r'^(?P<company>\d+)/delete_staff/(?P<pk>\d+)/$',
