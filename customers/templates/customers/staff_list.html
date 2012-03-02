@@ -10,8 +10,13 @@
 <div>
   <ul class="menu">
     <li>
+      <a href="{% url customers %}">
+        Aziende
+      </a>
+    </li>
+    <li>
       <a href="{% url company-detail company.id %}">
-        {{ company.firm }}
+        Azienda corrente
       </a>
     </li>
     <li>
@@ -32,9 +37,8 @@
   </ul>
 </div>
 {% endblock %}
-{% block toolbar %}
-<ul class="menu">
-</ul>
+{% block content-top %}
+  <a title="Aggiungi personale" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url staff-add company.id %}"></a>
 {% endblock %}
 {% block content %}
 <script>

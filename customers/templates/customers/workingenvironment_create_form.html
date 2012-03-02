@@ -22,11 +22,6 @@
       </a>
     </li>
     <li>
-      <a href="{% url department-add company.id %}">
-        Aggiungi Reparto
-      </a>
-    </li>
-    <li>
       <a href="{% url staff-list company.id %}">
             Organigramma
       </a>
@@ -42,6 +37,9 @@
         <!--	"sDom": '<"toolbar">frtip' -->
         <!-- $("div.toolbar").html('	<span class="ui-icon ui-icon-pencil"></span>');     -->
 
+{% block content-top %}
+  <a title="Aggiungi reparto" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url department-add company.id %}"></a>
+{% endblock %}
 {% block content %}
 <script>
     $(document).ready( function () {

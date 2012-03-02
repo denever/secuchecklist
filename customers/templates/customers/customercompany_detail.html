@@ -12,8 +12,8 @@
       </a>
     </li>
     <li>
-      <a href="{% url company-edit company.id %}">
-        Modifica Azienda
+      <a href="{% url company-detail company.id %}">
+        Azienda corrente
       </a>
     </li>
     <li>
@@ -33,6 +33,9 @@
     </li>
   </ul>
 </div>
+{% endblock %}
+{% block content-top %}
+  <a title="modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit company.id %}"></a>
 {% endblock %}
 
 {% block content %}
