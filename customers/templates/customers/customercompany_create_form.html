@@ -5,7 +5,22 @@
 {% block content %}
 <h1>Registrazione Azienda</h1>
 <form action="{{ form.success_url }}" method="post">{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Registra"/>
+  <fieldset>
+  {% for field in form %}
+  <label for="{{ field.html_name }}">{{ field.label_tag }}</label>
+  {% if field.errors %}
+  {% for error in field.errors %}
+  <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+      <p>
+        <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+        {{ error }}
+      </p>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {{ field }}
+  {% endfor %}
+  </fieldset>
+  <input type="submit" value="Registra"/>
 </form>
 {% endblock %}
