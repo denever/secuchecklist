@@ -25,6 +25,7 @@ from customers.views import DepartmentDeleteView
 
 from customers.views import CompanySecurityDutyCreateView
 from customers.views import CompanySecurityDutyListView
+from customers.views import CompanySecurityDutyDetailView
 from customers.views import CompanySecurityDutyUpdateView
 from customers.views import CompanySecurityDutyDeleteView
 
@@ -119,6 +120,11 @@ urlpatterns = patterns('customers.views',
                        url(r'^(?P<company>\d+)/add_secduty/$',
                            login_required(CompanySecurityDutyCreateView.as_view()),
                            name = 'companysecurityduty-add'
+                           ),
+
+                       url(r'^(?P<company>\d+)/secduty/(?P<pk>\d+)/$',
+                           login_required(CompanySecurityDutyDetailView.as_view()),
+                           name = 'companysecurityduty-detail'
                            ),
 
                        url(r'^(?P<company>\d+)/secduties/$',
