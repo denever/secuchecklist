@@ -1,17 +1,18 @@
 {% extends "customers/base-customers.html" %}
 {% block extra_head %}
+<link href="/static/datatables/css/demo_table.css" type="text/css" media="all" rel="stylesheet"/>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 {% endblock %}
 {% block title %} Anagrafica Aziende {% endblock %}
 {% block title2 %} Anagrafica Aziende {% endblock %}
 {% block submenu %}
       <ul class="menu">
-	{% for year in years %}
-	<li>
-	  <a href="{% url company-year year %}">{{ year }}
-	  </a>
-	</li>
-	{% endfor %}
+        {% for year in years %}
+        <li>
+          <a href="{% url company-year year %}">{{ year }}
+          </a>
+        </li>
+        {% endfor %}
       </ul>
 {% endblock %}
 {% block toolbar %}
@@ -33,23 +34,23 @@
   <table id="companies" class="display">
     <thead>
       <tr>
-	<th>Azienda</th>
-	<th>Settore ATECO 2007</th>
-	<th>Data registrazione</th>
+        <th>Azienda</th>
+        <th>Settore ATECO 2007</th>
+        <th>Data registrazione</th>
       </tr>
     </thead>
     <tbody>
       {% for cc in companies %}
       <tr>
-	<td>
-	  <a class="tablelink" href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
-	</td>
-	<td>
-	  ({{ cc.ateco_sector }})
-	</td>
-	<td>
-	  {{ cc.record_date }}
-	</td>
+        <td>
+          <a class="tablelink" href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+        </td>
+        <td>
+          ({{ cc.ateco_sector }})
+        </td>
+        <td>
+          {{ cc.record_date }}
+        </td>
       </tr>
       {% endfor %}
     </tbody>
