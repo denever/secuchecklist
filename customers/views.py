@@ -71,6 +71,12 @@ class CustomerCompanyUpdateView(UpdateView):
         self.success_url = reverse('company-detail', args=self.kwargs['pk'])
         return super(CustomerCompanyUpdateView, self).form_valid(form)
 
+    def get_initial(self):
+        self.initial = super(CustomerCompanyUpdateView, self).get_initial()
+        self.initial['ateco_sector'] = self.object.ateco_sector.name
+        self.initial['cpi'] = self.object.cpi.name
+        return self.initial
+
 class CustomerCompanyDeleteView(DeleteView):
     model = CustomerCompany
     form_class = CustomerCompanyForm
@@ -80,10 +86,6 @@ class StaffCreateView(CreateView):
     form_class = StaffForm
     template_name = 'customers/staff_create_form.html'
 
-    # def get_initial(self):
-    #     super(StaffCreateView, self).get_initial()
-    #     self.initial['company'] = self.kwargs['company']
-    #     return self.initial
     def get_context_data(self, **kwargs):
         context = super(StaffCreateView, self).get_context_data(**kwargs)
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
