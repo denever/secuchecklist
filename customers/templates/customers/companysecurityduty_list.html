@@ -81,7 +81,7 @@
           {{ secduty.security_duty }}
         </td>
         <td>
-          {{ secduty.surname }} {{ secduty.name }}
+          <a href="{% url companysecurityduty-detail company.id secduty.id%}">{{ secduty.surname }} {{ secduty.name }}</a>
         </td>
         <td>
           {{ secduty.internal_phone }}
