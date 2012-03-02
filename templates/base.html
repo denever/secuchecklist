@@ -16,7 +16,7 @@
 <body>
   <script>
     $(function() {
-	  $( "#mainmenuacco" ).accordion({collapsible: true});
+          $( "#mainmenuacco" ).accordion({collapsible: true});
     {% block extrascript %}
     {% endblock %}
     });
@@ -27,49 +27,49 @@
     </div>
     <div id="content-wrapper">
       <div id="content">
-	<div class="content-top">
-	  {% block content-top %}
-	  {% endblock %}
-	</div>
-	<div class="content">
+        <div class="content-top">
+          {% block content-top %}
+          {% endblock %}
+        </div>
+        <div class="content">
 
-	  <div id="mainmenu">
-	    <div id="mainmenuacco">
+          <div id="mainmenu">
+            <div id="mainmenuacco">
 
-	      {% block accountmenu %}
-	      <h3><a href="#">Profilo</a></h3>
-	      <div>
-		<ul class="menu">
-		  <li>
-		    <a href="{% url profile %}">Profilo</a>
-		  </li>
-		  <li>
-		    <a href="{% url logout %}">Logout</a>
-		  </li>
-		</ul>
-	      </div>
-	      {% endblock %}
+              {% block accountmenu %}
+              <h3><a href="#">Profilo</a></h3>
+              <div>
+                <ul class="menu">
+                  <li>
+                    <a href="{% url profile %}">Profilo</a>
+                  </li>
+                  <li>
+                    <a href="{% url logout %}">Logout</a>
+                  </li>
+                </ul>
+              </div>
+              {% endblock %}
 
-	      {% block customersmenu %}
-	      <h3><a href="#">Anagrafica</a></h3>
-	      <div>
-		  <li>
-		    <a href="{% url customers %}">Aziende</a>
-		  </li>
-		  <li>
-		    <a href="{% url company-create %}">Aggiungi Azienda</a>
-		  </li>
-	      </div>
-	      {% endblock %}
+              {% block customersmenu %}
+              <h3><a href="#">Anagrafica</a></h3>
+              <div>
+                  <li>
+                    <a href="{% url customers %}">Aziende</a>
+                  </li>
+                  <li>
+                    <a href="{% url company-create %}">Aggiungi Azienda</a>
+                  </li>
+              </div>
+              {% endblock %}
 
-	    </div>
-	  </div>
+            </div>
+          </div>
 
-	  <div id="maincontent">
-	    {% block content %}{% endblock %}
-	  </div>
+          <div id="maincontent">
+            {% block content %}{% endblock %}
+          </div>
 
-	</div>
+        </div>
       </div>
     </div>
   </div>
