@@ -56,14 +56,16 @@
   } );
 </script>
 <div class="gridbox">
-  <ul>
-    <li>Dipartimento: {{ department.name }}</li>
-    <li>Superficie: {{ department.size }} </li>
-    <li>Descrizione: {{ department.description }} </li>
-  </ul>
+  <h1>Descrizione reparto</h1>
+  <table>
+    <tr><td>Reparto</td><td> {{ department.name }}</td></tr>
+    <tr><td>Superficie</td><td> {{ department.size }} </td></tr>
+    <tr><td>Descrizione</td><td> {{ department.description }} </td></tr>
+  </table>
 </div>
 
 <div class="gridbox">
+  <h1>Personale presso il reparto</h1>
   <table id="staff" class="display">
     <thead>
       <tr>

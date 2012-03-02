@@ -34,22 +34,24 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</h1>
-<ul>
-<li>Nome: {{ staff.name }}</li>
-<li>Cognome: {{ staff.surname }} </li>
-<li>Data di nascita: {{ staff.birth_date }} </li>
-<li>Telefono: {{ staff.phone }} </li>
-<li>Sesso: {{ staff.gender }} </li>
-<li>Nazionalità: {{ staff.nationality }} </li>
-<li>Forma contrattuale: {{ staff.collagreement }} </li>
-<li>Sorveglianza sanitaria: {{ staff.health_care }} </li>
-<li>Computo lavoratori: {{ staff.workers_count }} </li>
-<li>Azienda: {{ staff.company }} </li>
-<li>Mansione Omogenea: {{ staff.standard_task }} </li>
-<li>Reparto: {{ staff.department }} </li>
-<li>Mansione: {{ staff.role }} </li>
-<li>Figura Prevenzione: {{ staff.security_duty }} </li>
-<li>Data assunzione: {{ staff.employ_date }} </li>
-</ul>
+<div class="gridbox">
+  <h1>{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</h1>
+  <table>
+    <tr><td>Nome</td><td> {{ staff.name }}</tr>
+    <tr><td>Cognome</td><td> {{ staff.surname }} </tr>
+    <tr><td>Data di nascita</td><td> {{ staff.birth_date }} </tr>
+    <tr><td>Telefono</td><td> {{ staff.phone }} </tr>
+    <tr><td>Sesso</td><td> {{ staff.gender }} </tr>
+    <tr><td>Nazionalità</td><td> {{ staff.nationality }} </tr>
+    <tr><td>Forma contrattuale</td><td> {{ staff.collagreement }} </tr>
+    <tr><td>Sorveglianza sanitaria</td><td> {{ staff.health_care }} </tr>
+    <tr><td>Computo lavoratori</td><td> {{ staff.workers_count }} </tr>
+    <tr><td>Azienda</td><td> {{ staff.company }} </tr>
+    <tr><td>Mansione Omogenea</td><td> {{ staff.standard_task }} </tr>
+    <tr><td>Reparto</td><td> {{ staff.department }} </tr>
+    <tr><td>Mansione</td><td> {{ staff.role }} </tr>
+    <tr><td>Figura Prevenzione</td><td> {{ staff.security_duty }} </tr>
+    <tr><td>Data assunzione</td><td> {{ staff.employ_date }} </tr>
+  </table>
+</div>
 {% endblock %}
