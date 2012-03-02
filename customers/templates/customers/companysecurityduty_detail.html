@@ -1,0 +1,50 @@
+{% extends "customers/base-customers.html" %}
+{% block title %} Gestione Personale Azienda: {{ companysecurityduty.company.firm }} {% endblock %}
+{% block customersmenu %}
+<h3><a href="#">Anagrafica</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url customers %}">
+        Aziende
+      </a>
+    </li>
+    <li>
+      <a href="{% url company-detail company.id %}">
+        Azienda corrente
+      </a>
+    </li>
+    <li>
+      <a href="{% url set-working-env company.id %}">
+        Ambiente di Lavoro
+      </a>
+    </li>
+    <li>
+      <a href="{% url companysecurityduty-list company.id %}">
+            Organigramma
+      </a>
+    </li>
+    <li>
+      <a href="{% url companysecurityduty-list company.id %}">
+        Figure Prevenzione
+      </a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="gridbox">
+  <h1>{{ companysecurityduty.surname }} {{ companysecurityduty.name }} ({{ companysecurityduty.security_duty }})</h1>
+  <table>
+    <tr><td>Nome</td><td> {{ companysecurityduty.name }}</tr>
+    <tr><td>Cognome</td><td> {{ companysecurityduty.surname }} </tr>
+    <tr><td>Telefono Interno</td><td> {{ companysecurityduty.internal_phone }} </tr>
+    <tr><td>Telefono Esterno</td><td> {{ companysecurityduty.external_phone }} </tr>
+    <tr><td>Email</td><td>
+          <a href="mailto:{{ companysecurityduty.email }}">{{ companysecurityduty.email }}</a>
+      </td>
+    <tr><td>Figura Prevenzione</td><td> {{ companysecurityduty.security_duty }} </tr>
+  </table>
+</div>
+{% endblock %}
