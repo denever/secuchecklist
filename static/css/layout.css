@@ -16,6 +16,11 @@ body {
     height: 125px;
 }
 
+.content-top {
+    height: 20px;
+    float: right;
+}
+
 #content-wrapper {
 }
 
