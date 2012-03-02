@@ -268,3 +268,11 @@ class CompanySecurityDutyDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('companysecurityduty-list', args=self.kwargs['company'])
+
+class CompanySecurityDutyDetailView(DetailView):
+    model = CompanySecurityDuty
+
+    def get_context_data(self, **kwargs):
+        context = super(CompanySecurityDutyDetailView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
