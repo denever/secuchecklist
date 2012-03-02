@@ -93,7 +93,8 @@ class CustomerCompany(models.Model):
     inps_pos = models.CharField('Posizione INPS', max_length=200)
     ccnl = models.CharField('CCNL', max_length=200)
     ateco_sector = models.ForeignKey(AtecoSector, verbose_name='Settore Ateco 2007')
-    certifications = models.ManyToManyField(Certification, verbose_name='Certificazioni')
+    certifications = models.ManyToManyField(Certification, verbose_name='Certificazioni',
+                                            null=True, blank=True)
     settlement_size = models.PositiveIntegerField('Superficie insediamento mq.')
 
     cpi = models.ForeignKey(CPISettlement, verbose_name='Insediamento CPI')
