@@ -1,0 +1,57 @@
+{% extends "customers/base-customers.html" %}
+{% block customersmenu %}
+<h3><a href="#">Anagrafica</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url customers %}">
+        Aziende
+      </a>
+    </li>
+    <li>
+      <a href="{% url company-edit customercompany.id %}">
+        Modifica Azienda
+      </a>
+    </li>
+    <li>
+      <a href="{% url set-working-env customercompany.id %}">
+        Ambiente di Lavoro
+      </a>
+    </li>
+    <li>
+      <a href="{% url staff-list customercompany.id %}">
+        Organigramma
+      </a>
+    </li>
+    <li>
+      <a href="{% url companysecurityduty-list customercompany.id %}">
+        Figure Prevenzione
+      </a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="gridbox">
+  <h1>Sei sicuro?</h1>
+  <p>
+     Sei sicuro di voler cancellare l'azienda <em>{{ customercompany.firm }}</em>?
+  </p>
+  <p>
+    Riepilogo dati:
+    <ul>
+      <li> <em>Ragione Sociale</em>: <strong>{{ customercompany.firm }}</strong> </li>
+      <li> <em>Codice Fiscale</em>: <strong>{{ customercompany.tax_code }}</strong> </li>
+      <li> <em>Partita IVA</em>: <strong>{{ customercompany.vat_code }}</strong> </li>
+      <li> <em>Settore ATECO 2007</em>: <strong>{{ customercompany.ateco_sector }}</strong> </li>
+    </ul>
+  </p>
+  <form action="" method="post">{% csrf_token %}
+    <div>
+      <input type="hidden" name="post" value="yes">
+      <input type="submit" value="Yes, I'm sure">
+    </div>
+  </form>
+</div>
+{% endblock %}
