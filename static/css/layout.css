@@ -6,6 +6,17 @@ body {
     font-size: 10px;
 }
 
+label {
+    display: block;
+    padding: 5px;
+    }
+
+input {
+    display: block;
+    }
+
+fieldset { padding:0 1.4em 1.4em 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc; }
+
 #wrapper {
     margin: 0 auto;
     width: 956px;
