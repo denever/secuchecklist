@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% load url from future %}
+{% block mainmenu %}
+{% endblock %}
 {% block content %}
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
-<div>
-    <h3>Secuchecklist login</h3>    
+<div class="ui-helper-reset ui-widget">
+  <h3 class="ui-helper-reset ui-widget-header">Secuchecklist login</h3>
+  <div class="ui-helper-reset ui-widget-content">
     <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
       {% csrf_token %}
       <table>
@@ -21,5 +24,6 @@
       <input type="submit" value="login" />
       <input type="hidden" name="next" value="{{ next }}" />
     </form>
-</div>  
+  </div>
+</div>
 {% endblock %}
