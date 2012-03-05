@@ -1,26 +1,3 @@
-FATTO: admin per tutte le nuove classi aggiuntes
-FATTO: Studiare come caricare i dati nel db (usare mysql e poi caricarli li?)
-FATTO: Aggiungere command a manage:
-FATTO 1) Per popolare il database con dati fake.
-FATTO 2) Per caricare i dati che vengono da stradivari.
-FATTO: Migliorare vincoli unicità partita iva, ragione sociale, e codice fiscale.
-FATTO Aggiungere creazione reparto direttamente legato ad azienda.
-FATTO Quando si aggiunge un personale all'azienda la select deve avere solo i reparti dell'azienda.
-FATTO Modifica azienda più elaborata:
-FATTO 1) Aggiunta Figura prevezione
-FATTO 2) Aggiunta Lavoratore
-FATTO 3) aggiunta reparto
-FATTO 4) fare un menu a parte per l'azienda
-
-FATTO: Studiarsi i nomi del url per ristrutturare tutti gli url con {{ url nome url }}
-FATTO: Vedere anche il passaggio di valori agli url.
-FATTO: Aggiunta di reparti va nella vista ambiente di lavoro.
-FATTO: Una lisata di reparti nella vista ambiente di lavoro.
-FATTO: la success_url per un CreateDepartment view è l'ambiente di lavoro
-FATTO: 1) Sistemare figure prevenzione
-FATTO 1) Sistemare figure prevenzione
-2) Aggiungere edit/delete alle liste
-3) Trovare icone da usare (frose blueprint?)
 4) Gestire viste annuali
 5) Organizzare tabelle per anno.
 6) risitemare il printing dei tempalte per le TextView e per i booleani ed altri simili casi
@@ -57,3 +34,6 @@ FATTO: Aggiungere form media in tutte le form
       {% endblock %}
     </div>
     {% endif %}
+
+Aggiungere toolbar con icona alle liste.
+Risolvere bug del update che mostra l'id e non la str.
