@@ -37,6 +37,10 @@
 </div>
 {% endblock %}
 
+{% block content-top %}
+  <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url department-edit company.id department.id %}"></a>
+{% endblock %}
+
 {% block content %}
 <script>
   $(document).ready( function () {
