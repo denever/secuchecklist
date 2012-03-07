@@ -119,3 +119,8 @@ a.tablelink{
     padding: 0.2em;
     margin-bottom: 0.2em;
 }
+
+td.fieldname{
+    vertical-align: top;
+    width: 30%;
+    }
