@@ -6,52 +6,58 @@
   <ul class="menu">
     <li>
       <a href="{% url customers %}">
-        Aziende
+	Aziende
       </a>
     </li>
     <li>
       <a href="{% url company-detail company.id %}">
-        Azienda corrente
+	Azienda corrente
       </a>
     </li>
     <li>
       <a href="{% url set-working-env company.id %}">
-        Ambiente di Lavoro
+	Ambiente di Lavoro
       </a>
     </li>
     <li>
       <a href="{% url staff-list company.id %}">
-            Organigramma
+	    Organigramma
       </a>
     </li>
     <li>
       <a href="{% url companysecurityduty-list company.id %}">
-        Figure Prevenzione
+	Figure Prevenzione
       </a>
     </li>
   </ul>
 </div>
 {% endblock %}
 
+{% block content-top %}
+  <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url staff-edit company.id staff.id %}"></a>
+{% endblock %}
+
 {% block content %}
-<div class="gridbox">
-  <h1>{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</h1>
-  <table>
-    <tr><td>Nome</td><td> {{ staff.name }}</tr>
-    <tr><td>Cognome</td><td> {{ staff.surname }} </tr>
-    <tr><td>Data di nascita</td><td> {{ staff.birth_date }} </tr>
-    <tr><td>Telefono</td><td> {{ staff.phone }} </tr>
-    <tr><td>Sesso</td><td> {{ staff.gender }} </tr>
-    <tr><td>Nazionalità</td><td> {{ staff.nationality }} </tr>
-    <tr><td>Forma contrattuale</td><td> {{ staff.collagreement }} </tr>
-    <tr><td>Sorveglianza sanitaria</td><td> {{ staff.health_care }} </tr>
-    <tr><td>Computo lavoratori</td><td> {{ staff.workers_count }} </tr>
-    <tr><td>Azienda</td><td> {{ staff.company }} </tr>
-    <tr><td>Mansione Omogenea</td><td> {{ staff.standard_task }} </tr>
-    <tr><td>Reparto</td><td> {{ staff.department }} </tr>
-    <tr><td>Mansione</td><td> {{ staff.role }} </tr>
-    <tr><td>Figura Prevenzione</td><td> {{ staff.security_duty }} </tr>
-    <tr><td>Data assunzione</td><td> {{ staff.employ_date }} </tr>
-  </table>
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <table>
+      <tr><td class="fieldname">Nome</td><td> {{ staff.name }}</tr>
+      <tr><td class="fieldname">Cognome</td><td> {{ staff.surname }} </tr>
+      <tr><td class="fieldname">Data di nascita</td><td> {{ staff.birth_date }} </tr>
+      <tr><td class="fieldname">Telefono</td><td> {{ staff.phone }} </tr>
+      <tr><td class="fieldname">Sesso</td><td> {{ staff.gender }} </tr>
+      <tr><td class="fieldname">Nazionalità</td><td> {{ staff.nationality }} </tr>
+      <tr><td class="fieldname">Forma contrattuale</td><td> {{ staff.collagreement }} </tr>
+      <tr><td class="fieldname">Sorveglianza sanitaria</td><td> {{ staff.health_care }} </tr>
+      <tr><td class="fieldname">Computo lavoratori</td><td> {{ staff.workers_count }} </tr>
+      <tr><td class="fieldname">Azienda</td><td> {{ staff.company }} </tr>
+      <tr><td class="fieldname">Mansione Omogenea</td><td> {{ staff.standard_task }} </tr>
+      <tr><td class="fieldname">Reparto</td><td> {{ staff.department }} </tr>
+      <tr><td class="fieldname">Mansione</td><td> {{ staff.role }} </tr>
+      <tr><td class="fieldname">Figura Prevenzione</td><td> {{ staff.security_duty }} </tr>
+      <tr><td class="fieldname">Data assunzione</td><td> {{ staff.employ_date }} </tr>
+    </table>
+  </div>
 </div>
 {% endblock %}
