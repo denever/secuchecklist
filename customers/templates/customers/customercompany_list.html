@@ -36,39 +36,42 @@
   );
   } );
 </script>
-<div class="gridbox">
-  {% if companies %}
-  <table id="companies" class="display">
-    <thead>
-      <tr>
-        <th>Azienda</th>
-        <th>Settore ATECO 2007</th>
-        <th>Data registrazione</th>
-        <th>Azioni</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for cc in companies %}
-      <tr>
-        <td>
-          <a class="tablelink" href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
-        </td>
-        <td>
-          ({{ cc.ateco_sector }})
-        </td>
-        <td>
-          {{ cc.record_date }}
-        </td>
-        <td>
-          <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}">
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">Anagrafica Aziende</h1>
+  <div style="margin: 10px">
+    {% if companies %}
+    <table id="companies" class="display">
+      <thead>
+	<tr>
+          <th>Azienda</th>
+          <th>Settore ATECO 2007</th>
+          <th>Data registrazione</th>
+          <th>Azioni</th>
+	</tr>
+      </thead>
+      <tbody>
+	{% for cc in companies %}
+	<tr>
+          <td>
+            <a class="tablelink" href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+          </td>
+          <td>
+            ({{ cc.ateco_sector }})
+          </td>
+          <td>
+            {{ cc.record_date }}
+          </td>
+          <td>
+            <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}"></a>
             <a title="Elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url company-delete cc.id %}"></a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% else %}
-  <p>No companies are available.</p>
-  {% endif %}
+          </td>
+	</tr>
+	{% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No companies are available.</p>
+    {% endif %}
+</div>
 </div>
 {% endblock %}
