@@ -8,27 +8,27 @@
   <ul class="menu">
     <li>
       <a href="{% url customers %}">
-        Aziende
+	Aziende
       </a>
     </li>
     <li>
       <a href="{% url company-detail company.id %}">
-        Azienda corrente
+	Azienda corrente
       </a>
     </li>
     <li>
       <a href="{% url set-working-env company.id %}">
-        Ambiente di Lavoro
+	Ambiente di Lavoro
       </a>
     </li>
     <li>
       <a href="{% url staff-list company.id %}">
-            Organigramma
+	    Organigramma
       </a>
     </li>
     <li>
       <a href="{% url companysecurityduty-list company.id %}">
-        Figure Prevenzione
+	Figure Prevenzione
       </a>
     </li>
   </ul>
@@ -39,66 +39,68 @@
 {% endblock %}
 
 {% block content %}
-<div class="gridbox">
-  <h1>Dettaglio Azienda: {{ company.firm }}</h1>
-  <table>
-    <tr> <td>Ragione sociale</td><td>{{ company.firm }}</td></tr>
-    <tr> <td>Sede legale amministrativa</td><td>{{ company.registered_office }}</td></tr>
-    <tr> <td>Sede insediamento produttivo</td><td>{{ company.settlement }}</td></tr>
-    <tr> <td>Iscrizione CIIAA</td><td>{{ company.ciiaa }}</td></tr>
-    <tr> <td>Codice fiscale</td><td>{{ company.tax_code }}</td></tr>
-    <tr> <td>Partita IVA</td><td>{{ company.vat_code }}</td></tr>
-    <tr> <td>Posizione INAIL</td><td>{{ company.inail_pos }}</td></tr>
-    <tr> <td>Posizione INPS</td><td>{{ company.inps_pos }}</td></tr>
-    <tr> <td>CCNL</td><td>{{ company.ccnl }}</td></tr>
-    <tr> <td>Settore Ateco 2007</td><td>{{ company.ateco_sector }}</td></tr>
-    <tr> <td>Certificazioni</td><td>
-        <ul>
-          {% for cert in company.certifications.all %}
-          <li>{{ cert }} </li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr> <td>Data registrazione</td><td>{{ company.record_date }}</td></tr>
-    <tr><td>CPI</td><td>{{ company.cpi }}</td></tr>
-    <tr>
-      <td>Uso macchine</td>
-      <td>
-        {% if company.machine_use %}
-        Sì
-        {% else %}
-        No
-        {% endif %}
-      </td>
-    </tr>
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">Dettaglio Azienda: {{ company.firm }}</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <table>
+      <tr> <td class="fieldname">Ragione sociale</td><td>{{ company.firm }}</td></tr>
+      <tr> <td class="fieldname">Sede legale amministrativa</td><td>{{ company.registered_office }}</td></tr>
+      <tr> <td class="fieldname">Sede insediamento produttivo</td><td>{{ company.settlement }}</td></tr>
+      <tr> <td class="fieldname">Iscrizione CIIAA</td><td>{{ company.ciiaa }}</td></tr>
+      <tr> <td class="fieldname">Codice fiscale</td><td>{{ company.tax_code }}</td></tr>
+      <tr> <td class="fieldname">Partita IVA</td><td>{{ company.vat_code }}</td></tr>
+      <tr> <td class="fieldname">Posizione INAIL</td><td>{{ company.inail_pos }}</td></tr>
+      <tr> <td class="fieldname">Posizione INPS</td><td>{{ company.inps_pos }}</td></tr>
+      <tr> <td class="fieldname">CCNL</td><td>{{ company.ccnl }}</td></tr>
+      <tr> <td class="fieldname">Settore Ateco 2007</td><td>{{ company.ateco_sector }}</td></tr>
+      <tr> <td class="fieldname">Certificazioni</td><td>
+	  <ul>
+	    {% for cert in company.certifications.all %}
+	    <li>{{ cert }} </li>
+	    {% endfor %}
+	  </ul>
+	</td>
+      </tr>
+      <tr> <td class="fieldname">Data registrazione</td><td>{{ company.record_date }}</td></tr>
+      <tr><td class="fieldname">CPI</td><td>{{ company.cpi }}</td></tr>
+      <tr>
+	<td class="fieldname">Uso macchine</td>
+	<td>
+	  {% if company.machine_use %}
+	  Sì
+	  {% else %}
+	  No
+	  {% endif %}
+	</td>
+      </tr>
 
-    <tr>
-      <td>Sostanze pericolose</td>
-      <td>
-        {% if company.dangerous_substances %}
-        Sì
-        {% else %}
-        No
-        {% endif %}
-      </td>
-    </tr>
+      <tr>
+	<td class="fieldname">Sostanze pericolose</td>
+	<td>
+	  {% if company.dangerous_substances %}
+	  Sì
+	  {% else %}
+	  No
+	  {% endif %}
+	</td>
+      </tr>
 
-    <tr>
-      <td>Sorveglianza sanitaria</td>
-      <td>
-        {% if company.health_surveillance %}
-        Sì
-        {% else %}
-        No
-        {% endif %}
-      </td>
-    </tr>
-    <tr> <td>Superficie insediamento</td><td>{{ company.settlement_size }}</td></tr>
-    <tr> <td>Telefono</td><td>{{ company.phone }}</td></tr>
-    <tr> <td>Fax</td><td>{{ company.fax }}</td></tr>
-    <tr> <td>Email</td><td><a href="mailto:{{ company.email }}">{{ company.email }}</a></td></tr>
-    <tr> <td>Numero di lavoratori</td><td>{{ company.workers_count }}</td></tr>
-  </table>
+      <tr>
+	<td class="fieldname">Sorveglianza sanitaria</td>
+	<td>
+	  {% if company.health_surveillance %}
+	  Sì
+	  {% else %}
+	  No
+	  {% endif %}
+	</td>
+      </tr>
+      <tr> <td class="fieldname">Superficie insediamento</td><td>{{ company.settlement_size }}</td></tr>
+      <tr> <td class="fieldname">Telefono</td><td>{{ company.phone }}</td></tr>
+      <tr> <td class="fieldname">Fax</td><td>{{ company.fax }}</td></tr>
+      <tr> <td class="fieldname">Email</td><td><a href="mailto:{{ company.email }}">{{ company.email }}</a></td></tr>
+      <tr> <td class="fieldname">Numero di lavoratori</td><td>{{ company.workers_count }}</td></tr>
+    </table>
+  </div>
 </div>
 {% endblock %}
