@@ -23,7 +23,12 @@
   </script>
   <div id="wrapper">
     <div id="banner">
-      {% block banner %} {% endblock %}
+      {% block banner %}
+      <h1 class="logo">
+	<a href="{% url customers %}">
+	  <span>Studio HSE Gestionale</span>
+	</a>
+      {% endblock %}
     </div>
     <div id="content-wrapper">
       <div id="content">

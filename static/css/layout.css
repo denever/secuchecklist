@@ -124,3 +124,12 @@ table.detail td.fieldname{
     vertical-align: top;
     width: 40%;
 }
+
+h1.logo, h1.logo a {
+    width: 418px;
+    height: 105px;
+}
+
+h1.logo a span {
+    display: none;
+}

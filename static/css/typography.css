@@ -112,3 +112,8 @@ table.detail tr.even {
 table.detail td.fieldname{
     font-weight: bold;
 }
+
+h1.logo a{
+    display: block;
+    background: url('/static/images/logo.png');
+}
