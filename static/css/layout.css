@@ -110,17 +110,13 @@ a.tablelink{
     border-bottom: 0;
 }
 
-.gridbox {
-    margin-bottom: 0.2em;
-}
-
 /* Use a .box to create a padded box inside a column.  */
 .toolbarbox {
     padding: 0.2em;
     margin-bottom: 0.2em;
 }
 
-td.fieldname{
+table.detail td.fieldname{
     vertical-align: top;
-    width: 30%;
-    }
+    width: 40%;
+}

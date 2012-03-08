@@ -100,3 +100,15 @@ a.tablelink{
 .toolbarbox {
     background:#e5eCf9;
 }
+
+table.detail tr.odd {
+    background-color: #EFE;
+}
+
+table.detail tr.even {
+    background-color: #DFD;
+}
+
+table.detail td.fieldname{
+    font-weight: bold;
+}
