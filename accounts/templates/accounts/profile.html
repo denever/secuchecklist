@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block extra_head %}
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+<link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
 {% endblock %}
 {% block title %} Profilo {{ user.get_full_name }} {% endblock %}
 {% block title2 %} Profilo {{ user.get_full_name }} {% endblock %}
@@ -19,9 +20,6 @@
     </li>
   </ul>
 </div>
-{% endblock %}
-{% block toolbar %}
-Ultimo login: {{ user.last_login }}
 {% endblock %}
 {% block content %}
 <script>
