@@ -133,3 +133,27 @@ h1.logo, h1.logo a {
 h1.logo a span {
     display: none;
 }
+
+#dock {
+    height: 25px;
+    float: left;
+    position: absolute;
+    top: 0;
+    right: 2px;
+}
+
+#dock ul {
+    padding: 0 6px;
+    height: 25px;
+ }
+
+#dock ul, #dock ul li {
+    float: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+}
+
+#dock a {
+    text-decoration: none;
+}
