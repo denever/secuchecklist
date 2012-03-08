@@ -24,9 +24,15 @@
 {% block content %}
 <script>
   $(document).ready( function () {
-  $('#mycompanies').dataTable({"bJQueryUI": true});
-  $('#mystaff').dataTable({"bJQueryUI": true});
-  $('#mysecduty').dataTable({"bJQueryUI": true});
+  $('#mycompanies').dataTable({"bJQueryUI": true,
+  "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
+  });
+  $('#mystaff').dataTable({"bJQueryUI": true,
+  "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
+  });
+  $('#mysecduty').dataTable({"bJQueryUI": true,
+  "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
+  });
   } );
   $(function() {
   $( "#accordion" ).accordion({collapsible: true});

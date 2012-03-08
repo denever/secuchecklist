@@ -7,12 +7,12 @@
 {% block title2 %} Anagrafica Aziende {% endblock %}
 {% block submenu %}
       <ul class="menu">
-        {% for year in years %}
-        <li>
-          <a href="{% url company-year year %}">{{ year }}
-          </a>
-        </li>
-        {% endfor %}
+	{% for year in years %}
+	<li>
+	  <a href="{% url company-year year %}">{{ year }}
+	  </a>
+	</li>
+	{% endfor %}
       </ul>
 {% endblock %}
 {% block content-top %}
@@ -23,6 +23,7 @@
   $(document).ready( function () {
   $('#companies').dataTable({
   "bJQueryUI": true,
+  "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
   "aoColumns": [/* Azienda */ null,
   /* Settore ATECO 2007 */ null,
   /* Data registrazione */ null,
@@ -43,28 +44,28 @@
     <table id="companies" class="display">
       <thead>
 	<tr>
-          <th>Azienda</th>
-          <th>Settore ATECO 2007</th>
-          <th>Data registrazione</th>
-          <th>Azioni</th>
+	  <th>Azienda</th>
+	  <th>Settore ATECO 2007</th>
+	  <th>Data registrazione</th>
+	  <th>Azioni</th>
 	</tr>
       </thead>
       <tbody>
 	{% for cc in companies %}
 	<tr>
-          <td>
-            <a class="tablelink" href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
-          </td>
-          <td>
-            ({{ cc.ateco_sector }})
-          </td>
-          <td>
-            {{ cc.record_date }}
-          </td>
-          <td>
-            <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}"></a>
-            <a title="Elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url company-delete cc.id %}"></a>
-          </td>
+	  <td>
+	    <a class="tablelink" href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+	  </td>
+	  <td>
+	    ({{ cc.ateco_sector }})
+	  </td>
+	  <td>
+	    {{ cc.record_date }}
+	  </td>
+	  <td>
+	    <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}"></a>
+	    <a title="Elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url company-delete cc.id %}"></a>
+	  </td>
 	</tr>
 	{% endfor %}
       </tbody>
