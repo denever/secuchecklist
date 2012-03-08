@@ -71,11 +71,11 @@ class CustomerCompanyUpdateView(UpdateView):
 	self.success_url = reverse('company-detail', args=self.kwargs['pk'])
 	return super(CustomerCompanyUpdateView, self).form_valid(form)
 
-    def get_initial(self):
-	self.initial = super(CustomerCompanyUpdateView, self).get_initial()
-	self.initial['ateco_sector'] = self.object.ateco_sector.name
-	self.initial['cpi'] = self.object.cpi.name
-	return self.initial
+    # def get_initial(self):
+    #     self.initial = super(CustomerCompanyUpdateView, self).get_initial()
+    #     self.initial['ateco_sector'] = self.object.ateco_sector.name
+    #     self.initial['cpi'] = self.object.cpi.name
+    #     return self.initial
 
 class CustomerCompanyDeleteView(DeleteView):
     model = CustomerCompany
