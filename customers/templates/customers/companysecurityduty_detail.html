@@ -42,15 +42,15 @@
 <div class="ui-helper-reset ui-widget">
   <h1 class="ui-helper-reset ui-widget-header">{{ companysecurityduty.surname }} {{ companysecurityduty.name }} ({{ companysecurityduty.security_duty }})</h1>
   <div class="ui-helper-reset ui-widget-content">
-    <table>
-      <tr><td class="fieldname">Nome</td><td> {{ companysecurityduty.name }}</tr>
-      <tr><td class="fieldname">Cognome</td><td> {{ companysecurityduty.surname }} </tr>
-      <tr><td class="fieldname">Telefono Interno</td><td> {{ companysecurityduty.internal_phone }} </tr>
-      <tr><td class="fieldname">Telefono Esterno</td><td> {{ companysecurityduty.external_phone }} </tr>
-      <tr><td class="fieldname">Email</td><td>
+    <table class="detail">
+      <tr class="even"><td class="fieldname">Nome</td><td> {{ companysecurityduty.name }}</tr>
+      <tr class="odd"><td class="fieldname">Cognome</td><td> {{ companysecurityduty.surname }} </tr>
+      <tr class="even"><td class="fieldname">Telefono Interno</td><td> {{ companysecurityduty.internal_phone }} </tr>
+      <tr class="odd"><td class="fieldname">Telefono Esterno</td><td> {{ companysecurityduty.external_phone }} </tr>
+      <tr class="even"><td class="fieldname">Email</td><td>
 	  <a href="mailto:{{ companysecurityduty.email }}">{{ companysecurityduty.email }}</a>
 	</td>
-      <tr><td class="fieldname">Figura Prevenzione</td><td> {{ companysecurityduty.security_duty }} </tr>
+      <tr class="odd"><td class="fieldname">Figura Prevenzione</td><td> {{ companysecurityduty.security_duty }} </tr>
     </table>
   </div>
 </div>
