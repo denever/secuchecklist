@@ -23,12 +23,20 @@
   </script>
   <div id="wrapper">
     <div id="banner">
-      {% block banner %}
       <h1 class="logo">
 	<a href="{% url customers %}">
 	  <span>Studio HSE Gestionale</span>
 	</a>
-      {% endblock %}
+      </h1>
+      <div id="dock">
+	{% block dock %}
+	<ul>
+	  <li>Benvenuto {{ user }}</li>
+	  <li>Ultimo login: {{ user.last_login }}</li>
+	  <li><a title="Logout" class="ui-corner-all ui-icon ui-icon-circle-close" href="{% url logout %}"></a></li>
+	</ul>
+	{% endblock %}
+      </div>
     </div>
     <div id="content-wrapper">
       <div id="content">
