@@ -116,6 +116,10 @@ a.tablelink{
     margin-bottom: 0.2em;
 }
 
+table.detail {
+    width: 100%;
+}
+
 table.detail td.fieldname{
     vertical-align: top;
     width: 40%;
