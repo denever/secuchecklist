@@ -1,6 +1,6 @@
 {% extends "customers/base-customers.html" %}
 {% block extra_head %}
-<link href="/static/datatables/css/demo_table.css" type="text/css" media="all" rel="stylesheet"/>
+<link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 {% endblock %}
 {% block title %} Gestione Personale Azienda: {{ department.company.firm }} {% endblock %}
@@ -62,17 +62,23 @@
 <div class="ui-helper-reset ui-widget">
   <h1 class="ui-helper-reset ui-widget-header">Descrizione reparto</h1>
   <div class="ui-helper-reset ui-widget-content">
-    <table>
-      <tr><td class="fieldname">Reparto</td><td> {{ department.name }}</td></tr>
-      <tr><td class="fieldname">Superficie</td><td> {{ department.size }} </td></tr>
-      <tr><td class="fieldname">Descrizione</td><td> {{ department.description }} </td></tr>
+    <table class="detail">
+      <tr class="even">
+	<td class="fieldname">Reparto</td><td> {{ department.name }}</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">Superficie</td><td> {{ department.size }} </td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">Descrizione</td><td> {{ department.description }} </td>
+      </tr>
     </table>
   </div>
 </div>
 
 <div style="margin: 10px;" class="ui-helper-reset ui-widget">
   <h1 class="ui-helper-reset ui-widget-header">Personale presso il reparto</h1>
-  <div style="margin: 10px; padding: 10px;" class="ui-helper-reset ui-widget-content">
+  <div style="margin: 10px; padding: 10px;">
     <table id="staff" class="display">
       <thead>
 	<tr>

@@ -3,32 +3,34 @@
 {% block title %} Registrazione Azienda {% endblock %}
 {% block submenu %}{% endblock %}
 {% block content %}
-<div class="gridbox">
-  <h1>Registrazione Azienda</h1>
-  <form action="{{ form.success_url }}" method="post">{% csrf_token %}
-    <fieldset>
-      <table>
-      {% for field in form %}
-      <tr>
-      <td>
-        <label for="{{ field.html_name }}">{{ field.label_tag }}</label>
-      </td>
-      <td>
-        {{ field }}
-      </td>
-      {% if field.errors %}
-      <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-      {% for error in field.errors %}
-      <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-      {{ error }}
-      </td>
-      {% endfor %}
-      {% endif %}
-      </tr>
-      {% endfor %}
-      </table>
-    </fieldset>
-    <input type="submit" value="Registra"/>
-  </form>
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">Registrazione Azienda</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <form action="{{ form.success_url }}" method="post">{% csrf_token %}
+      <fieldset>
+	<table>
+	  {% for field in form %}
+	  <tr>
+	    <td>
+	      <label for="{{ field.html_name }}">{{ field.label_tag }}</label>
+	    </td>
+	    <td>
+	      {{ field }}
+	    </td>
+	    {% if field.errors %}
+	    <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+	      {% for error in field.errors %}
+	      <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+	      {{ error }}
+	    </td>
+	    {% endfor %}
+	    {% endif %}
+	  </tr>
+	  {% endfor %}
+	</table>
+      </fieldset>
+      <input type="submit" value="Registra"/>
+    </form>
+  </div>
 </div>
 {% endblock %}
