@@ -92,7 +92,7 @@
 	{% for staff in department.staff_set.all %}
 	<tr>
 	  <td>
-	    <a href="{% url staff-detail company.id staff.id %}">{{ staff.surname }} {{ staff.name }}</a>
+	    <a class="tablelink" href="{% url staff-detail company.id staff.id %}">{{ staff.surname }} {{ staff.name }}</a>
 	  </td>
 	  <td>
 	    {{ staff.standard_task }}
