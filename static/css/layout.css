@@ -157,3 +157,7 @@ h1.logo a span {
 #dock a {
     text-decoration: none;
 }
+
+#id_working_environment {
+    width: 100%;
+}
