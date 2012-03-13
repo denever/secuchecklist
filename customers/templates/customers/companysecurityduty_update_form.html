@@ -22,27 +22,27 @@ window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{%
   <ul class="menu">
     <li>
       <a href="{% url customers %}">
-	Aziende
+        Aziende
       </a>
     </li>
     <li>
       <a href="{% url company-detail company.id %}">
-	Azienda corrente
+        Azienda corrente
       </a>
     </li>
     <li>
       <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
+        Ambiente di Lavoro
       </a>
     </li>
     <li>
       <a href="{% url staff-list company.id %}">
-	    Organigramma
+            Organigramma
       </a>
     </li>
     <li>
       <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
+        Figure Prevenzione
       </a>
     </li>
   </ul>
@@ -54,30 +54,30 @@ window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{%
   <div class="ui-helper-reset ui-widget-content">
     <form action="{{ form.success_url }}" method="post">{% csrf_token %}
       <fieldset>
-	<table>
-	  {% for field in form %}
-	  <tr>
-	    <td>
-	      <label for="{{ field.html_name }}">{{ field.label_tag }}</label>
-	    </td>
-	    <td>
-	      {{ field }}
-	    </td>
-	    {% if field.errors %}
-	    <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-	      {% for error in field.errors %}
-	      <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-	      {{ error }}
-	    </td>
-	    {% endfor %}
-	    {% endif %}
-	  </tr>
-	  {% endfor %}
-	  <tr>
-	    <td></td>
-	    <td><input type="submit" value="Aggiorna"/></td>
-	  </tr>
-	</table>
+        <table>
+          {% for field in form %}
+          <tr id="{{ field.html_name }}">
+            <td>
+              {{ field.label_tag }}
+            </td>
+            <td>
+              {{ field }}
+            </td>
+            {% if field.errors %}
+            <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+              {% for error in field.errors %}
+              <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+              {{ error }}
+            </td>
+            {% endfor %}
+            {% endif %}
+          </tr>
+          {% endfor %}
+          <tr>
+            <td></td>
+            <td><input type="submit" value="Aggiorna"/></td>
+          </tr>
+        </table>
       </fieldset>
     </form>
   </div>

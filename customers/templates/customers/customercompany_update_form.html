@@ -42,9 +42,9 @@
       <fieldset>
 	<table>
 	  {% for field in form %}
-	  <tr>
+	  <tr id="{{ field.html_name }}">
 	    <td>
-	      <label for="{{ field.html_name }}">{{ field.label_tag }}</label>
+	      {{ field.label_tag }}
 	    </td>
 	    <td>
 	      {{ field }}
