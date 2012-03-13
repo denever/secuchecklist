@@ -15,7 +15,6 @@ from customers.models import CompanySecurityDuty
 
 from django.contrib import admin
 
-admin.site.register(TownShip)
 admin.site.register(AtecoSector)
 admin.site.register(StandardTask)
 admin.site.register(Role)
@@ -27,6 +26,13 @@ admin.site.register(CollaborationAgreement)
 admin.site.register(HealthSurveillance)
 admin.site.register(CPISettlement)
 admin.site.register(CompanySecurityDuty)
+
+class TownShipAdmin(admin.ModelAdmin):
+    list_display = ('code', 'name', 'province', 'zipcode')
+    list_filter = ['zipcode']
+    search_field = ['name', 'zipcode']
+
+admin.site.register(TownShip, TownShipAdmin)
 
 class StaffAdmin(admin.ModelAdmin):
     list_display = ('surname', 'name') #, 'mansione_omogenea')
