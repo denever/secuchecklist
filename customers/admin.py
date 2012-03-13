@@ -1,3 +1,4 @@
+from customers.models import TownShip
 from customers.models import AtecoSector
 from customers.models import StandardTask
 from customers.models import Role
@@ -14,6 +15,7 @@ from customers.models import CompanySecurityDuty
 
 from django.contrib import admin
 
+admin.site.register(TownShip)
 admin.site.register(AtecoSector)
 admin.site.register(StandardTask)
 admin.site.register(Role)
