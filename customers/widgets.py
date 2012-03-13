@@ -1,7 +1,11 @@
+# encoding: utf-8
+
 import re
 from django.forms import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from django.forms.fields import Field, RegexField, Select
+from django.contrib.localflavor.it.forms import ITZipCodeField, ITProvinceSelect, ITRegionSelect
+from django import forms
 
 phone_digits_re = re.compile(r'^((\+|00)39\s)?[0-9]{2,4}\s[0-9]{5,8}$')
 
@@ -48,3 +52,23 @@ class ITPhoneNumberField(Field):
             return u'%s %s' % (m[0], m[1])
 
         raise ValidationError(self.error_messages['invalid'])
+
+class AddressFormField(forms.MultiValueField):
+    def __init__(self, *args, **kwargs):
+        fields = ( # street =
+            forms.CharField(label='Via/Piazza'),
+            #number =
+            forms.CharField(label='Numero Civico'),
+            #postcode =
+            ITZipCodeField(label='CAP'),
+            #town =
+            forms.CharField(label='Comune'),
+            #province =
+            ITProvinceSelect(),
+            #region =
+            ITRegionSelect()
+            )
+        super(AddressFormField, self).__init__(fields, *args, **kwargs)
+
+    def compress(self, data_list):
+        return ','.join(data_list)
