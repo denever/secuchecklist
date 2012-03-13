@@ -36,3 +36,8 @@ class Command(BaseCommand):
         for desc in src_cur:
             obj = HealthSurveillance(name=desc[1], description=desc[1])
             obj.save()
+
+        src_cur.execute('select codice, comune, provincia, cap from Comuni')
+        for desc in src_cur:
+            obj = TownShip(codice=desc[0], comune=desc[1], provincia=desc[2], cap=desc[3])
+            obj.save()
