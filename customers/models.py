@@ -15,6 +15,9 @@ class TownShip(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        ordering = ['code', 'name', 'zipcode']
+
 class AtecoSector(models.Model):
     name = models.CharField('Nome', unique=True, max_length=200)
     description = models.CharField('Descrizione', max_length=200)
