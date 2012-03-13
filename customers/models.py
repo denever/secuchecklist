@@ -2,6 +2,8 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+from customers.modelfields import AddressField
+
 # Create your models here.
 
 class AtecoSector(models.Model):
@@ -82,10 +84,8 @@ class CPISettlement(models.Model):
 
 class CustomerCompany(models.Model):
     firm = models.CharField('Ragione sociale', max_length=200)
-    registered_office = models.CharField('Sede legale amministrativa',
-                                                  max_length=200)
-    settlement = models.CharField('Sede insediamento produttivo',
-                                                    max_length=200)
+    registered_office = AddressField('Sede legale amministrativa')
+    settlement = AddressField('Sede insediamento produttivo')
     ciiaa = models.CharField('Iscrizione CIIAA', max_length=200, unique=True)
     tax_code = models.CharField('Codice fiscale', max_length=200, unique=True)
     vat_code = models.CharField('Partita IVA', max_length=200, unique=True)
