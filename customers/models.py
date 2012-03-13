@@ -7,7 +7,7 @@ from customers.modelfields import AddressField
 # Create your models here.
 
 class TownShip(models.Model):
-    code = models.CharField('Codice Catastale', primary_key=True)
+    code = models.CharField('Codice Catastale', max_length=8, primary_key=True)
     name = models.CharField('Comune', max_length=80)
     province = models.CharField('Provincia', max_length=80)
     zipcode = models.CharField('Provincia', max_length=10)
