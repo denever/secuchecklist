@@ -1,11 +1,13 @@
 # encoding: utf-8
 
 import re
-from django.forms import ValidationError
+from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.forms.fields import Field, RegexField, Select
-from django.contrib.localflavor.it.forms import ITZipCodeField, ITProvinceSelect, ITRegionSelect
-from django import forms
+from django.contrib.localflavor.it.forms import ITZipCodeField
+
+# using autocomplete widgets
+from autocomplete import widgets as autocomplete_widgets
 
 phone_digits_re = re.compile(r'^((\+|00)39\s)?[0-9]{2,4}\s[0-9]{5,8}$')
 
@@ -32,7 +34,7 @@ class ITPhoneNumberField(Field):
         n = phone_digits_re.search(value)
 
         if not n:
-            raise ValidationError(self.error_messages['invalid'])
+            raise forms.ValidationError(self.error_messages['invalid'])
 
         # Import a list of valid prefixes
         from it_phones import PHONE_CHOICES, MOBILE_CHOICES
@@ -45,28 +47,43 @@ class ITPhoneNumberField(Field):
 
         # Check if the number is no longer than 11 digits
         if (len(m[0]) + len(m[1])) > 11:
-            raise ValidationError(self.error_messages['invalid'])
+            raise forms.ValidationError(self.error_messages['invalid'])
 
         # Check the prefix against a list of valid fixed and mobile prefixes
         if m[0] in PHONE_CHOICES or m[0] in MOBILE_CHOICES:
             return u'%s %s' % (m[0], m[1])
 
-        raise ValidationError(self.error_messages['invalid'])
+        raise forms.ValidationError(self.error_messages['invalid'])
+
+
+class AddressWidget(forms.MultiWidget):
+    def __init__(self, attrs=None):
+        widgets = (
+            forms.widgets.TextInput(attrs=attrs),
+            forms.widgets.TextInput(attrs=attrs),
+            autocomplete_widgets.AutocompleteWidget('town'),
+            autocomplete_widgets.AutocompleteWidget('zipcode'),
+            autocomplete_widgets.AutocompleteWidget('province'),
+            )
+
+        super(AddressWidget, self).__init__(widgets, attrs)
+
+    def decompress(self, value):
+        if value:
+            return value.decompress()
+        else:
+            return ['', '', '', '', '']
 
 class AddressFormField(forms.MultiValueField):
+    widget = AddressWidget
+
     def __init__(self, *args, **kwargs):
-        fields = ( # street =
+        fields = (
             forms.CharField(label='Via/Piazza'),
-            #number =
             forms.CharField(label='Numero Civico'),
-            #postcode =
-            ITZipCodeField(label='CAP'),
-            #town =
+            forms.CharField(label='CAP'),#            ITZipCodeField(label='CAP'),
             forms.CharField(label='Comune'),
-            #province =
-            ITProvinceSelect(),
-            #region =
-            ITRegionSelect()
+            forms.CharField(label='Provincia'),
             )
         super(AddressFormField, self).__init__(fields, *args, **kwargs)
 
