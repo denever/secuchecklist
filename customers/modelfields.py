@@ -3,21 +3,25 @@ from django.db import models
 from customers.widgets import AddressFormField
 
 class Address(object):
-    def __init__(self, street, number, postcode, town, province, region):
+    def __init__(self, street, number, postcode, town, province):
         self.street = street
         self.number = number
         self.postcode = postcode
         self.town = town
         self.province = province
-        self.region = region
 
     def __unicode__(self):
-        return "%s, N %s, %s, %s, %s, %s" % (self.street,
-                                           self.number,
-                                           self.postcode,
-                                           self.town,
-                                           self.province,
-                                           self.region)
+        return "%s, N %s, %s, %s, %s" % (self.street,
+                                         self.number,
+                                         self.postcode,
+                                         self.town,
+                                         self.province)
+    def decompress(self):
+        return [self.street,
+                self.number,
+                self.postcode,
+                self.town,
+                self.province]
 
 class AddressField(models.Field):
     description = " An address for an office or settlement "
@@ -31,9 +35,9 @@ class AddressField(models.Field):
             return value
 
         value = str(value)
-        args = value.split(',')[:6]
-        if len(args)<6:
-            n = 6 - len(args)
+        args = value.split(',')[:5]
+        if len(args)<5:
+            n = 5 - len(args)
             args.extend([None for i in xrange(n)])
         return Address(*args)
 
@@ -42,11 +46,9 @@ class AddressField(models.Field):
                          value.number,
                          value.postcode,
                          value.town,
-                         value.province,
-                         value.region])
+                         value.province])
 
     def formfield(self, **kwargs):
         defaults = {'form_class': AddressFormField}
         defaults.update(kwargs)
-        print defaults
         return super(AddressField, self).formfield(**defaults)
