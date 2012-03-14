@@ -1,6 +1,7 @@
 # encoding: utf-8
 from django.db import models
 from customers.widgets import AddressFormField
+from urllib import urlencode
 
 class Address(object):
     def __init__(self, street, number, postcode, town, province):
@@ -22,6 +23,13 @@ class Address(object):
                 self.postcode,
                 self.town,
                 self.province]
+
+    def mapurl(self):
+        return 'http://maps.google.it/maps?' + urlencode({'om': '1',
+                                                          'iwloc': 'addr',
+                                                          'f': 'q',
+                                                          'q': self.__unicode__(),
+                                                          'hl': 'it', 'z': '15', 'ie': 'UTF8'})
 
 class AddressField(models.Field):
     description = " An address for an office or settlement "
