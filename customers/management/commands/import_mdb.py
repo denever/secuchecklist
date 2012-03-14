@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from customers.models import AtecoSector, Certification, CPISettlement, HealthSurveillance
+from customers.models import AtecoSector, Certification, CPISettlement, HealthSurveillance, TownShip
 
 # before using this file
 # apt-get install unixodbc libmdbodbc
@@ -39,5 +39,8 @@ class Command(BaseCommand):
 
         src_cur.execute('select codice, comune, provincia, cap from Comuni')
         for desc in src_cur:
-            obj = TownShip(codice=desc[0], comune=desc[1], provincia=desc[2], cap=desc[3])
-            obj.save()
+            if desc[3]:
+                obj = TownShip(code=desc[0], name=desc[1], province=desc[2], zipcode=desc[3])
+                obj.save()
+            else:
+                print 'Discarded:', desc
