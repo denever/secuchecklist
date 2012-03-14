@@ -10,7 +10,7 @@ class TownShip(models.Model):
     code = models.CharField('Codice Catastale', max_length=8, primary_key=True)
     name = models.CharField('Comune', max_length=80)
     province = models.CharField('Provincia', max_length=80)
-    zipcode = models.CharField('Provincia', max_length=10)
+    zipcode = models.CharField('CAP', max_length=10)
 
     def __unicode__(self):
         return self.name
