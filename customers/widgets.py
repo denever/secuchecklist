@@ -72,7 +72,7 @@ class AddressWidget(forms.MultiWidget):
         if value:
             return value.decompress()
         else:
-            return ['', '', '', '', '']
+            return ['Via/Piazza', 'Numero civico', 'Città', 'CAP', 'Provincia']
 
 class AddressFormField(forms.MultiValueField):
     widget = AddressWidget
