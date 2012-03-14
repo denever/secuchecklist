@@ -2,7 +2,7 @@ from autocomplete.views import autocomplete
 # Settings for django-autocomplete
 from django.db.models import Count
 
-from customers.models import AtecoSector, CPISettlement, TownShip
+from customers.models import AtecoSector, CPISettlement, TownShip, Province
 from autocomplete.views import AutocompleteSettings
 
 class AtecoSectorAutocomplete(AutocompleteSettings):
@@ -32,11 +32,8 @@ class ZipCodeAutocomplete(AutocompleteSettings):
     login_required = True
 
 class ProvinceAutocomplete(AutocompleteSettings):
-    queryset = TownShip.objects.all()
+    queryset = Province.objects.all()
     search_fields = ('province',)
-    value = 'province'
-    label = 'province'
-    key = 'province'
     login_required = True
 
 
