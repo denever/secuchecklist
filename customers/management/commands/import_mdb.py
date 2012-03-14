@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
-from customers.models import AtecoSector, Certification, CPISettlement, HealthSurveillance, TownShip
+from customers.models import AtecoSector, Certification, CPISettlement
+from customers.models import HealthSurveillance, TownShip, Province
 
 # before using this file
 # apt-get install unixodbc libmdbodbc
@@ -44,3 +45,8 @@ class Command(BaseCommand):
                 obj.save()
             else:
                 print 'Discarded:', desc
+
+        values = TownShip.objects.values('province').distinct()
+        for value in values:
+            obj = Province(province=value['province'])
+            obj.save()

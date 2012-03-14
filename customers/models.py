@@ -6,6 +6,15 @@ from customers.modelfields import AddressField
 
 # Create your models here.
 
+class Province(models.Model):
+    province = models.CharField('Provincia', max_length=2, primary_key=True)
+
+    def __unicode__(self):
+        return self.province
+
+    class Meta:
+        ordering = ['province']
+
 class TownShip(models.Model):
     code = models.CharField('Codice Catastale', max_length=8, primary_key=True)
     name = models.CharField('Comune', max_length=80)
