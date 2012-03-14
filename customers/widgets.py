@@ -81,8 +81,8 @@ class AddressFormField(forms.MultiValueField):
         fields = (
             forms.CharField(label='Via/Piazza'),
             forms.CharField(label='Numero Civico'),
-            forms.CharField(label='CAP'),#            ITZipCodeField(label='CAP'),
             forms.CharField(label='Comune'),
+            ITZipCodeField(label='CAP'),
             forms.CharField(label='Provincia'),
             )
         super(AddressFormField, self).__init__(fields, *args, **kwargs)
