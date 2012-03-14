@@ -44,8 +44,8 @@
   <div class="ui-helper-reset ui-widget-content">
     <table class="detail">
       <tr class="even"> <td class="fieldname">Ragione sociale</td><td>{{ company.firm }}</td></tr>
-      <tr class="odd"> <td class="fieldname">Sede legale amministrativa</td><td>{{ company.registered_office }}</td></tr>
-      <tr class="even"> <td class="fieldname">Sede insediamento produttivo</td><td>{{ company.settlement }}</td></tr>
+      <tr class="odd"> <td class="fieldname">Sede legale amministrativa</td><td><a href="{{company.registered_office.mapurl}}">{{ company.registered_office }}</a></td></tr>
+      <tr class="even"> <td class="fieldname">Sede insediamento produttivo</td><td><a href="{{company.settlement.mapurl}}">{{ company.settlement }}</a></td></tr>
       <tr class="odd"> <td class="fieldname">Iscrizione CIIAA</td><td>{{ company.ciiaa }}</td></tr>
       <tr class="even"> <td class="fieldname">Codice fiscale</td><td>{{ company.tax_code }}</td></tr>
       <tr class="odd"> <td class="fieldname">Partita IVA</td><td>{{ company.vat_code }}</td></tr>
