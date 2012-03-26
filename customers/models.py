@@ -187,7 +187,8 @@ class Staff(models.Model):
                                     verbose_name='Nazionalità')
     collagreement = models.ForeignKey(CollaborationAgreement,
                                       verbose_name='Forma Contrattuale')
-    health_surveillance = models.ManyToManyField(HealthSurveillance, verbose_name='Sorveglianza Sanitaria')
+#    health_surveillance = models.ManyToManyField(HealthSurveillance, verbose_name='Sorveglianza Sanitaria')
+    health_surveillance = models.BooleanField('Sorveglianza Sanitaria')
     workers_count = models.BooleanField('Computo lavoratori')
 
     company = models.ForeignKey(CustomerCompany, null=False, verbose_name='Azienda')
