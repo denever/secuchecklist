@@ -28,6 +28,7 @@ class TownShip(models.Model):
         ordering = ['code', 'name', 'zipcode']
 
 class AtecoSector(models.Model):
+    code = models.PositiveSmallIntegerField('Codice')
     name = models.CharField('Nome', unique=True, max_length=200)
     description = models.CharField('Descrizione', max_length=200)
 
