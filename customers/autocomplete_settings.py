@@ -8,6 +8,7 @@ from autocomplete.views import AutocompleteSettings
 class AtecoSectorAutocomplete(AutocompleteSettings):
     queryset = AtecoSector.objects.all()
     search_fields = ('name',)
+    value = 'code'
     login_required = True
 
 class CPISettlementAutocomplete(AutocompleteSettings):
