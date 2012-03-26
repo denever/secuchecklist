@@ -59,7 +59,7 @@ window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{%
           {% for field in form %}
           <tr id="{{ field.html_name }}">
             <td>
-              >{{ field.label_tag }}
+             {{ field.label_tag }}
             </td>
             <td>
               {{ field }}
