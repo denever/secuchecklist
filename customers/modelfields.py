@@ -38,6 +38,9 @@ class AddressField(models.Field):
     def __init__(self, *args, **kwargs):
         super(AddressField, self).__init__(*args, **kwargs)
 
+    def db_type(self, connection):
+        return 'VARCHAR(255)'
+
     def to_python(self, value):
         if isinstance(value, Address):
             return value
