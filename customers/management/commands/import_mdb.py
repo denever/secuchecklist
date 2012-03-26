@@ -20,7 +20,7 @@ class Command(BaseCommand):
 
         src_cur.execute('select * from SettoriATECO')
         for desc in src_cur:
-            obj = AtecoSector(codice=desc[1], name=desc[2], description=desc[2])
+            obj = AtecoSector(code=desc[1], name=desc[2], description=desc[2])
             obj.save()
 
         src_cur.execute('select * from Certificazioni')
