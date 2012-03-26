@@ -37,11 +37,6 @@ urlpatterns = patterns('customers.views',
                            login_required(CustomerCompanyDetailView.as_view()),
                            name = 'company-detail'),
 
-                       # url(r'^staff/(?P<pk>\d+)/$',
-                       #     login_required(StaffDetailView.as_view()),
-                       #     name = 'staff-detail'
-                       #     ),
-
                        url(r'^(?P<company>\d+)/staff/(?P<pk>\d+)/$',
                            login_required(StaffDetailView.as_view()),
                            name = 'staff-detail'
