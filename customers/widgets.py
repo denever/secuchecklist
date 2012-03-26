@@ -59,11 +59,11 @@ class ITPhoneNumberField(Field):
 class AddressWidget(forms.MultiWidget):
     def __init__(self, attrs=None):
         widgets = (
-            forms.widgets.TextInput(attrs=attrs),
-            forms.widgets.TextInput(attrs=attrs),
-            autocomplete_widgets.AutocompleteWidget('town'),
-            autocomplete_widgets.AutocompleteWidget('zipcode'),
-            autocomplete_widgets.AutocompleteWidget('province'),
+            forms.widgets.TextInput(attrs={'placeholder':'Via/Piazza'}),
+            forms.widgets.TextInput(attrs={'placeholder':'Numero Civico'}),
+            autocomplete_widgets.AutocompleteWidget('town', attrs={'placeholder':'Comune'}),
+            autocomplete_widgets.AutocompleteWidget('zipcode', attrs={'placeholder':'CAP'}),
+            autocomplete_widgets.AutocompleteWidget('province', attrs={'placeholder':'Provincia'}),
             )
 
         super(AddressWidget, self).__init__(widgets, attrs)
@@ -72,7 +72,7 @@ class AddressWidget(forms.MultiWidget):
         if value:
             return value.decompress()
         else:
-            return ['Via/Piazza', 'Numero civico', 'Città', 'CAP', 'Provincia']
+            return ['','','','','']
 
 class AddressFormField(forms.MultiValueField):
     widget = AddressWidget
