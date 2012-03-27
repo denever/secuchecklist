@@ -38,15 +38,15 @@ class Command(BaseCommand):
             obj = HealthSurveillance(name=desc[1], description=desc[1])
             obj.save()
 
-        src_cur.execute('select codice, comune, provincia, cap from Comuni')
-        for desc in src_cur:
-            if desc[3]:
-                obj = TownShip(code=desc[0], name=desc[1], province=desc[2], zipcode=desc[3])
-                obj.save()
-            else:
-                print 'Discarded:', desc
+        # src_cur.execute('select codice, comune, provincia, cap from Comuni')
+        # for desc in src_cur:
+        #     if desc[3]:
+        #         obj = TownShip(code=desc[0], name=desc[1], province=desc[2], zipcode=desc[3])
+        #         obj.save()
+        #     else:
+        #         print 'Discarded:', desc
 
-        values = TownShip.objects.values('province').distinct()
-        for value in values:
-            obj = Province(province=value['province'])
-            obj.save()
+        # values = TownShip.objects.values('province').distinct()
+        # for value in values:
+        #     obj = Province(province=value['province'])
+        #     obj.save()
