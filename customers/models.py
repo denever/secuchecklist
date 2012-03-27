@@ -16,16 +16,15 @@ class Province(models.Model):
         ordering = ['province']
 
 class TownShip(models.Model):
-    code = models.CharField('Codice Catastale', max_length=8, primary_key=True)
     name = models.CharField('Comune', max_length=80)
-    province = models.CharField('Provincia', max_length=80)
+    province = models.CharField('Provincia', max_length=2)
     zipcode = models.CharField('CAP', max_length=10)
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        ordering = ['code', 'name', 'zipcode']
+        ordering = ['name', 'zipcode']
 
 class AtecoSector(models.Model):
     code = models.PositiveSmallIntegerField('Codice')

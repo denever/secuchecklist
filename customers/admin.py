@@ -30,7 +30,7 @@ admin.site.register(CPISettlement)
 admin.site.register(CompanySecurityDuty)
 
 class TownShipAdmin(admin.ModelAdmin):
-    list_display = ('code', 'name', 'province', 'zipcode')
+    list_display = ('name', 'province', 'zipcode')
     list_filter = ['zipcode']
     search_field = ['name', 'zipcode']
 
