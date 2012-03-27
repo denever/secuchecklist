@@ -6,18 +6,18 @@ from customers.models import AtecoSector, CPISettlement, TownShip, Province
 from autocomplete.views import AutocompleteSettings
 
 class AtecoSectorAutocomplete(AutocompleteSettings):
-    queryset = AtecoSector.objects.all()
+    queryset = AtecoSector.objects.all().order_by('name')
     search_fields = ('name',)
     value = 'code'
     login_required = True
 
 class CPISettlementAutocomplete(AutocompleteSettings):
-    queryset = CPISettlement.objects.all()
+    queryset = CPISettlement.objects.all().order_by('name')
     search_fields = ('name',)
     login_required = True
 
 class TownShipNameAutocomplete(AutocompleteSettings):
-    queryset = TownShip.objects.all()
+    queryset = TownShip.objects.all().order_by('name')
     search_fields = ('^name',)
     value = 'name'
     label = 'name'
@@ -25,7 +25,7 @@ class TownShipNameAutocomplete(AutocompleteSettings):
     login_required = True
 
 class ZipCodeAutocomplete(AutocompleteSettings):
-    queryset = TownShip.objects.all()
+    queryset = TownShip.objects.all().order_by('zipcode')
     search_fields = ('^zipcode',)
     value = 'zipcode'
     label = 'zipcode'
@@ -33,8 +33,8 @@ class ZipCodeAutocomplete(AutocompleteSettings):
     login_required = True
 
 class ProvinceAutocomplete(AutocompleteSettings):
-    queryset = Province.objects.all()
-    search_fields = ('province',)
+    queryset = Province.objects.all().order_by('province')
+    search_fields = ('^province',)
     login_required = True
 
 
