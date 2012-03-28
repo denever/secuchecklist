@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "accounts/base-accounts.html" %}
 {% block extra_head %}
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 <link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
@@ -6,23 +6,6 @@
 
 {% block title %} Profilo {{ user }} {% endblock %}
 {% block title2 %} Profilo {{ user }} {% endblock %}
-
-{% block accountmenu %}
-<h3><a href="#">Profilo</a></h3>
-<div>
-  <ul class="menu">
-    <li>
-      <a href="{% url profile %}">Profilo</a>
-    </li>
-    <li>
-      <a href="{% url change-passwd %}">Cambia password</a>
-    </li>
-    <li>
-      <a href="{% url logout %}">Logout</a>
-    </li>
-  </ul>
-</div>
-{% endblock %}
 
 {% block content %}
 <script type="text/javascript">
