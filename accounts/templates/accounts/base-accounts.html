@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %} Profilo {{ user }} {% endblock %}
+{% block title2 %} Profilo {{ user }} {% endblock %}
+
+{% block accountmenu %}
+<h3><a href="#">Profilo</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url profile %}">Profilo</a>
+    </li>
+    <li>
+      <a href="{% url change-passwd %}">Cambia password</a>
+    </li>
+    <li>
+      <a href="{% url activity %}">Attività recenti</a>
+    </li>
+    <li>
+      <a href="{% url logout %}">Logout</a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
