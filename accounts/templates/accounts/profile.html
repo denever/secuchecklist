@@ -39,7 +39,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for cc in user.get_profile.customercompany_set.all %}
+            {% for cc in user.get_profile.companies_created.all %}
             <tr>
               <td>
                 <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
@@ -67,7 +67,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for staff in user.get_profile.staff_set.all %}
+            {% for staff in user.get_profile.staff_created.all %}
             <tr>
               <td>
                 <a href="{% url company-detail staff.company.id %}">{{ staff.company.firm }}</a>
@@ -101,7 +101,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for secduty in user.get_profile.companysecurityduty_set.all %}
+            {% for secduty in user.get_profile.secduty_created.all %}
             <tr>
               <td>
                 <a href="{% url company-detail secduty.company.id %}">
