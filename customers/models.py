@@ -169,7 +169,7 @@ class Department(models.Model):
         get_latest_by = 'record_date'
 
     def __unicode__(self):
-        return self.name
+        return '%s@%s' % (self.name, self.company)
 
 class Staff(models.Model):
     gender_choices = (
