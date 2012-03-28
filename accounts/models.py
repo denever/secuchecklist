@@ -6,12 +6,13 @@ from django.contrib.auth.models import User
 
 # importing for signals and logging
 from django.db.models.signals import post_save, post_delete
+from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.dispatch import receiver
 from django.utils.encoding import force_unicode
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
-CREATE, EDIT, DELETE = 'Create', 'Edit', 'Delete'
+LOGIN, LOGOUT, CREATE, EDIT, DELETE = 'Logged In', 'Logged Out', 'Created', 'Edited', 'Deleted'
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
@@ -36,12 +37,10 @@ class Activity(models.Model):
 
 @receiver(post_save)
 def post_save_cb(sender, **kwargs):
-    print sender
-    print kwargs
     instance = kwargs['instance']
     if hasattr(instance, 'record_by'):
-        a = Activity(userprofile=instance.record_by,
-                     action=CREATE,
+        a = Activity(userprofile=instance.record_by if kwargs['created'] else instance.lastupdate_by,
+                     action=CREATE if kwargs['created'] else EDIT,
                      object_repr=force_unicode(instance),
                      content_object=instance
                      )
@@ -49,8 +48,6 @@ def post_save_cb(sender, **kwargs):
 
 @receiver(post_delete)
 def post_delete_cb(sender, **kwargs):
-    print sender
-    print kwargs
     instance = kwargs['instance']
     if hasattr(instance, 'record_by'):
         a = Activity(userprofile = instance.record_by,
@@ -59,3 +56,24 @@ def post_delete_cb(sender, **kwargs):
                      content_object = instance
                      )
         a.save()
+
+@receiver(user_logged_in)
+def logged_in_cb(sender, **kwargs):
+    user_profile = kwargs['user'].get_profile()
+    a = Activity(userprofile = user_profile,
+                 action = LOGIN,
+                 object_repr = force_unicode(user_profile),
+                 content_object = user_profile
+                 )
+    a.save()
+
+
+@receiver(user_logged_out)
+def logged_out_cb(sender, **kwargs):
+    user_profile = kwargs['user'].get_profile()
+    a = Activity(userprofile = user_profile,
+                 action = LOGOUT,
+                 object_repr = force_unicode(user_profile),
+                 content_object = user_profile
+                 )
+    a.save()
