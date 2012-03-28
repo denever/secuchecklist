@@ -16,7 +16,7 @@
 <body>
   <script type="text/javascript">
     $(function() {
-	  $( "#mainmenuacco" ).accordion({collapsible: true});
+          $( "#mainmenuacco" ).accordion({collapsible: true});
     {% block extrascript %}
     {% endblock %}
     });
@@ -24,65 +24,65 @@
   <div id="wrapper">
     <div id="banner">
       <h1 class="logo">
-	<a href="{% url customers %}">
-	  <span>Studio HSE Gestionale</span>
-	</a>
+        <a href="{% url customers %}">
+          <span>Studio HSE Gestionale</span>
+        </a>
       </h1>
       <div id="dock">
-	{% block dock %}
-	<ul>
-	  <li>Benvenuto {{ user }}</li>
-	  <li>Ultimo login: {{ user.last_login }}</li>
-	  <li><a title="Logout" class="ui-corner-all ui-icon ui-icon-circle-close" href="{% url logout %}"></a></li>
-	</ul>
-	{% endblock %}
+        {% block dock %}
+        <ul>
+          <li>Benvenuto {{ user }}</li>
+          <li>Ultimo login: {{ user.last_login }}</li>
+          <li><a title="Logout" class="ui-corner-all ui-icon ui-icon-circle-close" href="{% url logout %}"></a></li>
+        </ul>
+        {% endblock %}
       </div>
     </div>
     <div id="content-wrapper">
       <div id="content">
-	<div class="content-top">
-	  {% block content-top %}
-	  {% endblock %}
-	</div>
-	<div class="content">
-	  {% block mainmenu %}
-	  <div id="mainmenu">
-	    <div id="mainmenuacco">
+        <div class="content-top">
+          {% block content-top %}
+          {% endblock %}
+        </div>
+        <div class="content">
+          {% block mainmenu %}
+          <div id="mainmenu">
+            <div id="mainmenuacco">
 
-	      {% block accountmenu %}
-	      <h3><a href="#">Profilo</a></h3>
-	      <div>
-		<ul class="menu">
-		  <li>
-		    <a href="{% url profile %}">Profilo</a>
-		  </li>
-		  <li>
-		    <a href="{% url logout %}">Logout</a>
-		  </li>
-		</ul>
-	      </div>
-	      {% endblock %}
+              {% block accountmenu %}
+              <h3><a href="#">Profilo</a></h3>
+              <div>
+                <ul class="menu">
+                  <li>
+                    <a href="{% url profile %}">Profilo</a>
+                  </li>
+                  <li>
+                    <a href="{% url logout %}">Logout</a>
+                  </li>
+                </ul>
+              </div>
+              {% endblock %}
 
-	      {% block customersmenu %}
-	      <h3><a href="#">Anagrafica</a></h3>
-	      <div>
-		  <li>
-		    <a href="{% url customers %}">Aziende</a>
-		  </li>
-		  <li>
-		    <a href="{% url company-create %}">Aggiungi Azienda</a>
-		  </li>
-	      </div>
-	      {% endblock %}
+              {% block customersmenu %}
+              <h3><a href="#">Anagrafica</a></h3>
+              <div>
+                  <li>
+                    <a href="{% url customers %}">Aziende</a>
+                  </li>
+                  <li>
+                    <a href="{% url company-create %}">Aggiungi Azienda</a>
+                  </li>
+              </div>
+              {% endblock %}
 
-	    </div>
-	  </div>
-	  {% endblock %}
-	  <div id="maincontent">
-	    {% block content %}{% endblock %}
-	  </div>
+            </div>
+          </div>
+          {% endblock %}
+          <div id="maincontent">
+            {% block content %}{% endblock %}
+          </div>
 
-	</div>
+        </div>
       </div>
     </div>
   </div>
