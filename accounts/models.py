@@ -21,7 +21,7 @@ class UserProfile(models.Model):
     # customercompany_set tutte le compagnie da te registrate
 
     def __unicode__(self):
-        return self.user.username
+        return 'Profilo %s' % self.user.username
 
 class Activity(models.Model):
     userprofile = models.ForeignKey(UserProfile)
