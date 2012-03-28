@@ -128,7 +128,12 @@ class CustomerCompany(models.Model):
     working_environment = models.TextField("Descrizione generale dell'ambiente di lavoro",
                                            null=True, blank=True)
 
-    record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
+    record_by = models.ForeignKey('accounts.UserProfile',
+                                  related_name='companies_created',
+                                  verbose_name='Assegnata a')
+    lastupdate_by = models.ForeignKey('accounts.UserProfile',
+                                    related_name='companies_edited',
+                                    verbose_name='Ultima modifica')
     record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
 
     # def departments(self):
@@ -160,7 +165,12 @@ class Department(models.Model):
     description = models.TextField('Descrizione del reparto')
     size = models.PositiveIntegerField('Superficie mq.')
 
-    record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
+    record_by = models.ForeignKey('accounts.UserProfile',
+                                  related_name='departments_created',
+                                  verbose_name='Assegnata a')
+    lastupdate_by = models.ForeignKey('accounts.UserProfile',
+                                    related_name='departments_edited',
+                                    verbose_name='Ultima modifica')
     record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
 
     class Meta:
@@ -196,7 +206,12 @@ class Staff(models.Model):
     role = models.ForeignKey(Role, null=False, verbose_name='Mansione')
     employ_date = models.DateField(verbose_name='Data assunzione', null=True, blank=True)
 
-    record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
+    record_by = models.ForeignKey('accounts.UserProfile',
+                                  related_name='staff_created',
+                                  verbose_name='Assegnata a')
+    lastupdate_by = models.ForeignKey('accounts.UserProfile',
+                                    related_name='staff_edited',
+                                    verbose_name='Ultima modifica')
     record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
 
     def __unicode__(self):
@@ -215,7 +230,12 @@ class CompanySecurityDuty(models.Model):
     external_phone = models.CharField('Telefono esterno', max_length=200, null=True, blank=True)
     email = models.EmailField('Email', max_length=200)
 
-    record_by = models.ForeignKey('accounts.UserProfile', verbose_name='Assegnata a')
+    record_by = models.ForeignKey('accounts.UserProfile',
+                                  related_name='secduty_created',
+                                  verbose_name='Assegnata a')
+    lastupdate_by = models.ForeignKey('accounts.UserProfile',
+                                    related_name='secduty_edited',
+                                    verbose_name='Ultima modifica')
     record_date = models.DateTimeField('Data registrazione', auto_now_add=True)
 
     def __unicode__(self):
