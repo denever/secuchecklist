@@ -5,27 +5,27 @@
   <ul class="menu">
     <li>
       <a href="{% url customers %}">
-	Aziende
+        Aziende
       </a>
     </li>
     <li>
       <a href="{% url company-edit company.id %}">
-	Modifica Azienda
+        Modifica Azienda
       </a>
     </li>
     <li>
       <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
+        Ambiente di Lavoro
       </a>
     </li>
     <li>
       <a href="{% url staff-list company.id %}">
-	    Organigramma
+            Organigramma
       </a>
     </li>
     <li>
       <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
+        Figure Prevenzione
       </a>
     </li>
   </ul>
@@ -33,16 +33,18 @@
 {% endblock %}
 
 {% block content %}
-<div class="gridbox">
-  <h1>Sei sicuro?</h1>
-  <p>
-     Sei sicuro di voler cancellare il reparto {{ department.name }} ?
-  </p>
-  <form action="" method="post">{% csrf_token %}
-    <div>
-      <input type="hidden" name="post" value="yes">
-      <input type="submit" value="Yes, I'm sure">
-    </div>
-  </form>
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">Sei sicuro?</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <p>
+      Sei sicuro di voler cancellare il reparto {{ department.name }} ?
+    </p>
+    <form action="" method="post">{% csrf_token %}
+      <div>
+        <input type="hidden" name="post" value="yes">
+        <input type="submit" value="Yes, I'm sure">
+      </div>
+    </form>
+  </div>
 </div>
 {% endblock %}
