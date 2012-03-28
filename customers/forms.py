@@ -77,7 +77,7 @@ class WorkingEnvironmentForm(forms.ModelForm):
 class DepartmentForm(forms.ModelForm):
     class Meta:
         model = Department
-        exclude = ('company', 'record_by')
+        exclude = ('company', 'record_by', 'lastupdate_by')
 
 class CompanySecurityDutyForm(forms.ModelForm):
     internal_phone = ITPhoneNumberField(label='Telefono interno')
@@ -85,4 +85,4 @@ class CompanySecurityDutyForm(forms.ModelForm):
 
     class Meta:
         model = CompanySecurityDuty
-        exclude = ('company', 'record_by')
+        exclude = ('company', 'record_by', 'lastupdate_by')
