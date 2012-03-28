@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %} Attività {{ user }} {% endblock %}
+{% block title2 %} Attività {{ user }} {% endblock %}
+
+{% block accountmenu %}
+<h3><a href="#">Profilo</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url profile %}">Profilo</a>
+    </li>
+    <li>
+      <a href="{% url change-passwd %}">Cambia password</a>
+    </li>
+    <li>
+      <a href="{% url logout %}">Logout</a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">Attività</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <table id="activities" class="display">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Attività</th>
+          <th>Su</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for activity in activities %}
+        <tr>
+          <td>
+            {{ activity.date }}
+          </td>
+          <td>
+            {{ activity.action }}
+          </td>
+          <td>
+            {{ activity.content_object }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
