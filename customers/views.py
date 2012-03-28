@@ -60,6 +60,7 @@ class CustomerCompanyCreateView(CreateView):
     def form_valid(self, form):
         self.company = form.save(commit=False)
         self.company.record_by = self.request.user.get_profile()
+        self.company.lastupdate_by = self.request.user.get_profile()
         return super(CustomerCompanyCreateView, self).form_valid(form)
 
 class CustomerCompanyUpdateView(UpdateView):
@@ -70,6 +71,8 @@ class CustomerCompanyUpdateView(UpdateView):
     context_object_name = 'company'
 
     def form_valid(self, form):
+        self.company = form.save(commit=False)
+        self.company.lastupdate_by = self.request.user.get_profile()
         self.success_url = reverse('company-detail', args=self.kwargs['pk'])
         return super(CustomerCompanyUpdateView, self).form_valid(form)
 
@@ -97,6 +100,7 @@ class StaffCreateView(CreateView):
     def form_valid(self, form):
         self.staff = form.save(commit=False)
         self.staff.record_by = self.request.user.get_profile()
+        self.staff.lastupdate_by = self.request.user.get_profile()
         self.staff.company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         self.success_url = reverse('staff-list', args=self.kwargs['company'])
         return super(StaffCreateView, self).form_valid(form)
@@ -134,6 +138,8 @@ class StaffUpdateView(UpdateView):
         return context
 
     def form_valid(self, form):
+        self.staff = form.save(commit=False)
+        self.staff.lastupdate_by = self.request.user.get_profile()
         self.success_url = reverse('staff-detail', args=self.kwargs['company'])
         return super(StaffUpdateView, self).form_valid(form)
 
@@ -158,6 +164,8 @@ class WorkingEnvironmentEditView(UpdateView):
     context_object_name = 'company'
 
     def form_valid(self, form):
+        self.company = form.save(commit=False)
+        self.company.lastupdate_by = self.request.user.get_profile()
         self.success_url = reverse('set-working-env', args=[self.kwargs['pk']])
         return super(WorkingEnvironmentEditView, self).form_valid(form)
 
@@ -168,6 +176,7 @@ class DepartmentCreateView(CreateView):
     def form_valid(self, form):
         self.department = form.save(commit=False)
         self.department.record_by = self.request.user.get_profile()
+        self.department.lastupdate_by = self.request.user.get_profile()
         self.department.company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         self.success_url = reverse('set-working-env', args=self.kwargs['company'])
         return super(DepartmentCreateView, self).form_valid(form)
@@ -193,6 +202,8 @@ class DepartmentUpdateView(UpdateView):
     success_url = '/customers/'
 
     def form_valid(self, form):
+        self.department = form.save(commit=False)
+        self.department.lastupdate_by = self.request.user.get_profile()
         self.success_url = reverse('department-detail', args=self.kwargs['company'])
         return super(DepartmentUpdateView, self).form_valid(form)
 
@@ -226,6 +237,7 @@ class CompanySecurityDutyCreateView(CreateView):
     def form_valid(self, form):
         self.companysecurityduty = form.save(commit=False)
         self.companysecurityduty.record_by = self.request.user.get_profile()
+        self.companysecurityduty.lastupdate_by = self.request.user.get_profile()
         self.companysecurityduty.company = get_object_or_404(CustomerCompany,
                                                              id=self.kwargs['company'])
         self.success_url = reverse('companysecurityduty-list', args=self.kwargs['company'])
@@ -255,6 +267,8 @@ class CompanySecurityDutyUpdateView(UpdateView):
         return context
 
     def form_valid(self, form):
+        self.companysecurityduty = form.save(commit=False)
+        self.companysecurityduty.lastupdate_by = self.request.user.get_profile()
         self.success_url = reverse('companysecurityduty-list', args=self.kwargs['company'])
         return super(CompanySecurityDutyUpdateView, self).form_valid(form)
 
