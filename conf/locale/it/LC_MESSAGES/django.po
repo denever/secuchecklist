@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-30 17:06+0200\n"
+"POT-Creation-Date: 2012-03-30 18:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,27 +16,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: accounts/models.py:16
+#: accounts/models.py:18
 msgid "Logged In"
 msgstr "Accesso"
 
-#: accounts/models.py:16
+#: accounts/models.py:18
 msgid "Logged Out"
 msgstr "Uscita"
 
-#: accounts/models.py:16
+#: accounts/models.py:18
 msgid "Created"
 msgstr "Creato"
 
-#: accounts/models.py:16
+#: accounts/models.py:18
 msgid "Edited"
 msgstr "Modificato"
 
-#: accounts/models.py:16
+#: accounts/models.py:18
 msgid "Deleted"
 msgstr "Eliminato"
 
-#: accounts/models.py:25 accounts/templates/accounts/base-accounts.html:4
+#: accounts/models.py:30 accounts/models.py:31
+#: accounts/templates/accounts/base-accounts.html:4
 #: accounts/templates/accounts/base-accounts.html:5
 #: accounts/templates/accounts/base-accounts.html:8
 #: accounts/templates/accounts/base-accounts.html:12
@@ -46,24 +47,28 @@ msgstr "Eliminato"
 msgid "Account"
 msgstr "Profilo"
 
-#: accounts/models.py:29
+#: accounts/models.py:35
 msgid "Activity date"
 msgstr "Data attività"
 
-#: accounts/models.py:30
-msgid "Activity description"
-msgstr "Descrizione attività"
+#: accounts/models.py:36
+msgid "Action"
+msgstr "Azioni"
 
-#: accounts/models.py:32
+#: accounts/models.py:38
 msgid "Object name"
 msgstr "Nome oggetto"
 
-#: accounts/templates/accounts/activity_list.html:9
+#: accounts/models.py:44 accounts/templates/accounts/activity_list.html:9
 #: accounts/templates/accounts/activity_list.html:10
 #: accounts/templates/accounts/activity_list.html:19
 #: accounts/templates/accounts/activity_list.html:25
 msgid "Activity"
-msgstr "Data attività"
+msgstr "Attività"
+
+#: accounts/models.py:45
+msgid "Activities"
+msgstr "Attività"
 
 #: accounts/templates/accounts/activity_list.html:24
 msgid "Date"
@@ -285,9 +290,8 @@ msgid "Record date"
 msgstr "Data registrazione"
 
 #: accounts/templates/accounts/profile.html:60
-#, fuzzy
 msgid "Staff recorded by"
-msgstr "Registrato da"
+msgstr "Personale registrato da"
 
 #: accounts/templates/accounts/profile.html:66 customers/models.py:254
 #: customers/models.py:255 customers/templates/customers/base-company.html:28
@@ -310,9 +314,8 @@ msgid "Role"
 msgstr "Mansione"
 
 #: accounts/templates/accounts/profile.html:92
-#, fuzzy
 msgid "Security duties recorded by"
-msgstr "Figure prevenzione"
+msgstr "Figure prevenzione registrate da"
 
 #: accounts/templates/accounts/profile.html:97
 #: customers/templates/customers/companysecurityduty_list.html:11
@@ -987,18 +990,3 @@ msgstr "Amministrazione"
 #: templates/admin/base_site.html:7
 msgid "Security Checklist administration"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Security Duty"
-#~ msgstr "Figura prevenzione"
-
-#~ msgid "Internal Phone"
-#~ msgstr "Telefono interno"
-
-#, fuzzy
-#~ msgid "External Phone"
-#~ msgstr "Telefono esterno"
-
-#, fuzzy
-#~ msgid "Data registrazione"
-#~ msgstr "Registrazione Reparti"
