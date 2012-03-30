@@ -1,0 +1,554 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-29 11:08+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: accounts/templates/accounts/password_change_done.html:4
+#: accounts/templates/accounts/password_change_form.html:5
+msgid "Documentation"
+msgstr ""
+
+#: accounts/templates/accounts/password_change_done.html:4
+#: accounts/templates/accounts/password_change_form.html:5
+msgid "Change password"
+msgstr ""
+
+#: accounts/templates/accounts/password_change_done.html:4
+#: accounts/templates/accounts/password_change_form.html:5
+msgid "Log out"
+msgstr ""
+
+#: accounts/templates/accounts/password_change_done.html:5
+#: accounts/templates/accounts/password_change_form.html:6
+#: accounts/templates/accounts/password_reset_complete.html:4
+#: accounts/templates/accounts/password_reset_confirm.html:4
+#: accounts/templates/accounts/password_reset_done.html:4
+#: accounts/templates/accounts/password_reset_form.html:4
+msgid "Home"
+msgstr ""
+
+#: accounts/templates/accounts/password_change_done.html:5
+#: accounts/templates/accounts/password_change_form.html:6
+#: accounts/templates/accounts/password_change_form.html:8
+#: accounts/templates/accounts/password_change_form.html:20
+msgid "Password change"
+msgstr ""
+
+#: accounts/templates/accounts/password_change_done.html:7
+#: accounts/templates/accounts/password_change_done.html:11
+msgid "Password change successful"
+msgstr ""
+
+#: accounts/templates/accounts/password_change_done.html:13
+msgid "Your password was changed."
+msgstr ""
+
+#: accounts/templates/accounts/password_change_form.html:16
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] ""
+msgstr[1] ""
+
+#: accounts/templates/accounts/password_change_form.html:22
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: accounts/templates/accounts/password_change_form.html:28
+msgid "Old password"
+msgstr ""
+
+#: accounts/templates/accounts/password_change_form.html:33
+msgid "New password"
+msgstr ""
+
+#: accounts/templates/accounts/password_change_form.html:38
+msgid "Password (again)"
+msgstr ""
+
+#: accounts/templates/accounts/password_change_form.html:44
+#: accounts/templates/accounts/password_reset_confirm.html:21
+msgid "Change my password"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_complete.html:4
+#: accounts/templates/accounts/password_reset_confirm.html:6
+#: accounts/templates/accounts/password_reset_done.html:4
+#: accounts/templates/accounts/password_reset_form.html:4
+#: accounts/templates/accounts/password_reset_form.html:6
+#: accounts/templates/accounts/password_reset_form.html:10
+msgid "Password reset"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_complete.html:6
+#: accounts/templates/accounts/password_reset_complete.html:10
+msgid "Password reset complete"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_complete.html:12
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_complete.html:14
+msgid "Log in"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_confirm.html:4
+msgid "Password reset confirmation"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_confirm.html:12
+msgid "Enter new password"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_confirm.html:14
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_confirm.html:18
+msgid "New password:"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_confirm.html:20
+msgid "Confirm password:"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_confirm.html:26
+msgid "Password reset unsuccessful"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_confirm.html:28
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_done.html:6
+#: accounts/templates/accounts/password_reset_done.html:10
+msgid "Password reset successful"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_done.html:12
+msgid ""
+"We've e-mailed you instructions for setting your password to the e-mail "
+"address you submitted. You should be receiving it shortly."
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this e-mail because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_form.html:12
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll e-mail "
+"instructions for setting a new one."
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_form.html:16
+msgid "E-mail address:"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_form.html:16
+msgid "Reset my password"
+msgstr ""
+
+#: customers/forms.py:17
+msgid "Codice Fiscale"
+msgstr ""
+
+#: customers/forms.py:18
+msgid "Partita IVA"
+msgstr ""
+
+#: customers/forms.py:19 customers/forms.py:50
+msgid "Telefono"
+msgstr ""
+
+#: customers/forms.py:20 customers/models.py:155
+msgid "Fax"
+msgstr ""
+
+#: customers/forms.py:83
+msgid "Telefono interno"
+msgstr ""
+
+#: customers/forms.py:84
+msgid "Telefono esterno"
+msgstr ""
+
+#: customers/models.py:11 customers/models.py:18 customers/models.py:23
+msgid "Province"
+msgstr "Provincia"
+
+#: customers/models.py:19
+msgid "Provinces"
+msgstr "Province"
+
+#: customers/models.py:22 customers/models.py:30
+msgid "Township"
+msgstr "Comune"
+
+#: customers/models.py:24
+msgid "Zipcode"
+msgstr "CAP"
+
+#: customers/models.py:31
+msgid "Townships"
+msgstr "Comuni"
+
+#: customers/models.py:35
+msgid "Code"
+msgstr "Codice"
+
+#: customers/models.py:36 customers/models.py:81 customers/models.py:222
+#: customers/models.py:262
+msgid "Name"
+msgstr "Nome"
+
+#: customers/models.py:37 customers/models.py:48 customers/models.py:59
+#: customers/models.py:70 customers/models.py:82 customers/models.py:94
+#: customers/models.py:115 customers/models.py:126
+msgid "Description"
+msgstr "Descrizione"
+
+#: customers/models.py:43 customers/models.py:145
+#, fuzzy
+msgid "ATECO Sector 2007"
+msgstr "Settore ATECO 2007"
+
+#: customers/models.py:44
+#, fuzzy
+msgid "ATECO Sectors 2007"
+msgstr "Settori ATECO 2007"
+
+#: customers/models.py:47 customers/models.py:54 customers/models.py:236
+msgid "Standard task"
+msgstr "Mansione omogenea"
+
+#: customers/models.py:55
+msgid "Standard tasks"
+msgstr "Mansioni omogenee"
+
+#: customers/models.py:58 customers/models.py:65 customers/models.py:238
+msgid "Role"
+msgstr "Mansione"
+
+#: customers/models.py:66
+msgid "Roles"
+msgstr "Mansioni"
+
+#: customers/models.py:69 customers/models.py:76 customers/models.py:260
+msgid "Security duty"
+msgstr "Figura prevenzione"
+
+#: customers/models.py:77
+msgid "Security duties"
+msgstr "Figure prevenzione"
+
+#: customers/models.py:80
+msgid "Short name"
+msgstr "Sigla"
+
+#: customers/models.py:85
+msgid "Certification"
+msgstr "Certificazione"
+
+#: customers/models.py:86 customers/models.py:146
+msgid "Certifications"
+msgstr "Certificazioni"
+
+#: customers/models.py:93
+msgid "Collaboration Agreement Name"
+msgstr "Nome forma contrattuale"
+
+#: customers/models.py:97
+msgid "Collaboration Agreement"
+msgstr "Forma contrattuale"
+
+#: customers/models.py:98
+msgid "Collaboration Agreements"
+msgstr "Forme contrattuali"
+
+#: customers/models.py:104 customers/models.py:107 customers/models.py:228
+msgid "Nationality"
+msgstr "Nazionalità"
+
+#: customers/models.py:108
+msgid "Nationalities"
+msgstr "Nazionalità"
+
+#: customers/models.py:114
+msgid "Health Surveillance Name"
+msgstr "Nome Sorveglianza Sanitaria"
+
+#: customers/models.py:121 customers/models.py:122 customers/models.py:153
+#: customers/models.py:232
+msgid "Health surveillance"
+msgstr "Sorveglianza Sanitaria"
+
+#: customers/models.py:125 customers/models.py:132 customers/models.py:150
+msgid "CPI Settlement"
+msgstr "Insediamento CPI"
+
+#: customers/models.py:133
+msgid "CPI Settlements"
+msgstr "Insediamenti CPI"
+
+#: customers/models.py:136
+msgid "Firm"
+msgstr "Ragione sociale"
+
+#: customers/models.py:137
+msgid "Registered Office"
+msgstr "Sede Amministrativa"
+
+#: customers/models.py:138
+msgid "Settlement"
+msgstr "Sede Insediamento Produttivo"
+
+#: customers/models.py:139
+msgid "CIIAA registration"
+msgstr "Registrazione CIIAA"
+
+#: customers/models.py:140
+msgid "Tax code"
+msgstr "Codice Fiscale"
+
+#: customers/models.py:141
+msgid "Vat code"
+msgstr "Partita IVA"
+
+#: customers/models.py:142
+msgid "INAIL position"
+msgstr "Posizione INAIL"
+
+#: customers/models.py:143
+msgid "INPS position"
+msgstr "Posizione INPS"
+
+#: customers/models.py:144
+msgid "CCNL"
+msgstr "CCNL"
+
+#: customers/models.py:151
+msgid "Macchine usage"
+msgstr "Uso macchine"
+
+#: customers/models.py:152
+msgid "Dangerous substances"
+msgstr "Sostanze pericolose"
+
+#: customers/models.py:154 customers/models.py:225
+msgid "Phone"
+msgstr "Telefono"
+
+#: customers/models.py:156 customers/models.py:265
+msgid "Email"
+msgstr ""
+
+#: customers/models.py:157
+msgid "Working environment general description"
+msgstr "Descrizione generale dell'ambiente di lavoro"
+
+#: customers/models.py:162 customers/models.py:200 customers/models.py:243
+#: customers/models.py:269
+msgid "Recorded by"
+msgstr "Registrato da"
+
+#: customers/models.py:165 customers/models.py:203 customers/models.py:246
+#: customers/models.py:272
+msgid "Last update by"
+msgstr "Ultima modifica di"
+
+#: customers/models.py:166 customers/models.py:204 customers/models.py:247
+#: customers/models.py:273
+msgid "Recorded on"
+msgstr "Registato il"
+
+#: customers/models.py:188 customers/models.py:193 customers/models.py:235
+#: customers/models.py:259
+msgid "Customer Company"
+msgstr "Azienda"
+
+#: customers/models.py:189
+msgid "Customer companies"
+msgstr "Aziende"
+
+#: customers/models.py:194
+msgid "Department name"
+msgstr "Nome Reparto"
+
+#: customers/models.py:195
+msgid "Department description"
+msgstr "Descrizione Reparto"
+
+#: customers/models.py:208 customers/models.py:237
+msgid "Department"
+msgstr "Reparto"
+
+#: customers/models.py:209
+msgid "Departments"
+msgstr "Reparti"
+
+#: customers/models.py:218
+msgid "Male"
+msgstr "Maschio"
+
+#: customers/models.py:219
+msgid "Female"
+msgstr "Femmina"
+
+#: customers/models.py:223 customers/models.py:261
+msgid "Surname"
+msgstr "Cognome"
+
+#: customers/models.py:224
+msgid "Birth date"
+msgstr "Data di nascita"
+
+#: customers/models.py:226
+msgid "Gender"
+msgstr "Sesso"
+
+#: customers/models.py:230
+msgid "Collaboration agreement"
+msgstr "Forma contrattuale"
+
+#: customers/models.py:233
+msgid "Workers count"
+msgstr "Computo lavoratori"
+
+#: customers/models.py:239
+msgid "Employ date"
+msgstr "Data assunzione"
+
+#: customers/models.py:254 customers/models.py:255
+msgid "Staff"
+msgstr "Personale"
+
+#: customers/models.py:263
+msgid "Internal phone"
+msgstr "Telefono interno"
+
+#: customers/models.py:264
+msgid "External phone"
+msgstr "Telefono esterno"
+
+#: customers/models.py:279
+msgid "Company security duty"
+msgstr "Figura Prevenzione in Azienda"
+
+#: customers/models.py:280
+msgid "Company security duties"
+msgstr "Figure Prevenzione in Azienda"
+
+#: customers/widgets.py:25
+msgid "Enter a valid phone number"
+msgstr "Inserire un numero di telefono valido"
+
+#: customers/management/commands/populate_with_basedata.py:17
+#: customers/management/commands/populate_with_fakedata.py:13
+msgid "Datore di lavoro"
+msgstr ""
+
+#: customers/management/commands/populate_with_basedata.py:18
+#: customers/management/commands/populate_with_fakedata.py:14
+msgid "Dirigente"
+msgstr ""
+
+#: customers/management/commands/populate_with_basedata.py:19
+msgid "Preposto"
+msgstr ""
+
+#: customers/management/commands/populate_with_basedata.py:20
+msgid "RLS"
+msgstr ""
+
+#: customers/management/commands/populate_with_basedata.py:21
+msgid "ASPP"
+msgstr ""
+
+#: customers/management/commands/populate_with_basedata.py:22
+msgid "Medico competente"
+msgstr ""
+
+#: customers/management/commands/populate_with_basedata.py:23
+msgid "Addetto al primosoccorso"
+msgstr ""
+
+#: customers/management/commands/populate_with_basedata.py:24
+msgid "Adetto alle emergenze/antincendio"
+msgstr ""
+
+#: customers/management/commands/populate_with_basedata.py:31
+msgid "Italiana"
+msgstr ""
+
+#: customers/management/commands/populate_with_fakedata.py:15
+msgid "Operaio"
+msgstr ""
+
+#: customers/management/commands/populate_with_fakedata.py:16
+msgid "Segretaria"
+msgstr ""
+
+#: customers/management/commands/populate_with_fakedata.py:17
+msgid "Ingegnere"
+msgstr ""
+
+#: customers/management/commands/populate_with_fakedata.py:24
+msgid "Schiavitù"
+msgstr ""
+
+#: customers/management/commands/populate_with_fakedata.py:24
+msgid "Frustate"
+msgstr ""
+
+#: customers/management/commands/populate_with_fakedata.py:27
+msgid "Videoterminalista"
+msgstr ""
+
+#: templates/admin/base_site.html:4
+msgid "Django site admin"
+msgstr "Amministrazione"
+
+#: templates/admin/base_site.html:7
+msgid "Security Checklist administration"
+msgstr ""
