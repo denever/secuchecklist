@@ -1,11 +1,13 @@
 {% extends "accounts/base-accounts.html" %}
+{% load i18n %}
+
 {% block extra_head %}
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 <link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
 {% endblock %}
 
-{% block title %} Profilo {{ user }} {% endblock %}
-{% block title2 %} Profilo {{ user }} {% endblock %}
+{% block title %}{% trans "Account" %} {{ user }}{% endblock %}
+{% block title2 %}{% trans "Account" %} {{ user }}{% endblock %}
 
 {% block content %}
 <script type="text/javascript">
@@ -25,17 +27,17 @@
   });
 </script>
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">Profilo {{ user }}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Account" %} {{ user }}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <div id="accordion">
-      <h3><a href="#">Clienti registrati da {{ user }}</a></h3>
+      <h3><a href="#">{% trans "Customer companies recorded by" %} {{ user }}</a></h3>
       <div>
         <table id="mycompanies" class="display">
           <thead>
             <tr>
-              <th>Azienda</th>
-              <th>Settore ATECO 2007</th>
-              <th>Data registrazione</th>
+              <th>{% trans "Customer Company" %}</th>
+              <th>{% trans "ATECO Sector 2007" %}</th>
+              <th>{% trans "Record date" %}</th>
             </tr>
           </thead>
           <tbody>
@@ -55,15 +57,15 @@
           </tbody>
         </table>
       </div>
-      <h3><a href="#">Personale registrato da {{ user }}</a></h3>
+      <h3><a href="#">{% trans "Staff recorded by" %} {{ user }}</a></h3>
       <div>
         <table id="mystaff" class="display">
           <thead>
             <tr>
-              <th>Azienda</th>
-              <th>Personale</th>
-              <th>Mansione Omogenea</th>
-              <th>Mansione</th>
+              <th>{% trans "Customer Company" %}</th>
+              <th>{% trans "Staff" %}</th>
+              <th>{% trans "Standard Task" %}</th>
+              <th>{% trans "Role" %}</th>
             </tr>
           </thead>
           <tbody>
@@ -87,17 +89,17 @@
           </tbody>
         </table>
       </div>
-      <h3><a href="#">Figure prevenzione registrate da {{ user }}</a></h3>
+      <h3><a href="#">{% trans "Security duties recorded by" %} {{ user }}</a></h3>
       <div>
         <table id="mysecduty" class="display">
           <thead>
             <tr>
-              <th>Azienda</th>
-              <th>Figura</th>
-              <th>Nome e Cognome</th>
-              <th>Telefono interno</th>
-              <th>Telefono esterno</th>
-              <th>Email</th>
+              <th>{% trans "Customer company" %}</th>
+              <th>{% trans "Security duty" %}</th>
+              <th>{% trans "Name and Surname" %}</th>
+              <th>{% trans "Internal phone" %}</th>
+              <th>{% trans "External phone" %}</th>
+              <th>{% trans "Email" %}</th>
             </tr>
           </thead>
           <tbody>

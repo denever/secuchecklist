@@ -1,11 +1,13 @@
 {% extends "accounts/base-accounts.html" %}
+{% load i18n %}
+
 {% block extra_head %}
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 <link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
 {% endblock %}
 
-{% block title %} Attività {{ user }} {% endblock %}
-{% block title2 %} Attività {{ user }} {% endblock %}
+{% block title %}{% trans "Activity" %} {{ user }}{% endblock %}
+{% block title2 %}{% trans "Activity" %} {{ user }}{% endblock %}
 
 {% block content %}
 <script type="text/javascript">
@@ -14,14 +16,14 @@
   });
 </script>
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">Attività</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Activity" %}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <table id="activities" class="display">
       <thead>
         <tr>
-          <th>Data</th>
-          <th>Attività</th>
-          <th>Su</th>
+          <th>{% trans "Date" %}</th>
+          <th>{% trans "Activity" %}</th>
+          <th>{% trans "On" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +33,7 @@
             {{ activity.date }}
           </td>
           <td>
-            {{ activity.action }} {{ activity.content_type.name }}
+            {{ activity.get_action_description }} {{ activity.content_type.name }}
           </td>
           <td>
             {{ activity.content_object }}

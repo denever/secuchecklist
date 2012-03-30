@@ -1,23 +1,24 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %} Profilo {{ user }} {% endblock %}
-{% block title2 %} Profilo {{ user }} {% endblock %}
+{% block title %}{% trans "Account" %} {{ user }} {% endblock %}
+{% block title2 %}{% trans "Account" %} {{ user }} {% endblock %}
 
 {% block accountmenu %}
-<h3><a href="#">Profilo</a></h3>
+<h3><a href="#">{% trans "Account" %}</a></h3>
 <div>
   <ul class="menu">
     <li>
-      <a href="{% url profile %}">Profilo</a>
+      <a href="{% url profile %}">{% trans "Account" %}</a>
     </li>
     <li>
-      <a href="{% url change-passwd %}">Cambia password</a>
+      <a href="{% url change-passwd %}">{% trans "Change password" %}</a>
     </li>
     <li>
-      <a href="{% url activity %}">Attività recenti</a>
+      <a href="{% url activity %}">{% trans "Recent Activity" %}</a>
     </li>
     <li>
-      <a href="{% url logout %}">Logout</a>
+      <a href="{% url logout %}">{% trans "Logout" %}</a>
     </li>
   </ul>
 </div>
