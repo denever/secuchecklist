@@ -1,0 +1,38 @@
+{% extends "customers/base-customers.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Anagrafica" %}: {{ company.firm }} {% endblock %}
+{% block title2 %}{% trans "Anagrafica" %}: {{ company.firm }} {% endblock %}
+
+{% block customersmenu %}
+<h3><a href="#">{% trans "Anagrafica" %}</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url customers %}">
+	{% trans "Aziende" %}
+      </a>
+    </li>
+    <li>
+      <a href="{% url company-detail company.id %}">
+	{% trans "Azienda corrente" %}
+      </a>
+    </li>
+    <li>
+      <a href="{% url set-working-env company.id %}">
+	{% trans "Ambiente di Lavoro" %}
+      </a>
+    </li>
+    <li>
+      <a href="{% url staff-list company.id %}">
+	{% trans "Organigramma" %}
+      </a>
+    </li>
+    <li>
+      <a href="{% url companysecurityduty-list company.id %}">
+	{% trans "Figure Prevenzione" %}
+      </a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
