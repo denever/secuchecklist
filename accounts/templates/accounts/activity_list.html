@@ -33,9 +33,10 @@
             {{ activity.date }}
           </td>
           <td>
-            {{ activity.get_action_description }} {{ activity.content_type.name }}
+            {{ activity.get_action_description }}
           </td>
           <td>
+            {{ activity.get_content_type_name }}
             {{ activity.content_object }}
           </td>
         </tr>
