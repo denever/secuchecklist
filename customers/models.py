@@ -148,7 +148,7 @@ class CustomerCompany(models.Model):
     settlement_size = models.PositiveIntegerField('Settlement size mq.')
 
     cpi = models.ForeignKey(CPISettlement, verbose_name=_('CPI Settlement'))
-    machine_use = models.BooleanField(_('Macchine usage'))
+    machine_use = models.BooleanField(_('Machine usage'))
     dangerous_substances = models.BooleanField(_('Dangerous substances'))
     health_surveillance = models.BooleanField(_('Health surveillance'))
     phone = models.CharField(_('Phone'), max_length=200)
