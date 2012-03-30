@@ -14,21 +14,21 @@ class Command(BaseCommand):
     help = 'Populate db with utility data for Nationality, SecurityDuty'
 
     def handle(self, *args, **options):
-        duties = ['Datore di lavoro', 'RSPP',
-                  'Dirigente',
-                  'Preposto',
-                  'RLS',
-                  'ASPP',
-                  'Medico competente',
-                  'Addetto al primosoccorso',
-                  'Adetto alle emergenze/antincendio'
+        duties = [_('Datore di lavoro', 'RSPP'),
+                  _('Dirigente'),
+                  _('Preposto'),
+                  _('RLS'),
+                  _('ASPP'),
+                  _('Medico competente'),
+                  _('Addetto al primosoccorso'),
+                  _('Adetto alle emergenze/antincendio')
                   ]
 
         for duty in duties:
             obj = SecurityDuty(name=duty, description=duty)
             obj.save()
 
-        obj = Nationality(nationality='Italiana')
+        obj = Nationality(nationality=_('Italiana'))
         obj.save()
 
         u = User.objects.get(id=1)
