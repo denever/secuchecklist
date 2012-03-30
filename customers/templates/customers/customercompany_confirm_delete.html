@@ -11,16 +11,16 @@
     <p>
       {% trans "Details extract:" %}
       <ul>
-	<li> <em>{% trans "Firm" %}</em>: <strong>{{ customercompany.firm }}</strong> </li>
-	<li> <em>{% trans "Tax code" %}</em>: <strong>{{ customercompany.tax_code }}</strong> </li>
-	<li> <em>{% trans "Vat code" %}</em>: <strong>{{ customercompany.vat_code }}</strong> </li>
-	<li> <em>{% trans "ATECO Sector 2007" %}</em>: <strong>{{ customercompany.ateco_sector }}</strong> </li>
+        <li> <em>{% trans "Firm" %}</em>: <strong>{{ customercompany.firm }}</strong> </li>
+        <li> <em>{% trans "Tax code" %}</em>: <strong>{{ customercompany.tax_code }}</strong> </li>
+        <li> <em>{% trans "Vat code" %}</em>: <strong>{{ customercompany.vat_code }}</strong> </li>
+        <li> <em>{% trans "ATECO Sector 2007" %}</em>: <strong>{{ customercompany.ateco_sector }}</strong> </li>
       </ul>
     </p>
     <form action="" method="post">{% csrf_token %}
       <div>
-	<input type="hidden" name="post" value="{% trans "yes" %}">
-	<input type="submit" value="{% trans "Yes, I'm sure" %}">
+        <input type="hidden" name="post" value="{% trans "yes" %}">
+        <input type="submit" value="{% trans "Yes, I'm sure" %}">
       </div>
     </form>
   </div>

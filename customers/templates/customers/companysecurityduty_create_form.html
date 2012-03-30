@@ -24,32 +24,32 @@ window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{%
   <div class="ui-helper-reset ui-widget-content">
     <form action="{{ form.success_url }}" method="post">{% csrf_token %}
       <fieldset>
-	<table>
-	  {% for field in form %}
-	  <tr id="{{ field.html_name }}">
-	    <td>
-	      {{ field.label_tag }}
-	    </td>
-	    <td>
-	      {{ field }}
-	    </td>
-	    {% if field.errors %}
-	    <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-	      {% for error in field.errors %}
-	      <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-	      {{ error }}
-	    </td>
-	    {% endfor %}
-	    {% endif %}
-	  </tr>
-	  {% endfor %}
-	  <tr>
-	    <td>
-	    </td>
-	    <td>
-	      <input type="submit" value="{% trans "Save" %}"/>
-	    </td>
-	</table>
+        <table>
+          {% for field in form %}
+          <tr id="{{ field.html_name }}">
+            <td>
+              {{ field.label_tag }}
+            </td>
+            <td>
+              {{ field }}
+            </td>
+            {% if field.errors %}
+            <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+              {% for error in field.errors %}
+              <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+              {{ error }}
+            </td>
+            {% endfor %}
+            {% endif %}
+          </tr>
+          {% endfor %}
+          <tr>
+            <td>
+            </td>
+            <td>
+              <input type="submit" value="{% trans "Save" %}"/>
+            </td>
+        </table>
       </fieldset>
     </form>
   </div>
