@@ -1,5 +1,6 @@
 # encoding: utf-8
 from django.db import models
+from django.utils.translation import ugettext as _
 
 # importing User for UserProfile
 from django.contrib.auth.models import User
@@ -12,7 +13,9 @@ from django.utils.encoding import force_unicode
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
-LOGIN, LOGOUT, CREATE, EDIT, DELETE = 'Logged In', 'Logged Out', 'Created', 'Edited', 'Deleted'
+LOGIN, LOGOUT, CREATE, EDIT, DELETE = range(5)
+
+actions = [_('Logged In'), _('Logged Out'), _('Created'), _('Edited'), _('Deleted')]
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
@@ -21,19 +24,36 @@ class UserProfile(models.Model):
     # customercompany_set tutte le compagnie da te registrate
 
     def __unicode__(self):
-        return 'Profilo %s' % self.user.username
+        return self.user.username
+
+    class Meta:
+        verbose_name = _('Account')
+        verbose_name_plural = _('Account')
 
 class Activity(models.Model):
     userprofile = models.ForeignKey(UserProfile)
-    date = models.DateTimeField('Data attività', auto_now_add=True)
-    action = models.CharField('Attività', max_length=6)
+    date = models.DateTimeField(_('Activity date'), auto_now_add=True)
+    action = models.PositiveSmallIntegerField(_('Action'))
     object_id = models.PositiveIntegerField()
-    object_repr = models.CharField('Nome Oggetto', max_length=50)
+    object_repr = models.CharField(_('Object name'), max_length=50)
     content_type = models.ForeignKey(ContentType)
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
+    class Meta:
+        ordering = ['-date']
+        verbose_name = _('Activity')
+        verbose_name_plural = _('Activities')
+
     def __unicode__(self):
         return '%s %s %s %s' % (self.date, self.userprofile, self.action, self.object_repr)
+
+    def get_action_description(self):
+        print self.action
+        return actions[self.action]
+
+    def get_content_type_name(self):
+        print self.content_type.model_class()._meta.verbose_name
+        return self.content_type.model_class()._meta.verbose_name
 
 @receiver(post_save)
 def post_save_cb(sender, **kwargs):
