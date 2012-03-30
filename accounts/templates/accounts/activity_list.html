@@ -12,7 +12,8 @@
 {% block content %}
 <script type="text/javascript">
   $(document).ready( function () {
-  $('#activities').dataTable({"bJQueryUI": true,"oLanguage": { "sUrl": "/static/dataTables.italian.txt" }});
+  $('#activities').dataTable({"bJQueryUI": true, "aaSorting": [[ 0, "desc"]],
+  "oLanguage": { "sUrl": "/static/dataTables.italian.txt" }});
   });
 </script>
 <div class="ui-helper-reset ui-widget">
