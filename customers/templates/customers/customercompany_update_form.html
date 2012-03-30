@@ -1,42 +1,14 @@
-{% extends "customers/base-customers.html" %}
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+
 {% block extra_head %} {{ form.media }} {% endblock %}
-{% block title %} Modifica Anagrafica {% endblock %}
+
+{% block title %}{% trans "Modifica Anagrafica" %}{% endblock %}
 {% block title2 %} {{ company.firm }} {% endblock %}
-{% block customersmenu %}
-<h3><a href="#">Anagrafica</a></h3>
-<div>
-  <ul class="menu">
-    <li>
-      <a href="{% url customers %}">
-	Aziende
-      </a>
-    </li>
-    <li>
-      <a href="{% url company-detail company.id %}">
-	Azienda corrente
-      </a>
-    </li>
-    <li>
-      <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
-      </a>
-    </li>
-    <li>
-      <a href="{% url staff-list company.id %}">
-	    Organigramma
-      </a>
-    </li>
-    <li>
-      <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
-      </a>
-    </li>
-  </ul>
-</div>
-{% endblock %}
+
 {% block content %}
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">Modifica Azienda</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Modifica Azienda" %}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <form action="{{ form.success_url }}" method="post">{% csrf_token %}
       <fieldset>
@@ -61,7 +33,7 @@
 	  {% endfor %}
 	  <tr>
 	    <td></td>
-	    <td><input type="submit" value="Aggiorna"/></td>
+	    <td><input type="submit" value="{% trans "Aggiorna" %}"/></td>
 	  </tr>
 	</table>
       </fieldset>

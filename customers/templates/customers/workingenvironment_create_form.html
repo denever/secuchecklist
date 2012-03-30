@@ -1,44 +1,15 @@
-{% extends "customers/base-customers.html" %}
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+
 {% block extra_head %}
 <script type="text/javascript" src="/static/datatables/js/jquery.dataTables.js" charset="utf-8" >
 </script>
 {{ form.media }}
 <link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
 {% endblock %}
+
 {% block title %} Ambiente di Lavoro {{ company.firm }} {% endblock %}
 {% block title2 %} Ambiente di Lavoro {{ company.firm }} {% endblock %}
-{% block customersmenu %}
-<h3><a href="#">Anagrafica</a></h3>
-<div>
-  <ul class="menu">
-    <li>
-      <a href="{% url customers %}">
-	Aziende
-      </a>
-    </li>
-    <li>
-      <a href="{% url company-detail company.id %}">
-	Azienda corrente
-      </a>
-    </li>
-    <li>
-      <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
-      </a>
-    </li>
-    <li>
-      <a href="{% url staff-list company.id %}">
-	    Organigramma
-      </a>
-    </li>
-    <li>
-      <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
-      </a>
-    </li>
-  </ul>
-</div>
-{% endblock %}
 	<!--	"sDom": '<"toolbar">frtip' -->
 	<!-- $("div.toolbar").html('	<span class="ui-icon ui-icon-pencil"></span>');     -->
 

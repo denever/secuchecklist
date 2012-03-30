@@ -1,37 +1,7 @@
-{% extends "customers/base-customers.html" %}
-{% block title %} Gestione Personale Azienda: {{ staff.company.firm }} {% endblock %}
-{% block customersmenu %}
-<h3><a href="#">Anagrafica</a></h3>
-<div>
-  <ul class="menu">
-    <li>
-      <a href="{% url customers %}">
-	Aziende
-      </a>
-    </li>
-    <li>
-      <a href="{% url company-detail company.id %}">
-	Azienda corrente
-      </a>
-    </li>
-    <li>
-      <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
-      </a>
-    </li>
-    <li>
-      <a href="{% url staff-list company.id %}">
-	    Organigramma
-      </a>
-    </li>
-    <li>
-      <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
-      </a>
-    </li>
-  </ul>
-</div>
-{% endblock %}
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Gestione Personale Azienda" %}: {{ staff.company.firm }} {% endblock %}
 
 {% block content-top %}
   <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url staff-edit company.id staff.id %}"></a>
@@ -42,21 +12,21 @@
   <h1 class="ui-helper-reset ui-widget-header">{{ staff.surname }} {{ staff.name }} ({{ staff.standard_task }})</h1>
   <div class="ui-helper-reset ui-widget-content">
     <table class="detail">
-      <tr class="even"><td class="fieldname">Nome</td><td> {{ staff.name }}</tr>
-      <tr class="odd"><td class="fieldname">Cognome</td><td> {{ staff.surname }} </tr>
-      <tr class="even"><td class="fieldname">Data di nascita</td><td> {{ staff.birth_date }} </tr>
-      <tr class="odd"><td class="fieldname">Telefono</td><td> {{ staff.phone }} </tr>
-      <tr class="even"><td class="fieldname">Sesso</td><td> {{ staff.gender }} </tr>
-      <tr class="odd"><td class="fieldname">Nazionalità</td><td> {{ staff.nationality }} </tr>
-      <tr class="even"><td class="fieldname">Forma contrattuale</td><td> {{ staff.collagreement }} </tr>
-      <tr class="odd"><td class="fieldname">Sorveglianza sanitaria</td><td> {{ staff.health_care }} </tr>
-      <tr class="even"><td class="fieldname">Computo lavoratori</td><td> {{ staff.workers_count }} </tr>
-      <tr class="odd"><td class="fieldname">Azienda</td><td> {{ staff.company }} </tr>
-      <tr class="even"><td class="fieldname">Mansione Omogenea</td><td> {{ staff.standard_task }} </tr>
-      <tr class="odd"><td class="fieldname">Reparto</td><td> {{ staff.department }} </tr>
-      <tr class="even"><td class="fieldname">Mansione</td><td> {{ staff.role }} </tr>
-      <tr class="odd"><td class="fieldname">Figura Prevenzione</td><td> {{ staff.security_duty }} </tr>
-      <tr class="even"><td class="fieldname">Data assunzione</td><td> {{ staff.employ_date }} </tr>
+      <tr class="even"><td class="fieldname">{% trans "Nome" %}</td><td> {{ staff.name }}</tr>
+      <tr class="odd"><td class="fieldname">{% trans "Cognome" %}</td><td> {{ staff.surname }} </tr>
+      <tr class="even"><td class="fieldname">{% trans "Data di nascita" %}</td><td> {{ staff.birth_date }} </tr>
+      <tr class="odd"><td class="fieldname">{% trans "Telefono" %}</td><td> {{ staff.phone }} </tr>
+      <tr class="even"><td class="fieldname">{% trans "Sesso" %}</td><td> {{ staff.gender }} </tr>
+      <tr class="odd"><td class="fieldname">{% trans "Nazionalità" %}</td><td> {{ staff.nationality }} </tr>
+      <tr class="even"><td class="fieldname">{% trans "Forma contrattuale" %}</td><td> {{ staff.collagreement }} </tr>
+      <tr class="odd"><td class="fieldname">{% trans "Sorveglianza sanitaria" %}</td><td> {{ staff.health_care }} </tr>
+      <tr class="even"><td class="fieldname">{% trans "Computo lavoratori" %}</td><td> {{ staff.workers_count }} </tr>
+      <tr class="odd"><td class="fieldname">{% trans "Azienda" %}</td><td> {{ staff.company }} </tr>
+      <tr class="even"><td class="fieldname">{% trans "Mansione Omogenea" %}</td><td> {{ staff.standard_task }} </tr>
+      <tr class="odd"><td class="fieldname">{% trans "Reparto" %}</td><td> {{ staff.department }} </tr>
+      <tr class="even"><td class="fieldname">{% trans "Mansione" %}</td><td> {{ staff.role }} </tr>
+      <tr class="odd"><td class="fieldname">{% trans "Figura Prevenzione" %}</td><td> {{ staff.security_duty }} </tr>
+      <tr class="even"><td class="fieldname">{% trans "Data assunzione" %}</td><td> {{ staff.employ_date }} </tr>
     </table>
   </div>
 </div>

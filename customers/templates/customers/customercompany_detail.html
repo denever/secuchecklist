@@ -1,105 +1,131 @@
-{% extends "customers/base-customers.html" %}
-{% block title %} Anagrafica: {{ company.firm }} {% endblock %}
-{% block title2 %} Anagrafica: {{ company.firm }} {% endblock %}
+{% extends "customers/base-company.html" %}
+{% load i18n %}
 
-{% block customersmenu %}
-<h3><a href="#">Anagrafica</a></h3>
-<div>
-  <ul class="menu">
-    <li>
-      <a href="{% url customers %}">
-	Aziende
-      </a>
-    </li>
-    <li>
-      <a href="{% url company-detail company.id %}">
-	Azienda corrente
-      </a>
-    </li>
-    <li>
-      <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
-      </a>
-    </li>
-    <li>
-      <a href="{% url staff-list company.id %}">
-	    Organigramma
-      </a>
-    </li>
-    <li>
-      <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
-      </a>
-    </li>
-  </ul>
-</div>
-{% endblock %}
 {% block content-top %}
-  <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit company.id %}"></a>
+  <a title="{% trans "Modifica" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit company.id %}"></a>
 {% endblock %}
 
 {% block content %}
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">Dettaglio Azienda: {{ company.firm }}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Dettaglio Azienda" %}: {{ company.firm }}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <table class="detail">
-      <tr class="even"> <td class="fieldname">Ragione sociale</td><td>{{ company.firm }}</td></tr>
-      <tr class="odd"> <td class="fieldname">Sede legale amministrativa</td><td><a href="{{company.registered_office.mapurl}}">{{ company.registered_office }}</a></td></tr>
-      <tr class="even"> <td class="fieldname">Sede insediamento produttivo</td><td><a href="{{company.settlement.mapurl}}">{{ company.settlement }}</a></td></tr>
-      <tr class="odd"> <td class="fieldname">Iscrizione CIIAA</td><td>{{ company.ciiaa }}</td></tr>
-      <tr class="even"> <td class="fieldname">Codice fiscale</td><td>{{ company.tax_code }}</td></tr>
-      <tr class="odd"> <td class="fieldname">Partita IVA</td><td>{{ company.vat_code }}</td></tr>
-      <tr class="even"> <td class="fieldname">Posizione INAIL</td><td>{{ company.inail_pos }}</td></tr>
-      <tr class="odd"> <td class="fieldname">Posizione INPS</td><td>{{ company.inps_pos }}</td></tr>
-      <tr class="even"> <td class="fieldname">CCNL</td><td>{{ company.ccnl }}</td></tr>
-      <tr class="odd"> <td class="fieldname">Settore Ateco 2007</td><td>{{ company.ateco_sector }}</td></tr>
-      <tr class="even"> <td class="fieldname">Certificazioni</td><td>
+      <tr class="even">
+	<td class="fieldname">{% trans "Ragione sociale" %}</td>
+	<td>{{ company.firm }}</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Sede legale amministrativa" %}</td>
+	<td>
+	  <a href="{{company.registered_office.mapurl}}">{{ company.registered_office }}</a>
+	</td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "Sede insediamento produttivo" %}</td>
+	<td>
+	  <a href="{{company.settlement.mapurl}}">{{ company.settlement }}</a>
+	</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Iscrizione CIIAA" %}</td>
+	<td>{{ company.ciiaa }}</td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "Codice fiscale" %}</td>
+	<td>{{ company.tax_code }}</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Partita IVA" %}</td>
+	<td>{{ company.vat_code }}</td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "Posizione INAIL" %}</td>
+	<td>{{ company.inail_pos }}</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Posizione INPS" %}</td>
+	<td>{{ company.inps_pos }}</td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "CCNL" %}</td>
+	<td>{{ company.ccnl }}</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Settore Ateco 2007" %}</td>
+	<td>{{ company.ateco_sector }}</td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "Certificazioni" %}</td>
+	<td>
 	  <ul>
 	    {% for cert in company.certifications.all %}
-	    <li>{{ cert }} </li>
+	    <li>{{ cert }}</li>
 	    {% endfor %}
 	  </ul>
 	</td>
       </tr>
-      <tr class="odd"> <td class="fieldname">Data registrazione</td><td>{{ company.record_date }}</td></tr>
-      <tr class="even"><td class="fieldname">CPI</td><td>{{ company.cpi }}</td></tr>
       <tr class="odd">
-	<td class="fieldname">Uso macchine</td>
+	<td class="fieldname">{% trans "Data registrazione" %}</td>
+	<td>{{ company.record_date }}</td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "CPI" %}</td>
+	<td>{{ company.cpi }}</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Uso macchine" %}</td>
 	<td>
 	  {% if company.machine_use %}
-	  Sì
+	  {% trans "Sì" %}
 	  {% else %}
-	  No
+	  {% trans "No" %}
 	  {% endif %}
 	</td>
       </tr>
 
       <tr class="even">
-	<td class="fieldname">Sostanze pericolose</td>
+	<td class="fieldname">{% trans "Sostanze pericolose" %}</td>
 	<td>
 	  {% if company.dangerous_substances %}
-	  Sì
+	  {% trans "Sì" %}
 	  {% else %}
-	  No
+	  {% trans "No" %}
 	  {% endif %}
 	</td>
       </tr>
 
       <tr class="odd">
-	<td class="fieldname">Sorveglianza sanitaria</td>
+	<td class="fieldname">{% trans "Sorveglianza sanitaria" %}</td>
 	<td>
 	  {% if company.health_surveillance %}
-	  Sì
+	  {% trans "Sì" %}
 	  {% else %}
-	  No
+	  {% trans "No" %}
 	  {% endif %}
 	</td>
       </tr>
-      <tr class="even"> <td class="fieldname">Superficie insediamento</td><td>{{ company.settlement_size }}</td></tr>
-      <tr class="odd"> <td class="fieldname">Telefono</td><td>{{ company.phone }}</td></tr>
-      <tr class="even"> <td class="fieldname">Fax</td><td>{{ company.fax }}</td></tr>
-      <tr class="odd"> <td class="fieldname">Email</td><td><a href="mailto:{{ company.email }}">{{ company.email }}</a></td></tr>
-      <tr class="even"> <td class="fieldname">Numero di lavoratori</td><td>{{ company.workers_count }}</td></tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "Superficie insediamento" %}</td>
+	<td>{{ company.settlement_size }}</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Telefono" %}</td>
+	<td>{{ company.phone }}</td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "Fax" %}</td>
+	<td>{{ company.fax }}</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Email" %}</td>
+	<td>
+	  <a href="mailto:{{ company.email }}">{{ company.email }}</a>
+	</td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "Numero di lavoratori" %}</td>
+	<td>{{ company.workers_count }}</td>
+      </tr>
     </table>
   </div>
 </div>

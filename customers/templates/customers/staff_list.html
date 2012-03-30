@@ -1,44 +1,16 @@
-{% extends "customers/base-customers.html" %}
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+
 {% block extra_head %}
 <link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 {% endblock %}
-{% block title %} Azienda: {{ company.firm }} {% endblock %}
-{% block title2 %} Azienda: {{ company.firm }} {% endblock %}
-{% block customersmenu %}
-<h3><a href="#">Anagrafica</a></h3>
-<div>
-  <ul class="menu">
-    <li>
-      <a href="{% url customers %}">
-	Aziende
-      </a>
-    </li>
-    <li>
-      <a href="{% url company-detail company.id %}">
-	Azienda corrente
-      </a>
-    </li>
-    <li>
-      <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
-      </a>
-    </li>
-    <li>
-      <a href="{% url staff-list company.id %}">
-	Organigramma
-      </a>
-    </li>
-    <li>
-      <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
-      </a>
-    </li>
-  </ul>
-</div>
-{% endblock %}
+
+{% block title %}{% trans "Azienda" %}: {{ company.firm }} {% endblock %}
+{% block title2 %}{% trans "Azienda" %}: {{ company.firm }} {% endblock %}
+
 {% block content-top %}
-  <a title="Aggiungi personale" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url staff-add company.id %}"></a>
+  <a title="{% trans "Aggiungi personale" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url staff-add company.id %}"></a>
 {% endblock %}
 {% block content %}
 <script type="text/javascript">
@@ -61,15 +33,15 @@
 </script>
 
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">Organigramma</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Organigramma" %}</h1>
   <div style="margin-top: 10px">
     <table id="staff" class="display">
       <thead>
 	<tr>
-	  <th>Personale</th>
-	  <th>Mansione Omogenea</th>
-	  <th>Mansione</th>
-	  <th>Azioni</th>
+	  <th>{% trans "Personale" %}</th>
+	  <th>{% trans "Mansione Omogenea" %}</th>
+	  <th>{% trans "Mansione" %}</th>
+	  <th>{% trans "Azioni" %}</th>
 	</tr>
       </thead>
       <tbody>

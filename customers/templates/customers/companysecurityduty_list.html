@@ -1,44 +1,16 @@
-{% extends "customers/base-customers.html" %}
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+
 {% block extra_head %}
 <script type="text/javascript" src="/static/autocomplete/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/autocomplete/js/jquery-ui.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 <link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
 {% endblock %}
+
 {% block title %} Gestione Azienda: {{ company.firm }} {% endblock %}
 {% block title2 %} Figure Prevenzione: {{ company.firm }} {% endblock %}
-{% block customersmenu %}
-<h3><a href="#">Anagrafica</a></h3>
-<div>
-  <ul class="menu">
-    <li>
-      <a href="{% url customers %}">
-	Aziende
-      </a>
-    </li>
-    <li>
-      <a href="{% url company-detail company.id %}">
-	Azienda corrente
-      </a>
-    </li>
-    <li>
-      <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
-      </a>
-    </li>
-    <li>
-      <a href="{% url staff-list company.id %}">
-	Organigramma
-      </a>
-    </li>
-    <li>
-      <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
-      </a>
-    </li>
-  </ul>
-</div>
-{% endblock %}
+
 {% block content-top %}
   <a title="Aggiungi Figura Prevenzione" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url companysecurityduty-add company.id %}"></a>
 {% endblock %}
@@ -65,17 +37,17 @@
 </script>
 
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">Figure Prevenzione</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Figure Prevenzione" %}</h1>
   <div style="margin-top: 10px">
     <table id="secduties" class="display">
       <thead>
 	<tr>
-	  <th>Figura</th>
-	  <th>Nome e Cognome</th>
-	  <th>Telefono interno</th>
-	  <th>Telefono esterno</th>
-	  <th>Email</th>
-	  <th>Azioni</th>
+	  <th>{% trans "Figura" %}</th>
+	  <th>{% trans "Nome e Cognome" %}</th>
+	  <th>{% trans "Telefono interno" %}</th>
+	  <th>{% trans "Telefono esterno" %}</th>
+	  <th>{% trans "Email" %}</th>
+	  <th>{% trans "Azioni" %}</th>
 	</tr>
       </thead>
       <tbody>
@@ -97,8 +69,8 @@
 	    <a href="mailto:{{ company.email }}">{{ secduty.email }}</a>
 	  </td>
 	  <td>
-	    <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url companysecurityduty-edit company.id secduty.id %}"></a>
-	    <a title="Elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url companysecurityduty-delete company.id secduty.id %}"></a>
+	    <a title="{% trans "Modifica" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url companysecurityduty-edit company.id secduty.id %}"></a>
+	    <a title="{% trans "Elimina" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url companysecurityduty-delete company.id secduty.id %}"></a>
 	  </td>
 	</tr>
 	{% endfor %}

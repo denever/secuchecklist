@@ -1,44 +1,15 @@
-{% extends "customers/base-customers.html" %}
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+
 {% block extra_head %}
 <link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 {% endblock %}
+
 {% block title %} Gestione Personale Azienda: {{ department.company.firm }} {% endblock %}
-{% block customersmenu %}
-<h3><a href="#">Anagrafica</a></h3>
-<div>
-  <ul class="menu">
-    <li>
-      <a href="{% url customers %}">
-	Aziende
-      </a>
-    </li>
-    <li>
-      <a href="{% url company-detail company.id %}">
-	Azienda corrente
-      </a>
-    </li>
-    <li>
-      <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
-      </a>
-    </li>
-    <li>
-      <a href="{% url staff-list company.id %}">
-	Organigramma
-      </a>
-    </li>
-    <li>
-      <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
-      </a>
-    </li>
-  </ul>
-</div>
-{% endblock %}
 
 {% block content-top %}
-  <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url department-edit company.id department.id %}"></a>
+  <a title="{% trans "Modifica" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url department-edit company.id department.id %}"></a>
 {% endblock %}
 
 {% block content %}
@@ -60,17 +31,17 @@
   } );
 </script>
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">Descrizione reparto</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Descrizione reparto" %}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <table class="detail">
       <tr class="even">
-	<td class="fieldname">Reparto</td><td> {{ department.name }}</td>
+	<td class="fieldname">{% trans "Reparto" %}</td><td> {{ department.name }}</td>
       </tr>
       <tr class="odd">
-	<td class="fieldname">Superficie</td><td> {{ department.size }} </td>
+	<td class="fieldname">{% trans "Superficie" %}</td><td> {{ department.size }} </td>
       </tr>
       <tr class="even">
-	<td class="fieldname">Descrizione</td><td> {{ department.description }} </td>
+	<td class="fieldname">{% trans "Descrizione" %}</td><td> {{ department.description }} </td>
       </tr>
     </table>
   </div>
@@ -82,10 +53,10 @@
     <table id="staff" class="display">
       <thead>
 	<tr>
-	  <th>Personale</th>
-	  <th>Mansione Omogenea</th>
-	  <th>Figura prevenzione</th>
-	  <th>Azioni</th>
+	  <th>{% trans "Personale" %}</th>
+	  <th>{% trans "Mansione Omogenea" %}</th>
+	  <th>{% trans "Figura prevenzione" %}</th>
+	  <th>{% trans "Azioni" %}</th>
 	</tr>
       </thead>
       <tbody>
@@ -101,7 +72,7 @@
 	    {{ staff.security_duty }}
 	  </td>
 	  <td>
-	    <a title="Elimina dal reparto" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url staff-delete company.id staff.id %}"></a>
+	    <a title="{% trans "Elimina dal reparto" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url staff-delete company.id staff.id %}"></a>
 	  </td>
 	</tr>
 	{% endfor %}

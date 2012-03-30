@@ -1,10 +1,14 @@
 {% extends "customers/base-customers.html" %}
+{% load i18n %}
+
 {% block extra_head %}
 <link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 {% endblock %}
-{% block title %} Anagrafica Aziende {% endblock %}
-{% block title2 %} Anagrafica Aziende {% endblock %}
+
+{% block title %}{% trans "Anagrafica Aziende" %}{% endblock %}
+{% block title2 %}{% trans "Anagrafica Aziende" %}{% endblock %}
+
 {% block submenu %}
       <ul class="menu">
 	{% for year in years %}
@@ -15,9 +19,11 @@
 	{% endfor %}
       </ul>
 {% endblock %}
+
 {% block content-top %}
-      <a title="Aggiungi Azienda" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url company-create %}"></a>
+      <a title="{% trans "Aggiungi Azienda" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url company-create %}"></a>
 {% endblock %}
+
 {% block content %}
 <script type="text/javascript">
   $(document).ready( function () {
@@ -38,16 +44,16 @@
   } );
 </script>
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">Anagrafica Aziende</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Anagrafica Aziende" %}</h1>
   <div style="margin: 10px">
     {% if companies %}
     <table id="companies" class="display">
       <thead>
 	<tr>
-	  <th>Azienda</th>
-	  <th>Settore ATECO 2007</th>
-	  <th>Data registrazione</th>
-	  <th>Azioni</th>
+	  <th>{% trans "Azienda" %}</th>
+	  <th>{% trans "Settore ATECO 2007" %}</th>
+	  <th>{% trans "Data registrazione" %}</th>
+	  <th>{% trans "Azioni" %}</th>
 	</tr>
       </thead>
       <tbody>
@@ -63,15 +69,15 @@
 	    {{ cc.record_date }}
 	  </td>
 	  <td>
-	    <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}"></a>
-	    <a title="Elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url company-delete cc.id %}"></a>
+	    <a title="{% trans "Modifica" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}"></a>
+	    <a title="{% trans "Elimina" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url company-delete cc.id %}"></a>
 	  </td>
 	</tr>
 	{% endfor %}
       </tbody>
     </table>
     {% else %}
-    <p>No companies are available.</p>
+    <p>{% trans "No companies are available." %}</p>
     {% endif %}
 </div>
 </div>

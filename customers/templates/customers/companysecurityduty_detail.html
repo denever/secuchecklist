@@ -1,56 +1,42 @@
-{% extends "customers/base-customers.html" %}
-{% block title %} Gestione Personale Azienda: {{ companysecurityduty.company.firm }} {% endblock %}
-{% block customersmenu %}
-<h3><a href="#">Anagrafica</a></h3>
-<div>
-  <ul class="menu">
-    <li>
-      <a href="{% url customers %}">
-	Aziende
-      </a>
-    </li>
-    <li>
-      <a href="{% url company-detail company.id %}">
-	Azienda corrente
-      </a>
-    </li>
-    <li>
-      <a href="{% url set-working-env company.id %}">
-	Ambiente di Lavoro
-      </a>
-    </li>
-    <li>
-      <a href="{% url companysecurityduty-list company.id %}">
-	    Organigramma
-      </a>
-    </li>
-    <li>
-      <a href="{% url companysecurityduty-list company.id %}">
-	Figure Prevenzione
-      </a>
-    </li>
-  </ul>
-</div>
-{% endblock %}
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+{% block title %}{% trans "Gestione Personale Azienda" %}: {{ companysecurityduty.company.firm }} {% endblock %}
 
 {% block content-top %}
-  <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url companysecurityduty-edit company.id companysecurityduty.id %}"></a>
+  <a title="{% trans "Modifica" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url companysecurityduty-edit company.id companysecurityduty.id %}"></a>
 {% endblock %}
-
 
 {% block content %}
 <div class="ui-helper-reset ui-widget">
   <h1 class="ui-helper-reset ui-widget-header">{{ companysecurityduty.surname }} {{ companysecurityduty.name }} ({{ companysecurityduty.security_duty }})</h1>
   <div class="ui-helper-reset ui-widget-content">
     <table class="detail">
-      <tr class="even"><td class="fieldname">Nome</td><td> {{ companysecurityduty.name }}</tr>
-      <tr class="odd"><td class="fieldname">Cognome</td><td> {{ companysecurityduty.surname }} </tr>
-      <tr class="even"><td class="fieldname">Telefono Interno</td><td> {{ companysecurityduty.internal_phone }} </tr>
-      <tr class="odd"><td class="fieldname">Telefono Esterno</td><td> {{ companysecurityduty.external_phone }} </tr>
-      <tr class="even"><td class="fieldname">Email</td><td>
+      <tr class="even">
+	<td class="fieldname">{% trans "Nome" %}</td>
+	<td> {{ companysecurityduty.name }}</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Cognome" %}</td>
+	<td> {{ companysecurityduty.surname }}</td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "Telefono Interno" %}</td>
+	<td> {{ companysecurityduty.internal_phone }} </td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Telefono Esterno" %}</td>
+	<td> {{ companysecurityduty.external_phone }} </td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "Email" %}</td>
+	<td>
 	  <a href="mailto:{{ companysecurityduty.email }}">{{ companysecurityduty.email }}</a>
 	</td>
-      <tr class="odd"><td class="fieldname">Figura Prevenzione</td><td> {{ companysecurityduty.security_duty }} </tr>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Figura Prevenzione" %}</td>
+	<td> {{ companysecurityduty.security_duty }} </td>
+      </tr>
     </table>
   </div>
 </div>

@@ -1,48 +1,17 @@
-{% extends "customers/base-customers.html" %}
-{% block customersmenu %}
-<h3><a href="#">Anagrafica</a></h3>
-<div>
-  <ul class="menu">
-    <li>
-      <a href="{% url customers %}">
-        Aziende
-      </a>
-    </li>
-    <li>
-      <a href="{% url company-edit company.id %}">
-        Modifica Azienda
-      </a>
-    </li>
-    <li>
-      <a href="{% url set-working-env company.id %}">
-        Ambiente di Lavoro
-      </a>
-    </li>
-    <li>
-      <a href="{% url staff-list company.id %}">
-            Organigramma
-      </a>
-    </li>
-    <li>
-      <a href="{% url companysecurityduty-list company.id %}">
-        Figure Prevenzione
-      </a>
-    </li>
-  </ul>
-</div>
-{% endblock %}
+{% extends "customers/base-company.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">Sei sicuro?</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Sei sicuro?" %}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <p>
-      Sei sicuro di voler cancellare il reparto {{ department.name }} ?
+      {% trans "Sei sicuro di voler cancellare il reparto" %} {{ department.name }}?
     </p>
     <form action="" method="post">{% csrf_token %}
       <div>
-        <input type="hidden" name="post" value="yes">
-        <input type="submit" value="Yes, I'm sure">
+	<input type="hidden" name="post" value="yes">
+	<input type="submit" value="{% trans "Yes, I'm sure" %}">
       </div>
     </form>
   </div>

@@ -1,7 +1,10 @@
 {% extends "customers/base-customers.html" %}
+{% load i18n %}
+
 {% block extra_head %} {{ form.media }} {% endblock %}
-{% block title %} Registrazione Azienda {% endblock %}
-{% block submenu %}{% endblock %}
+
+{% block title %}{% trans "Registrazione Azienda" %}{% endblock %}
+
 {% block content %}
 <div class="ui-helper-reset ui-widget">
   <h1 class="ui-helper-reset ui-widget-header">Registrazione Azienda</h1>
@@ -29,7 +32,7 @@
 	  {% endfor %}
 	  <tr>
 	    <td></td>
-	    <td><input type="submit" value="Registra"/></td>
+	    <td><input type="submit" value="{% trans "Registra" %}"/></td>
 	  </tr>
 	</table>
       </fieldset>
