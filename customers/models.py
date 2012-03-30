@@ -276,5 +276,5 @@ class CompanySecurityDuty(models.Model):
         return u'%s %s (%s)' % (self.surname, self.name, self.security_duty)
 
     class Meta:
-        verbose_name_plural = _('Company security duty')
+        verbose_name = _('Company security duty')
         verbose_name_plural = _('Company security duties')
