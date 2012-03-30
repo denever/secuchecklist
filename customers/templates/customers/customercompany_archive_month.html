@@ -5,8 +5,7 @@
 {% block submenu %}
       <ul>
 	<li>
-	  <a href="{% url company-create %}">Aggiungi Azienda
-	  </a>
+	  <a href="{% url company-create %}">{% trans "Add a new company" %}</a>
 	</li>
 	{% for year in years %}
 	<li>
@@ -21,9 +20,9 @@
 	<table>
 	  <thead>
 	    <tr>
-	      <td>{% trans "Azienda" %}</td>
-	      <td>{% trans "Settore ATECO 2007" %}</td>
-	      <td>{% trans "Data registrazione" %}</td>
+	      <td>{% trans "Company" %}</td>
+	      <td>{% trans "ATECO Sector 2007" %}</td>
+	      <td>{% trans "Record date" %}</td>
 	    </tr>
 	  </thead>
 	  <tbody>

@@ -3,18 +3,18 @@
 
 {% block content %}
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Sei sicuro?" %}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Are you sure?" %}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <p>
-      {% trans "Sei sicuro di voler cancellare l'azienda" %} <em>{{ customercompany.firm }}</em>?
+      {% trans "Do you really want to remove customer company" %} <em>{{ customercompany.firm }}</em>?
     </p>
     <p>
-      {% trans "Riepilogo dati:" %}
+      {% trans "Details extract:" %}
       <ul>
-	<li> <em>{% trans "Ragione Sociale" %}</em>: <strong>{{ customercompany.firm }}</strong> </li>
-	<li> <em>{% trans "Codice Fiscale" %}</em>: <strong>{{ customercompany.tax_code }}</strong> </li>
-	<li> <em>{% trans "Partita IVA" %}</em>: <strong>{{ customercompany.vat_code }}</strong> </li>
-	<li> <em>{% trans "Settore ATECO 2007" %}</em>: <strong>{{ customercompany.ateco_sector }}</strong> </li>
+	<li> <em>{% trans "Firm" %}</em>: <strong>{{ customercompany.firm }}</strong> </li>
+	<li> <em>{% trans "Tax code" %}</em>: <strong>{{ customercompany.tax_code }}</strong> </li>
+	<li> <em>{% trans "Vat code" %}</em>: <strong>{{ customercompany.vat_code }}</strong> </li>
+	<li> <em>{% trans "ATECO Sector 2007" %}</em>: <strong>{{ customercompany.ateco_sector }}</strong> </li>
       </ul>
     </p>
     <form action="" method="post">{% csrf_token %}

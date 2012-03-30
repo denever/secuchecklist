@@ -16,11 +16,11 @@ window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{%
 {{ form.media }}
 
 {% endblock %}
-{% block title %} {% trans "Registrazione Personale" %} {% endblock %}
+{% block title %}{% trans "Security duty registration" %}{% endblock %}
 
 {% block content %}
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Registra Figura Prevenzione" %}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Security duty registration" %}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <form action="{{ form.success_url }}" method="post">{% csrf_token %}
       <fieldset>
@@ -47,7 +47,7 @@ window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{%
 	    <td>
 	    </td>
 	    <td>
-	      <input type="submit" value="{% trans "Registra" %}"/>
+	      <input type="submit" value="{% trans "Save" %}"/>
 	    </td>
 	</table>
       </fieldset>

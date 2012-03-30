@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Gestione Aziende Clienti" %}{% endblock %}
-{% block title2 %}{% trans "Gestione Aziende Clienti" %}{% endblock %}
+{% block title %}{% trans "Customer companies" %}{% endblock %}
+{% block title2 %}{% trans "Customer companies" %}{% endblock %}
 
 {% block extrascript %}
   $("#mainmenuacco").accordion("option", "active", 1);
 {% endblock %}
 
 {% block customersmenu %}
-<h3><a href="#">{% trans "Anagrafica" %}</a></h3>
+<h3><a href="#">{% trans "Customer companies" %}</a></h3>
 <div>
   <ul class="menu">
     <li>
       <a href="{% url customers %}">
-	{% trans "Aziende" %}
+	{% trans "Customer companies" %}
     </a>
     </li>
     <li>
       <a href="{% url company-create %}">
-	{% trans "Aggiungi Azienda" %}
+	{% trans "Add Customer Company" %}
     </a>
     </li>
   </ul>

@@ -1,36 +1,36 @@
 {% extends "customers/base-customers.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Anagrafica" %}: {{ company.firm }} {% endblock %}
-{% block title2 %}{% trans "Anagrafica" %}: {{ company.firm }} {% endblock %}
+{% block title %}{% trans "Customer companies" %}: {{ company.firm }} {% endblock %}
+{% block title2 %}{% trans "Customer companies" %}: {{ company.firm }} {% endblock %}
 
 {% block customersmenu %}
-<h3><a href="#">{% trans "Anagrafica" %}</a></h3>
+<h3><a href="#">{% trans "Customer companies" %}</a></h3>
 <div>
   <ul class="menu">
     <li>
       <a href="{% url customers %}">
-	{% trans "Aziende" %}
+        {% trans "Customer companies" %}
       </a>
     </li>
     <li>
       <a href="{% url company-detail company.id %}">
-	{% trans "Azienda corrente" %}
+        {% trans "Current company" %}
       </a>
     </li>
     <li>
       <a href="{% url set-working-env company.id %}">
-	{% trans "Ambiente di Lavoro" %}
+        {% trans "Working env" %}
       </a>
     </li>
     <li>
       <a href="{% url staff-list company.id %}">
-	{% trans "Organigramma" %}
+        {% trans "Staff" %}
       </a>
     </li>
     <li>
       <a href="{% url companysecurityduty-list company.id %}">
-	{% trans "Figure Prevenzione" %}
+        {% trans "Security Duties" %}
       </a>
     </li>
   </ul>

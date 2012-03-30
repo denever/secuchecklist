@@ -6,8 +6,8 @@
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 {% endblock %}
 
-{% block title %}{% trans "Anagrafica Aziende" %}{% endblock %}
-{% block title2 %}{% trans "Anagrafica Aziende" %}{% endblock %}
+{% block title %}{% trans "Customer Companies" %}{% endblock %}
+{% block title2 %}{% trans "Customer Companies" %}{% endblock %}
 
 {% block submenu %}
       <ul class="menu">
@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block content-top %}
-      <a title="{% trans "Aggiungi Azienda" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url company-create %}"></a>
+      <a title="{% trans "Add a new customer company" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url company-create %}"></a>
 {% endblock %}
 
 {% block content %}
@@ -44,16 +44,16 @@
   } );
 </script>
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Anagrafica Aziende" %}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Customer Companies" %}</h1>
   <div style="margin: 10px">
     {% if companies %}
     <table id="companies" class="display">
       <thead>
 	<tr>
-	  <th>{% trans "Azienda" %}</th>
-	  <th>{% trans "Settore ATECO 2007" %}</th>
-	  <th>{% trans "Data registrazione" %}</th>
-	  <th>{% trans "Azioni" %}</th>
+	  <th>{% trans "Company" %}</th>
+	  <th>{% trans "ATECO Sector 2007" %}</th>
+	  <th>{% trans "Record date" %}</th>
+	  <th>{% trans "Actions" %}</th>
 	</tr>
       </thead>
       <tbody>
@@ -69,8 +69,8 @@
 	    {{ cc.record_date }}
 	  </td>
 	  <td>
-	    <a title="{% trans "Modifica" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}"></a>
-	    <a title="{% trans "Elimina" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url company-delete cc.id %}"></a>
+	    <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}"></a>
+	    <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url company-delete cc.id %}"></a>
 	  </td>
 	</tr>
 	{% endfor %}

@@ -3,16 +3,16 @@
 
 {% block content %}
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Sei sicuro?" %}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Are you sure?" %}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <p>
-      {% trans "Sei sicuro di voler cancellare" %}
-      <em>{{ staff.surname }} {{ staff.name }}</em> {% trans "con mansione omogena" %} <strong>{{ staff.standard_task }}</strong> {% trans "dall'azienda" %} <strong>{{ company.firm }}</strong>?
+      {% trans "Do you really want to remove" %}
+      <em>{{ staff.surname }} {{ staff.name }}</em> {% trans "with standard task" %} <strong>{{ staff.standard_task }}</strong> {% trans "from company" %} <strong>{{ company.firm }}</strong>?
     </p>
     <form action="" method="post">{% csrf_token %}
       <div>
-	<input type="hidden" name="post" value="yes">
-	<input type="submit" value="{% trans "Yes, I'm sure" %}">
+        <input type="hidden" name="post" value="yes">
+        <input type="submit" value="{% trans "Yes, I'm sure" %}">
       </div>
     </form>
   </div>

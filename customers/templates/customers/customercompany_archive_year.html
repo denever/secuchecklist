@@ -2,42 +2,41 @@
 {% block title %}{% trans "Aziende vista anni" %}{% endblock %}
 {% block submenu %}
       <ul>
-	<li>
-	  <a href="{% url company-create %}">Aggiungi Azienda
-	  </a>
-	</li>
-	{% for month in months %}
-	<li>
-	  <a href="{% url company-month year month %}">{{ month }}
-	  </a>
-	</li>
-	{% endfor %}
+        <li>
+          <a href="{% url company-create %}">{% trans "Add a new company" %}</a>
+        </li>
+        {% for month in months %}
+        <li>
+          <a href="{% url company-month year month %}">{{ month }}
+          </a>
+        </li>
+        {% endfor %}
       </ul>
 {% endblock %}
 {% block content %}
 <h1>{% trans "Customers registered in" %}{{ year }}</h1>
-	<table>
-	  <thead>
-	    <tr>
-	      <td>{% trans "Azienda" %}</td>
-	      <td>{% trans "Settore ATECO 2007" %}</td>
-	      <td>{% trans "Data registrazione" %}</td>
-	    </tr>
-	  </thead>
-	  <tbody>
-	  {% for cc in companies %}
-	  <tr>
-	    <td>
-	      <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
-	    </td>
-	    <td>
-	      ({{ cc.ateco_sector }})
-	    </td>
-	    <td>
-	      {{ cc.record_date }}
-	    </td>
-	  <tr>
-	    {% endfor %}
-	  </tbody>
-	</table>
+        <table>
+          <thead>
+            <tr>
+              <td>{% trans "Company" %}</td>
+              <td>{% trans "ATECO Sector 2007" %}</td>
+              <td>{% trans "Record date" %}</td>
+            </tr>
+          </thead>
+          <tbody>
+          {% for cc in companies %}
+          <tr>
+            <td>
+              <a href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+            </td>
+            <td>
+              ({{ cc.ateco_sector }})
+            </td>
+            <td>
+              {{ cc.record_date }}
+            </td>
+          <tr>
+            {% endfor %}
+          </tbody>
+        </table>
 {% endblock %}

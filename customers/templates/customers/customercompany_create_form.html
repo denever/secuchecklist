@@ -3,11 +3,11 @@
 
 {% block extra_head %} {{ form.media }} {% endblock %}
 
-{% block title %}{% trans "Registrazione Azienda" %}{% endblock %}
+{% block title %}{% trans "Customer company registration" %}{% endblock %}
 
 {% block content %}
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">Registrazione Azienda</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Customer company registration" %}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <form action="{{ form.success_url }}" method="post">{% csrf_token %}
       <fieldset>
@@ -32,7 +32,7 @@
 	  {% endfor %}
 	  <tr>
 	    <td></td>
-	    <td><input type="submit" value="{% trans "Registra" %}"/></td>
+	    <td><input type="submit" value="{% trans "Save" %}"/></td>
 	  </tr>
 	</table>
       </fieldset>

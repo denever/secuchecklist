@@ -6,63 +6,63 @@
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 {% endblock %}
 
-{% block title %}{% trans "Azienda" %}: {{ company.firm }} {% endblock %}
-{% block title2 %}{% trans "Azienda" %}: {{ company.firm }} {% endblock %}
+{% block title %}{% trans "Customer Company" %}: {{ company.firm }} {% endblock %}
+{% block title2 %}{% trans "Customer Company" %}: {{ company.firm }} {% endblock %}
 
 {% block content-top %}
-  <a title="{% trans "Aggiungi personale" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url staff-add company.id %}"></a>
+  <a title="{% trans "Add staff" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url staff-add company.id %}"></a>
 {% endblock %}
 {% block content %}
 <script type="text/javascript">
     $(document).ready( function () {
-			   $('#staff').dataTable({
-						     "bJQueryUI": true,
+                           $('#staff').dataTable({
+                                                     "bJQueryUI": true,
   "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
-						     "aoColumns": [/* Personale */ null,
-							 /* Mansione Omogenea */ null,
-							 /* Mansione */ null,
-							 /* Azioni */ { "bSearchable": false,
-									"bVisible": true,
-									"bSortable": false,
-									"mDataProp": null,
-								      },
-						     ],
-						 }
-						);
-		       } );
+                                                     "aoColumns": [/* Personale */ null,
+                                                         /* Mansione Omogenea */ null,
+                                                         /* Mansione */ null,
+                                                         /* Azioni */ { "bSearchable": false,
+                                                                        "bVisible": true,
+                                                                        "bSortable": false,
+                                                                        "mDataProp": null,
+                                                                      },
+                                                     ],
+                                                 }
+                                                );
+                       } );
 </script>
 
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Organigramma" %}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Staff" %}</h1>
   <div style="margin-top: 10px">
     <table id="staff" class="display">
       <thead>
-	<tr>
-	  <th>{% trans "Personale" %}</th>
-	  <th>{% trans "Mansione Omogenea" %}</th>
-	  <th>{% trans "Mansione" %}</th>
-	  <th>{% trans "Azioni" %}</th>
-	</tr>
+        <tr>
+          <th>{% trans "Staff" %}</th>
+          <th>{% trans "Standard Task" %}</th>
+          <th>{% trans "Role" %}</th>
+          <th>{% trans "Actions" %}</th>
+        </tr>
       </thead>
       <tbody>
-	{% for staff in staff_set %}
-	<tr>
-	  <td>
-	    <a class="tablelink" href="{% url staff-detail company.id staff.id %}">
-	      {{ staff.surname }} {{ staff.name }}</a>
-	  </td>
-	  <td>
-	    {{ staff.standard_task }}
-	  </td>
-	  <td>
-	    {{ staff.role }}
-	  </td>
-	  <td>
-	    <a title="Modifica" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url staff-edit company.id staff.id %}">
-	      <a title="Elimina" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url staff-delete company.id staff.id %}"></a>
-	  </td>
-	</tr>
-	{% endfor %}
+        {% for staff in staff_set %}
+        <tr>
+          <td>
+            <a class="tablelink" href="{% url staff-detail company.id staff.id %}">
+              {{ staff.surname }} {{ staff.name }}</a>
+          </td>
+          <td>
+            {{ staff.standard_task }}
+          </td>
+          <td>
+            {{ staff.role }}
+          </td>
+          <td>
+            <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url staff-edit company.id staff.id %}">
+              <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url staff-delete company.id staff.id %}"></a>
+          </td>
+        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

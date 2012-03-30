@@ -2,48 +2,48 @@
 {% load i18n %}
 
 {% block content-top %}
-  <a title="{% trans "Modifica" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit company.id %}"></a>
+  <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit company.id %}"></a>
 {% endblock %}
 
 {% block content %}
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Dettaglio Azienda" %}: {{ company.firm }}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Detail for" %}: {{ company.firm }}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <table class="detail">
       <tr class="even">
-	<td class="fieldname">{% trans "Ragione sociale" %}</td>
+	<td class="fieldname">{% trans "Firm" %}</td>
 	<td>{{ company.firm }}</td>
       </tr>
       <tr class="odd">
-	<td class="fieldname">{% trans "Sede legale amministrativa" %}</td>
+	<td class="fieldname">{% trans "Registered office" %}</td>
 	<td>
 	  <a href="{{company.registered_office.mapurl}}">{{ company.registered_office }}</a>
 	</td>
       </tr>
       <tr class="even">
-	<td class="fieldname">{% trans "Sede insediamento produttivo" %}</td>
+	<td class="fieldname">{% trans "Settlement" %}</td>
 	<td>
 	  <a href="{{company.settlement.mapurl}}">{{ company.settlement }}</a>
 	</td>
       </tr>
       <tr class="odd">
-	<td class="fieldname">{% trans "Iscrizione CIIAA" %}</td>
+	<td class="fieldname">{% trans "CIIAA iscription" %}</td>
 	<td>{{ company.ciiaa }}</td>
       </tr>
       <tr class="even">
-	<td class="fieldname">{% trans "Codice fiscale" %}</td>
+	<td class="fieldname">{% trans "Tax code" %}</td>
 	<td>{{ company.tax_code }}</td>
       </tr>
       <tr class="odd">
-	<td class="fieldname">{% trans "Partita IVA" %}</td>
+	<td class="fieldname">{% trans "Vat code" %}</td>
 	<td>{{ company.vat_code }}</td>
       </tr>
       <tr class="even">
-	<td class="fieldname">{% trans "Posizione INAIL" %}</td>
+	<td class="fieldname">{% trans "INAIL position" %}</td>
 	<td>{{ company.inail_pos }}</td>
       </tr>
       <tr class="odd">
-	<td class="fieldname">{% trans "Posizione INPS" %}</td>
+	<td class="fieldname">{% trans "INPS position" %}</td>
 	<td>{{ company.inps_pos }}</td>
       </tr>
       <tr class="even">
@@ -51,11 +51,11 @@
 	<td>{{ company.ccnl }}</td>
       </tr>
       <tr class="odd">
-	<td class="fieldname">{% trans "Settore Ateco 2007" %}</td>
+	<td class="fieldname">{% trans "ATECO Sector 2007" %}</td>
 	<td>{{ company.ateco_sector }}</td>
       </tr>
       <tr class="even">
-	<td class="fieldname">{% trans "Certificazioni" %}</td>
+	<td class="fieldname">{% trans "Certification" %}</td>
 	<td>
 	  <ul>
 	    {% for cert in company.certifications.all %}
@@ -65,7 +65,7 @@
 	</td>
       </tr>
       <tr class="odd">
-	<td class="fieldname">{% trans "Data registrazione" %}</td>
+	<td class="fieldname">{% trans "Record date" %}</td>
 	<td>{{ company.record_date }}</td>
       </tr>
       <tr class="even">
@@ -73,10 +73,10 @@
 	<td>{{ company.cpi }}</td>
       </tr>
       <tr class="odd">
-	<td class="fieldname">{% trans "Uso macchine" %}</td>
+	<td class="fieldname">{% trans "Machine usage" %}</td>
 	<td>
 	  {% if company.machine_use %}
-	  {% trans "Sì" %}
+	  {% trans "Yes" %}
 	  {% else %}
 	  {% trans "No" %}
 	  {% endif %}
@@ -84,10 +84,10 @@
       </tr>
 
       <tr class="even">
-	<td class="fieldname">{% trans "Sostanze pericolose" %}</td>
+	<td class="fieldname">{% trans "Dangerous substances" %}</td>
 	<td>
 	  {% if company.dangerous_substances %}
-	  {% trans "Sì" %}
+	  {% trans "Yes" %}
 	  {% else %}
 	  {% trans "No" %}
 	  {% endif %}
@@ -95,21 +95,21 @@
       </tr>
 
       <tr class="odd">
-	<td class="fieldname">{% trans "Sorveglianza sanitaria" %}</td>
+	<td class="fieldname">{% trans "Health surveillance" %}</td>
 	<td>
 	  {% if company.health_surveillance %}
-	  {% trans "Sì" %}
+	  {% trans "Yes" %}
 	  {% else %}
 	  {% trans "No" %}
 	  {% endif %}
 	</td>
       </tr>
       <tr class="even">
-	<td class="fieldname">{% trans "Superficie insediamento" %}</td>
+	<td class="fieldname">{% trans "Settlement size" %}</td>
 	<td>{{ company.settlement_size }}</td>
       </tr>
       <tr class="odd">
-	<td class="fieldname">{% trans "Telefono" %}</td>
+	<td class="fieldname">{% trans "Phone" %}</td>
 	<td>{{ company.phone }}</td>
       </tr>
       <tr class="even">
@@ -123,7 +123,7 @@
 	</td>
       </tr>
       <tr class="even">
-	<td class="fieldname">{% trans "Numero di lavoratori" %}</td>
+	<td class="fieldname">{% trans "Numbers of workers" %}</td>
 	<td>{{ company.workers_count }}</td>
       </tr>
     </table>
