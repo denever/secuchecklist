@@ -10,19 +10,19 @@ class Command(BaseCommand):
     help = 'Populate db with fake data for CollaborationAgreeement, Role, StandardTask'
 
     def handle(self, *args, **options):
-        roles = ['Datore di lavoro',
-                 'Dirigente',
-                 'Operaio',
-                 'Segretaria',
-                 'Ingegnere',
+        roles = [_('Datore di lavoro'),
+                 _('Dirigente'),
+                 _('Operaio'),
+                 _('Segretaria'),
+                 _('Ingegnere'),
                  ]
 
         for role in roles:
             obj = Role(name=role, description=role)
             obj.save()
 
-        obj = CollaborationAgreement(name='Schiavitù', description='Frustate')
+        obj = CollaborationAgreement(name=_('Schiavitù'), description=_('Frustate'))
         obj.save()
 
-        obj = StandardTask(name='Videoterminalista', description='Videoterminalista')
+        obj = StandardTask(name=_('Videoterminalista'), description=_('Videoterminalista'))
         obj.save()
