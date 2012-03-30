@@ -53,7 +53,7 @@ msgstr "Data attività"
 
 #: accounts/models.py:36
 msgid "Action"
-msgstr "Azioni"
+msgstr "Azione"
 
 #: accounts/models.py:38
 msgid "Object name"
