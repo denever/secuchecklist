@@ -29,6 +29,12 @@ from customers.views import CompanySecurityDutyDetailView
 from customers.views import CompanySecurityDutyUpdateView
 from customers.views import CompanySecurityDutyDeleteView
 
+from customers.views import MachineCreateView
+from customers.views import MachineListView
+from customers.views import MachineDetailView
+from customers.views import MachineUpdateView
+from customers.views import MachineDeleteView
+
 urlpatterns = patterns('customers.views',
                        url(r'^$', login_required(CustomerCompanyListView.as_view()),
                            name='customers'),
@@ -136,4 +142,30 @@ urlpatterns = patterns('customers.views',
                            login_required(CompanySecurityDutyDeleteView.as_view()),
                            name = 'companysecurityduty-delete'
                            ),
+
+                       url(r'^(?P<company>\d+)/add_machine/$',
+                           login_required(MachineCreateView.as_view()),
+                           name = 'machine-add'
+                           ),
+
+                       url(r'^(?P<company>\d+)/machine/(?P<pk>\d+)/$',
+                           login_required(MachineDetailView.as_view()),
+                           name = 'machine-detail'
+                           ),
+
+                       url(r'^(?P<company>\d+)/machines/$',
+                           login_required(MachineListView.as_view()),
+                           name = 'machine-list'
+                           ),
+
+                       url(r'^(?P<company>\d+)/update_machine/(?P<pk>\d+)/$',
+                           login_required(MachineUpdateView.as_view()),
+                           name = 'machine-edit'
+                           ),
+
+                       url(r'^(?P<company>\d+)/delete_machine/(?P<pk>\d+)/$',
+                           login_required(MachineDeleteView.as_view()),
+                           name = 'machine-delete'
+                           ),
+
                        )

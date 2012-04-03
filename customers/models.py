@@ -278,3 +278,8 @@ class CompanySecurityDuty(models.Model):
     class Meta:
         verbose_name = _('Company security duty')
         verbose_name_plural = _('Company security duties')
+
+class Machine(models.Model):
+    department = models.ForeignKey(Department, null=False, verbose_name=_('Department'))
+    code = models.CharField(_('Code'), max_length=200)
+    description = models.TextField(_('Description'), blank=True, null=True)

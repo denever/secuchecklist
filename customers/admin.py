@@ -13,6 +13,7 @@ from customers.models import CustomerCompany
 from customers.models import HealthSurveillance
 from customers.models import CPISettlement
 from customers.models import CompanySecurityDuty
+from customers.models import Machine
 
 from django.contrib import admin
 
@@ -28,6 +29,7 @@ admin.site.register(CollaborationAgreement)
 admin.site.register(HealthSurveillance)
 admin.site.register(CPISettlement)
 admin.site.register(CompanySecurityDuty)
+admin.site.register(Machine)
 
 class TownShipAdmin(admin.ModelAdmin):
     list_display = ('name', 'province', 'zipcode')

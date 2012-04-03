@@ -10,12 +10,15 @@ from django.views.generic import MonthArchiveView
 from django.views.generic import CreateView
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView
+
 from customers.models import *
+
 from customers.forms import CustomerCompanyForm
 from customers.forms import StaffForm
 from customers.forms import WorkingEnvironmentForm
 from customers.forms import DepartmentForm
 from customers.forms import CompanySecurityDutyForm
+from customers.forms import MachineForm
 
 class CustomerCompanyYearView(YearArchiveView):
     queryset = CustomerCompany.objects.all()
@@ -290,5 +293,74 @@ class CompanySecurityDutyDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CompanySecurityDutyDetailView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
+class MachineCreateView(CreateView):
+    form_class = MachineForm
+    template_name = 'customers/machine_create_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(MachineCreateView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
+    def form_valid(self, form):
+        self.machine = form.save(commit=False)
+        self.machine.record_by = self.request.user.get_profile()
+        self.machine.lastupdate_by = self.request.user.get_profile()
+        self.machine.company = get_object_or_404(CustomerCompany,
+                                                             id=self.kwargs['company'])
+        self.success_url = reverse('machine-list', args=self.kwargs['company'])
+        return super(MachineCreateView, self).form_valid(form)
+
+class MachineListView(ListView):
+    context_object_name = 'machine_set'
+
+    def get_queryset(self):
+        company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        deps = company.department_set.all()
+        return Machine.objects.filter(department__in=deps)
+
+    def get_context_data(self, **kwargs):
+        context = super(MachineListView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
+class MachineUpdateView(UpdateView):
+    model = Machine
+    form_class = MachineForm
+    template_name = 'customers/machine_update_form.html'
+    success_url = '/customers/'
+
+    def get_context_data(self, **kwargs):
+        context = super(MachineUpdateView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
+    def form_valid(self, form):
+        self.machine = form.save(commit=False)
+        self.machine.lastupdate_by = self.request.user.get_profile()
+        self.success_url = reverse('machine-list', args=self.kwargs['company'])
+        return super(MachineUpdateView, self).form_valid(form)
+
+class MachineDeleteView(DeleteView):
+    model = Machine
+    form_class = MachineForm
+    success_url = '/customers/'
+
+    def get_context_data(self, **kwargs):
+        context = super(MachineDeleteView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
+    def get_success_url(self):
+        return reverse('machine-list', args=self.kwargs['company'])
+
+class MachineDetailView(DetailView):
+    model = Machine
+
+    def get_context_data(self, **kwargs):
+        context = super(MachineDetailView, self).get_context_data(**kwargs)
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         return context
