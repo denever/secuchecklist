@@ -1,23 +1,30 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext as _
 
 # Create your models here.
 
 class RiskFactor(models.Model):
-    description = models.CharField('Descrizione', max_length=200, null=True, blank=True)
-    question = models.TextField('Domanda', null=True, blank=True)
-    measure = models.TextField('Misura', null=True, blank=True)
-    suggestion_yes = models.TextField('Suggerimento Si', null=True, blank=True)
-    suggestion_no = models.TextField('Suggerimento No', null=True, blank=True)
-    notes = models.TextField('Note', null=True, blank=True)
-    link = models.CharField('Link', max_length=200, null=True, blank=True)
-    filename = models.FileField('Filename', null=True, blank=True, upload_to='riskfactor_attaches')
-    belongs_to = models.ForeignKey('self', null=True, blank=True, verbose_name="Padre")
+    description = models.CharField(_('Description'), max_length=200, null=True, blank=True)
+    question = models.TextField(_('Question'), null=True, blank=True)
+    measure = models.TextField(_('Measure'), null=True, blank=True)
+    suggestion_yes = models.TextField(_('Suggestion yes'), null=True, blank=True)
+    suggestion_no = models.TextField(_('Suggestion No'), null=True, blank=True)
+    notes = models.TextField(_('Notes'), null=True, blank=True)
+    link = models.CharField(_('Link'), max_length=200, null=True, blank=True)
+    filename = models.FileField(_('Filename'), null=True, blank=True, upload_to='riskfactor_attaches')
+    parent = models.ForeignKey('self', null=True, blank=True,
+                               verbose_name=_('parent'),
+                               related_name='children')
+    record_date = models.DateTimeField(_('Record date'), auto_now_add=True)
 
-    record_date = models.DateTimeField('Data inserimento', auto_now_add=True)
-
-    codice = models.CharField('Codice', max_length=200, null=True, blank=True, unique=True)
-    codice_padre = models.CharField('Codice Padre', max_length=200, null=True, blank=True)
+    code = models.CharField(_('Code'), max_length=200, null=True, blank=True, unique=True)
+    codice_padre = models.CharField(_('Parent code'), max_length=200, null=True, blank=True)
 
     def __unicode__(self):
         return self.description
+
+    class Meta:
+        ordering = ['code']
+        verbose_name = _('Risk Factor')
+        verbose_name_plural = _('Risk Factors')
