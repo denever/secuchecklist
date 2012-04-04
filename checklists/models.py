@@ -19,7 +19,7 @@ class RiskFactor(models.Model):
     record_date = models.DateTimeField(_('Record date'), auto_now_add=True)
 
     code = models.CharField(_('Code'), max_length=200, null=True, blank=True, unique=True)
-    codice_padre = models.CharField(_('Parent code'), max_length=200, null=True, blank=True)
+    parent_code = models.CharField(_('Parent code'), max_length=200, null=True, blank=True)
 
     def __unicode__(self):
         return self.description

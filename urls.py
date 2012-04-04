@@ -12,6 +12,7 @@ urlpatterns = patterns(
     '',
     url(r'^customers/', include('customers.urls')),
     url(r'^accounts/', include('accounts.urls')),
+    url(r'^checklists/', include('checklists.urls')),    
     url(r'^admin/', include(admin.site.urls)),
     url(r'^autocomplete/', include(autocomplete.urls)),
 )
