@@ -1,5 +1,6 @@
 from django import http
 from django.utils import simplejson as json
+from django.core.urlresolvers import reverse
 
 class RiskFactorJsonResponseMixin(object):
     def render_to_response(self, context):
@@ -16,7 +17,10 @@ class RiskFactorJsonResponseMixin(object):
         children = list()
         for child in riskfactor.children.all():
             children.append(self.serialize_riskfactor(child))
-        return dict(label=riskfactor.description, children=children, id=riskfactor.id)
+        detail_url = reverse('riskfactor-detail', args=[riskfactor.id])
+        edit_url = reverse('riskfactor-edit', args=[riskfactor.id])
+        delete_url = reverse('riskfactor-delete', args=[riskfactor.id])                
+        return dict(label=riskfactor.description, children=children, node_url=node_url)
 
     def convert_context_to_json(self, context):
         "Convert the context dictionary into a JSON object"
