@@ -1,7 +1,7 @@
 from django import http
 from django.utils import simplejson as json
 
-class JSONResponseMixin(object):
+class RiskFactorJsonResponseMixin(object):
     def render_to_response(self, context):
         "Returns a JSON response containing 'context' as payload"
         return self.get_json_response(self.convert_context_to_json(context))
@@ -16,7 +16,7 @@ class JSONResponseMixin(object):
         children = list()
         for child in riskfactor.children.all():
             children.append(self.serialize_riskfactor(child))
-        return dict(label=riskfactor.description, children=children)
+        return dict(label=riskfactor.description, children=children, id=riskfactor.id)
 
     def convert_context_to_json(self, context):
         "Convert the context dictionary into a JSON object"

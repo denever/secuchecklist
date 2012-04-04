@@ -9,7 +9,7 @@ from django.views.generic import UpdateView
 from django.views.generic import DeleteView
 from django.views.generic import TemplateView
 
-from checklists.jsonresponsemixin import JSONResponseMixin
+from checklists.jsonresponsemixin import RiskFactorJsonResponseMixin
 
 class RiskFactorTreeView(TemplateView):
     template_name = 'checklists/riskfactor_tree.html'
@@ -26,5 +26,5 @@ class RiskFactorUpdateView(UpdateView):
 class RiskFactorDeleteView(DeleteView):
     pass
 
-class RiskFactorJSONDetailView(JSONResponseMixin, BaseListView):
+class RiskFactorJSONDetailView(RiskFactorJsonResponseMixin, BaseListView):
     queryset = RiskFactor.objects.filter(parent__exact=None)
