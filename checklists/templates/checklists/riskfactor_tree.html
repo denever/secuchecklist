@@ -23,7 +23,7 @@
   $('#riskfactors').bind('tree.click',
   function(event){
   var node = event.node;
-  alert(node.id);
+  window.location = node.detail_url;
   });
   });
   } );
