@@ -17,11 +17,12 @@ class RiskFactorJsonResponseMixin(object):
         children = list()
         for child in riskfactor.children.all():
             children.append(self.serialize_riskfactor(child))
-        detail_url = reverse('riskfactor-detail', args=[riskfactor.id])
-        edit_url = reverse('riskfactor-edit', args=[riskfactor.id])
-        delete_url = reverse('riskfactor-delete', args=[riskfactor.id])                
-        return dict(label=riskfactor.description, children=children, node_url=node_url)
-
+        return dict(label=riskfactor.description, children=children,
+                    detail_url = reverse('riskfactor-detail', args=[riskfactor.id]),
+                    edit_url = reverse('riskfactor-edit', args=[riskfactor.id]),
+                    delete_url = reverse('riskfactor-delete', args=[riskfactor.id]),
+                    )
+    
     def convert_context_to_json(self, context):
         "Convert the context dictionary into a JSON object"
         # Note: This is *EXTREMELY* naive; in reality, you'll need
