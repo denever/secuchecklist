@@ -12,5 +12,9 @@ class Command(BaseCommand):
             self.print_riskfactor(subrf, level + 2)
 
     def handle(self, *args, **options):
-        for rf in RiskFactor.objects.filter(parent__exact=None):
+        if len(args) > 0:
+            rf = RiskFactor.objects.get(id=int(args[0]))
             self.print_riskfactor(rf)
+        else:
+            for rf in RiskFactor.objects.filter(parent__exact=None):
+                self.print_riskfactor(rf)
