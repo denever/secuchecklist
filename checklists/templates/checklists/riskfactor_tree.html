@@ -20,6 +20,11 @@
   $.getJSON('/checklists/riskfactors/',
   function(data){
   $('#riskfactors').tree({ data: data });
+  $('#riskfactors').bind('tree.click',
+  function(event){
+  var node = event.node;
+  alert(node.id);
+  });
   });
   } );
 </script>
