@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Risk Factors" %}{% endblock %}
+{% block title2 %}{% trans "Risk Factors" %}{% endblock %}
+
+{% block extrascript %}
+  $("#mainmenuacco").accordion("option", "active", 1);
+{% endblock %}
+
+{% block riskfactorsmenu %}
+<h3><a href="#">{% trans "Risk Factors" %}</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url riskfactors %}">
+        {% trans "Risk Factors" %}
+    </a>
+    </li>
+    <li>
+      <a href="{% url riskfactor-create %}">
+        {% trans "Add Risk Factor" %}
+    </a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
