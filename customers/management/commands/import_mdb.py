@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from customers.models import AtecoSector, Certification, CPISettlement
-from customers.models import HealthSurveillance, TownShip, Province
+from customers.models import HealthSurveillance, TownShip, Province, DPI
 
 # before using this file
 # apt-get install unixodbc libmdbodbc
@@ -36,6 +36,11 @@ class Command(BaseCommand):
         src_cur.execute('select * from SorvSani')
         for desc in src_cur:
             obj = HealthSurveillance(name=desc[1], description=desc[1])
+            obj.save()
+
+        src_cur.execute('select * from DPI')
+        for desc in src_cur:
+            obj = DPI(name=desc[1], description=desc[1])
             obj.save()
 
         # src_cur.execute('select codice, comune, provincia, cap from Comuni')
