@@ -1,19 +1,4 @@
-from customers.models import TownShip
-from customers.models import Province
-from customers.models import AtecoSector
-from customers.models import StandardTask
-from customers.models import Role
-from customers.models import SecurityDuty
-from customers.models import Certification
-from customers.models import Department
-from customers.models import Nationality
-from customers.models import CollaborationAgreement
-from customers.models import Staff
-from customers.models import CustomerCompany
-from customers.models import HealthSurveillance
-from customers.models import CPISettlement
-from customers.models import CompanySecurityDuty
-from customers.models import Machine
+from customers.models import *
 
 from django.contrib import admin
 
@@ -29,7 +14,8 @@ admin.site.register(CollaborationAgreement)
 admin.site.register(HealthSurveillance)
 admin.site.register(CPISettlement)
 admin.site.register(CompanySecurityDuty)
-admin.site.register(Machine)
+admin.site.register(Equipment)
+admin.site.register(DPI)
 
 class TownShipAdmin(admin.ModelAdmin):
     list_display = ('name', 'province', 'zipcode')
