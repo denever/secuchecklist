@@ -16,11 +16,11 @@ window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{%
 {{ form.media }}
 
 {% endblock %}
-{% block title %}{% trans "Edit Machine" %}{% endblock %}
+{% block title %}{% trans "Edit Equipment" %}{% endblock %}
 
 {% block content %}
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Edit Machine" %}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Edit Equipment" %}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <form action="{{ form.success_url }}" method="post">{% csrf_token %}
       <fieldset>

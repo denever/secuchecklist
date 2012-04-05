@@ -6,7 +6,7 @@
   <h1 class="ui-helper-reset ui-widget-header">{% trans "Are you sure?" %}</h1>
   <div class="ui-helper-reset ui-widget-content">
     <p>
-      {% trans "Do you really want to remove " %} <em>{{ machine.code }} {{ machine.department }}</em>?
+      {% trans "Do you really want to remove " %} <em>{{ equipment.code }} {{ equipment.department }}</em>?
     </p>
     <form action="" method="post">{% csrf_token %}
       <div>

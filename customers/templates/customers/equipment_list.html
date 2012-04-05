@@ -9,15 +9,15 @@
 {% endblock %}
 
 {% block title %}{% trans "Customer company" %}: {{ company.firm }} {% endblock %}
-{% block title2 %}{% trans "Machines" %}: {{ company.firm }} {% endblock %}
+{% block title2 %}{% trans "Equipments" %}: {{ company.firm }} {% endblock %}
 
 {% block content-top %}
-  <a title="{% trans "Add new machine" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url machine-add company.id %}"></a>
+  <a title="{% trans "Add new equipment" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url equipment-add company.id %}"></a>
 {% endblock %}
 {% block content %}
 <script type="text/javascript">
   $(document).ready( function () {
-  $('#machines').dataTable({"bJQueryUI": true,
+  $('#equipments').dataTable({"bJQueryUI": true,
   "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
   "aoColumns": [
   /* Code */ null,
@@ -35,9 +35,9 @@
 </script>
 
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Machines" %}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Equipments" %}</h1>
   <div style="margin-top: 10px">
-    <table id="machines" class="display">
+    <table id="equipments" class="display">
       <thead>
         <tr>
           <th>{% trans "Code" %}</th>
@@ -47,20 +47,20 @@
         </tr>
       </thead>
       <tbody>
-        {% for machine in machine_set %}
+        {% for equipment in equipment_set %}
         <tr>
           <td>
-            <a href="{% url machine-detail machine.department.company.id machine.id %}">{{ machine.code }}</a>
+            <a href="{% url equipment-detail equipment.department.company.id equipment.id %}">{{ equipment.code }}</a>
           </td>
           <td>
-            {{ machine.department }}
+            {{ equipment.department }}
           </td>
           <td>
-            {{ machine.description }}
+            {{ equipment.description }}
           </td>
           <td>
-            <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url machine-edit company.id machine.id %}"></a>
-            <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url machine-delete company.id machine.id %}"></a>
+            <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url equipment-edit company.id equipment.id %}"></a>
+            <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url equipment-delete company.id equipment.id %}"></a>
           </td>
         </tr>
         {% endfor %}
