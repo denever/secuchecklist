@@ -10,7 +10,7 @@ from customers.models import Staff
 from customers.models import Nationality
 from customers.models import Department
 from customers.models import CompanySecurityDuty
-from customers.models import Machine
+from customers.models import Equipment
 
 # using autocomplete widgets
 from autocomplete import widgets as autocomplete_widgets
@@ -89,6 +89,6 @@ class CompanySecurityDutyForm(forms.ModelForm):
         model = CompanySecurityDuty
         exclude = ('company', 'record_by', 'lastupdate_by')
 
-class MachineForm(forms.ModelForm):
+class EquipmentForm(forms.ModelForm):
     class Meta:
-        model = Machine
+        model = Equipment
