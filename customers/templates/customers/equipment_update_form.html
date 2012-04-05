@@ -1,0 +1,55 @@
+{% extends "customers/base-company.html" %}
+{% load adminmedia %} /* At the top of the template. */
+{% load i18n %}
+
+/* In the head section of the template. */
+{% block extra_head %}
+<script type="text/javascript">
+window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{% endfilter %}";
+</script>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/widgets.css"/>
+
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+
+{{ form.media }}
+
+{% endblock %}
+{% block title %}{% trans "Edit Machine" %}{% endblock %}
+
+{% block content %}
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Edit Machine" %}</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <form action="{{ form.success_url }}" method="post">{% csrf_token %}
+      <fieldset>
+        <table>
+          {% for field in form %}
+          <tr id="{{ field.html_name }}">
+            <td>
+              {{ field.label_tag }}
+            </td>
+            <td>
+              {{ field }}
+            </td>
+            {% if field.errors %}
+            <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+              {% for error in field.errors %}
+              <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+              {{ error }}
+            </td>
+            {% endfor %}
+            {% endif %}
+          </tr>
+          {% endfor %}
+          <tr>
+            <td></td>
+            <td><input type="submit" value="{% trans "Update" %}"/></td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
+  </div>
+</div>
+{% endblock %}
