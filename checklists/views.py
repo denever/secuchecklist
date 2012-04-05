@@ -16,12 +16,6 @@ class RiskFactorTreeView(TemplateView):
 
 class RiskFactorDetailView(DetailView):
     model = RiskFactor
-#    context_object_name = 'riskfactor'
-
-    def get_context_data(self, **kwargs):
-        context = super(RiskFactorDetailView, self).get_context_data(**kwargs)
-        print context
-        return context
 
 class RiskFactorCreateView(CreateView):
     pass
@@ -34,3 +28,7 @@ class RiskFactorDeleteView(DeleteView):
 
 class RiskFactorJSONDetailView(RiskFactorJsonResponseMixin, BaseListView):
     queryset = RiskFactor.objects.filter(parent__exact=None)
+
+    def get_queryset(self):
+        print self.kwargs
+        return RiskFactor.objects.filter(parent__exact=None)
