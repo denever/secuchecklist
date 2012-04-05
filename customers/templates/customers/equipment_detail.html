@@ -16,13 +16,42 @@
         <td> {{ equipment.code }}</td>
       </tr>
       <tr class="odd">
+        <td class="fieldname">{% trans "Name" %}</td>
+        <td> {{ equipment.name }}</td>
+      </tr>
+      <tr class="even">
         <td class="fieldname">{% trans "Description" %}</td>
         <td> {{ equipment.description }}</td>
+      </tr>
+      <tr class="odd">
+        <td class="fieldname">{% trans "Operator" %}</td>
+        <td> {{ equipment.operator }}</td>
       </tr>
       <tr class="even">
         <td class="fieldname">{% trans "Department" %}</td>
         <td> {{ equipment.department }} </td>
       </tr>
+      <tr class="odd">
+        <td class="fieldname">{% trans "Compliance Requirements" %}</td>
+        <td> {{ equipment.compliance_requirement }} </td>
+        <!-- <td> -->
+        <!--   <ul> -->
+        <!--     {% for cert in equipment.compliance_requirement.all %} -->
+        <!--     <li>{{ cert }}</li> -->
+        <!--     {% endfor %} -->
+        <!--   </ul> -->
+        <!-- </td> -->
+      </tr>
+      <tr class="even">
+        <td class="fieldname">{% trans "Exposed Staff" %}</td>
+        <!-- <td> -->
+        <!--   <ul> -->
+        <!--     {% for cert in equipment.compliance_requirement.all %} -->
+        <!--     <li>{{ cert }}</li> -->
+        <!--     {% endfor %} -->
+        <!--   </ul> -->
+        <!-- </td> -->
+      </tr>      
     </table>
   </div>
 </div>
