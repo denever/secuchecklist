@@ -1,0 +1,73 @@
+{% extends "checklists/base-checklists.html" %}
+
+{% load i18n %}
+
+{% block extra_head %}
+<script type="text/javascript" charset="utf-8" src="/static/js/tree.jquery.js"></script>
+<link rel="stylesheet" href="/static/css/jqtree.css" type="text/css" media="all"/>
+{% endblock %}
+
+{% block title %}{% trans "Risk Factors" %}{% endblock %}
+{% block title2 %}{% trans "Risk Factors" %}{% endblock %}
+
+{% block content-top %}
+  <a title="{% trans "Edit risk factor" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url riskfactor-edit riskfactor.id %}"></a>
+{% endblock %}
+
+{% block content %}
+<!-- <script type="text/javascript"> -->
+<!--   $(document).ready( function () { -->
+<!--   $.getJSON('/checklists/riskfactors/', -->
+<!--   function(data){ -->
+<!--   $('#riskfactors').tree({ data: data }); -->
+<!--   }); -->
+<!--   } ); -->
+<!-- </script> -->
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Risk Factor" %}: {{ riskfactor.description }}</h1>
+  <div style="margin: 10px">
+    <table class="detail">
+      <tr class="even">
+        <td class="fieldname">{% trans "Description" %}</td>
+        <td> {{ riskfactor.description }}</td>
+      </tr>
+      <tr class="odd">
+        <td class="fieldname">{% trans "Question" %}</td>
+        <td> {{ riskfactor.question }}</td>
+      </tr>
+      <tr class="even">
+        <td class="fieldname">{% trans "Measure" %}</td>
+        <td> {{ riskfactor.measure }} </td>
+      </tr>
+      <tr class="odd">
+        <td class="fieldname">{% trans "Suggestion Yes" %}</td>
+        <td> {{ riskfactor.suggestion_yes }} </td>
+      </tr>
+      <tr class="even">
+        <td class="fieldname">{% trans "Suggestion No" %}</td>
+        <td> {{ riskfactor.suggestion_no }} </td>
+      </tr>
+      <tr class="odd">
+        <td class="fieldname">{% trans "Notes" %}</td>
+        <td> {{ riskfactor.notes }} </td>
+      </tr>
+      <tr class="even">
+        <td class="fieldname">{% trans "Link" %}</td>
+        <td> {{ riskfactor.link }} </td>
+      </tr>
+      <tr class="odd">
+        <td class="fieldname">{% trans "Filename" %}</td>
+        <td> {{ riskfactor.filename }} </td>
+      </tr>
+      {% if riskfactor.parent %}
+      <tr class="even">
+        <td class="fieldname">{% trans "Parent" %}</td>
+        <td>
+          <a href="{% url riskfactor-detail riskfactor.parent.id %}">{{ riskfactor.parent }}</a>
+        </td>
+      </tr>
+      {% endif %}
+    </table>
+  </div>
+</div>
+{% endblock %}
