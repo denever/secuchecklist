@@ -18,7 +18,7 @@ from customers.forms import StaffForm
 from customers.forms import WorkingEnvironmentForm
 from customers.forms import DepartmentForm
 from customers.forms import CompanySecurityDutyForm
-from customers.forms import MachineForm
+from customers.forms import EquipmentForm
 
 class CustomerCompanyYearView(YearArchiveView):
     queryset = CustomerCompany.objects.all()
@@ -296,71 +296,71 @@ class CompanySecurityDutyDetailView(DetailView):
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         return context
 
-class MachineCreateView(CreateView):
-    form_class = MachineForm
-    template_name = 'customers/machine_create_form.html'
+class EquipmentCreateView(CreateView):
+    form_class = EquipmentForm
+    template_name = 'customers/equipment_create_form.html'
 
     def get_context_data(self, **kwargs):
-        context = super(MachineCreateView, self).get_context_data(**kwargs)
+        context = super(EquipmentCreateView, self).get_context_data(**kwargs)
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         return context
 
     def form_valid(self, form):
-        self.machine = form.save(commit=False)
-        self.machine.record_by = self.request.user.get_profile()
-        self.machine.lastupdate_by = self.request.user.get_profile()
-        self.machine.company = get_object_or_404(CustomerCompany,
+        self.equipment = form.save(commit=False)
+        self.equipment.record_by = self.request.user.get_profile()
+        self.equipment.lastupdate_by = self.request.user.get_profile()
+        self.equipment.company = get_object_or_404(CustomerCompany,
                                                              id=self.kwargs['company'])
-        self.success_url = reverse('machine-list', args=self.kwargs['company'])
-        return super(MachineCreateView, self).form_valid(form)
+        self.success_url = reverse('equipment-list', args=self.kwargs['company'])
+        return super(EquipmentCreateView, self).form_valid(form)
 
-class MachineListView(ListView):
-    context_object_name = 'machine_set'
+class EquipmentListView(ListView):
+    context_object_name = 'equipment_set'
 
     def get_queryset(self):
         company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         deps = company.department_set.all()
-        return Machine.objects.filter(department__in=deps)
+        return Equipment.objects.filter(department__in=deps)
 
     def get_context_data(self, **kwargs):
-        context = super(MachineListView, self).get_context_data(**kwargs)
+        context = super(EquipmentListView, self).get_context_data(**kwargs)
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         return context
 
-class MachineUpdateView(UpdateView):
-    model = Machine
-    form_class = MachineForm
-    template_name = 'customers/machine_update_form.html'
+class EquipmentUpdateView(UpdateView):
+    model = Equipment
+    form_class = EquipmentForm
+    template_name = 'customers/equipment_update_form.html'
     success_url = '/customers/'
 
     def get_context_data(self, **kwargs):
-        context = super(MachineUpdateView, self).get_context_data(**kwargs)
+        context = super(EquipmentUpdateView, self).get_context_data(**kwargs)
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         return context
 
     def form_valid(self, form):
-        self.machine = form.save(commit=False)
-        self.machine.lastupdate_by = self.request.user.get_profile()
-        self.success_url = reverse('machine-list', args=self.kwargs['company'])
-        return super(MachineUpdateView, self).form_valid(form)
+        self.equipment = form.save(commit=False)
+        self.equipment.lastupdate_by = self.request.user.get_profile()
+        self.success_url = reverse('equipment-list', args=self.kwargs['company'])
+        return super(EquipmentUpdateView, self).form_valid(form)
 
-class MachineDeleteView(DeleteView):
-    model = Machine
-    form_class = MachineForm
+class EquipmentDeleteView(DeleteView):
+    model = Equipment
+    form_class = EquipmentForm
     success_url = '/customers/'
 
     def get_context_data(self, **kwargs):
-        context = super(MachineDeleteView, self).get_context_data(**kwargs)
+        context = super(EquipmentDeleteView, self).get_context_data(**kwargs)
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         return context
 
     def get_success_url(self):
-        return reverse('machine-list', args=self.kwargs['company'])
+        return reverse('equipment-list', args=self.kwargs['company'])
 
-class MachineDetailView(DetailView):
-    model = Machine
+class EquipmentDetailView(DetailView):
+    model = Equipment
 
     def get_context_data(self, **kwargs):
-        context = super(MachineDetailView, self).get_context_data(**kwargs)
+        context = super(EquipmentDetailView, self).get_context_data(**kwargs)
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         return context
