@@ -15,7 +15,13 @@ class RiskFactorTreeView(TemplateView):
     template_name = 'checklists/riskfactor_tree.html'
 
 class RiskFactorDetailView(DetailView):
-    pass
+    model = RiskFactor
+#    context_object_name = 'riskfactor'
+
+    def get_context_data(self, **kwargs):
+        context = super(RiskFactorDetailView, self).get_context_data(**kwargs)
+        print context
+        return context
 
 class RiskFactorCreateView(CreateView):
     pass
