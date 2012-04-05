@@ -29,11 +29,11 @@ from customers.views import CompanySecurityDutyDetailView
 from customers.views import CompanySecurityDutyUpdateView
 from customers.views import CompanySecurityDutyDeleteView
 
-from customers.views import MachineCreateView
-from customers.views import MachineListView
-from customers.views import MachineDetailView
-from customers.views import MachineUpdateView
-from customers.views import MachineDeleteView
+from customers.views import EquipmentCreateView
+from customers.views import EquipmentListView
+from customers.views import EquipmentDetailView
+from customers.views import EquipmentUpdateView
+from customers.views import EquipmentDeleteView
 
 urlpatterns = patterns('customers.views',
                        url(r'^$', login_required(CustomerCompanyListView.as_view()),
@@ -143,29 +143,29 @@ urlpatterns = patterns('customers.views',
                            name = 'companysecurityduty-delete'
                            ),
 
-                       url(r'^(?P<company>\d+)/add_machine/$',
-                           login_required(MachineCreateView.as_view()),
-                           name = 'machine-add'
+                       url(r'^(?P<company>\d+)/add_equipment/$',
+                           login_required(EquipmentCreateView.as_view()),
+                           name = 'equipment-add'
                            ),
 
-                       url(r'^(?P<company>\d+)/machine/(?P<pk>\d+)/$',
-                           login_required(MachineDetailView.as_view()),
-                           name = 'machine-detail'
+                       url(r'^(?P<company>\d+)/equipment/(?P<pk>\d+)/$',
+                           login_required(EquipmentDetailView.as_view()),
+                           name = 'equipment-detail'
                            ),
 
-                       url(r'^(?P<company>\d+)/machines/$',
-                           login_required(MachineListView.as_view()),
-                           name = 'machine-list'
+                       url(r'^(?P<company>\d+)/equipments/$',
+                           login_required(EquipmentListView.as_view()),
+                           name = 'equipment-list'
                            ),
 
-                       url(r'^(?P<company>\d+)/update_machine/(?P<pk>\d+)/$',
-                           login_required(MachineUpdateView.as_view()),
-                           name = 'machine-edit'
+                       url(r'^(?P<company>\d+)/update_equipment/(?P<pk>\d+)/$',
+                           login_required(EquipmentUpdateView.as_view()),
+                           name = 'equipment-edit'
                            ),
 
-                       url(r'^(?P<company>\d+)/delete_machine/(?P<pk>\d+)/$',
-                           login_required(MachineDeleteView.as_view()),
-                           name = 'machine-delete'
+                       url(r'^(?P<company>\d+)/delete_equipment/(?P<pk>\d+)/$',
+                           login_required(EquipmentDeleteView.as_view()),
+                           name = 'equipment-delete'
                            ),
 
                        )
