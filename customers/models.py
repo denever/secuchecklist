@@ -279,7 +279,27 @@ class CompanySecurityDuty(models.Model):
         verbose_name = _('Company security duty')
         verbose_name_plural = _('Company security duties')
 
-class Machine(models.Model):
-    department = models.ForeignKey(Department, null=False, verbose_name=_('Department'))
+class Equipment(models.Model):
+    name = models.CharField(_('Name'), max_length=200)
     code = models.CharField(_('Code'), max_length=200)
     description = models.TextField(_('Description'), blank=True, null=True)
+    department = models.ForeignKey(Department, verbose_name=_('Department'))
+    operator = models.ForeignKey(Staff, null=True, blank=True, verbose_name=_('Operator'),
+                                 related_name='equipment_operated')
+    exposed_staff = models.ManyToManyField(Staff, verbose_name=_('Exposed staff'),
+                                           null=True,
+                                           blank=True,
+                                           related_name='exposed_to'
+                                           )
+    compliance_requirement = models.CharField(_('Compliance Requirements'), max_length=255)
+
+class DPI(models.Model):
+    name = models.CharField(_('Name'), unique=True, max_length=200)
+    description = models.CharField(_('Description'), max_length=200)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _('Individual Protection Equipment')
+        verbose_name_plural = _('Individual Protection Equipments')
