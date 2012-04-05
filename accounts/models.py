@@ -48,11 +48,9 @@ class Activity(models.Model):
         return '%s %s %s %s' % (self.date, self.userprofile, self.action, self.object_repr)
 
     def get_action_description(self):
-        print self.action
         return actions[self.action]
 
     def get_content_type_name(self):
-        print self.content_type.model_class()._meta.verbose_name
         return self.content_type.model_class()._meta.verbose_name
 
 @receiver(post_save)
