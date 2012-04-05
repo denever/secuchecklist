@@ -42,7 +42,7 @@
         <tr>
           <th>{% trans "Code" %}</th>
           <th>{% trans "Department" %}</th>
-          <th>{% trans "Description" %}</th>
+          <th>{% trans "Operator" %}</th>
           <th>{% trans "Actions" %}</th>
         </tr>
       </thead>
@@ -50,13 +50,19 @@
         {% for equipment in equipment_set %}
         <tr>
           <td>
-            <a href="{% url equipment-detail equipment.department.company.id equipment.id %}">{{ equipment.code }}</a>
+            <a href="{% url equipment-detail equipment.department.company.id equipment.id %}">
+              {{ equipment.name }}
+            </a>
           </td>
           <td>
-            {{ equipment.department }}
+            <a href="{% url department-detail equipment.department.company.id equipment.department.id %}">
+              {{ equipment.department }}
+            </a>
           </td>
           <td>
-            {{ equipment.description }}
+            <a href="{% url staff-detail equipment.operator.company.id equipment.operator.id %}">
+	      {{ equipment.operator }}
+	    </a>
           </td>
           <td>
             <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url equipment-edit company.id equipment.id %}"></a>
