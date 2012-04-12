@@ -43,9 +43,20 @@ class Command(BaseCommand):
                              notes=desc[5],
                              link=desc[6],
                              filename=desc[7],
-                             codice=desc[8].strip('/'),
-                             codice_padre=codice_padre.strip('/'))
+                             code=desc[8].strip('/'),
+                             parent_code=codice_padre.strip('/'))
             obj.save()
+
         for risk_factor in RiskFactor.objects.all():
-            risk_factor.belongs_to = RiskFactor.objects.get(codice=risk_factor.codice_padre)
+            if risk_factor.parent_code != '':
+                risk_factor.parent = RiskFactor.objects.get(code=risk_factor.parent_code)
+                print '_'*10
+                print 'Child:', risk_factor
+                print 'Child code:', risk_factor.code
+                print 'Parent code:', risk_factor.parent_code
+                print 'Parent:', risk_factor.parent
+                print '#'*10
+            else:
+                print 'No father for', risk_factor
+                risk_factor.parent = None
             risk_factor.save()
