@@ -17,7 +17,7 @@
 {% block content %}
 <script type="text/javascript">
   $(document).ready( function () {
-  $.getJSON('/riskfactors/riskfactors/',
+  $.getJSON('/riskfactors/tree/',
   function(data){
   $('#riskfactors').tree({ data: data });
   $('#riskfactors').bind('tree.click',
