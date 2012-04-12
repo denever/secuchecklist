@@ -17,9 +17,14 @@
 {% block content %}
 <script type="text/javascript">
   $(document).ready( function () {
-  $.getJSON('/riskfactors/riskfactors/', 'json', {'parent': riskfactor.id},
+  $.getJSON('/riskfactors/{{ riskfactor.id}}/subtree/',
   function(data){
-  $('#children).tree({ data: data });
+  $('#children').tree({ data: data });
+  $('#children').bind('tree.click',
+  function(event){
+  var node = event.node;
+  window.location = node.detail_url;
+  });
   });
   } );
 </script>
@@ -68,9 +73,9 @@
       </tr>
       {% endif %}
       <tr class="odd">
-        <td class="fieldname">{% trans "Children" %}</td>	
-	<div id="children"></div>
-      </tr>	
+        <td class="fieldname">{% trans "Children" %}</td>
+        <td id="children"></td>
+      </tr>
     </table>
   </div>
 </div>
