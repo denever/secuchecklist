@@ -1,14 +1,14 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib.auth.decorators import login_required, permission_required
 
-from checklists.views import RiskFactorTreeView
-from checklists.views import RiskFactorDetailView
-from checklists.views import RiskFactorCreateView
-from checklists.views import RiskFactorUpdateView
-from checklists.views import RiskFactorDeleteView
-from checklists.views import RiskFactorJSONDetailView
+from riskfactors.views import RiskFactorTreeView
+from riskfactors.views import RiskFactorDetailView
+from riskfactors.views import RiskFactorCreateView
+from riskfactors.views import RiskFactorUpdateView
+from riskfactors.views import RiskFactorDeleteView
+from riskfactors.views import RiskFactorJSONDetailView
 
-urlpatterns = patterns('checklists.views',
+urlpatterns = patterns('riskfactors.views',
                        url(r'^$', login_required(RiskFactorTreeView.as_view()),
                            name='riskfactors'),
 

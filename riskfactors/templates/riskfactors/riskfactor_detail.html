@@ -1,4 +1,4 @@
-{% extends "checklists/base-checklists.html" %}
+{% extends "riskfactors/base-riskfactors.html" %}
 
 {% load i18n %}
 
@@ -17,7 +17,7 @@
 {% block content %}
 <script type="text/javascript">
   $(document).ready( function () {
-  $.getJSON('/checklists/riskfactors/', 'json', {'parent': riskfactor.id},
+  $.getJSON('/riskfactors/riskfactors/', 'json', {'parent': riskfactor.id},
   function(data){
   $('#children).tree({ data: data });
   });

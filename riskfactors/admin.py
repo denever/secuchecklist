@@ -1,4 +1,4 @@
-from checklists.models import RiskFactor
+from riskfactors.models import RiskFactor
 
 from django.contrib import admin
 

@@ -1,5 +1,5 @@
 # Create your views here.
-from checklists.models import RiskFactor
+from riskfactors.models import RiskFactor
 
 from django.views.generic import ListView
 from django.views.generic import DetailView
@@ -9,10 +9,10 @@ from django.views.generic import UpdateView
 from django.views.generic import DeleteView
 from django.views.generic import TemplateView
 
-from checklists.jsonresponsemixin import RiskFactorJsonResponseMixin
+from riskfactors.jsonresponsemixin import RiskFactorJsonResponseMixin
 
 class RiskFactorTreeView(TemplateView):
-    template_name = 'checklists/riskfactor_tree.html'
+    template_name = 'riskfactors/riskfactor_tree.html'
 
 class RiskFactorDetailView(DetailView):
     model = RiskFactor

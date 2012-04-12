@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from checklists.models import RiskFactor
+from riskfactors.models import RiskFactor
 
 
 class Command(BaseCommand):
