@@ -64,14 +64,16 @@
         <td class="fieldname">{% trans "Filename" %}</td>
         <td> {{ riskfactor.filename }} </td>
       </tr>
-      {% if riskfactor.parent %}
       <tr class="even">
         <td class="fieldname">{% trans "Parent" %}</td>
         <td>
+          {% if riskfactor.parent %}
           <a href="{% url riskfactor-detail riskfactor.parent.id %}">{{ riskfactor.parent }}</a>
+          {% else %}
+          <a href="{% url riskfactors %}">{% trans "Risk Factors" %}</td>
+          {% endif %}
         </td>
       </tr>
-      {% endif %}
       <tr class="odd">
         <td class="fieldname">{% trans "Children" %}</td>
         <td id="children"></td>
