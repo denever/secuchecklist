@@ -37,4 +37,10 @@ urlpatterns = patterns('riskfactors.views',
                            login_required(RiskFactorDeleteView.as_view()),
                            name = 'riskfactor-delete'
                            ),
+
+                       url(r'^add_riskfactor/(?P<pk>\d+)/$',
+                           login_required(RiskFactorDeleteView.as_view()),
+                           name = 'riskfactor-add'
+                           ),
+
                        )
