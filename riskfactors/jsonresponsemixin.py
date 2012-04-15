@@ -21,6 +21,7 @@ class RiskFactorJsonResponseMixin(object):
                     detail_url = reverse('riskfactor-detail', args=[riskfactor.id]),
                     edit_url = reverse('riskfactor-edit', args=[riskfactor.id]),
                     delete_url = reverse('riskfactor-delete', args=[riskfactor.id]),
+                    add_url = reverse('riskfactor-add', args=[riskfactor.id]),
                     )
     
     def convert_context_to_json(self, context):
