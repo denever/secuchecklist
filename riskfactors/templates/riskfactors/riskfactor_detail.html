@@ -3,7 +3,21 @@
 {% load i18n %}
 
 {% block extra_head %}
-<script type="text/javascript" charset="utf-8" src="/static/js/tree.jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.checkbox.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="/static/js/jstree.hotkeys.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.themes.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.xml.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.contextmenu.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.html.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.sort.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.dnd.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.json.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.state.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jstree.unique.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/riskfactor.tree.js"></script>
 <link rel="stylesheet" href="/static/css/jqtree.css" type="text/css" media="all"/>
 {% endblock %}
 
@@ -17,15 +31,7 @@
 {% block content %}
 <script type="text/javascript">
   $(document).ready( function () {
-  $.getJSON('/riskfactors/{{ riskfactor.id}}/subtree/',
-  function(data){
-  $('#children').tree({ data: data });
-  $('#children').bind('tree.click',
-  function(event){
-  var node = event.node;
-  window.location = node.detail_url;
-  });
-  });
+  buildtree({{ riskfactor.id }});
   } );
 </script>
 <div class="ui-helper-reset ui-widget">
@@ -76,7 +82,7 @@
       </tr>
       <tr class="odd">
         <td class="fieldname">{% trans "Children" %}</td>
-        <td id="children"></td>
+        <td id="riskfactors"></td>
       </tr>
     </table>
   </div>

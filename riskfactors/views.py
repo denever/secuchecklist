@@ -11,10 +11,10 @@ from django.views.generic import TemplateView
 
 from django.shortcuts import get_object_or_404
 
-from django.views.generic.list import MultipleObjectMixin
-from django.views.generic.list import BaseListView
+from django.views.generic.detail import BaseDetailView
 
-from riskfactors.jsonresponsemixin import RiskFactorJsonResponseMixin
+from riskfactors.jsonresponsemixin import RiskFactorNodeMixin
+from riskfactors.jsonresponsemixin import RiskFactorSubTreeMixin
 
 class RiskFactorTreeView(TemplateView):
     template_name = 'riskfactors/riskfactor_tree.html'
@@ -31,11 +31,18 @@ class RiskFactorUpdateView(UpdateView):
 class RiskFactorDeleteView(DeleteView):
     pass
 
-class RiskFactorTreeJson(RiskFactorJsonResponseMixin, BaseListView):
-    queryset = RiskFactor.objects.filter(parent__exact=None)
+class RiskFactorNodeJson(RiskFactorNodeMixin, BaseDetailView):
+	model = RiskFactor
+    # def get_queryset(self):
+    #     parent = get_object_or_404(RiskFactor, id=self.kwargs['pk'])
+    #     return RiskFactor.objects.filter(parent__exact=parent)
+    #     if self.kwargs['pk'] == '0':
+    #         return RiskFactor.objects.filter(parent__exact=None)
 
-class RiskFactorSubTreeJson(RiskFactorJsonResponseMixin, BaseListView):
+class RiskFactorSubTreeJson(RiskFactorSubTreeMixin, BaseDetailView):
 
     def get_queryset(self):
-        parent = get_object_or_404(RiskFactor, id=self.kwargs['pk'])
-        return RiskFactor.objects.filter(parent__exact=parent)
+	if self.kwargs['pk'] == '0':
+	    return RiskFactor.objects.filter(parent__exact=None)
+	parent = get_object_or_404(RiskFactor, id=self.kwargs['pk'])
+	return RiskFactor.objects.filter(parent__exact=parent)
