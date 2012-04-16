@@ -45,7 +45,9 @@ class RiskFactorUpdateView(UpdateView):
     success_url = '/riskfactors/'
 
 class RiskFactorDeleteView(DeleteView):
-    pass
+    model = RiskFactor
+    form_class = RiskFactorForm
+    success_url = '/riskfactors/'
 
 class RiskFactorNodeJson(RiskFactorNodeMixin, BaseDetailView):
 	model = RiskFactor
