@@ -16,6 +16,8 @@ from django.views.generic.detail import BaseDetailView
 from riskfactors.jsonresponsemixin import RiskFactorNodeMixin
 from riskfactors.jsonresponsemixin import RiskFactorSubTreeMixin
 
+from riskfactors.forms import RiskFactorForm
+
 class RiskFactorTreeView(TemplateView):
     template_name = 'riskfactors/riskfactor_tree.html'
 
@@ -23,10 +25,24 @@ class RiskFactorDetailView(DetailView):
     model = RiskFactor
 
 class RiskFactorCreateView(CreateView):
-    pass
+    form_class = RiskFactorForm
+    template_name = 'riskfactors/riskfactor_create_form.html'
+    success_url = '/riskfactors/'
+
+    def get_initial(self):
+	self.initial = super(RiskFactorCreateView, self).get_initial()        
+	if self.kwargs.has_key('pk'):
+            self.initial['parent'] = get_object_or_404(RiskFactor, id=self.kwargs['pk'])
+        return self.initial
+
+    # def form_valid(self, form):
+    #     return super(RiskFactorCreateView, self).form_valid(form)
 
 class RiskFactorUpdateView(UpdateView):
-    pass
+    model = RiskFactor
+    form_class = RiskFactorForm
+    template_name = 'riskfactors/riskfactor_update_form.html'
+    success_url = '/riskfactors/'
 
 class RiskFactorDeleteView(DeleteView):
     pass
