@@ -89,6 +89,7 @@ class CustomerCompanyDeleteView(DeleteView):
     model = CustomerCompany
     form_class = CustomerCompanyForm
     success_url = '/customers/'
+    context_object_name = 'company'
 
 class StaffCreateView(CreateView):
     form_class = StaffForm
