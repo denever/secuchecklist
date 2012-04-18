@@ -30,8 +30,8 @@ class RiskFactorCreateView(CreateView):
     success_url = '/riskfactors/'
 
     def get_initial(self):
-	self.initial = super(RiskFactorCreateView, self).get_initial()        
-	if self.kwargs.has_key('pk'):
+        self.initial = super(RiskFactorCreateView, self).get_initial()
+        if self.kwargs.has_key('pk'):
             self.initial['parent'] = get_object_or_404(RiskFactor, id=self.kwargs['pk'])
         return self.initial
 
@@ -50,7 +50,7 @@ class RiskFactorDeleteView(DeleteView):
     success_url = '/riskfactors/'
 
 class RiskFactorNodeJson(RiskFactorNodeMixin, BaseDetailView):
-	model = RiskFactor
+    model = RiskFactor
     # def get_queryset(self):
     #     parent = get_object_or_404(RiskFactor, id=self.kwargs['pk'])
     #     return RiskFactor.objects.filter(parent__exact=parent)
@@ -58,9 +58,9 @@ class RiskFactorNodeJson(RiskFactorNodeMixin, BaseDetailView):
     #         return RiskFactor.objects.filter(parent__exact=None)
 
 class RiskFactorSubTreeJson(RiskFactorSubTreeMixin, BaseDetailView):
-
-    def get_queryset(self):
-	if self.kwargs['pk'] == '0':
-	    return RiskFactor.objects.filter(parent__exact=None)
-	parent = get_object_or_404(RiskFactor, id=self.kwargs['pk'])
-	return RiskFactor.objects.filter(parent__exact=parent)
+    model = RiskFactor
+    # def get_queryset(self):
+    #     parent = get_object_or_404(RiskFactor, id=self.kwargs['pk'])
+    #     rfs = RiskFactor.objects.filter(parent__exact=parent)
+    #     print rfs
+    #     return rfs
