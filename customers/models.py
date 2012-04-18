@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _
 
 from customers.modelfields import AddressField
 # depends on django-simple-history
-from simple_history.models import HistoricalRecords
+# from simple_history.models import HistoricalRecords
 
 # Create your models here.
 
@@ -167,7 +167,7 @@ class CustomerCompany(models.Model):
                                     verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
-    history = HistoricalRecords()
+    # history = HistoricalRecords()
 
     # def departments(self):
     #     return list(set([staff.department for staff in self.staff_set.all()]))
@@ -207,7 +207,7 @@ class Department(models.Model):
                                     verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
-    history = HistoricalRecords()
+    # history = HistoricalRecords()
 
     class Meta:
         ordering = ['name']
@@ -252,7 +252,7 @@ class Staff(models.Model):
                                     verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
-    history = HistoricalRecords()
+    # history = HistoricalRecords()
 
     def __unicode__(self):
         return u'%s %s' % (self.surname, self.name) # mansione omogenea
@@ -280,7 +280,7 @@ class CompanySecurityDuty(models.Model):
                                     verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
-    history = HistoricalRecords()
+    # history = HistoricalRecords()
 
     def __unicode__(self):
         return u'%s %s (%s)' % (self.surname, self.name, self.security_duty)
@@ -303,7 +303,7 @@ class Equipment(models.Model):
                                            )
     compliance_requirement = models.CharField(_('Compliance Requirements'), max_length=255)
 
-    history = HistoricalRecords()
+    # history = HistoricalRecords()
 
     def __unicode__(self):
         return u'%s (%s)' % (self.name, self.code)
