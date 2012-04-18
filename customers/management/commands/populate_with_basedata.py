@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
+from django.utils.translation import ugettext as _
 
 from customers.models import Nationality, SecurityDuty
 
@@ -14,7 +15,8 @@ class Command(BaseCommand):
     help = 'Populate db with utility data for Nationality, SecurityDuty'
 
     def handle(self, *args, **options):
-        duties = [_('Datore di lavoro', 'RSPP'),
+        duties = [_('Datore di lavoro'),
+                  _('RSPP'),
                   _('Dirigente'),
                   _('Preposto'),
                   _('RLS'),
