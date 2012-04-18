@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-30 18:47+0200\n"
+"POT-Creation-Date: 2012-04-18 10:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,7 +51,7 @@ msgstr "Profilo"
 msgid "Activity date"
 msgstr "Data attività"
 
-#: accounts/models.py:36
+#: accounts/models.py:36 accounts/templates/accounts/activity_list.html:26
 msgid "Action"
 msgstr "Azione"
 
@@ -61,8 +61,7 @@ msgstr "Nome oggetto"
 
 #: accounts/models.py:44 accounts/templates/accounts/activity_list.html:9
 #: accounts/templates/accounts/activity_list.html:10
-#: accounts/templates/accounts/activity_list.html:19
-#: accounts/templates/accounts/activity_list.html:25
+#: accounts/templates/accounts/activity_list.html:20
 msgid "Activity"
 msgstr "Attività"
 
@@ -70,11 +69,11 @@ msgstr "Attività"
 msgid "Activities"
 msgstr "Attività"
 
-#: accounts/templates/accounts/activity_list.html:24
+#: accounts/templates/accounts/activity_list.html:25
 msgid "Date"
 msgstr "Data"
 
-#: accounts/templates/accounts/activity_list.html:26
+#: accounts/templates/accounts/activity_list.html:27
 msgid "On"
 msgstr "Su"
 
@@ -95,7 +94,7 @@ msgstr ""
 #: accounts/templates/accounts/password_change_done.html:4
 #: accounts/templates/accounts/password_change_form.html:5
 msgid "Documentation"
-msgstr ""
+msgstr "Documentazione"
 
 #: accounts/templates/accounts/password_change_done.html:4
 #: accounts/templates/accounts/password_change_form.html:5
@@ -264,15 +263,15 @@ msgid "Customer companies recorded by"
 msgstr "Aziende registrate da"
 
 #: accounts/templates/accounts/profile.html:38
-#: accounts/templates/accounts/profile.html:65 customers/models.py:188
-#: customers/models.py:193 customers/models.py:235 customers/models.py:259
+#: accounts/templates/accounts/profile.html:65 customers/models.py:192
+#: customers/models.py:197 customers/models.py:241 customers/models.py:267
 #: customers/templates/customers/staff_list.html:9
 #: customers/templates/customers/staff_list.html:10
 msgid "Customer Company"
 msgstr "Azienda"
 
-#: accounts/templates/accounts/profile.html:39 customers/models.py:43
-#: customers/models.py:145
+#: accounts/templates/accounts/profile.html:39 customers/models.py:45
+#: customers/models.py:147
 #: customers/templates/customers/customercompany_archive_month.html:24
 #: customers/templates/customers/customercompany_archive_year.html:22
 #: customers/templates/customers/customercompany_confirm_delete.html:17
@@ -286,6 +285,7 @@ msgstr "Settore ATECO 2007"
 #: customers/templates/customers/customercompany_archive_year.html:23
 #: customers/templates/customers/customercompany_detail.html:68
 #: customers/templates/customers/customercompany_list.html:55
+#: riskfactors/models.py:19
 msgid "Record date"
 msgstr "Data registrazione"
 
@@ -293,8 +293,8 @@ msgstr "Data registrazione"
 msgid "Staff recorded by"
 msgstr "Personale registrato da"
 
-#: accounts/templates/accounts/profile.html:66 customers/models.py:254
-#: customers/models.py:255 customers/templates/customers/base-company.html:28
+#: accounts/templates/accounts/profile.html:66 customers/models.py:262
+#: customers/models.py:263 customers/templates/customers/base-company.html:28
 #: customers/templates/customers/department_detail.html:56
 #: customers/templates/customers/staff_list.html:36
 #: customers/templates/customers/staff_list.html:41
@@ -306,8 +306,8 @@ msgstr "Personale"
 msgid "Standard Task"
 msgstr "Mansione omogenea"
 
-#: accounts/templates/accounts/profile.html:68 customers/models.py:58
-#: customers/models.py:65 customers/models.py:238
+#: accounts/templates/accounts/profile.html:68 customers/models.py:60
+#: customers/models.py:67 customers/models.py:244
 #: customers/templates/customers/staff_detail.html:27
 #: customers/templates/customers/staff_list.html:43
 msgid "Role"
@@ -319,11 +319,12 @@ msgstr "Figure prevenzione registrate da"
 
 #: accounts/templates/accounts/profile.html:97
 #: customers/templates/customers/companysecurityduty_list.html:11
+#: customers/templates/customers/equipment_list.html:11
 msgid "Customer company"
 msgstr "Azienda"
 
-#: accounts/templates/accounts/profile.html:98 customers/models.py:69
-#: customers/models.py:76 customers/models.py:260
+#: accounts/templates/accounts/profile.html:98 customers/models.py:71
+#: customers/models.py:78 customers/models.py:268
 #: customers/templates/customers/companysecurityduty_detail.html:37
 #: customers/templates/customers/companysecurityduty_list.html:12
 #: customers/templates/customers/department_detail.html:58
@@ -336,230 +337,239 @@ msgstr "Figura prevenzione"
 msgid "Name and Surname"
 msgstr "Nome e Cognome"
 
-#: accounts/templates/accounts/profile.html:100 customers/forms.py:84
-#: customers/models.py:263
+#: accounts/templates/accounts/profile.html:100 customers/forms.py:85
+#: customers/models.py:271
 #: customers/templates/customers/companysecurityduty_detail.html:23
 #: customers/templates/customers/companysecurityduty_list.html:47
 msgid "Internal phone"
 msgstr "Telefono interno"
 
-#: accounts/templates/accounts/profile.html:101 customers/forms.py:85
-#: customers/models.py:264
+#: accounts/templates/accounts/profile.html:101 customers/forms.py:86
+#: customers/models.py:272
 #: customers/templates/customers/companysecurityduty_detail.html:27
 #: customers/templates/customers/companysecurityduty_list.html:48
 msgid "External phone"
 msgstr "Telefono esterno"
 
-#: accounts/templates/accounts/profile.html:102 customers/models.py:156
-#: customers/models.py:265
+#: accounts/templates/accounts/profile.html:102 customers/models.py:158
+#: customers/models.py:273
 #: customers/templates/customers/companysecurityduty_detail.html:31
 #: customers/templates/customers/companysecurityduty_list.html:49
 #: customers/templates/customers/customercompany_detail.html:120
 msgid "Email"
 msgstr ""
 
-#: customers/forms.py:18 customers/models.py:140
+#: customers/forms.py:19 customers/models.py:142
 #: customers/templates/customers/customercompany_confirm_delete.html:15
 #: customers/templates/customers/customercompany_detail.html:34
 msgid "Tax code"
 msgstr "Codice Fiscale"
 
-#: customers/forms.py:19 customers/models.py:141
+#: customers/forms.py:20 customers/models.py:143
 #: customers/templates/customers/customercompany_confirm_delete.html:16
 #: customers/templates/customers/customercompany_detail.html:38
 msgid "Vat code"
 msgstr "Partita IVA"
 
-#: customers/forms.py:20 customers/forms.py:51 customers/models.py:154
-#: customers/models.py:225
+#: customers/forms.py:21 customers/forms.py:52 customers/models.py:156
+#: customers/models.py:231
 #: customers/templates/customers/customercompany_detail.html:112
 #: customers/templates/customers/staff_detail.html:18
 msgid "Phone"
 msgstr "Telefono"
 
-#: customers/forms.py:21 customers/models.py:155
+#: customers/forms.py:22 customers/models.py:157
 #: customers/templates/customers/customercompany_detail.html:116
 msgid "Fax"
 msgstr ""
 
-#: customers/models.py:11 customers/models.py:18 customers/models.py:23
+#: customers/models.py:13 customers/models.py:20 customers/models.py:25
 msgid "Province"
 msgstr "Provincia"
 
-#: customers/models.py:19
+#: customers/models.py:21
 msgid "Provinces"
 msgstr "Province"
 
-#: customers/models.py:22 customers/models.py:30
+#: customers/models.py:24 customers/models.py:32
 msgid "Township"
 msgstr "Comune"
 
-#: customers/models.py:24
+#: customers/models.py:26
 msgid "Zipcode"
 msgstr "CAP"
 
-#: customers/models.py:31
+#: customers/models.py:33
 msgid "Townships"
 msgstr "Comuni"
 
-#: customers/models.py:35
+#: customers/models.py:37 customers/models.py:294
+#: customers/templates/customers/equipment_detail.html:15
+#: customers/templates/customers/equipment_list.html:43
+#: riskfactors/models.py:21
 msgid "Code"
 msgstr "Codice"
 
-#: customers/models.py:36 customers/models.py:81 customers/models.py:222
-#: customers/models.py:262
+#: customers/models.py:38 customers/models.py:83 customers/models.py:228
+#: customers/models.py:270 customers/models.py:293 customers/models.py:316
 #: customers/templates/customers/companysecurityduty_detail.html:15
 #: customers/templates/customers/department_detail.html:38
+#: customers/templates/customers/equipment_detail.html:19
 #: customers/templates/customers/staff_detail.html:15
 msgid "Name"
 msgstr "Nome"
 
-#: customers/models.py:37 customers/models.py:48 customers/models.py:59
-#: customers/models.py:70 customers/models.py:82 customers/models.py:94
-#: customers/models.py:115 customers/models.py:126
+#: customers/models.py:39 customers/models.py:50 customers/models.py:61
+#: customers/models.py:72 customers/models.py:84 customers/models.py:96
+#: customers/models.py:117 customers/models.py:128 customers/models.py:295
+#: customers/models.py:317
 #: customers/templates/customers/department_detail.html:44
+#: customers/templates/customers/equipment_detail.html:23
+#: riskfactors/models.py:8
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:42
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:31
 msgid "Description"
 msgstr "Descrizione"
 
-#: customers/models.py:44
+#: customers/models.py:46
 msgid "ATECO Sectors 2007"
 msgstr "Settori ATECO 2007"
 
-#: customers/models.py:47 customers/models.py:54 customers/models.py:236
+#: customers/models.py:49 customers/models.py:56 customers/models.py:242
 #: customers/templates/customers/department_detail.html:57
 #: customers/templates/customers/staff_detail.html:25
 msgid "Standard task"
 msgstr "Mansione omogenea"
 
-#: customers/models.py:55
+#: customers/models.py:57
 msgid "Standard tasks"
 msgstr "Mansioni omogenee"
 
-#: customers/models.py:66
+#: customers/models.py:68
 msgid "Roles"
 msgstr "Mansioni"
 
-#: customers/models.py:77
+#: customers/models.py:79
 #: customers/templates/customers/companysecurityduty_list.html:40
 msgid "Security duties"
 msgstr "Figure prevenzione"
 
-#: customers/models.py:80
+#: customers/models.py:82
 msgid "Short name"
 msgstr "Sigla"
 
-#: customers/models.py:85
+#: customers/models.py:87
 #: customers/templates/customers/customercompany_detail.html:58
 msgid "Certification"
 msgstr "Certificazione"
 
-#: customers/models.py:86 customers/models.py:146
+#: customers/models.py:88 customers/models.py:148
 msgid "Certifications"
 msgstr "Certificazioni"
 
-#: customers/models.py:93
+#: customers/models.py:95
 msgid "Collaboration Agreement Name"
 msgstr "Nome forma contrattuale"
 
-#: customers/models.py:97 customers/templates/customers/staff_detail.html:21
+#: customers/models.py:99 customers/templates/customers/staff_detail.html:21
 msgid "Collaboration Agreement"
 msgstr "Forma contrattuale"
 
-#: customers/models.py:98
+#: customers/models.py:100
 msgid "Collaboration Agreements"
 msgstr "Forme contrattuali"
 
-#: customers/models.py:104 customers/models.py:107 customers/models.py:228
+#: customers/models.py:106 customers/models.py:109 customers/models.py:234
 msgid "Nationality"
 msgstr "Nazionalità"
 
-#: customers/models.py:108
+#: customers/models.py:110
 msgid "Nationalities"
 msgstr "Nazionalità"
 
-#: customers/models.py:114
+#: customers/models.py:116
 msgid "Health Surveillance Name"
 msgstr "Nome Sorveglianza Sanitaria"
 
-#: customers/models.py:121 customers/models.py:122 customers/models.py:153
-#: customers/models.py:232
+#: customers/models.py:123 customers/models.py:124 customers/models.py:155
+#: customers/models.py:238
 #: customers/templates/customers/customercompany_detail.html:98
 #: customers/templates/customers/staff_detail.html:22
 msgid "Health surveillance"
 msgstr "Sorveglianza Sanitaria"
 
-#: customers/models.py:125 customers/models.py:132 customers/models.py:150
+#: customers/models.py:127 customers/models.py:134 customers/models.py:152
 msgid "CPI Settlement"
 msgstr "Insediamento CPI"
 
-#: customers/models.py:133
+#: customers/models.py:135
 msgid "CPI Settlements"
 msgstr "Insediamenti CPI"
 
-#: customers/models.py:136
+#: customers/models.py:138
 #: customers/templates/customers/customercompany_confirm_delete.html:14
 #: customers/templates/customers/customercompany_detail.html:14
 msgid "Firm"
 msgstr "Ragione sociale"
 
-#: customers/models.py:137
+#: customers/models.py:139
 msgid "Registered Office"
 msgstr "Sede Amministrativa"
 
-#: customers/models.py:138
+#: customers/models.py:140
 #: customers/templates/customers/customercompany_detail.html:24
 msgid "Settlement"
 msgstr "Sede Insediamento Produttivo"
 
-#: customers/models.py:139
+#: customers/models.py:141
 msgid "CIIAA registration"
 msgstr "Registrazione CIIAA"
 
-#: customers/models.py:142
+#: customers/models.py:144
 #: customers/templates/customers/customercompany_detail.html:42
 msgid "INAIL position"
 msgstr "Posizione INAIL"
 
-#: customers/models.py:143
+#: customers/models.py:145
 #: customers/templates/customers/customercompany_detail.html:46
 msgid "INPS position"
 msgstr "Posizione INPS"
 
-#: customers/models.py:144
+#: customers/models.py:146
 #: customers/templates/customers/customercompany_detail.html:50
 msgid "CCNL"
 msgstr "CCNL"
 
-#: customers/models.py:151
+#: customers/models.py:153
 #: customers/templates/customers/customercompany_detail.html:76
 msgid "Machine usage"
 msgstr "Uso macchine"
 
-#: customers/models.py:152
+#: customers/models.py:154
 #: customers/templates/customers/customercompany_detail.html:87
 msgid "Dangerous substances"
 msgstr "Sostanze pericolose"
 
-#: customers/models.py:157
+#: customers/models.py:159
 msgid "Working environment general description"
 msgstr "Descrizione generale dell'ambiente di lavoro"
 
-#: customers/models.py:162 customers/models.py:200 customers/models.py:243
-#: customers/models.py:269
+#: customers/models.py:164 customers/models.py:204 customers/models.py:249
+#: customers/models.py:277
 msgid "Recorded by"
 msgstr "Registrato da"
 
-#: customers/models.py:165 customers/models.py:203 customers/models.py:246
-#: customers/models.py:272
+#: customers/models.py:167 customers/models.py:207 customers/models.py:252
+#: customers/models.py:280
 msgid "Last update by"
 msgstr "Ultima modifica di"
 
-#: customers/models.py:166 customers/models.py:204 customers/models.py:247
-#: customers/models.py:273
+#: customers/models.py:168 customers/models.py:208 customers/models.py:253
+#: customers/models.py:281
 msgid "Recorded on"
 msgstr "Registato il"
 
-#: customers/models.py:189 customers/templates/customers/base-company.html:4
+#: customers/models.py:193 customers/templates/customers/base-company.html:4
 #: customers/templates/customers/base-company.html:5
 #: customers/templates/customers/base-company.html:8
 #: customers/templates/customers/base-company.html:13
@@ -570,66 +580,96 @@ msgstr "Registato il"
 msgid "Customer companies"
 msgstr "Aziende"
 
-#: customers/models.py:194
+#: customers/models.py:198
 msgid "Department name"
 msgstr "Nome Reparto"
 
-#: customers/models.py:195
+#: customers/models.py:199
 msgid "Department description"
 msgstr "Descrizione Reparto"
 
-#: customers/models.py:208 customers/models.py:237
+#: customers/models.py:214 customers/models.py:243 customers/models.py:296
+#: customers/templates/customers/equipment_detail.html:31
+#: customers/templates/customers/equipment_list.html:44
 #: customers/templates/customers/staff_detail.html:26
 #: customers/templates/customers/workingenvironment_create_form.html:68
 msgid "Department"
 msgstr "Reparto"
 
-#: customers/models.py:209
+#: customers/models.py:215
 #: customers/templates/customers/workingenvironment_create_form.html:63
 msgid "Departments"
 msgstr "Reparti"
 
-#: customers/models.py:218
+#: customers/models.py:224
 msgid "Male"
 msgstr "Maschio"
 
-#: customers/models.py:219
+#: customers/models.py:225
 msgid "Female"
 msgstr "Femmina"
 
-#: customers/models.py:223 customers/models.py:261
+#: customers/models.py:229 customers/models.py:269
 #: customers/templates/customers/companysecurityduty_detail.html:19
 #: customers/templates/customers/staff_detail.html:16
 msgid "Surname"
 msgstr "Cognome"
 
-#: customers/models.py:224 customers/templates/customers/staff_detail.html:17
+#: customers/models.py:230 customers/templates/customers/staff_detail.html:17
 msgid "Birth date"
 msgstr "Data di nascita"
 
-#: customers/models.py:226 customers/templates/customers/staff_detail.html:19
+#: customers/models.py:232 customers/templates/customers/staff_detail.html:19
 msgid "Gender"
 msgstr "Sesso"
 
-#: customers/models.py:230
+#: customers/models.py:236
 msgid "Collaboration agreement"
 msgstr "Forma contrattuale"
 
-#: customers/models.py:233 customers/templates/customers/staff_detail.html:23
+#: customers/models.py:239 customers/templates/customers/staff_detail.html:23
 msgid "Workers count"
 msgstr "Computo lavoratori"
 
-#: customers/models.py:239 customers/templates/customers/staff_detail.html:29
+#: customers/models.py:245 customers/templates/customers/staff_detail.html:29
 msgid "Employ date"
 msgstr "Data assunzione"
 
-#: customers/models.py:279
+#: customers/models.py:289
 msgid "Company security duty"
 msgstr "Figura Prevenzione in Azienda"
 
-#: customers/models.py:280
+#: customers/models.py:290
 msgid "Company security duties"
 msgstr "Figure Prevenzione in Azienda"
+
+#: customers/models.py:297
+#: customers/templates/customers/equipment_detail.html:27
+#: customers/templates/customers/equipment_list.html:45
+msgid "Operator"
+msgstr "Operatore"
+
+#: customers/models.py:299
+#, fuzzy
+msgid "Exposed staff"
+msgstr "Aggiungi personale"
+
+#: customers/models.py:304
+#: customers/templates/customers/equipment_detail.html:35
+msgid "Compliance Requirements"
+msgstr "Requisit di conformità"
+
+#: customers/models.py:312 customers/models.py:313
+msgid "Equipment"
+msgstr "Attrezzatura"
+
+#: customers/models.py:323
+msgid "Individual Protection Equipment"
+msgstr "Dispositivo protezione individuale"
+
+#: customers/models.py:324
+msgid "Individual Protection Equipments"
+msgstr "Dispositivi protezione individuale"
 
 #: customers/widgets.py:25
 msgid "Enter a valid phone number"
@@ -709,6 +749,12 @@ msgstr "Ambiente di Lavoro"
 msgid "Security Duties"
 msgstr "Figure prevenzione"
 
+#: customers/templates/customers/base-company.html:38
+#: customers/templates/customers/equipment_list.html:12
+#: customers/templates/customers/equipment_list.html:38
+msgid "Equipments"
+msgstr "Attrezzature"
+
 #: customers/templates/customers/base-customers.html:22
 msgid "Add Customer Company"
 msgstr "Aggiungi Azienda"
@@ -716,11 +762,14 @@ msgstr "Aggiungi Azienda"
 #: customers/templates/customers/companysecurityduty_confirm_delete.html:6
 #: customers/templates/customers/customercompany_confirm_delete.html:6
 #: customers/templates/customers/department_confirm_delete.html:6
+#: customers/templates/customers/equipment_confirm_delete.html:6
 #: customers/templates/customers/staff_confirm_delete.html:6
+#: riskfactors/templates/riskfactors/riskfactor_confirm_delete.html:6
 msgid "Are you sure?"
 msgstr "Sei sicuro?"
 
 #: customers/templates/customers/companysecurityduty_confirm_delete.html:9
+#: customers/templates/customers/equipment_confirm_delete.html:9
 msgid "Do you really want to remove "
 msgstr "Vuoi davvero cancellare "
 
@@ -731,7 +780,9 @@ msgstr "come"
 #: customers/templates/customers/companysecurityduty_confirm_delete.html:14
 #: customers/templates/customers/customercompany_confirm_delete.html:23
 #: customers/templates/customers/department_confirm_delete.html:14
+#: customers/templates/customers/equipment_confirm_delete.html:14
 #: customers/templates/customers/staff_confirm_delete.html:15
+#: riskfactors/templates/riskfactors/riskfactor_confirm_delete.html:15
 msgid "Yes, I'm sure"
 msgstr "Si, sono sicuro"
 
@@ -743,6 +794,7 @@ msgstr "Registrazione Figure prevenzione"
 #: customers/templates/customers/companysecurityduty_create_form.html:50
 #: customers/templates/customers/customercompany_create_form.html:35
 #: customers/templates/customers/department_create_form.html:49
+#: customers/templates/customers/equipment_create_form.html:50
 msgid "Save"
 msgstr "Registra"
 
@@ -755,6 +807,8 @@ msgstr "Figura prevenzione dettaglio"
 #: customers/templates/customers/customercompany_detail.html:5
 #: customers/templates/customers/customercompany_list.html:72
 #: customers/templates/customers/department_detail.html:12
+#: customers/templates/customers/equipment_detail.html:6
+#: customers/templates/customers/equipment_list.html:68
 #: customers/templates/customers/staff_detail.html:7
 #: customers/templates/customers/staff_list.html:61
 #: customers/templates/customers/workingenvironment_create_form.html:83
@@ -772,6 +826,7 @@ msgstr "Figura"
 #: customers/templates/customers/companysecurityduty_list.html:50
 #: customers/templates/customers/customercompany_list.html:56
 #: customers/templates/customers/department_detail.html:59
+#: customers/templates/customers/equipment_list.html:46
 #: customers/templates/customers/staff_list.html:44
 #: customers/templates/customers/workingenvironment_create_form.html:70
 msgid "Actions"
@@ -779,6 +834,7 @@ msgstr "Azioni"
 
 #: customers/templates/customers/companysecurityduty_list.html:73
 #: customers/templates/customers/customercompany_list.html:73
+#: customers/templates/customers/equipment_list.html:69
 #: customers/templates/customers/staff_list.html:62
 #: customers/templates/customers/workingenvironment_create_form.html:84
 msgid "Delete"
@@ -792,8 +848,11 @@ msgstr "Modifica Figura prevenzione"
 #: customers/templates/customers/companysecurityduty_update_form.html:48
 #: customers/templates/customers/customercompany_update_form.html:36
 #: customers/templates/customers/department_update_form.html:49
+#: customers/templates/customers/equipment_update_form.html:48
 #: customers/templates/customers/staff_update_form.html:49
 #: customers/templates/customers/workingenvironment_create_form.html:56
+#: riskfactors/templates/riskfactors/riskfactor_create_form.html:37
+#: riskfactors/templates/riskfactors/riskfactor_update_form.html:37
 msgid "Update"
 msgstr "Aggiorna"
 
@@ -893,6 +952,7 @@ msgstr "Modifica Azienda"
 
 #: customers/templates/customers/department_confirm_delete.html:9
 #: customers/templates/customers/staff_confirm_delete.html:9
+#: riskfactors/templates/riskfactors/riskfactor_confirm_delete.html:9
 msgid "Do you really want to remove"
 msgstr "Vuoi davvero cancellare"
 
@@ -923,6 +983,31 @@ msgstr "Rimuovi personale dal reparto"
 #: customers/templates/customers/department_update_form.html:24
 msgid "Department edit"
 msgstr "Modifica Reparto"
+
+#: customers/templates/customers/equipment_create_form.html:19
+#: customers/templates/customers/equipment_create_form.html:23
+#, fuzzy
+msgid "Equipment registration"
+msgstr "Registrazione Reparti"
+
+#: customers/templates/customers/equipment_detail.html:3
+#, fuzzy
+msgid "Equipment detail"
+msgstr "Descrizione Reparto"
+
+#: customers/templates/customers/equipment_detail.html:46
+msgid "Exposed Staff"
+msgstr "Lavoratori esposti"
+
+#: customers/templates/customers/equipment_list.html:15
+#, fuzzy
+msgid "Add new equipment"
+msgstr "Aggiungi Reparto"
+
+#: customers/templates/customers/equipment_update_form.html:19
+#: customers/templates/customers/equipment_update_form.html:23
+msgid "Edit Equipment"
+msgstr "Modifica attrezzatura"
 
 #: customers/templates/customers/staff_confirm_delete.html:10
 msgid "with standard task"
@@ -966,6 +1051,122 @@ msgstr "Aggiungi Reparto"
 #: customers/templates/customers/workingenvironment_create_form.html:40
 msgid "Working environment description"
 msgstr "Descrizione generale dell'ambiente di lavoro"
+
+#: riskfactors/models.py:9
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:46
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:35
+msgid "Question"
+msgstr "Domanda"
+
+#: riskfactors/models.py:10
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:50
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:39
+msgid "Measure"
+msgstr "Misura"
+
+#: riskfactors/models.py:11
+msgid "Suggestion yes"
+msgstr "Suggerimento si"
+
+#: riskfactors/models.py:12
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:58
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:47
+msgid "Suggestion No"
+msgstr "Suggerimento No"
+
+#: riskfactors/models.py:13
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:62
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:51
+msgid "Notes"
+msgstr "Note"
+
+#: riskfactors/models.py:14
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:66
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:55
+msgid "Link"
+msgstr ""
+
+#: riskfactors/models.py:15
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:70
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:59
+msgid "Filename"
+msgstr ""
+
+#: riskfactors/models.py:17
+msgid "parent"
+msgstr ""
+
+#: riskfactors/models.py:22
+#, fuzzy
+msgid "Parent code"
+msgstr ""
+
+#: riskfactors/models.py:29
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:38
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:27
+msgid "Risk Factor"
+msgstr "Fattore di Rischio"
+
+#: riskfactors/models.py:30
+#: riskfactors/templates/riskfactors/base-riskfactors.html:4
+#: riskfactors/templates/riskfactors/base-riskfactors.html:5
+#: riskfactors/templates/riskfactors/base-riskfactors.html:12
+#: riskfactors/templates/riskfactors/base-riskfactors.html:17
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:24
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:25
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:79
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:10
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:11
+#: riskfactors/templates/riskfactors/riskfactor_list.html:10
+#: riskfactors/templates/riskfactors/riskfactor_list.html:11
+#: riskfactors/templates/riskfactors/riskfactor_list.html:27
+#: riskfactors/templates/riskfactors/riskfactor_tree.html:23
+#: riskfactors/templates/riskfactors/riskfactor_tree.html:24
+#: riskfactors/templates/riskfactors/riskfactor_tree.html:37
+#: templates/base.html:85 templates/base.html.py:90
+msgid "Risk Factors"
+msgstr "Fattori di Rischio"
+
+#: riskfactors/templates/riskfactors/base-riskfactors.html:22
+#: templates/base.html:95
+msgid "Add Risk Factor"
+msgstr "Aggiungi fattore di rischio"
+
+#: riskfactors/templates/riskfactors/riskfactor_confirm_delete.html:10
+msgid "from folder"
+msgstr "dal gruppo"
+
+#: riskfactors/templates/riskfactors/riskfactor_create_form.html:8
+#: riskfactors/templates/riskfactors/riskfactor_create_form.html:12
+#: riskfactors/templates/riskfactors/riskfactor_update_form.html:8
+#: riskfactors/templates/riskfactors/riskfactor_update_form.html:12
+msgid "Risk Factor Edit"
+msgstr "Modifica fattore di rischio"
+
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:28
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:14
+msgid "Edit risk factor"
+msgstr "Modifica fattore di rischio"
+
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:54
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:43
+msgid "Suggestion Yes"
+msgstr "Suggerimento Si"
+
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:74
+#: riskfactors/templates/riskfactors/riskfactor_edit.html:64
+msgid "Parent"
+msgstr ""
+
+#: riskfactors/templates/riskfactors/riskfactor_detail.html:84
+msgid "Children"
+msgstr "Sotto fattori di rischio"
+
+#: riskfactors/templates/riskfactors/riskfactor_list.html:14
+#: riskfactors/templates/riskfactors/riskfactor_tree.html:27
+#, fuzzy
+msgid "Add a new risk factor"
+msgstr "Aggiungi un nuovo fattore di rischio"
 
 #: templates/base.html:36
 msgid "Welcome"
