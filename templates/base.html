@@ -80,6 +80,7 @@
               </div>
               {% endblock %}
 
+	      {% if user.is_staff %}
               {% block riskfactorsmenu %}
               <h3><a href="#">{% trans "Risk Factors" %}</a></h3>
               <div>
@@ -97,6 +98,7 @@
                 </ul>
               </div>
               {% endblock %}
+	      {% endif %}
 
             </div>
           </div>
