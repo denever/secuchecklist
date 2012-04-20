@@ -1,0 +1,5 @@
+Depends:
+
+python-pip
+django-autocomplete
+django-simple-history
