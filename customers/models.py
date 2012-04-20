@@ -310,3 +310,11 @@ class DPI(models.Model):
     class Meta:
         verbose_name = _('Individual Protection Equipment')
         verbose_name_plural = _('Individual Protection Equipments')
+
+import reversion
+
+reversion.register(CustomerCompany)
+reversion.register(Staff)
+reversion.register(Equipment)
+reversion.register(Department)
+reversion.register(CompanySecurityDuty)
