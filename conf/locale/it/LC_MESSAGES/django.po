@@ -939,7 +939,7 @@ msgstr ""
 
 #: customers/templates/customers/customercompany_detail.html:108
 msgid "Settlement size"
-msgstr "Sede Insediamento Produttivo"
+msgstr "Superficie insediamento produttivo"
 
 #: customers/templates/customers/customercompany_detail.html:126
 msgid "Numbers of workers"
