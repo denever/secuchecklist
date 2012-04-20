@@ -145,7 +145,7 @@ class CustomerCompany(models.Model):
     ateco_sector = models.ForeignKey(AtecoSector, verbose_name=_('ATECO Sector 2007'))
     certifications = models.ManyToManyField(Certification, verbose_name=_('Certifications'),
                                             null=True, blank=True)
-    settlement_size = models.PositiveIntegerField('Settlement size mq.')
+    settlement_size = models.PositiveIntegerField(_('Settlement size mq.'))
 
     cpi = models.ForeignKey(CPISettlement, verbose_name=_('CPI Settlement'))
     machine_use = models.BooleanField(_('Machine usage'))
