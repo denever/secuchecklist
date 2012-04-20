@@ -1,14 +1,9 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 
-# depends on django-simple-history
-# from simple_history.models import HistoricalRecords
-
 # Create your models here.
 class CheckList(models.Model):
     company = models.ForeignKey('customers.CustomerCompany')
-
-#    history = HistoricalRecords()
 
     record_by = models.ForeignKey('accounts.UserProfile',
                                   related_name='checklists_created',
@@ -30,5 +25,3 @@ class RiskFactorEvaluation(models.Model):
                                       related_name='evaluations_edited',
                                       verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
-
-#    history = HistoricalRecords()
