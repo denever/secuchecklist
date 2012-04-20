@@ -25,3 +25,9 @@ class RiskFactorEvaluation(models.Model):
                                       related_name='evaluations_edited',
                                       verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
+
+
+import reversion
+
+reversion.register(CheckList)
+reversion.register(RiskFactorEvaluation)
