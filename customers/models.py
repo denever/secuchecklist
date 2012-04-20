@@ -4,8 +4,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
 
 from customers.modelfields import AddressField
-# depends on django-simple-history
-# from simple_history.models import HistoricalRecords
 
 # Create your models here.
 
@@ -167,8 +165,6 @@ class CustomerCompany(models.Model):
                                     verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
-    # history = HistoricalRecords()
-
     # def departments(self):
     #     return list(set([staff.department for staff in self.staff_set.all()]))
 
@@ -206,8 +202,6 @@ class Department(models.Model):
                                     related_name='departments_edited',
                                     verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
-
-    # history = HistoricalRecords()
 
     class Meta:
         ordering = ['name']
@@ -252,8 +246,6 @@ class Staff(models.Model):
                                     verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
-    # history = HistoricalRecords()
-
     def __unicode__(self):
         return u'%s %s' % (self.surname, self.name) # mansione omogenea
 
@@ -280,8 +272,6 @@ class CompanySecurityDuty(models.Model):
                                     verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
-    # history = HistoricalRecords()
-
     def __unicode__(self):
         return u'%s %s (%s)' % (self.surname, self.name, self.security_duty)
 
@@ -302,8 +292,6 @@ class Equipment(models.Model):
                                            related_name='exposed_to'
                                            )
     compliance_requirement = models.CharField(_('Compliance Requirements'), max_length=255)
-
-    # history = HistoricalRecords()
 
     def __unicode__(self):
         return u'%s (%s)' % (self.name, self.code)
