@@ -4,11 +4,10 @@ from django.contrib import admin
 import reversion
 
 class ChecklistAdmin(reversion.VersionAdmin):
-    # list_display = ('description',)
-    # list_filter = ['description']
-    # search_fields = ['description', 'question', 'measure', 'link']
-    # date_hierarchy = 'record_date'
-    pass
+    list_display = ('title',)
+    list_filter = ['title']
+    search_fields = ['title']
+    date_hierarchy = 'record_date'
 
 admin.site.register(Checklist, ChecklistAdmin)
 admin.site.register(RiskFactorEvaluation)
