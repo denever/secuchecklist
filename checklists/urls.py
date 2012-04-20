@@ -1,42 +1,36 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib.auth.decorators import login_required, permission_required
 
-from checklists.views import CheckListDetailView
-from checklists.views import CheckListCreateView
-from checklists.views import CheckListUpdateView
-from checklists.views import CheckListDeleteView
-from checklists.views import CheckListListView
-from checklists.views import AllCheckListView
+from checklists.views import ChecklistDetailView
+from checklists.views import ChecklistCreateView
+from checklists.views import ChecklistUpdateView
+from checklists.views import ChecklistDeleteView
+from checklists.views import ChecklistListView
+from checklists.views import AllChecklistView
 
 urlpatterns = patterns('checklists.views',
-                       url(r'^$', login_required(AllCheckListView.as_view()),
+                       url(r'^$', login_required(AllChecklistView.as_view()),
                            name='checklists'),
 
-                       url(r'^/company/(?P<pk>\d+)$', login_required(CheckListListView.as_view()),
-                           name='checklists-company'),
+                       url(r'^company/(?P<company>\d+)$', login_required(ChecklistListView.as_view()),
+                           name='checklists-list'),
 
-                       url(r'^(?P<pk>\d+)/$',
-                           login_required(CheckListDetailView.as_view()),
+                       url(r'^(?P<company>\d+)/(?P<pk>\d+)/$',
+                           login_required(ChecklistDetailView.as_view()),
                            name = 'checklist-detail'),
 
-                       url(r'^create/$',
-                           login_required(CheckListCreateView.as_view()),
+                       url(r'^create/(?P<company>\d+)/$',
+                           login_required(ChecklistCreateView.as_view()),
                            name = 'checklist-create'
                            ),
 
-                       url(r'^(?P<pk>\d+)/update/$',
-                           login_required(CheckListUpdateView.as_view()),
+                       url(r'^(?P<company>\d+)/edit/(?P<pk>\d+)/$',
+                           login_required(ChecklistUpdateView.as_view()),
                            name = 'checklist-edit'
                            ),
 
-                       url(r'^delete_checklist/(?P<pk>\d+)/$',
-                           login_required(CheckListDeleteView.as_view()),
+                       url(r'^(?P<company>\d+)/delete/(?P<pk>\d+)/$',
+                           login_required(ChecklistDeleteView.as_view()),
                            name = 'checklist-delete'
                            ),
-                       
-                       url(r'^add/(?P<pk>\d+)/$',
-                           login_required(CheckListCreateView.as_view()),
-                           name = 'checklist-add'
-                           ),
-
                        )
