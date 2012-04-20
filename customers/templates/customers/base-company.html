@@ -38,6 +38,16 @@
         {% trans "Equipments" %}
       </a>
     </li>
+    <li>
+      <a href="{% url checklists-list company.id %}">
+        {% trans "Checklists" %}
+      </a>
+    </li>
+    <li>
+      <a href="{% url checklist-create company.id %}">
+        {% trans "New Checklist" %}
+      </a>
+    </li>
   </ul>
 </div>
 {% endblock %}
