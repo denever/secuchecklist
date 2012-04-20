@@ -28,7 +28,6 @@ class ITPhoneNumberField(Field):
     def clean(self, value):
         value = super(ITPhoneNumberField, self).clean(value)
         if value == u'':
-            print 'esce qui'
             return value
 
         n = phone_digits_re.search(value)
