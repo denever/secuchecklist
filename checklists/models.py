@@ -2,9 +2,11 @@ from django.db import models
 from django.utils.translation import ugettext as _
 
 # Create your models here.
-class CheckList(models.Model):
+class Checklist(models.Model):
     company = models.ForeignKey('customers.CustomerCompany')
 
+    title = models.CharField(_('Title'), max_length=255)
+    
     record_by = models.ForeignKey('accounts.UserProfile',
                                   related_name='checklists_created',
                                   verbose_name=_('Recorded by'))
@@ -14,7 +16,7 @@ class CheckList(models.Model):
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
 class RiskFactorEvaluation(models.Model):
-    checklist = models.ForeignKey(CheckList)
+    checklist = models.ForeignKey(Checklist)
     risk_factor = models.ForeignKey('riskfactors.RiskFactor')
     answer = models.BooleanField(_('Answer'))
 
@@ -29,5 +31,5 @@ class RiskFactorEvaluation(models.Model):
 
 import reversion
 
-reversion.register(CheckList)
+reversion.register(Checklist)
 reversion.register(RiskFactorEvaluation)
