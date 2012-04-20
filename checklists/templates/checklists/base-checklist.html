@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Check Lists" %}{% endblock %}
+{% block title2 %}{% trans "Check Lists" %}{% endblock %}
+
+{% block extrascript %}
+  $("#mainmenuacco").accordion("option", "active", 2);
+{% endblock %}
+
+{% block riskfactorsmenu %}
+<h3><a href="#">{% trans "Check Lists" %}</a></h3>
+<div>
+  <ul class="menu">
+    <li>
+      <a href="{% url checklists %}">
+        {% trans "Check Lists" %}
+    </a>
+    </li>
+    <li>
+      <a href="{% url checklist-create %}">
+        {% trans "Add Check List" %}
+    </a>
+    </li>
+  </ul>
+</div>
+{% endblock %}

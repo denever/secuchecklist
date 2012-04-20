@@ -1,0 +1,61 @@
+{% extends "checklists/base-checklist.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+<link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
+<script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+{% endblock %}
+
+{% block title %}{% trans "Checklists" %}: {{ company.firm }} {% endblock %}
+{% block title2 %}{% trans "Checklists" %}: {{ company.firm }} {% endblock %}
+
+{% block content-top %}
+{% if company %}
+<a title="{% trans "Add checklist" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url checklist-add company.id %}"></a>
+{% endif %}
+{% endblock %}
+{% block content %}
+<script type="text/javascript">
+    $(document).ready( function () {
+                           $('#checklist').dataTable({
+                                                     "bJQueryUI": true,
+  "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
+                                                     "aoColumns": [/* Personale */ null,
+                                                         /* Mansione Omogenea */ null,
+                                                         /* Mansione */ null,
+                                                         /* Azioni */ { "bSearchable": false,
+                                                                        "bVisible": true,
+                                                                        "bSortable": false,
+                                                                        "mDataProp": null,
+                                                                      },
+                                                     ],
+                                                 }
+                                                );
+                       } );
+</script>
+
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Checklist" %}</h1>
+  <div style="margin-top: 10px">
+    <table id="checklist" class="display">
+      <thead>
+        <tr>
+          <th>{% trans "Checklist" %}</th>
+          <th>{% trans "Standard Task" %}</th>
+          <th>{% trans "Role" %}</th>
+          <th>{% trans "Actions" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for checklist in checklist_set %}
+          <!-- <td> -->
+          <!--   <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url checklist-edit company.id checklist.id %}"> -->
+          <!--     <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url checklist-delete company.id checklist.id %}"></a> -->
+          <!-- </td> -->
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
