@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-20 12:44+0200\n"
+"POT-Creation-Date: 2012-04-20 15:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -376,7 +376,7 @@ msgstr "Registato il"
 
 #: checklists/models.py:19
 msgid "Answer"
-msgstr ""
+msgstr "Risposta"
 
 #: customers/forms.py:19 customers/models.py:140
 #: customers/templates/customers/customercompany_confirm_delete.html:15
@@ -559,6 +559,10 @@ msgstr "Posizione INPS"
 msgid "CCNL"
 msgstr "CCNL"
 
+#: customers/models.py:148
+msgid "Settlement size mq."
+msgstr "Superficie insediamento produttivo in mq."
+
 #: customers/models.py:151
 #: customers/templates/customers/customercompany_detail.html:76
 msgid "Machine usage"
@@ -658,9 +662,8 @@ msgid "Operator"
 msgstr "Operatore"
 
 #: customers/models.py:289
-#, fuzzy
 msgid "Exposed staff"
-msgstr "Aggiungi personale"
+msgstr "Personale esposto"
 
 #: customers/models.py:294
 #: customers/templates/customers/equipment_detail.html:35
@@ -998,23 +1001,20 @@ msgstr "Modifica Reparto"
 
 #: customers/templates/customers/equipment_create_form.html:19
 #: customers/templates/customers/equipment_create_form.html:23
-#, fuzzy
 msgid "Equipment registration"
-msgstr "Registrazione Reparti"
+msgstr "Registrazione Attrezzature"
 
 #: customers/templates/customers/equipment_detail.html:3
-#, fuzzy
 msgid "Equipment detail"
-msgstr "Descrizione Reparto"
+msgstr "Descrizione attrezzatura"
 
 #: customers/templates/customers/equipment_detail.html:46
 msgid "Exposed Staff"
 msgstr "Lavoratori esposti"
 
 #: customers/templates/customers/equipment_list.html:15
-#, fuzzy
 msgid "Add new equipment"
-msgstr "Aggiungi Reparto"
+msgstr "Aggiungi Attrezzatura"
 
 #: customers/templates/customers/equipment_update_form.html:19
 #: customers/templates/customers/equipment_update_form.html:23
@@ -1175,7 +1175,6 @@ msgstr "Sotto fattori di rischio"
 
 #: riskfactors/templates/riskfactors/riskfactor_list.html:14
 #: riskfactors/templates/riskfactors/riskfactor_tree.html:27
-#, fuzzy
 msgid "Add a new risk factor"
 msgstr "Aggiungi un nuovo fattore di rischio"
 
