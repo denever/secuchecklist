@@ -197,7 +197,7 @@ class Department(models.Model):
     company = models.ForeignKey(CustomerCompany, verbose_name=_('Customer Company'))
     name = models.CharField(_('Department name'), max_length=200)
     description = models.TextField(_('Department description'))
-    size = models.PositiveIntegerField('Department size mq.')
+    size = models.PositiveIntegerField(_('Department size mq.'))
 
     record_by = models.ForeignKey('accounts.UserProfile',
                                   related_name='departments_created',
