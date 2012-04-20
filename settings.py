@@ -126,7 +126,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'riskfactors',
     'customers',
-    'accounts'
+    'accounts',
+    'checklists',
+    'reversion',
 )
 
 # A sample logging configuration. The only tangible logging
