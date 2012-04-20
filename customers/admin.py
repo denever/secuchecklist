@@ -92,3 +92,10 @@ class CustomerCompanyAdmin(admin.ModelAdmin):
         ]
 
 admin.site.register(CustomerCompany, CustomerCompanyAdmin)
+
+# import reversion
+
+# class CustomerCompanyRevAdmin(reversion.VersionAdmin):
+#     pass
+
+# admin.site.register(CustomerCompany, CustomerCompanyRevAdmin)
