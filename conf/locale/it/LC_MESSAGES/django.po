@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-18 10:00+0200\n"
+"POT-Creation-Date: 2012-04-20 12:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -263,15 +263,15 @@ msgid "Customer companies recorded by"
 msgstr "Aziende registrate da"
 
 #: accounts/templates/accounts/profile.html:38
-#: accounts/templates/accounts/profile.html:65 customers/models.py:192
-#: customers/models.py:197 customers/models.py:241 customers/models.py:267
+#: accounts/templates/accounts/profile.html:65 customers/models.py:188
+#: customers/models.py:193 customers/models.py:235 customers/models.py:259
 #: customers/templates/customers/staff_list.html:9
 #: customers/templates/customers/staff_list.html:10
 msgid "Customer Company"
 msgstr "Azienda"
 
-#: accounts/templates/accounts/profile.html:39 customers/models.py:45
-#: customers/models.py:147
+#: accounts/templates/accounts/profile.html:39 customers/models.py:43
+#: customers/models.py:145
 #: customers/templates/customers/customercompany_archive_month.html:24
 #: customers/templates/customers/customercompany_archive_year.html:22
 #: customers/templates/customers/customercompany_confirm_delete.html:17
@@ -293,8 +293,8 @@ msgstr "Data registrazione"
 msgid "Staff recorded by"
 msgstr "Personale registrato da"
 
-#: accounts/templates/accounts/profile.html:66 customers/models.py:262
-#: customers/models.py:263 customers/templates/customers/base-company.html:28
+#: accounts/templates/accounts/profile.html:66 customers/models.py:254
+#: customers/models.py:255 customers/templates/customers/base-company.html:28
 #: customers/templates/customers/department_detail.html:56
 #: customers/templates/customers/staff_list.html:36
 #: customers/templates/customers/staff_list.html:41
@@ -306,8 +306,8 @@ msgstr "Personale"
 msgid "Standard Task"
 msgstr "Mansione omogenea"
 
-#: accounts/templates/accounts/profile.html:68 customers/models.py:60
-#: customers/models.py:67 customers/models.py:244
+#: accounts/templates/accounts/profile.html:68 customers/models.py:58
+#: customers/models.py:65 customers/models.py:238
 #: customers/templates/customers/staff_detail.html:27
 #: customers/templates/customers/staff_list.html:43
 msgid "Role"
@@ -323,8 +323,8 @@ msgstr "Figure prevenzione registrate da"
 msgid "Customer company"
 msgstr "Azienda"
 
-#: accounts/templates/accounts/profile.html:98 customers/models.py:71
-#: customers/models.py:78 customers/models.py:268
+#: accounts/templates/accounts/profile.html:98 customers/models.py:69
+#: customers/models.py:76 customers/models.py:260
 #: customers/templates/customers/companysecurityduty_detail.html:37
 #: customers/templates/customers/companysecurityduty_list.html:12
 #: customers/templates/customers/department_detail.html:58
@@ -338,80 +338,99 @@ msgid "Name and Surname"
 msgstr "Nome e Cognome"
 
 #: accounts/templates/accounts/profile.html:100 customers/forms.py:85
-#: customers/models.py:271
+#: customers/models.py:263
 #: customers/templates/customers/companysecurityduty_detail.html:23
 #: customers/templates/customers/companysecurityduty_list.html:47
 msgid "Internal phone"
 msgstr "Telefono interno"
 
 #: accounts/templates/accounts/profile.html:101 customers/forms.py:86
-#: customers/models.py:272
+#: customers/models.py:264
 #: customers/templates/customers/companysecurityduty_detail.html:27
 #: customers/templates/customers/companysecurityduty_list.html:48
 msgid "External phone"
 msgstr "Telefono esterno"
 
-#: accounts/templates/accounts/profile.html:102 customers/models.py:158
-#: customers/models.py:273
+#: accounts/templates/accounts/profile.html:102 customers/models.py:156
+#: customers/models.py:265
 #: customers/templates/customers/companysecurityduty_detail.html:31
 #: customers/templates/customers/companysecurityduty_list.html:49
 #: customers/templates/customers/customercompany_detail.html:120
 msgid "Email"
 msgstr ""
 
-#: customers/forms.py:19 customers/models.py:142
+#: checklists/models.py:10 checklists/models.py:23 customers/models.py:162
+#: customers/models.py:200 customers/models.py:243 customers/models.py:269
+msgid "Recorded by"
+msgstr "Registrato da"
+
+#: checklists/models.py:13 checklists/models.py:26 customers/models.py:165
+#: customers/models.py:203 customers/models.py:246 customers/models.py:272
+msgid "Last update by"
+msgstr "Ultima modifica di"
+
+#: checklists/models.py:14 checklists/models.py:27 customers/models.py:166
+#: customers/models.py:204 customers/models.py:247 customers/models.py:273
+msgid "Recorded on"
+msgstr "Registato il"
+
+#: checklists/models.py:19
+msgid "Answer"
+msgstr ""
+
+#: customers/forms.py:19 customers/models.py:140
 #: customers/templates/customers/customercompany_confirm_delete.html:15
 #: customers/templates/customers/customercompany_detail.html:34
 msgid "Tax code"
 msgstr "Codice Fiscale"
 
-#: customers/forms.py:20 customers/models.py:143
+#: customers/forms.py:20 customers/models.py:141
 #: customers/templates/customers/customercompany_confirm_delete.html:16
 #: customers/templates/customers/customercompany_detail.html:38
 msgid "Vat code"
 msgstr "Partita IVA"
 
-#: customers/forms.py:21 customers/forms.py:52 customers/models.py:156
-#: customers/models.py:231
+#: customers/forms.py:21 customers/forms.py:52 customers/models.py:154
+#: customers/models.py:225
 #: customers/templates/customers/customercompany_detail.html:112
 #: customers/templates/customers/staff_detail.html:18
 msgid "Phone"
 msgstr "Telefono"
 
-#: customers/forms.py:22 customers/models.py:157
+#: customers/forms.py:22 customers/models.py:155
 #: customers/templates/customers/customercompany_detail.html:116
 msgid "Fax"
 msgstr ""
 
-#: customers/models.py:13 customers/models.py:20 customers/models.py:25
+#: customers/models.py:11 customers/models.py:18 customers/models.py:23
 msgid "Province"
 msgstr "Provincia"
 
-#: customers/models.py:21
+#: customers/models.py:19
 msgid "Provinces"
 msgstr "Province"
 
-#: customers/models.py:24 customers/models.py:32
+#: customers/models.py:22 customers/models.py:30
 msgid "Township"
 msgstr "Comune"
 
-#: customers/models.py:26
+#: customers/models.py:24
 msgid "Zipcode"
 msgstr "CAP"
 
-#: customers/models.py:33
+#: customers/models.py:31
 msgid "Townships"
 msgstr "Comuni"
 
-#: customers/models.py:37 customers/models.py:294
+#: customers/models.py:35 customers/models.py:284
 #: customers/templates/customers/equipment_detail.html:15
 #: customers/templates/customers/equipment_list.html:43
 #: riskfactors/models.py:21
 msgid "Code"
 msgstr "Codice"
 
-#: customers/models.py:38 customers/models.py:83 customers/models.py:228
-#: customers/models.py:270 customers/models.py:293 customers/models.py:316
+#: customers/models.py:36 customers/models.py:81 customers/models.py:222
+#: customers/models.py:262 customers/models.py:283 customers/models.py:304
 #: customers/templates/customers/companysecurityduty_detail.html:15
 #: customers/templates/customers/department_detail.html:38
 #: customers/templates/customers/equipment_detail.html:19
@@ -419,10 +438,10 @@ msgstr "Codice"
 msgid "Name"
 msgstr "Nome"
 
-#: customers/models.py:39 customers/models.py:50 customers/models.py:61
-#: customers/models.py:72 customers/models.py:84 customers/models.py:96
-#: customers/models.py:117 customers/models.py:128 customers/models.py:295
-#: customers/models.py:317
+#: customers/models.py:37 customers/models.py:48 customers/models.py:59
+#: customers/models.py:70 customers/models.py:82 customers/models.py:94
+#: customers/models.py:115 customers/models.py:126 customers/models.py:285
+#: customers/models.py:305
 #: customers/templates/customers/department_detail.html:44
 #: customers/templates/customers/equipment_detail.html:23
 #: riskfactors/models.py:8
@@ -431,145 +450,130 @@ msgstr "Nome"
 msgid "Description"
 msgstr "Descrizione"
 
-#: customers/models.py:46
+#: customers/models.py:44
 msgid "ATECO Sectors 2007"
 msgstr "Settori ATECO 2007"
 
-#: customers/models.py:49 customers/models.py:56 customers/models.py:242
+#: customers/models.py:47 customers/models.py:54 customers/models.py:236
 #: customers/templates/customers/department_detail.html:57
 #: customers/templates/customers/staff_detail.html:25
 msgid "Standard task"
 msgstr "Mansione omogenea"
 
-#: customers/models.py:57
+#: customers/models.py:55
 msgid "Standard tasks"
 msgstr "Mansioni omogenee"
 
-#: customers/models.py:68
+#: customers/models.py:66
 msgid "Roles"
 msgstr "Mansioni"
 
-#: customers/models.py:79
+#: customers/models.py:77
 #: customers/templates/customers/companysecurityduty_list.html:40
 msgid "Security duties"
 msgstr "Figure prevenzione"
 
-#: customers/models.py:82
+#: customers/models.py:80
 msgid "Short name"
 msgstr "Sigla"
 
-#: customers/models.py:87
+#: customers/models.py:85
 #: customers/templates/customers/customercompany_detail.html:58
 msgid "Certification"
 msgstr "Certificazione"
 
-#: customers/models.py:88 customers/models.py:148
+#: customers/models.py:86 customers/models.py:146
 msgid "Certifications"
 msgstr "Certificazioni"
 
-#: customers/models.py:95
+#: customers/models.py:93
 msgid "Collaboration Agreement Name"
 msgstr "Nome forma contrattuale"
 
-#: customers/models.py:99 customers/templates/customers/staff_detail.html:21
+#: customers/models.py:97 customers/templates/customers/staff_detail.html:21
 msgid "Collaboration Agreement"
 msgstr "Forma contrattuale"
 
-#: customers/models.py:100
+#: customers/models.py:98
 msgid "Collaboration Agreements"
 msgstr "Forme contrattuali"
 
-#: customers/models.py:106 customers/models.py:109 customers/models.py:234
+#: customers/models.py:104 customers/models.py:107 customers/models.py:228
 msgid "Nationality"
 msgstr "Nazionalità"
 
-#: customers/models.py:110
+#: customers/models.py:108
 msgid "Nationalities"
 msgstr "Nazionalità"
 
-#: customers/models.py:116
+#: customers/models.py:114
 msgid "Health Surveillance Name"
 msgstr "Nome Sorveglianza Sanitaria"
 
-#: customers/models.py:123 customers/models.py:124 customers/models.py:155
-#: customers/models.py:238
+#: customers/models.py:121 customers/models.py:122 customers/models.py:153
+#: customers/models.py:232
 #: customers/templates/customers/customercompany_detail.html:98
 #: customers/templates/customers/staff_detail.html:22
 msgid "Health surveillance"
 msgstr "Sorveglianza Sanitaria"
 
-#: customers/models.py:127 customers/models.py:134 customers/models.py:152
+#: customers/models.py:125 customers/models.py:132 customers/models.py:150
 msgid "CPI Settlement"
 msgstr "Insediamento CPI"
 
-#: customers/models.py:135
+#: customers/models.py:133
 msgid "CPI Settlements"
 msgstr "Insediamenti CPI"
 
-#: customers/models.py:138
+#: customers/models.py:136
 #: customers/templates/customers/customercompany_confirm_delete.html:14
 #: customers/templates/customers/customercompany_detail.html:14
 msgid "Firm"
 msgstr "Ragione sociale"
 
-#: customers/models.py:139
+#: customers/models.py:137
 msgid "Registered Office"
 msgstr "Sede Amministrativa"
 
-#: customers/models.py:140
+#: customers/models.py:138
 #: customers/templates/customers/customercompany_detail.html:24
 msgid "Settlement"
 msgstr "Sede Insediamento Produttivo"
 
-#: customers/models.py:141
+#: customers/models.py:139
 msgid "CIIAA registration"
 msgstr "Registrazione CIIAA"
 
-#: customers/models.py:144
+#: customers/models.py:142
 #: customers/templates/customers/customercompany_detail.html:42
 msgid "INAIL position"
 msgstr "Posizione INAIL"
 
-#: customers/models.py:145
+#: customers/models.py:143
 #: customers/templates/customers/customercompany_detail.html:46
 msgid "INPS position"
 msgstr "Posizione INPS"
 
-#: customers/models.py:146
+#: customers/models.py:144
 #: customers/templates/customers/customercompany_detail.html:50
 msgid "CCNL"
 msgstr "CCNL"
 
-#: customers/models.py:153
+#: customers/models.py:151
 #: customers/templates/customers/customercompany_detail.html:76
 msgid "Machine usage"
 msgstr "Uso macchine"
 
-#: customers/models.py:154
+#: customers/models.py:152
 #: customers/templates/customers/customercompany_detail.html:87
 msgid "Dangerous substances"
 msgstr "Sostanze pericolose"
 
-#: customers/models.py:159
+#: customers/models.py:157
 msgid "Working environment general description"
 msgstr "Descrizione generale dell'ambiente di lavoro"
 
-#: customers/models.py:164 customers/models.py:204 customers/models.py:249
-#: customers/models.py:277
-msgid "Recorded by"
-msgstr "Registrato da"
-
-#: customers/models.py:167 customers/models.py:207 customers/models.py:252
-#: customers/models.py:280
-msgid "Last update by"
-msgstr "Ultima modifica di"
-
-#: customers/models.py:168 customers/models.py:208 customers/models.py:253
-#: customers/models.py:281
-msgid "Recorded on"
-msgstr "Registato il"
-
-#: customers/models.py:193 customers/templates/customers/base-company.html:4
+#: customers/models.py:189 customers/templates/customers/base-company.html:4
 #: customers/templates/customers/base-company.html:5
 #: customers/templates/customers/base-company.html:8
 #: customers/templates/customers/base-company.html:13
@@ -580,15 +584,19 @@ msgstr "Registato il"
 msgid "Customer companies"
 msgstr "Aziende"
 
-#: customers/models.py:198
+#: customers/models.py:194
 msgid "Department name"
 msgstr "Nome Reparto"
 
-#: customers/models.py:199
+#: customers/models.py:195
 msgid "Department description"
 msgstr "Descrizione Reparto"
 
-#: customers/models.py:214 customers/models.py:243 customers/models.py:296
+#: customers/models.py:196
+msgid "Department size mq."
+msgstr "Dimensione reparto in mq."
+
+#: customers/models.py:208 customers/models.py:237 customers/models.py:286
 #: customers/templates/customers/equipment_detail.html:31
 #: customers/templates/customers/equipment_list.html:44
 #: customers/templates/customers/staff_detail.html:26
@@ -596,78 +604,78 @@ msgstr "Descrizione Reparto"
 msgid "Department"
 msgstr "Reparto"
 
-#: customers/models.py:215
+#: customers/models.py:209
 #: customers/templates/customers/workingenvironment_create_form.html:63
 msgid "Departments"
 msgstr "Reparti"
 
-#: customers/models.py:224
+#: customers/models.py:218
 msgid "Male"
 msgstr "Maschio"
 
-#: customers/models.py:225
+#: customers/models.py:219
 msgid "Female"
 msgstr "Femmina"
 
-#: customers/models.py:229 customers/models.py:269
+#: customers/models.py:223 customers/models.py:261
 #: customers/templates/customers/companysecurityduty_detail.html:19
 #: customers/templates/customers/staff_detail.html:16
 msgid "Surname"
 msgstr "Cognome"
 
-#: customers/models.py:230 customers/templates/customers/staff_detail.html:17
+#: customers/models.py:224 customers/templates/customers/staff_detail.html:17
 msgid "Birth date"
 msgstr "Data di nascita"
 
-#: customers/models.py:232 customers/templates/customers/staff_detail.html:19
+#: customers/models.py:226 customers/templates/customers/staff_detail.html:19
 msgid "Gender"
 msgstr "Sesso"
 
-#: customers/models.py:236
+#: customers/models.py:230
 msgid "Collaboration agreement"
 msgstr "Forma contrattuale"
 
-#: customers/models.py:239 customers/templates/customers/staff_detail.html:23
+#: customers/models.py:233 customers/templates/customers/staff_detail.html:23
 msgid "Workers count"
 msgstr "Computo lavoratori"
 
-#: customers/models.py:245 customers/templates/customers/staff_detail.html:29
+#: customers/models.py:239 customers/templates/customers/staff_detail.html:29
 msgid "Employ date"
 msgstr "Data assunzione"
 
-#: customers/models.py:289
+#: customers/models.py:279
 msgid "Company security duty"
 msgstr "Figura Prevenzione in Azienda"
 
-#: customers/models.py:290
+#: customers/models.py:280
 msgid "Company security duties"
 msgstr "Figure Prevenzione in Azienda"
 
-#: customers/models.py:297
+#: customers/models.py:287
 #: customers/templates/customers/equipment_detail.html:27
 #: customers/templates/customers/equipment_list.html:45
 msgid "Operator"
 msgstr "Operatore"
 
-#: customers/models.py:299
+#: customers/models.py:289
 #, fuzzy
 msgid "Exposed staff"
 msgstr "Aggiungi personale"
 
-#: customers/models.py:304
+#: customers/models.py:294
 #: customers/templates/customers/equipment_detail.html:35
 msgid "Compliance Requirements"
 msgstr "Requisit di conformità"
 
-#: customers/models.py:312 customers/models.py:313
+#: customers/models.py:300 customers/models.py:301
 msgid "Equipment"
 msgstr "Attrezzatura"
 
-#: customers/models.py:323
+#: customers/models.py:311
 msgid "Individual Protection Equipment"
 msgstr "Dispositivo protezione individuale"
 
-#: customers/models.py:324
+#: customers/models.py:312
 msgid "Individual Protection Equipments"
 msgstr "Dispositivi protezione individuale"
 
@@ -675,41 +683,45 @@ msgstr "Dispositivi protezione individuale"
 msgid "Enter a valid phone number"
 msgstr "Inserire un numero di telefono valido"
 
-#: customers/management/commands/populate_with_basedata.py:17
+#: customers/management/commands/populate_with_basedata.py:18
 #: customers/management/commands/populate_with_fakedata.py:13
 msgid "Datore di lavoro"
 msgstr ""
 
-#: customers/management/commands/populate_with_basedata.py:18
+#: customers/management/commands/populate_with_basedata.py:19
+msgid "RSPP"
+msgstr ""
+
+#: customers/management/commands/populate_with_basedata.py:20
 #: customers/management/commands/populate_with_fakedata.py:14
 msgid "Dirigente"
 msgstr ""
 
-#: customers/management/commands/populate_with_basedata.py:19
+#: customers/management/commands/populate_with_basedata.py:21
 msgid "Preposto"
 msgstr ""
 
-#: customers/management/commands/populate_with_basedata.py:20
+#: customers/management/commands/populate_with_basedata.py:22
 msgid "RLS"
 msgstr ""
 
-#: customers/management/commands/populate_with_basedata.py:21
+#: customers/management/commands/populate_with_basedata.py:23
 msgid "ASPP"
 msgstr ""
 
-#: customers/management/commands/populate_with_basedata.py:22
+#: customers/management/commands/populate_with_basedata.py:24
 msgid "Medico competente"
 msgstr ""
 
-#: customers/management/commands/populate_with_basedata.py:23
+#: customers/management/commands/populate_with_basedata.py:25
 msgid "Addetto al primosoccorso"
 msgstr ""
 
-#: customers/management/commands/populate_with_basedata.py:24
+#: customers/management/commands/populate_with_basedata.py:26
 msgid "Adetto alle emergenze/antincendio"
 msgstr ""
 
-#: customers/management/commands/populate_with_basedata.py:31
+#: customers/management/commands/populate_with_basedata.py:33
 msgid "Italiana"
 msgstr ""
 
@@ -1097,7 +1109,6 @@ msgid "parent"
 msgstr ""
 
 #: riskfactors/models.py:22
-#, fuzzy
 msgid "Parent code"
 msgstr ""
 
