@@ -35,7 +35,7 @@ class RisksEvaluationDocumentCreateView(CreateView):
         self.risksevaluationdocument.record_by = self.request.user.get_profile()
         self.risksevaluationdocument.lastupdate_by = self.request.user.get_profile()
         self.risksevaluationdocument.company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
-        self.success_url = reverse('risksevaluation-list', args=self.kwargs['company'])
+        self.success_url = reverse('red-list', args=self.kwargs['company'])
         return super(RisksEvaluationDocumentCreateView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -53,7 +53,7 @@ class RisksEvaluationDocumentUpdateView(UpdateView):
     def form_valid(self, form):
         self.risksevaluationdocument = form.save(commit=False)
         self.risksevaluationdocument.lastupdate_by = self.request.user.get_profile()
-        self.success_url = reverse('risksevaluationdocument-detail', args=self.kwargs['company'])
+        self.success_url = reverse('red-detail', args=self.kwargs['company'])
         return super(RisksEvaluationDocumentUpdateView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -74,7 +74,7 @@ class RisksEvaluationDocumentDeleteView(DeleteView):
             return context
 
 class RisksEvaluationDocumentListView(ListView):
-    context_object_name = 'risksevaluation'
+    context_object_name = 'reds' # Risks Evaluation DocumentS
 
     def get_queryset(self):
         if self.kwargs.has_key('company'):
