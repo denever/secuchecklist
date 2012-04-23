@@ -17,7 +17,8 @@ from risksevaluation.forms import RisksEvaluationDocumentForm, RiskFactorEvaluat
 
 class RisksEvaluationDocumentDetailView(DetailView):
     model = RisksEvaluationDocument
-
+    context_object_name = 'red'
+    
     def get_context_data(self, **kwargs):
         if self.kwargs.has_key('company'):
             context = super(RisksEvaluationDocumentDetailView, self).get_context_data(**kwargs)
