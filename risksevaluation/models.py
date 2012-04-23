@@ -4,10 +4,9 @@ from django.utils.translation import ugettext as _
 # Create your models here.
 class RisksEvaluationDocument(models.Model):
     company = models.ForeignKey('customers.CustomerCompany')
-
-    title = models.CharField(_('Title'), max_length=255)
-
-    revision = models.CharField(_('Revision'), max_length=255)
+    revision = models.AutoField(_('Revision'), primary_key=True)
+    revision_description = models.TextField(_('Revision description'))
+    record_date = models.DateTimeField(_('Revision Date'), auto_now_add=True)
 
     record_by = models.ForeignKey('accounts.UserProfile',
                                   related_name='risksevaluationdocument_created',
@@ -15,15 +14,19 @@ class RisksEvaluationDocument(models.Model):
     lastupdate_by = models.ForeignKey('accounts.UserProfile',
                                       related_name='risksevaluationdocument_edited',
                                       verbose_name=_('Last update by'))
-    record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
+
+    rls_check = BooleanField(_('RLS check'))
+    doctor_check = BooleanField(_('Doctor check'))
+    companyowner_check = BooleanField(_('Doctor check'))
 
     def __unicode__(self):
-        return self.title
+        return '(%s %s)' % (self.revision, self.record_date)
 
     class Meta:
         ordering = ['record_date']
         verbose_name = _('Risks Evaluation Document')
         verbose_name_plural = _('Risks Evaluation Documents')
+        unique_together = ('company','revision', 'record_date')
 
 class RiskFactorEvaluation(models.Model):
     document = models.ForeignKey(RisksEvaluationDocument)
