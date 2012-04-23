@@ -22,6 +22,9 @@
                                                          /* record_date */ null,
                                                          /* revision_description */ null,
                                                          /* record_by */ null,
+                                                         /* rls_check */ null,
+                                                         /* doctor_check */ null,
+                                                         /* owner_check */ null,    
                                                          /* Azioni */ { "bSearchable": false,
                                                                         "bVisible": true,
                                                                         "bSortable": false,
@@ -43,6 +46,9 @@
           <th>{% trans "Record on" %}</th>
           <th>{% trans "Revision description" %}</th>
           <th>{% trans "Record by" %}</th>
+          <th>{% trans "RLS check" %}</th>
+          <th>{% trans "Doctor check" %}</th>
+	  <th>{% trans "Company Owner" %}</th>
           <th>{% trans "Actions" %}</th>
         </tr>
       </thead>
@@ -61,7 +67,15 @@
           <td>
             <a href="{% url profile %}">{{ red.record_by }}</a>
           </td>
-	  
+          <td>
+            {{ red.rls_check }}
+          </td>
+          <td>
+            {{ red.doctor_check }}
+          </td>
+          <td>
+            {{ red.companyowner_check }}
+          </td>
           <td>
             <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.revision %}">
               <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url red-delete company.id red.revision %}"></a>
