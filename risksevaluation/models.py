@@ -15,9 +15,9 @@ class RisksEvaluationDocument(models.Model):
                                       related_name='risksevaluationdocument_edited',
                                       verbose_name=_('Last update by'))
 
-    rls_check = BooleanField(_('RLS check'))
-    doctor_check = BooleanField(_('Doctor check'))
-    companyowner_check = BooleanField(_('Doctor check'))
+    rls_check = models.BooleanField(_('RLS check'))
+    doctor_check = models.BooleanField(_('Doctor check'))
+    companyowner_check = models.BooleanField(_('Company Owner check'))
 
     def __unicode__(self):
         return '(%s %s)' % (self.revision, self.record_date)
