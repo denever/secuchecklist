@@ -1,0 +1,20 @@
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Are you sure?" %}</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <p>
+      {% trans "Do you really want to remove" %}
+      <em>{{ checklist.title }}</em> {% trans "for company" %} <strong>{{ checklist.company }}</strong>?
+    </p>
+    <form action="" method="post">{% csrf_token %}
+      <div>
+	<input type="hidden" name="post" value="yes">
+	<input type="submit" value="{% trans "Yes, I'm sure" %}">
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
