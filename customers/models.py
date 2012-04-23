@@ -142,6 +142,7 @@ class CustomerCompany(models.Model):
     inail_pos = models.CharField(_('INAIL position'), max_length=200)
     inps_pos = models.CharField(_('INPS position'), max_length=200)
     ccnl = models.CharField(_('CCNL'), max_length=200)
+    year_beginactivity = models.IntegerField(_('Year activity begins'), null=True, blank=True)
     ateco_sector = models.ForeignKey(AtecoSector, verbose_name=_('ATECO Sector 2007'))
     certifications = models.ManyToManyField(Certification, verbose_name=_('Certifications'),
                                             null=True, blank=True)
@@ -263,6 +264,15 @@ class CompanySecurityDuty(models.Model):
     internal_phone = models.CharField(_('Internal phone'), max_length=200, null=True, blank=True)
     external_phone = models.CharField(_('External phone'), max_length=200, null=True, blank=True)
     email = models.EmailField(_('Email'), max_length=200)
+
+    appoint_letter = models.FileField(_('Apponint Letter'),
+                                      null=True,
+                                      blank=True,
+                                      upload_to='document_attaches')
+    requirement_certificate = models.FileField(_('Apponint Letter'),
+                                               null=True,
+                                               blank=True,
+                                               upload_to='document_attaches')
 
     record_by = models.ForeignKey('accounts.UserProfile',
                                   related_name='secduty_created',
