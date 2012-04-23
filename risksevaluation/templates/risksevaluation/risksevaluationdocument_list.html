@@ -18,9 +18,10 @@
                            $('#red').dataTable({
                                                      "bJQueryUI": true,
   "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
-                                                     "aoColumns": [/* Personale */ null,
-                                                         /* Mansione Omogenea */ null,
-                                                         /* Mansione */ null,
+                                                     "aoColumns": [/* Revision */ null,
+                                                         /* record_date */ null,
+                                                         /* revision_description */ null,
+                                                         /* record_by */ null,
                                                          /* Azioni */ { "bSearchable": false,
                                                                         "bVisible": true,
                                                                         "bSortable": false,
@@ -38,27 +39,32 @@
     <table id="red" class="display">
       <thead>
         <tr>
-          <th>{% trans "Title" %}</th>
-          <th>{% trans "Company" %}</th>
+          <th>{% trans "Revision" %}</th>
           <th>{% trans "Record on" %}</th>
+          <th>{% trans "Revision description" %}</th>
+          <th>{% trans "Record by" %}</th>
           <th>{% trans "Actions" %}</th>
         </tr>
       </thead>
       <tbody>
-        {% for red in risksevaluationdocuments %}
+        {% for red in reds %}
         <tr>
           <td>
-            <a href="{% url red-detail company.id red.id %}">{{ red.title }}</a>
-          </td>
-          <td>
-            {{ red.company }}
+            <a href="{% url red-detail company.id red.revision %}">{{ red.revision }}</a>
           </td>
           <td>
             {{ red.record_date }}
           </td>
           <td>
-            <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.id %}">
-              <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url red-delete company.id red.id %}"></a>
+            {{ red.revision_description }}
+          </td>
+          <td>
+            <a href="{% url profile %}">{{ red.record_by }}</a>
+          </td>
+	  
+          <td>
+            <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.revision %}">
+              <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url red-delete company.id red.revision %}"></a>
           </td>
         </tr>
         {% endfor %}
