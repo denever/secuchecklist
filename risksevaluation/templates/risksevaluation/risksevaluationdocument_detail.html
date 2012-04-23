@@ -24,7 +24,7 @@
 {% block title2 %}{% trans "Risks Evaluation Documents" %}{% endblock %}
 
 {% block content-top %}
-  <a title="{% trans "Edit Risks Evaluation Document" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.id %}"></a>
+  <a title="{% trans "Edit Risks Evaluation Document" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.revision %}"></a>
 {% endblock %}
 
 {% block content %}
@@ -38,8 +38,8 @@
   <div style="margin: 10px">
     <table class="detail">
       <tr class="even">
-        <td class="fieldname">{% trans "Titolo" %}</td>
-        <td> {{ red.title }}</td>
+        <td class="fieldname">{% trans "Revision" %}</td>
+        <td> {{ red.revision }}</td>
       </tr>
       <tr class="odd">
         <td class="fieldname">{% trans "Company" %}</td>
@@ -48,6 +48,10 @@
       <tr class="even">
         <td class="fieldname">{% trans "Recorded on" %}</td>
         <td> {{ red.record_date }} </td>
+      </tr>
+      <tr class="odd">
+        <td class="fieldname">{% trans "Revision description" %}</td>
+        <td> {{ red.revision_description }}</td>
       </tr>
       <!-- <tr class="odd"> -->
       <!--   <td class="fieldname">{% trans "Suggestion Yes" %}</td> -->
