@@ -6,16 +6,16 @@
 <script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
 {% endblock %}
 
-{% block title %}{% trans "Checklists" %}: {{ company.firm }} {% endblock %}
-{% block title2 %}{% trans "Checklists" %}: {{ company.firm }} {% endblock %}
+{% block title %}{% trans "Risks Evaluation Documents" %}: {{ company.firm }} {% endblock %}
+{% block title2 %}{% trans "Risks Evaluation Documents" %}: {{ company.firm }} {% endblock %}
 
 {% block content-top %}
-<a title="{% trans "Add checklist" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url checklist-create company.id %}"></a>
+<a title="{% trans "New Risks Evaluation Document" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url red-create company.id %}"></a>
 {% endblock %}
 {% block content %}
 <script type="text/javascript">
     $(document).ready( function () {
-                           $('#checklist').dataTable({
+                           $('#red).dataTable({
                                                      "bJQueryUI": true,
   "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
                                                      "aoColumns": [/* Personale */ null,
@@ -33,9 +33,9 @@
 </script>
 
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Checklist" %}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Risks Evaluation Documents" %}</h1>
   <div style="margin-top: 10px">
-    <table id="checklist" class="display">
+    <table id="red" class="display">
       <thead>
         <tr>
           <th>{% trans "Title" %}</th>
@@ -45,20 +45,20 @@
         </tr>
       </thead>
       <tbody>
-        {% for checklist in checklists %}
-	<tr>
-	  <td>
-	    <a href="{% url checklist-detail company.id checklist.id %}">{{ checklist.title }}</a>
-	  </td>
-	  <td>
-	    {{ checklist.company }}
-	  </td>
-	  <td>
-	    {{ checklist.record_date }}
-	  </td>
+        {% for red in risksevaluationdocuments %}
+        <tr>
           <td>
-            <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url checklist-edit company.id checklist.id %}">
-              <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url checklist-delete company.id checklist.id %}"></a>
+            <a href="{% url red-detail company.id red.id %}">{{ red.title }}</a>
+          </td>
+          <td>
+            {{ red.company }}
+          </td>
+          <td>
+            {{ red.record_date }}
+          </td>
+          <td>
+            <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.id %}">
+              <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url red-delete company.id red.id %}"></a>
           </td>
         </tr>
         {% endfor %}

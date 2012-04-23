@@ -19,8 +19,8 @@ actions = [_('Logged In'), _('Logged Out'), _('Created'), _('Edited'), _('Delete
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
-    # checklist suspendend
-    # checklist completed
+    # Risks Evaluation Documents suspendend
+    # Risks Evaluation Documents completed
     # customercompany_set tutte le compagnie da te registrate
 
     def __unicode__(self):

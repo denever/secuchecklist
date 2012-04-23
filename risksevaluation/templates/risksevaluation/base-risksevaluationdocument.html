@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Check Lists" %}{% endblock %}
-{% block title2 %}{% trans "Check Lists" %}{% endblock %}
+{% block title %}{% trans "Risks Evaluation Documents" %}{% endblock %}
+{% block title2 %}{% trans "Risks Evaluation Documents" %}{% endblock %}
 
 {% block extrascript %}
   $("#mainmenuacco").accordion("option", "active", 2);
 {% endblock %}
 
 {% block riskfactorsmenu %}
-<h3><a href="#">{% trans "Check Lists" %}</a></h3>
+<h3><a href="#">{% trans "Risks Evaluation Documents" %}</a></h3>
 <div>
   <ul class="menu">
     <li>
-      <a href="{% url checklists %}">
-        {% trans "Check Lists" %}
+      <a href="{% url red %}">
+        {% trans "Risks Evaluation Documents" %}
       </a>
     </li>
   </ul>

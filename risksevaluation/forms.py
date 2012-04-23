@@ -1,9 +1,9 @@
 from django import forms
-from checklists.models import Checklist, RiskFactorEvaluation
+from risksevaluation.models import RisksEvaluationDocument, RiskFactorEvaluation
 
-class ChecklistForm(forms.ModelForm):
+class RisksEvaluationDocumentForm(forms.ModelForm):
     class Meta:
-        model = Checklist
+        model = RisksEvaluationDocument
         exclude = ('company', 'record_by', 'lastupdate_by')
 
 class RiskFactorEvaluationForm(forms.ModelForm):

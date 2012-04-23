@@ -1,5 +1,5 @@
 # Create your views here.
-from checklists.models import Checklist, RiskFactorEvaluation
+from risksevaluation.models import RisksEvaluationDocument, RiskFactorEvaluation
 from customers.models import CustomerCompany
 
 from django.views.generic import View
@@ -13,82 +13,82 @@ from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 
-from checklists.forms import ChecklistForm, RiskFactorEvaluationForm
+from risksevaluation.forms import RisksEvaluationDocumentForm, RiskFactorEvaluationForm
 
-class ChecklistDetailView(DetailView):
-    model = Checklist
+class RisksEvaluationDocumentDetailView(DetailView):
+    model = RisksEvaluationDocument
 
     def get_context_data(self, **kwargs):
         if self.kwargs.has_key('company'):
-            context = super(ChecklistDetailView, self).get_context_data(**kwargs)
+            context = super(RisksEvaluationDocumentDetailView, self).get_context_data(**kwargs)
             context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
             return context
 
-class ChecklistCreateView(CreateView):
-    form_class = ChecklistForm
-    template_name = 'checklists/checklist_create_form.html'
-    success_url = '/checklists/'
-    context_object_name = 'checklist'
+class RisksEvaluationDocumentCreateView(CreateView):
+    form_class = RisksEvaluationDocumentForm
+    template_name = 'risksevaluation/risksevaluationdocument_create_form.html'
+    success_url = '/risksevaluation/'
+    context_object_name = 'risksevaluationdocument'
 
     def form_valid(self, form):
-        self.checklist = form.save(commit=False)
-        self.checklist.record_by = self.request.user.get_profile()
-        self.checklist.lastupdate_by = self.request.user.get_profile()
-        self.checklist.company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
-        self.success_url = reverse('checklists-list', args=self.kwargs['company'])
-        return super(ChecklistCreateView, self).form_valid(form)
+        self.risksevaluationdocument = form.save(commit=False)
+        self.risksevaluationdocument.record_by = self.request.user.get_profile()
+        self.risksevaluationdocument.lastupdate_by = self.request.user.get_profile()
+        self.risksevaluationdocument.company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        self.success_url = reverse('risksevaluation-list', args=self.kwargs['company'])
+        return super(RisksEvaluationDocumentCreateView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
         if self.kwargs.has_key('company'):
-            context = super(ChecklistCreateView, self).get_context_data(**kwargs)
+            context = super(RisksEvaluationDocumentCreateView, self).get_context_data(**kwargs)
             context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
             return context
 
-class ChecklistUpdateView(UpdateView):
-    model = Checklist
-    form_class = ChecklistForm
-    template_name = 'checklists/checklist_update_form.html'
-    success_url = '/checklists/'
+class RisksEvaluationDocumentUpdateView(UpdateView):
+    model = RisksEvaluationDocument
+    form_class = RisksEvaluationDocumentForm
+    template_name = 'risksevaluation/risksevaluationdocument_update_form.html'
+    success_url = '/risksevaluation/'
 
     def form_valid(self, form):
-        self.checklist = form.save(commit=False)
-        self.checklist.lastupdate_by = self.request.user.get_profile()
-        self.success_url = reverse('checklist-detail', args=self.kwargs['company'])
-        return super(ChecklistUpdateView, self).form_valid(form)
+        self.risksevaluationdocument = form.save(commit=False)
+        self.risksevaluationdocument.lastupdate_by = self.request.user.get_profile()
+        self.success_url = reverse('risksevaluationdocument-detail', args=self.kwargs['company'])
+        return super(RisksEvaluationDocumentUpdateView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
         if self.kwargs.has_key('company'):
-            context = super(ChecklistUpdateView, self).get_context_data(**kwargs)
+            context = super(RisksEvaluationDocumentUpdateView, self).get_context_data(**kwargs)
             context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
             return context
 
-class ChecklistDeleteView(DeleteView):
-    model = Checklist
-    form_class = ChecklistForm
-    success_url = '/checklists/'
+class RisksEvaluationDocumentDeleteView(DeleteView):
+    model = RisksEvaluationDocument
+    form_class = RisksEvaluationDocumentForm
+    success_url = '/risksevaluation/'
 
     def get_context_data(self, **kwargs):
         if self.kwargs.has_key('company'):
-            context = super(ChecklistDeleteView, self).get_context_data(**kwargs)
+            context = super(RisksEvaluationDocumentDeleteView, self).get_context_data(**kwargs)
             context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
             return context
 
-class ChecklistListView(ListView):
-    context_object_name = 'checklists'
+class RisksEvaluationDocumentListView(ListView):
+    context_object_name = 'risksevaluation'
 
     def get_queryset(self):
         if self.kwargs.has_key('company'):
             company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
-            return company.checklist_set.all()
+            return company.risksevaluationdocument_set.all()
         else:
-            return Checklist.objects.all()
+            return RisksEvaluationDocument.objects.all()
 
     def get_context_data(self, **kwargs):
         if self.kwargs.has_key('company'):
-            context = super(ChecklistListView, self).get_context_data(**kwargs)
+            context = super(RisksEvaluationDocumentListView, self).get_context_data(**kwargs)
             context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
             return context
 
-class AllChecklistView(ListView):
-    model = Checklist
-    template_name = 'checklists/checklist_list_all.html'
+class AllRisksEvaluationDocumentView(ListView):
+    model = RisksEvaluationDocument
+    template_name = 'risksevaluation/risksevaluationdocument_list_all.html'

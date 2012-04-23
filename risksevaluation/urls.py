@@ -1,36 +1,38 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib.auth.decorators import login_required, permission_required
 
-from checklists.views import ChecklistDetailView
-from checklists.views import ChecklistCreateView
-from checklists.views import ChecklistUpdateView
-from checklists.views import ChecklistDeleteView
-from checklists.views import ChecklistListView
-from checklists.views import AllChecklistView
+from risksevaluation.views import RisksEvaluationDocumentDetailView
+from risksevaluation.views import RisksEvaluationDocumentCreateView
+from risksevaluation.views import RisksEvaluationDocumentUpdateView
+from risksevaluation.views import RisksEvaluationDocumentDeleteView
+from risksevaluation.views import RisksEvaluationDocumentListView
+from risksevaluation.views import AllRisksEvaluationDocumentView
 
-urlpatterns = patterns('checklists.views',
-                       url(r'^$', login_required(AllChecklistView.as_view()),
-                           name='checklists'),
+# red stands for Risks Evaluation Document
 
-                       url(r'^company/(?P<company>\d+)$', login_required(ChecklistListView.as_view()),
-                           name='checklists-list'),
+urlpatterns = patterns('risksevaluation.views',
+                       url(r'^$', login_required(AllRisksEvaluationDocumentView.as_view()),
+                           name='red'),
+
+                       url(r'^company/(?P<company>\d+)$', login_required(RisksEvaluationDocumentListView.as_view()),
+                           name='red-list'),
 
                        url(r'^(?P<company>\d+)/(?P<pk>\d+)/$',
-                           login_required(ChecklistDetailView.as_view()),
-                           name = 'checklist-detail'),
+                           login_required(RisksEvaluationDocumentDetailView.as_view()),
+                           name = 'red-detail'),
 
                        url(r'^create/(?P<company>\d+)/$',
-                           login_required(ChecklistCreateView.as_view()),
-                           name = 'checklist-create'
+                           login_required(RisksEvaluationDocumentCreateView.as_view()),
+                           name = 'red-create'
                            ),
 
                        url(r'^(?P<company>\d+)/edit/(?P<pk>\d+)/$',
-                           login_required(ChecklistUpdateView.as_view()),
-                           name = 'checklist-edit'
+                           login_required(RisksEvaluationDocumentUpdateView.as_view()),
+                           name = 'red-edit'
                            ),
 
                        url(r'^(?P<company>\d+)/delete/(?P<pk>\d+)/$',
-                           login_required(ChecklistDeleteView.as_view()),
-                           name = 'checklist-delete'
+                           login_required(RisksEvaluationDocumentDeleteView.as_view()),
+                           name = 'red-delete'
                            ),
                        )

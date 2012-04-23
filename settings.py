@@ -1,4 +1,4 @@
-# Django settings for secuchecklist project.
+# Django settings for Risks Evaluation Document project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -127,7 +127,7 @@ INSTALLED_APPS = (
     'riskfactors',
     'customers',
     'accounts',
-    'checklists',
+    'risksevaluation',
     'reversion',
 )
 

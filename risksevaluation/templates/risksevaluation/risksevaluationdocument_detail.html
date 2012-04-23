@@ -20,11 +20,11 @@
 <script type="text/javascript" charset="utf-8" src="/static/js/riskfactor.tree.js"></script>
 {% endblock %}
 
-{% block title %}{% trans "Checklists" %}{% endblock %}
-{% block title2 %}{% trans "Checklists" %}{% endblock %}
+{% block title %}{% trans "Risks Evaluation Documents" %}{% endblock %}
+{% block title2 %}{% trans "Risks Evaluation Documents" %}{% endblock %}
 
 {% block content-top %}
-  <a title="{% trans "Edit checklist" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url checklist-edit company.id checklist.id %}"></a>
+  <a title="{% trans "Edit Risks Evaluation Document" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.id %}"></a>
 {% endblock %}
 
 {% block content %}
@@ -34,20 +34,20 @@
     } );
   </script>
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Checklist" %}: {{ checklist.title }}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Risks Evaluation Document" %}: {{ red.title }}</h1>
   <div style="margin: 10px">
     <table class="detail">
       <tr class="even">
         <td class="fieldname">{% trans "Titolo" %}</td>
-        <td> {{ checklist.title }}</td>
+        <td> {{ red.title }}</td>
       </tr>
       <tr class="odd">
         <td class="fieldname">{% trans "Company" %}</td>
-        <td> {{ checklist.company }}</td>
+        <td> {{ red.company }}</td>
       </tr>
       <tr class="even">
         <td class="fieldname">{% trans "Recorded on" %}</td>
-        <td> {{ checklist.record_date }} </td>
+        <td> {{ red.record_date }} </td>
       </tr>
       <!-- <tr class="odd"> -->
       <!--   <td class="fieldname">{% trans "Suggestion Yes" %}</td> -->
@@ -75,7 +75,7 @@
       <!--     {% if riskfactor.parent %} -->
       <!--     <a href="{% url riskfactor-detail riskfactor.parent.id %}">{{ riskfactor.parent }}</a> -->
       <!--     {% else %} -->
-      <!--     <a href="{% url riskfactors %}">{% trans "Checklists" %}</td> -->
+      <!--     <a href="{% url riskfactors %}">{% trans "Reds" %}</td> -->
       <!--     {% endif %} -->
       <!--   </td> -->
       <!-- </tr> -->

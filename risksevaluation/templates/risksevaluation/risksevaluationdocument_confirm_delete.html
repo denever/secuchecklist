@@ -7,12 +7,12 @@
   <div class="ui-helper-reset ui-widget-content">
     <p>
       {% trans "Do you really want to remove" %}
-      <em>{{ checklist.title }}</em> {% trans "for company" %} <strong>{{ checklist.company }}</strong>?
+      {% Risks Evaluation Document %} <em>{{ red.title }}</em> {% trans "for company" %} <strong>{{ red.company }}</strong>?
     </p>
     <form action="" method="post">{% csrf_token %}
       <div>
-	<input type="hidden" name="post" value="yes">
-	<input type="submit" value="{% trans "Yes, I'm sure" %}">
+        <input type="hidden" name="post" value="yes">
+        <input type="submit" value="{% trans "Yes, I'm sure" %}">
       </div>
     </form>
   </div>
