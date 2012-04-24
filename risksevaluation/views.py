@@ -1,6 +1,7 @@
 # Create your views here.
 from risksevaluation.models import RisksEvaluationDocument, RiskFactorEvaluation
 from customers.models import CustomerCompany
+from riskfactors.models import RiskFactor
 
 from django.views.generic import View
 from django.views.generic import ListView
@@ -12,15 +13,17 @@ from django.views.generic import TemplateView
 
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
 
 from risksevaluation.forms import RisksEvaluationDocumentForm, RiskFactorEvaluationForm
 
 class RisksEvaluationDocumentDetailView(DetailView):
     model = RisksEvaluationDocument
     context_object_name = 'red'
-    
+
     def get_context_data(self, **kwargs):
         if self.kwargs.has_key('company'):
+#            print self.request.GET['id']
             context = super(RisksEvaluationDocumentDetailView, self).get_context_data(**kwargs)
             context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
             return context
@@ -93,3 +96,44 @@ class RisksEvaluationDocumentListView(ListView):
 class AllRisksEvaluationDocumentView(ListView):
     model = RisksEvaluationDocument
     template_name = 'risksevaluation/risksevaluationdocument_list_all.html'
+
+# class RiskEvaluationView(View):
+#     def get(self, request, *args):
+#         rfef = RiskFactorEvaluationForm()
+#         return HttpResponse(rfef.as_table())
+
+class RiskEvaluationCreateView(CreateView):
+    form_class = RiskFactorEvaluationForm
+    template_name = 'risksevaluation/riskevaluation_create_form.html'
+    success_url = '/risksevaluation/%(company)/revision/%(document)/eval/%(riskfactor)'
+
+    def form_valid(self, form):
+        self.riskevaluation = form.save(commit=False)
+        self.riskevaluation.record_by = self.request.user.get_profile()
+        self.riskevaluation.lastupdate_by = self.request.user.get_profile()
+        self.riskevaluation.document = get_object_or_404(RisksEvaluationDocument,
+                                                         revision=self.kwargs['document'])
+        self.riskevaluation.risk_factor = get_object_or_404(RiskFactor,
+                                                            id=self.kwargs['riskfactor'])
+        self.success_url = reverse('red-detail', args=[self.kwargs['company'],
+                                                       self.kwargs['document']])
+        return super(RiskEvaluationCreateView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        if self.kwargs.has_key('company'):
+            context = super(RiskEvaluationCreateView, self).get_context_data(**kwargs)
+            context['document'] = get_object_or_404(RisksEvaluationDocument,
+                                                    revision=self.kwargs['document'])
+            context['riskfactor'] = get_object_or_404(RiskFactor,
+                                                       id=self.kwargs['riskfactor'])
+            context['company'] = get_object_or_404(CustomerCompany,
+                                                   id=self.kwargs['company'])
+            return context
+
+    # def get_initial(self):
+    #     self.initial = super(RiskEvaluationCreateView, self).get_initial()
+    #     self.initial['document'] = get_object_or_404(RisksEvaluationDocument,
+    #                                                  revision=self.kwargs['document'])
+    #     self.initial['riskfactor'] = get_object_or_404(RiskFactor,
+    #                                                  id=self.kwargs['riskfactor'])
+    #     return self.initial
