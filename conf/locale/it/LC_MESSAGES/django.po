@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-23 10:37+0200\n"
+"POT-Creation-Date: 2012-04-24 20:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -263,15 +263,15 @@ msgid "Customer companies recorded by"
 msgstr "Aziende registrate da"
 
 #: accounts/templates/accounts/profile.html:38
-#: accounts/templates/accounts/profile.html:65 customers/models.py:188
-#: customers/models.py:193 customers/models.py:235 customers/models.py:259
+#: accounts/templates/accounts/profile.html:65 customers/models.py:189
+#: customers/models.py:194 customers/models.py:236 customers/models.py:260
 #: customers/templates/customers/staff_list.html:9
 #: customers/templates/customers/staff_list.html:10
 msgid "Customer Company"
 msgstr "Azienda"
 
 #: accounts/templates/accounts/profile.html:39 customers/models.py:43
-#: customers/models.py:145
+#: customers/models.py:146
 #: customers/templates/customers/customercompany_archive_month.html:24
 #: customers/templates/customers/customercompany_archive_year.html:22
 #: customers/templates/customers/customercompany_confirm_delete.html:17
@@ -293,8 +293,8 @@ msgstr "Data registrazione"
 msgid "Staff recorded by"
 msgstr "Personale registrato da"
 
-#: accounts/templates/accounts/profile.html:66 customers/models.py:254
-#: customers/models.py:255 customers/templates/customers/base-company.html:28
+#: accounts/templates/accounts/profile.html:66 customers/models.py:255
+#: customers/models.py:256 customers/templates/customers/base-company.html:28
 #: customers/templates/customers/department_detail.html:56
 #: customers/templates/customers/staff_list.html:36
 #: customers/templates/customers/staff_list.html:41
@@ -307,7 +307,7 @@ msgid "Standard Task"
 msgstr "Mansione omogenea"
 
 #: accounts/templates/accounts/profile.html:68 customers/models.py:58
-#: customers/models.py:65 customers/models.py:238
+#: customers/models.py:65 customers/models.py:239
 #: customers/templates/customers/staff_detail.html:27
 #: customers/templates/customers/staff_list.html:43
 msgid "Role"
@@ -324,7 +324,7 @@ msgid "Customer company"
 msgstr "Azienda"
 
 #: accounts/templates/accounts/profile.html:98 customers/models.py:69
-#: customers/models.py:76 customers/models.py:260
+#: customers/models.py:76 customers/models.py:261
 #: customers/templates/customers/companysecurityduty_detail.html:37
 #: customers/templates/customers/companysecurityduty_list.html:12
 #: customers/templates/customers/department_detail.html:58
@@ -338,21 +338,21 @@ msgid "Name and Surname"
 msgstr "Nome e Cognome"
 
 #: accounts/templates/accounts/profile.html:100 customers/forms.py:85
-#: customers/models.py:263
+#: customers/models.py:264
 #: customers/templates/customers/companysecurityduty_detail.html:23
 #: customers/templates/customers/companysecurityduty_list.html:47
 msgid "Internal phone"
 msgstr "Telefono interno"
 
 #: accounts/templates/accounts/profile.html:101 customers/forms.py:86
-#: customers/models.py:264
+#: customers/models.py:265
 #: customers/templates/customers/companysecurityduty_detail.html:27
 #: customers/templates/customers/companysecurityduty_list.html:48
 msgid "External phone"
 msgstr "Telefono esterno"
 
-#: accounts/templates/accounts/profile.html:102 customers/models.py:156
-#: customers/models.py:265
+#: accounts/templates/accounts/profile.html:102 customers/models.py:157
+#: customers/models.py:266
 #: customers/templates/customers/companysecurityduty_detail.html:31
 #: customers/templates/customers/companysecurityduty_list.html:49
 #: customers/templates/customers/customercompany_detail.html:120
@@ -371,14 +371,14 @@ msgstr "Codice Fiscale"
 msgid "Vat code"
 msgstr "Partita IVA"
 
-#: customers/forms.py:21 customers/forms.py:52 customers/models.py:154
-#: customers/models.py:225
+#: customers/forms.py:21 customers/forms.py:52 customers/models.py:155
+#: customers/models.py:226
 #: customers/templates/customers/customercompany_detail.html:112
 #: customers/templates/customers/staff_detail.html:18
 msgid "Phone"
 msgstr "Telefono"
 
-#: customers/forms.py:22 customers/models.py:155
+#: customers/forms.py:22 customers/models.py:156
 #: customers/templates/customers/customercompany_detail.html:116
 msgid "Fax"
 msgstr ""
@@ -403,15 +403,15 @@ msgstr "CAP"
 msgid "Townships"
 msgstr "Comuni"
 
-#: customers/models.py:35 customers/models.py:284
+#: customers/models.py:35 customers/models.py:294
 #: customers/templates/customers/equipment_detail.html:15
 #: customers/templates/customers/equipment_list.html:43
 #: riskfactors/models.py:21
 msgid "Code"
 msgstr "Codice"
 
-#: customers/models.py:36 customers/models.py:81 customers/models.py:222
-#: customers/models.py:262 customers/models.py:283 customers/models.py:304
+#: customers/models.py:36 customers/models.py:81 customers/models.py:223
+#: customers/models.py:263 customers/models.py:293 customers/models.py:314
 #: customers/templates/customers/companysecurityduty_detail.html:15
 #: customers/templates/customers/department_detail.html:38
 #: customers/templates/customers/equipment_detail.html:19
@@ -421,8 +421,8 @@ msgstr "Nome"
 
 #: customers/models.py:37 customers/models.py:48 customers/models.py:59
 #: customers/models.py:70 customers/models.py:82 customers/models.py:94
-#: customers/models.py:115 customers/models.py:126 customers/models.py:285
-#: customers/models.py:305
+#: customers/models.py:115 customers/models.py:126 customers/models.py:295
+#: customers/models.py:315
 #: customers/templates/customers/department_detail.html:44
 #: customers/templates/customers/equipment_detail.html:23
 #: riskfactors/models.py:8
@@ -435,7 +435,7 @@ msgstr "Descrizione"
 msgid "ATECO Sectors 2007"
 msgstr "Settori ATECO 2007"
 
-#: customers/models.py:47 customers/models.py:54 customers/models.py:236
+#: customers/models.py:47 customers/models.py:54 customers/models.py:237
 #: customers/templates/customers/department_detail.html:57
 #: customers/templates/customers/staff_detail.html:25
 msgid "Standard task"
@@ -463,7 +463,7 @@ msgstr "Sigla"
 msgid "Certification"
 msgstr "Certificazione"
 
-#: customers/models.py:86 customers/models.py:146
+#: customers/models.py:86 customers/models.py:147
 msgid "Certifications"
 msgstr "Certificazioni"
 
@@ -479,7 +479,7 @@ msgstr "Forma contrattuale"
 msgid "Collaboration Agreements"
 msgstr "Forme contrattuali"
 
-#: customers/models.py:104 customers/models.py:107 customers/models.py:228
+#: customers/models.py:104 customers/models.py:107 customers/models.py:229
 msgid "Nationality"
 msgstr "Nazionalità"
 
@@ -491,14 +491,14 @@ msgstr "Nazionalità"
 msgid "Health Surveillance Name"
 msgstr "Nome Sorveglianza Sanitaria"
 
-#: customers/models.py:121 customers/models.py:122 customers/models.py:153
-#: customers/models.py:232
+#: customers/models.py:121 customers/models.py:122 customers/models.py:154
+#: customers/models.py:233
 #: customers/templates/customers/customercompany_detail.html:98
 #: customers/templates/customers/staff_detail.html:22
 msgid "Health surveillance"
 msgstr "Sorveglianza Sanitaria"
 
-#: customers/models.py:125 customers/models.py:132 customers/models.py:150
+#: customers/models.py:125 customers/models.py:132 customers/models.py:151
 msgid "CPI Settlement"
 msgstr "Insediamento CPI"
 
@@ -540,44 +540,47 @@ msgstr "Posizione INPS"
 msgid "CCNL"
 msgstr "CCNL"
 
-#: customers/models.py:148
+#: customers/models.py:145
+msgid "Year activity begins"
+msgstr "Anno inizio attività"
+
+#: customers/models.py:149
 msgid "Settlement size mq."
 msgstr "Superficie insediamento produttivo in mq."
 
-#: customers/models.py:151
+#: customers/models.py:152
 #: customers/templates/customers/customercompany_detail.html:76
 msgid "Machine usage"
 msgstr "Uso macchine"
 
-#: customers/models.py:152
+#: customers/models.py:153
 #: customers/templates/customers/customercompany_detail.html:87
 msgid "Dangerous substances"
 msgstr "Sostanze pericolose"
 
-#: customers/models.py:157
+#: customers/models.py:158
 msgid "Working environment general description"
 msgstr "Descrizione generale dell'ambiente di lavoro"
 
-#: customers/models.py:162 customers/models.py:200 customers/models.py:243
-#: customers/models.py:269 risksevaluation/models.py:14
-#: risksevaluation/models.py:35
+#: customers/models.py:163 customers/models.py:201 customers/models.py:244
+#: customers/models.py:279 risksevaluation/models.py:15
+#: risksevaluation/models.py:53
 msgid "Recorded by"
 msgstr "Registrato da"
 
-#: customers/models.py:165 customers/models.py:203 customers/models.py:246
-#: customers/models.py:272 risksevaluation/models.py:17
-#: risksevaluation/models.py:38
+#: customers/models.py:166 customers/models.py:204 customers/models.py:247
+#: customers/models.py:282 risksevaluation/models.py:18
+#: risksevaluation/models.py:56
 msgid "Last update by"
 msgstr "Ultima modifica di"
 
-#: customers/models.py:166 customers/models.py:204 customers/models.py:247
-#: customers/models.py:273 risksevaluation/models.py:18
-#: risksevaluation/models.py:39
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:49
+#: customers/models.py:167 customers/models.py:205 customers/models.py:248
+#: customers/models.py:283 risksevaluation/models.py:57
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:50
 msgid "Recorded on"
 msgstr "Registato il"
 
-#: customers/models.py:189 customers/templates/customers/base-company.html:4
+#: customers/models.py:190 customers/templates/customers/base-company.html:4
 #: customers/templates/customers/base-company.html:5
 #: customers/templates/customers/base-company.html:8
 #: customers/templates/customers/base-company.html:13
@@ -588,19 +591,19 @@ msgstr "Registato il"
 msgid "Customer companies"
 msgstr "Aziende"
 
-#: customers/models.py:194
+#: customers/models.py:195
 msgid "Department name"
 msgstr "Nome Reparto"
 
-#: customers/models.py:195
+#: customers/models.py:196
 msgid "Department description"
 msgstr "Descrizione Reparto"
 
-#: customers/models.py:196
+#: customers/models.py:197
 msgid "Department size mq."
 msgstr "Dimensione reparto in mq."
 
-#: customers/models.py:208 customers/models.py:237 customers/models.py:286
+#: customers/models.py:209 customers/models.py:238 customers/models.py:296
 #: customers/templates/customers/equipment_detail.html:31
 #: customers/templates/customers/equipment_list.html:44
 #: customers/templates/customers/staff_detail.html:26
@@ -608,77 +611,85 @@ msgstr "Dimensione reparto in mq."
 msgid "Department"
 msgstr "Reparto"
 
-#: customers/models.py:209
+#: customers/models.py:210
 #: customers/templates/customers/workingenvironment_create_form.html:63
 msgid "Departments"
 msgstr "Reparti"
 
-#: customers/models.py:218
+#: customers/models.py:219
 msgid "Male"
 msgstr "Maschio"
 
-#: customers/models.py:219
+#: customers/models.py:220
 msgid "Female"
 msgstr "Femmina"
 
-#: customers/models.py:223 customers/models.py:261
+#: customers/models.py:224 customers/models.py:262
 #: customers/templates/customers/companysecurityduty_detail.html:19
 #: customers/templates/customers/staff_detail.html:16
 msgid "Surname"
 msgstr "Cognome"
 
-#: customers/models.py:224 customers/templates/customers/staff_detail.html:17
+#: customers/models.py:225 customers/templates/customers/staff_detail.html:17
 msgid "Birth date"
 msgstr "Data di nascita"
 
-#: customers/models.py:226 customers/templates/customers/staff_detail.html:19
+#: customers/models.py:227 customers/templates/customers/staff_detail.html:19
 msgid "Gender"
 msgstr "Sesso"
 
-#: customers/models.py:230
+#: customers/models.py:231
 msgid "Collaboration agreement"
 msgstr "Forma contrattuale"
 
-#: customers/models.py:233 customers/templates/customers/staff_detail.html:23
+#: customers/models.py:234 customers/templates/customers/staff_detail.html:23
 msgid "Workers count"
 msgstr "Computo lavoratori"
 
-#: customers/models.py:239 customers/templates/customers/staff_detail.html:29
+#: customers/models.py:240 customers/templates/customers/staff_detail.html:29
 msgid "Employ date"
 msgstr "Data assunzione"
 
-#: customers/models.py:279
+#: customers/models.py:268
+msgid "Appoint Letter"
+msgstr "Lettera di Nomina"
+
+#: customers/models.py:272
+msgid "Requirement Certificate"
+msgstr "Attestato dei Requisiti"
+
+#: customers/models.py:289
 msgid "Company security duty"
 msgstr "Figura Prevenzione in Azienda"
 
-#: customers/models.py:280
+#: customers/models.py:290
 msgid "Company security duties"
 msgstr "Figure Prevenzione in Azienda"
 
-#: customers/models.py:287
+#: customers/models.py:297
 #: customers/templates/customers/equipment_detail.html:27
 #: customers/templates/customers/equipment_list.html:45
 msgid "Operator"
 msgstr "Operatore"
 
-#: customers/models.py:289
+#: customers/models.py:299
 msgid "Exposed staff"
 msgstr "Personale esposto"
 
-#: customers/models.py:294
+#: customers/models.py:304
 #: customers/templates/customers/equipment_detail.html:35
 msgid "Compliance Requirements"
 msgstr "Requisit di conformità"
 
-#: customers/models.py:300 customers/models.py:301
+#: customers/models.py:310 customers/models.py:311
 msgid "Equipment"
 msgstr "Attrezzatura"
 
-#: customers/models.py:311
+#: customers/models.py:321
 msgid "Individual Protection Equipment"
 msgstr "Dispositivo protezione individuale"
 
-#: customers/models.py:312
+#: customers/models.py:322
 msgid "Individual Protection Equipments"
 msgstr "Dispositivi protezione individuale"
 
@@ -771,23 +782,23 @@ msgid "Equipments"
 msgstr "Attrezzature"
 
 #: customers/templates/customers/base-company.html:43
-#: risksevaluation/models.py:26
+#: risksevaluation/models.py:30
 #: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:4
 #: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:5
 #: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:12
 #: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:17
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:23
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:24
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:25
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:9
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:10
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:36
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:40
 msgid "Risks Evaluation Documents"
-msgstr ""
+msgstr "Lista DVR"
 
 #: customers/templates/customers/base-company.html:48
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:13
 msgid "New Risks Evaluation Document"
-msgstr ""
+msgstr "Nuovo DVR"
 
 #: customers/templates/customers/base-customers.html:22
 msgid "Add Customer Company"
@@ -831,6 +842,7 @@ msgstr "Registrazione Figure prevenzione"
 #: customers/templates/customers/customercompany_create_form.html:35
 #: customers/templates/customers/department_create_form.html:49
 #: customers/templates/customers/equipment_create_form.html:50
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:29
 msgid "Save"
 msgstr "Registra"
 
@@ -848,7 +860,7 @@ msgstr "Figura prevenzione dettaglio"
 #: customers/templates/customers/staff_detail.html:7
 #: customers/templates/customers/staff_list.html:61
 #: customers/templates/customers/workingenvironment_create_form.html:83
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:60
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:80
 msgid "Edit"
 msgstr "Modifica"
 
@@ -866,7 +878,7 @@ msgstr "Figura"
 #: customers/templates/customers/equipment_list.html:46
 #: customers/templates/customers/staff_list.html:44
 #: customers/templates/customers/workingenvironment_create_form.html:70
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:44
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:52
 msgid "Actions"
 msgstr "Azioni"
 
@@ -875,7 +887,7 @@ msgstr "Azioni"
 #: customers/templates/customers/equipment_list.html:69
 #: customers/templates/customers/staff_list.html:62
 #: customers/templates/customers/workingenvironment_create_form.html:84
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:61
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:81
 msgid "Delete"
 msgstr "Elimina"
 
@@ -906,8 +918,7 @@ msgstr "Aggiungi Azienda"
 #: customers/templates/customers/customercompany_archive_year.html:21
 #: customers/templates/customers/customercompany_list.html:53
 #: customers/templates/customers/staff_detail.html:24
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:45
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:42
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:46
 msgid "Company"
 msgstr "Azienda"
 
@@ -1111,28 +1122,28 @@ msgstr "Suggerimento si"
 #: riskfactors/models.py:12
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:57
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:47
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:57
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:62
 msgid "Suggestion No"
 msgstr "Suggerimento No"
 
 #: riskfactors/models.py:13
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:61
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:51
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:61
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:66
 msgid "Notes"
 msgstr "Note"
 
 #: riskfactors/models.py:14
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:65
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:55
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:65
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:70
 msgid "Link"
 msgstr ""
 
 #: riskfactors/models.py:15
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:69
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:59
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:69
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:74
 msgid "Filename"
 msgstr ""
 
@@ -1166,7 +1177,6 @@ msgstr "Fattore di Rischio"
 #: riskfactors/templates/riskfactors/riskfactor_tree.html:23
 #: riskfactors/templates/riskfactors/riskfactor_tree.html:24
 #: riskfactors/templates/riskfactors/riskfactor_tree.html:37
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:83
 #: templates/base.html:85 templates/base.html.py:90
 msgid "Risk Factors"
 msgstr "Fattori di Rischio"
@@ -1194,13 +1204,13 @@ msgstr "Modifica fattore di rischio"
 
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:53
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:43
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:53
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:58
 msgid "Suggestion Yes"
 msgstr "Suggerimento Si"
 
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:73
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:64
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:73
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:78
 msgid "Parent"
 msgstr ""
 
@@ -1213,70 +1223,139 @@ msgstr "Sotto fattori di rischio"
 msgid "Add a new risk factor"
 msgstr "Aggiungi un nuovo fattore di rischio"
 
-#: risksevaluation/models.py:8
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:41
-msgid "Title"
-msgstr ""
+#: risksevaluation/models.py:9
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:42
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:45
+msgid "Revision"
+msgstr "Revisione"
 
 #: risksevaluation/models.py:10
-msgid "Revision"
-msgstr ""
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:54
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:47
+msgid "Revision description"
+msgstr "Commento Revisione"
 
-#: risksevaluation/models.py:25
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:37
+#: risksevaluation/models.py:11
+msgid "Revision Date"
+msgstr "Data Revisione"
+
+#: risksevaluation/models.py:20
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:49
+msgid "RLS check"
+msgstr "Verifica RLS"
+
+#: risksevaluation/models.py:21
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:50
+msgid "Doctor check"
+msgstr "Verifica Medico Competente"
+
+#: risksevaluation/models.py:22
+msgid "Company Owner check"
+msgstr "Verifica Datore di Lavoro"
+
+#: risksevaluation/models.py:29
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:38
 msgid "Risks Evaluation Document"
-msgstr ""
+msgstr "DVR"
 
-#: risksevaluation/models.py:31
-msgid "Answer"
-msgstr "Risposta"
+#: risksevaluation/models.py:34
+msgid "Low"
+msgstr "Bassissima"
+
+#: risksevaluation/models.py:35
+msgid "Medium-Low"
+msgstr "Medio-Bassa"
+
+#: risksevaluation/models.py:36
+msgid "Medium-High"
+msgstr "Medio-Alta"
+
+#: risksevaluation/models.py:37
+msgid "High"
+msgstr "Alta"
+
+#: risksevaluation/models.py:41
+msgid "Small"
+msgstr "Trascurabile"
+
+#: risksevaluation/models.py:42
+msgid "Modest"
+msgstr "Modesta"
 
 #: risksevaluation/models.py:43
-#, fuzzy
-msgid "Risk Factor Evaluation"
-msgstr "Modifica fattore di rischio"
+msgid "Remarkable"
+msgstr "Notevole"
 
 #: risksevaluation/models.py:44
-#, fuzzy
+msgid "Severe"
+msgstr "Ingente"
+
+#: risksevaluation/models.py:59
+msgid "Checked"
+msgstr "Verificato"
+
+#: risksevaluation/models.py:60
+msgid "Probability"
+msgstr "Probabilità"
+
+#: risksevaluation/models.py:61
+msgid "Seriousness"
+msgstr "Gravità"
+
+#: risksevaluation/models.py:65
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:3
+msgid "Risk Factor Evaluation"
+msgstr "Valutazione Fattore Di Rischio"
+
+#: risksevaluation/models.py:66
 msgid "Risk Factor Evaluations"
-msgstr "Modifica fattore di rischio"
+msgstr "Valutazioni Fattore Di Rischio"
+
+#: risksevaluation/models.py:70
+msgid "Valued"
+msgstr "Valutato"
 
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_confirm_delete.html:10
-#, fuzzy
 msgid "for company"
-msgstr "Azienda"
+msgstr "per l'Azienda"
 
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_create_form.html:8
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_create_form.html:12
 msgid "Risks Evaluation Document create"
-msgstr ""
+msgstr "Crea DVR"
 
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_create_form.html:37
-#, fuzzy
 msgid "Create"
 msgstr "Creato"
 
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:27
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:28
 msgid "Edit Risks Evaluation Document"
-msgstr ""
+msgstr "Modifica DVR"
 
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:41
-msgid "Titolo"
-msgstr ""
-
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:78
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:83
 msgid "Reds"
-msgstr ""
+msgstr "Revisioni DVR"
 
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:43
-#, fuzzy
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:92
+msgid "Risks Factors"
+msgstr "Fattori di Rischio"
+
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:46
 msgid "Record on"
 msgstr "Registato il"
+
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:48
+msgid "Record by"
+msgstr "Registrato da"
+
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:51
+msgid "Company Owner"
+msgstr "Datore di Lavoro"
 
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_update_form.html:8
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_update_form.html:12
 msgid "Risks Evaluation Document Edit"
-msgstr ""
+msgstr "Modifica DVR"
 
 #: templates/base.html:36
 msgid "Welcome"
@@ -1301,3 +1380,6 @@ msgstr "Amministrazione"
 #: templates/admin/base_site.html:7
 msgid "Risks Evaluation administration"
 msgstr ""
+
+#~ msgid "Answer"
+#~ msgstr "Risposta"
