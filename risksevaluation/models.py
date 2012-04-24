@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 from django.db import models
 from django.utils.translation import ugettext as _
 
@@ -28,10 +30,23 @@ class RisksEvaluationDocument(models.Model):
         verbose_name_plural = _('Risks Evaluation Documents')
         unique_together = ('company','revision', 'record_date')
 
+probability = (
+    (1, _('Low')),
+    (2, _('Medium-Low')),
+    (3, _('Medium-High')),
+    (4, _('High'))
+    )
+
+seriousness = (
+    (1, _('Small')),
+    (2, _('Modest')),
+    (3, _('Remarkable')),
+    (4, _('Severe')),
+    )
+
 class RiskFactorEvaluation(models.Model):
     document = models.ForeignKey(RisksEvaluationDocument)
     risk_factor = models.ForeignKey('riskfactors.RiskFactor')
-    answer = models.BooleanField(_('Answer'))
 
     record_by = models.ForeignKey('accounts.UserProfile',
                                   related_name='factorevaluations_created',
@@ -41,10 +56,19 @@ class RiskFactorEvaluation(models.Model):
                                       verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
+    check = models.BooleanField(_('Checked'))
+    probability = models.PositiveSmallIntegerField(_('Probability'), choices=probability)
+    seriousness = models.PositiveSmallIntegerField(_('Seriousness'), choices=seriousness)
+
     class Meta:
         ordering = ['record_date']
         verbose_name = _('Risk Factor Evaluation')
         verbose_name_plural = _('Risk Factor Evaluations')
+        unique_together = ('document','risk_factor')
+
+    def __unicode__(self):
+        return '%s %s' % (self.risk_factor.description, _('Valued'))
+
 
 import reversion
 
