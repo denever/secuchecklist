@@ -17,6 +17,8 @@ class RiskFactorNodeMixin(object):
 	children = list()
 	for child in riskfactor.children.all():
 	    children.append(self.serialize_riskfactor(child))
+        if not children:
+            children = False
 	return dict(title=riskfactor.description,
 		    children=children,
 		    data=dict(id=riskfactor.id,
@@ -48,7 +50,7 @@ class RiskFactorSubTreeMixin(object):
 
     def serialize_riskfactor(self, riskfactor):
 	return dict(title=riskfactor.description,
-		    children=[],
+		    children=False,
 		    data=dict(id=riskfactor.id,
 			      detail_url = reverse('riskfactor-detail', args=[riskfactor.id]),
 			      edit_url = reverse('riskfactor-edit', args=[riskfactor.id]),
