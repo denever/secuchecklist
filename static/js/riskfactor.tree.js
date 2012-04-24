@@ -80,21 +80,18 @@ function buildtree(root_id){
 						 }
 					 },
 				     },
-				 "type": {
+				 "types": {
 				     "valid_children": "folder",
 				     "types": {
-					 "default": {
-					     "valid_children": "none",
-					     "icon": "leaf",
-					 },
-					 "folder": {
-					     "valid_children": ["default", "folder"],
-					     "icon": {
-						 "image" : "http://static.jstree.com/v.1.0rc/_docs/_drive.png"
-					     }
-					 }
+					 "leaf": {
+					     "valid_children": "none",					     					 }
 				     },
 				 },
+				 "themes": {
+				     "theme": "riskfactors",
+				     "dots": true,
+				     "icons": true,
+				     }
 			     });
 }
 
@@ -135,6 +132,12 @@ function buildevaldocument(){
 					 }
 				     }
 				 },
+				 "themes": {
+				     "theme": "riskfactors",
+				     "dots": true,
+				     "icons": true,
+				     }
+				 
 			     }).bind("select_node.jstree", function (event, data){
 					 $.get("eval/" + data.rslt.obj.data("id"),
 					       function(data){
