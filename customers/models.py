@@ -265,11 +265,11 @@ class CompanySecurityDuty(models.Model):
     external_phone = models.CharField(_('External phone'), max_length=200, null=True, blank=True)
     email = models.EmailField(_('Email'), max_length=200)
 
-    appoint_letter = models.FileField(_('Apponint Letter'),
+    appoint_letter = models.FileField(_('Appoint Letter'),
                                       null=True,
                                       blank=True,
                                       upload_to='document_attaches')
-    requirement_certificate = models.FileField(_('Apponint Letter'),
+    requirement_certificate = models.FileField(_('Requirement Certificate'),
                                                null=True,
                                                blank=True,
                                                upload_to='document_attaches')
