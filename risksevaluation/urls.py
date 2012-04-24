@@ -7,7 +7,8 @@ from risksevaluation.views import RisksEvaluationDocumentUpdateView
 from risksevaluation.views import RisksEvaluationDocumentDeleteView
 from risksevaluation.views import RisksEvaluationDocumentListView
 from risksevaluation.views import AllRisksEvaluationDocumentView
-
+from risksevaluation.views import RiskEvaluationView
+from risksevaluation.views import RiskEvaluationCreateView
 # red stands for Risks Evaluation Document
 
 urlpatterns = patterns('risksevaluation.views',
@@ -17,11 +18,11 @@ urlpatterns = patterns('risksevaluation.views',
                        url(r'^company/(?P<company>\d+)$', login_required(RisksEvaluationDocumentListView.as_view()),
                            name='red-list'),
 
-                       url(r'^(?P<company>\d+)/(?P<pk>\d+)/$',
+                       url(r'^(?P<company>\d+)/revision/(?P<pk>\d+)/$',
                            login_required(RisksEvaluationDocumentDetailView.as_view()),
                            name = 'red-detail'),
 
-                       url(r'^create/(?P<company>\d+)/$',
+                       url(r'^(?P<company>\d+)/create/$',
                            login_required(RisksEvaluationDocumentCreateView.as_view()),
                            name = 'red-create'
                            ),
@@ -35,4 +36,7 @@ urlpatterns = patterns('risksevaluation.views',
                            login_required(RisksEvaluationDocumentDeleteView.as_view()),
                            name = 'red-delete'
                            ),
+                       url(r'^(?P<company>\d+)/revision/(?P<document>\d+)/eval/(?P<riskfactor>\d+)/$',
+                           login_required(RiskEvaluationCreateView.as_view()),
+                           name = 'eval')
                        )
