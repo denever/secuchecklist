@@ -7,7 +7,6 @@ from risksevaluation.views import RisksEvaluationDocumentUpdateView
 from risksevaluation.views import RisksEvaluationDocumentDeleteView
 from risksevaluation.views import RisksEvaluationDocumentListView
 from risksevaluation.views import AllRisksEvaluationDocumentView
-from risksevaluation.views import RiskEvaluationView
 from risksevaluation.views import RiskEvaluationCreateView
 # red stands for Risks Evaluation Document
 
