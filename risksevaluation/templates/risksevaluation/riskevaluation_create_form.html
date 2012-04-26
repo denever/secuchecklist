@@ -1,34 +1,116 @@
 {% load i18n %}
-
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Risk Factor Evaluation" %} <span>{{ riskfactor.description }}</h1>
-  <div class="ui-helper-reset ui-widget-content">
-    <h2>{{ riskfactor.question }}</h2>
-    <form id="riskevalform" action="/risksevaluation/{{company.id}}/revision/{{document.revision}}/eval/{{riskfactor.id}}/" method="post">{% csrf_token %}
-      <fieldset>
-        <table>
-          {% for field in form %}
-          <tr id="{{ field.html_name }}">
-            <td>
-              {{ field.label_tag }}
-            </td>
-            <td>
-              {{ field }}
-            </td>
-            {% if field.errors %}
-            <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-              {% for error in field.errors %}
-              <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-              {{ error }}
-            </td>
+{% if riskfactor.question %}
+<script>
+  $(function() {
+  $( "#tabs" ).tabs();
+  $( "#tabs" ).tabs("disable", 1);
+  $( "#tabs" ).tabs("select", 0);
+  $( "#show-notes" ).button({
+  text: false,
+  icons: { primary: "ui-icon-info"},
+  }).click(function() {
+  $("#dlg-notes").dialog();
+  });
+  $( "#show-sugg-yes" ).button({
+  text: false,
+  icons: { primary: "ui-icon-info"},
+  }).click(function() {
+  $("#dlg-sugg-yes").dialog();
+  });
+  $( "#show-sugg-no" ).button({
+  text: false,
+  icons: { primary: "ui-icon-info"},
+  }).click(function() {
+  $("#dlg-sugg-no").dialog();
+  });
+  $( "#checked" ).button().change(function(){if($("#checked").is(':checked')){  $( "#tabs" ).tabs("enable", 1);}else{$( "#tabs" ).tabs("disable", 1);}});
+  <!-- $( "#dlg-info" ).dialog(); -->
+  <!-- $( "#dlg-info" ).dialog('close'); -->
+  });
+</script>
+{% if riskfactor.notes %}
+<div id="dlg-notes" title="{% trans "Notes" %}">
+  <p>{{ riskfactor.notes }}</p>
+</div>
+{% endif %}
+{% if riskfactor.suggestion_yes %}
+<div id="dlg-sugg-yes" title="{% trans "Suggestion Yes" %}">
+  <p>{{ riskfactor.suggestion_yes }}</p>
+</div>
+{% endif %}
+{% if riskfactor.suggestion_no %}
+<div id="dlg-sugg-no" title="{% trans "Suggestion No" %}">
+  <p>{{ riskfactor.suggestion_no }}</p>
+</div>
+{% endif %}
+<h1 class="ui-helper-reset ui-widget-header">{% trans "Risk Factor Evaluation" %}: <span>{{ riskfactor.description }}</span>
+</h1>
+<div class="ui-helper-reset ui-widget-content">
+  <div id="tabs">
+    <ul>
+      <li><a href="#tabs-1">{% trans "Question" %}</a></li>
+      <li><a href="#tabs-2">{% trans "Evaluation" %}</a></li>
+      <li><a href="#tabs-3">{% trans "Measure" %}</a><li>
+    </ul>
+    <div id="tabs-1">
+      <p>{{ riskfactor.question }}</p>
+      {% if riskfactor.notes %}
+      <button id="show-notes" title="{% trans "Notes" %}"></button>
+      {% endif %}
+      {% if riskfactor.suggestion_yes %}
+      <button id="show-sugg-yes" title="{% trans "Suggestion Yes" %}"></button>
+      {% endif %}
+      {% if riskfactor.suggestion_yes %}
+      <button id="show-sugg-no" title="{% trans "Suggestion No" %}"></button>
+      {% endif %}
+      <input type="checkbox" id="checked"/><label for="checked">{% trans "Checked" %}</label>
+    </div>
+    <div id="tabs-2">
+      <p>{% trans "Risk Evaluation" %}</p>
+      <form id="riskevalform"
+            action="/risksevaluation/{{company.id}}/revision/{{document.revision}}/eval/{{riskfactor.id}}/" method="post">{% csrf_token %}
+        <fieldset>
+          <table>
+            {% for field in form %}
+            <tr id="{{ field.html_name }}">
+              <td>
+                {{ field.label_tag }}
+              </td>
+              <td>
+                {{ field }}
+              </td>
+              {% if field.errors %}
+              <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+                {% for error in field.errors %}
+                <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+                {{ error }}
+              </td>
+              {% endfor %}
+              {% endif %}
+            </tr>
             {% endfor %}
-            {% endif %}
-          </tr>
-          {% endfor %}
-          <tr>
-            <td></td>
-            <td><input type="submit" value="{% trans "Save" %}"/></td>
-          </tr>
-        </table>
-      </fieldset>
-    </form>
+            <tr>
+              <td></td>
+              <td><input type="submit" value="{% trans "Save" %}"/></td>
+            </tr>
+          </table>
+        </fieldset>
+      </form>
+    </div>
+    <div id="tabs-3">
+      <p>{{riskfactor.measure}}</p>
+    </div>
   </div>
+</div>
+{% else %}
+{% if riskfactor.notes %}
+<script>
+  $(function() {
+  $( "#dlg-info" ).dialog();
+  });
+</script>
+<div id="dlg-info" title="{% trans "Notes" %}">
+  <p>{{ riskfactor.notes }}</p>
+</div>
+{% endif %}
+{% endif %}
