@@ -9,23 +9,24 @@
   text: false,
   icons: { primary: "ui-icon-info"},
   }).click(function() {
-  $("#dlg-notes").dialog();
+  $("#dlg-notes").dialog('open');
   });
   $( "#show-sugg-yes" ).button({
   text: false,
   icons: { primary: "ui-icon-info"},
   }).click(function() {
-  $("#dlg-sugg-yes").dialog();
+  $("#dlg-sugg-yes").dialog('open');
   });
   $( "#show-sugg-no" ).button({
   text: false,
   icons: { primary: "ui-icon-info"},
   }).click(function() {
-  $("#dlg-sugg-no").dialog();
+  $("#dlg-sugg-no").dialog('open');
   });
   $( "#checked" ).button().change(function(){if($("#checked").is(':checked')){  $( "#tabs" ).tabs("enable", 1);}else{$( "#tabs" ).tabs("disable", 1);}});
-  <!-- $( "#dlg-info" ).dialog(); -->
-  <!-- $( "#dlg-info" ).dialog('close'); -->
+  $( "#dlg-notes" ).dialog({ autoOpen: false });
+  $( "#dlg-sugg-no" ).dialog({ autoOpen: false });
+  $( "#dlg-sugg-yes" ).dialog({ autoOpen: false });
   });
 </script>
 {% if riskfactor.notes %}
