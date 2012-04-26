@@ -9,4 +9,4 @@ class RisksEvaluationDocumentForm(forms.ModelForm):
 class RiskFactorEvaluationForm(forms.ModelForm):
     class Meta:
         model = RiskFactorEvaluation
-        exclude = ('document', 'risk_factor', 'record_by', 'lastupdate_by')
+        exclude = ('document', 'risk_factor', 'record_by', 'lastupdate_by', 'check')
