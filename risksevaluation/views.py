@@ -57,7 +57,8 @@ class RisksEvaluationDocumentUpdateView(UpdateView):
     def form_valid(self, form):
         self.risksevaluationdocument = form.save(commit=False)
         self.risksevaluationdocument.lastupdate_by = self.request.user.get_profile()
-        self.success_url = reverse('red-detail', args=self.kwargs['company'])
+        self.success_url = reverse('red-detail', args=[self.kwargs['company'],
+                                                       self.kwargs['pk']])
         return super(RisksEvaluationDocumentUpdateView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -116,7 +117,7 @@ class RiskEvaluationCreateView(CreateView):
         self.riskevaluation.risk_factor = get_object_or_404(RiskFactor,
                                                             id=self.kwargs['riskfactor'])
         self.success_url = reverse('red-detail', args=[self.kwargs['company'],
-                                                       self.kwargs['document']])
+                                                       self.kwargs['revision']])
         return super(RiskEvaluationCreateView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
