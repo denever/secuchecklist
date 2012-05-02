@@ -1,117 +1,119 @@
 {% load i18n %}
 {% if riskfactor.question %}
-<script>
-  $(function() {
-  $( "#tabs" ).tabs();
-  $( "#tabs" ).tabs("disable", 1);
-  $( "#tabs" ).tabs("select", 0);
-  $( "#show-notes" ).button({
-  text: false,
-  icons: { primary: "ui-icon-info"},
-  }).click(function() {
-  $("#dlg-notes").dialog('open');
-  });
-  $( "#show-sugg-yes" ).button({
-  text: false,
-  icons: { primary: "ui-icon-info"},
-  }).click(function() {
-  $("#dlg-sugg-yes").dialog('open');
-  });
-  $( "#show-sugg-no" ).button({
-  text: false,
-  icons: { primary: "ui-icon-info"},
-  }).click(function() {
-  $("#dlg-sugg-no").dialog('open');
-  });
-  $( "#checked" ).button().change(function(){if($("#checked").is(':checked')){  $( "#tabs" ).tabs("enable", 1);}else{$( "#tabs" ).tabs("disable", 1);}});
-  $( "#dlg-notes" ).dialog({ autoOpen: false });
-  $( "#dlg-sugg-no" ).dialog({ autoOpen: false });
-  $( "#dlg-sugg-yes" ).dialog({ autoOpen: false });
-  });
-</script>
-{% if riskfactor.notes %}
-<div id="dlg-notes" title="{% trans "Notes" %}">
-  <p>{{ riskfactor.notes }}</p>
-</div>
-{% endif %}
-{% if riskfactor.suggestion_yes %}
-<div id="dlg-sugg-yes" title="{% trans "Suggestion Yes" %}">
-  <p>{{ riskfactor.suggestion_yes }}</p>
-</div>
-{% endif %}
-{% if riskfactor.suggestion_no %}
-<div id="dlg-sugg-no" title="{% trans "Suggestion No" %}">
-  <p>{{ riskfactor.suggestion_no }}</p>
-</div>
-{% endif %}
-<h1 class="ui-helper-reset ui-widget-header">{% trans "Risk Factor Evaluation" %}: <span>{{ riskfactor.description }}</span>
-</h1>
-<div class="ui-helper-reset ui-widget-content">
-  <div id="tabs">
-    <ul>
-      <li><a href="#tabs-1">{% trans "Question" %}</a></li>
-      <li><a href="#tabs-2">{% trans "Evaluation" %}</a></li>
-      <li><a href="#tabs-3">{% trans "Measure" %}</a><li>
-    </ul>
-    <div id="tabs-1">
-      <p>{{ riskfactor.question }}</p>
-      {% if riskfactor.notes %}
-      <button id="show-notes" title="{% trans "Notes" %}"></button>
-      {% endif %}
-      {% if riskfactor.suggestion_yes %}
-      <button id="show-sugg-yes" title="{% trans "Suggestion Yes" %}"></button>
-      {% endif %}
-      {% if riskfactor.suggestion_yes %}
-      <button id="show-sugg-no" title="{% trans "Suggestion No" %}"></button>
-      {% endif %}
-      <input type="checkbox" id="checked"/><label for="checked">{% trans "Checked" %}</label>
-    </div>
-    <div id="tabs-2">
-      <p>{% trans "Risk Evaluation" %}</p>
-      <form id="riskevalform"
-            action="/risksevaluation/{{company.id}}/revision/{{document.revision}}/eval/{{riskfactor.id}}/" method="post">{% csrf_token %}
-        <fieldset>
-          <table>
-            {% for field in form %}
-            <tr id="{{ field.html_name }}">
-              <td>
-                {{ field.label_tag }}
-              </td>
-              <td>
-                {{ field }}
-              </td>
-              {% if field.errors %}
-              <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-                {% for error in field.errors %}
-                <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-                {{ error }}
-              </td>
-              {% endfor %}
-              {% endif %}
-            </tr>
-            {% endfor %}
-            <tr>
-              <td></td>
-              <td><input type="submit" value="{% trans "Save" %}"/></td>
-            </tr>
-          </table>
-        </fieldset>
-      </form>
-    </div>
-    <div id="tabs-3">
-      <p>{{riskfactor.measure}}</p>
-    </div>
+  <script type="text/javascript" src="/static/js/riskevaluation.js"></script>
+  <script>
+    risk_evaluation_interface();
+  </script>
+  {% if riskfactor.notes %}
+  <div id="dlg-notes" title="{% trans "Notes" %}">
+    <p>{{ riskfactor.notes }}</p>
   </div>
-</div>
+  {% endif %}
+  {% if riskfactor.suggestion_yes %}
+  <div id="dlg-sugg-yes" title="{% trans "Suggestion Yes" %}">
+    <p>{{ riskfactor.suggestion_yes }}</p>
+  </div>
+  {% endif %}
+  {% if riskfactor.suggestion_no %}
+  <div id="dlg-sugg-no" title="{% trans "Suggestion No" %}">
+    <p>{{ riskfactor.suggestion_no }}</p>
+  </div>
+  {% endif %}
+  <h1 class="ui-helper-reset ui-widget-header">
+    {% trans "Risk Factor Evaluation" %}: <span>{{ riskfactor.description }}</span>
+  </h1>
+  <form id="riskevalform"
+        action="/risksevaluation/{{company.id}}/revision/{{document.revision}}/eval/{{riskfactor.id}}/" method="post">
+    {% csrf_token %}
+    <div class="ui-helper-reset ui-widget-content">
+      <div id="tabs">
+        <ul>
+          <li><a href="#tabs-1">{% trans "Question" %}</a></li>
+          <li><a href="#tabs-2">{% trans "Evaluation" %}</a></li>
+          <li><a href="#tabs-3">{% trans "Measure" %}</a><li>
+        </ul>
+        <div id="tabs-1">
+          <p>{{ riskfactor.question }}</p>
+	  <div style="padding: 10px 4px">
+            {% if riskfactor.notes %}
+            <a id="show-notes" title="{% trans "Notes" %}"></a>
+            {% endif %}
+            {% if riskfactor.suggestion_yes %}
+            <a id="show-sugg-yes" title="{% trans "Suggestion Yes" %}"></a>
+            {% endif %}
+            {% if riskfactor.suggestion_yes %}
+            <a id="show-sugg-no" title="{% trans "Suggestion No" %}"></a>
+            {% endif %}
+	  </div>
+          {{ form.check }}
+          {% if form.check.errors %}
+          <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+            {% for error in form.check.errors %}
+            <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+            {{ error }}
+          </div>
+          {% endfor %}
+          {% endif %}
+          <label for="id_check">{{ form.check.label_tag }}</label>
+        </div>
+        <div id="tabs-2">
+          <p>{% trans "Risk Evaluation" %}</p>
+          <fieldset>
+            <table>
+              <tr id="{{ form.probability.html_name }}">
+                <td>
+                  {{ form.probability.label_tag }}
+                </td>
+                <td>
+                  {{ form.probability }}
+                </td>
+                {% if form.probability.errors %}
+                <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+                  {% for error in field.errors %}
+                  <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+                  {{ error }}
+                </td>
+                {% endfor %}
+                {% endif %}
+              </tr>
+            <tr id="{{ form.seriousness.html_name }}">
+              <td>
+                  {{ form.seriousness.label_tag }}
+                </td>
+                <td>
+                  {{ form.seriousness }}
+                </td>
+                {% if form.seriousness.errors %}
+                <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+                  {% for error in field.errors %}
+                  <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+                  {{ error }}
+                </td>
+                {% endfor %}
+                {% endif %}
+              </tr>
+              <tr>
+                <td></td>
+                <td><input type="submit" value="{% trans "Save" %}"/></td>
+              </tr>
+            </table>
+          </fieldset>
+      </div>
+      <div id="tabs-3">
+        <p>{{riskfactor.measure}}</p>
+      </div>
+    </div>
+  </form>
+  </div>
 {% else %}
-{% if riskfactor.notes %}
-<script>
-  $(function() {
-  $( "#dlg-info" ).dialog();
-  });
-</script>
-<div id="dlg-info" title="{% trans "Notes" %}">
-  <p>{{ riskfactor.notes }}</p>
-</div>
-{% endif %}
+  {% if riskfactor.notes %}
+  <script>
+    $(function() {
+    $( "#dlg-info" ).dialog();
+    });
+  </script>
+  <div id="dlg-info" title="{% trans "Notes" %}">
+    <p>{{ riskfactor.notes }}</p>
+  </div>
+  {% endif %}
 {% endif %}
