@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+from django.utils.translation import ugettext as _
 from django.core.management.base import BaseCommand, CommandError
 from customers.models import CollaborationAgreement, Role, StandardTask
 
