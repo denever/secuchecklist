@@ -34,7 +34,7 @@
         </ul>
         <div id="tabs-1">
           <p>{{ riskfactor.question }}</p>
-	  <div style="padding: 10px 4px">
+          <div style="padding: 10px 4px">
             {% if riskfactor.notes %}
             <a id="show-notes" title="{% trans "Notes" %}"></a>
             {% endif %}
@@ -44,7 +44,7 @@
             {% if riskfactor.suggestion_yes %}
             <a id="show-sugg-no" title="{% trans "Suggestion No" %}"></a>
             {% endif %}
-	  </div>
+          </div>
           {{ form.check }}
           {% if form.check.errors %}
           <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
@@ -106,6 +106,7 @@
   </form>
   </div>
 {% else %}
+  <p>{% trans "No risk factor question found" %}</p>
   {% if riskfactor.notes %}
   <script>
     $(function() {
