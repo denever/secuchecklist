@@ -7,8 +7,7 @@ from risksevaluation.views import RisksEvaluationDocumentUpdateView
 from risksevaluation.views import RisksEvaluationDocumentDeleteView
 from risksevaluation.views import RisksEvaluationDocumentListView
 from risksevaluation.views import AllRisksEvaluationDocumentView
-from risksevaluation.views import RiskEvaluationCreateView
-#from risksevaluation.views import CheckRiskFactor
+from risksevaluation.views import RiskFactorEvaluationView
 
 # red stands for Risks Evaluation Document
 
@@ -38,9 +37,6 @@ urlpatterns = patterns('risksevaluation.views',
                            name = 'red-delete'
                            ),
                        url(r'^(?P<company>\d+)/revision/(?P<revision>\d+)/eval/(?P<riskfactor>\d+)/$',
-                           login_required(RiskEvaluationCreateView.as_view()),
+                           login_required(RiskFactorEvaluationView.as_view()),
                            name = 'eval'),
-                       # url(r'^check_factor',
-                       #     login_required(CheckRiskFactor.as_view()),
-                       #     name= 'check')
                        )
