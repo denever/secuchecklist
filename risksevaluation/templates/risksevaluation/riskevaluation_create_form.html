@@ -1,9 +1,5 @@
 {% load i18n %}
 {% if riskfactor.question %}
-  <script type="text/javascript" src="/static/js/riskevaluation.js"></script>
-  <script>
-    risk_evaluation_interface();
-  </script>
   {% if riskfactor.notes %}
   <div id="dlg-notes" title="{% trans "Notes" %}">
     <p>{{ riskfactor.notes }}</p>
@@ -22,8 +18,7 @@
   <h1 class="ui-helper-reset ui-widget-header">
     {% trans "Risk Factor Evaluation" %}: <span>{{ riskfactor.description }}</span>
   </h1>
-  <form id="riskevalform"
-        action="/risksevaluation/{{company.id}}/revision/{{document.revision}}/eval/{{riskfactor.id}}/" method="post">
+  <form id="riskevalform">
     {% csrf_token %}
     <div class="ui-helper-reset ui-widget-content">
       <div id="tabs">
@@ -45,6 +40,9 @@
             <a id="show-sugg-no" title="{% trans "Suggestion No" %}"></a>
             {% endif %}
           </div>
+          <input type="hidden" name="revision" id="id_revision" value="{{ document.revision }}"\>
+          <input type="hidden" name="riskfactor" id="id_riskfactor" value="{{ riskfactor.id }}"\>
+          <label for="id_check">{{ form.check.label_tag }}</label>
           {{ form.check }}
           {% if form.check.errors %}
           <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
@@ -54,7 +52,6 @@
           </div>
           {% endfor %}
           {% endif %}
-          <label for="id_check">{{ form.check.label_tag }}</label>
         </div>
         <div id="tabs-2">
           <p>{% trans "Risk Evaluation" %}</p>
@@ -62,12 +59,12 @@
             <table>
               <tr id="{{ form.probability.html_name }}">
                 <td>
-                  {{ form.probability.label_tag }}
+                   {{ form.probability.label_tag }}
                 </td>
                 <td>
                   {{ form.probability }}
                 </td>
-                {% if form.probability.errors %}
+                 {% if form.probability.errors %}
                 <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
                   {% for error in field.errors %}
                   <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
@@ -76,8 +73,8 @@
                 {% endfor %}
                 {% endif %}
               </tr>
-            <tr id="{{ form.seriousness.html_name }}">
-              <td>
+              <tr id="{{ form.seriousness.html_name }}">
+                <td>
                   {{ form.seriousness.label_tag }}
                 </td>
                 <td>
@@ -92,19 +89,16 @@
                 {% endfor %}
                 {% endif %}
               </tr>
-              <tr>
-                <td></td>
-                <td><input type="submit" value="{% trans "Save" %}"/></td>
-              </tr>
             </table>
           </fieldset>
-      </div>
-      <div id="tabs-3">
-        <p>{{riskfactor.measure}}</p>
+        </div>
+        <div id="tabs-3">
+          <p>{{riskfactor.measure}}</p>
+        </div>
       </div>
     </div>
   </form>
-  </div>
+</div>
 {% else %}
   <p>{% trans "No risk factor question found" %}</p>
   {% if riskfactor.notes %}

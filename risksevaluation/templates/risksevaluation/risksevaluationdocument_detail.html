@@ -3,9 +3,10 @@
 {% load i18n %}
 
 {% block extra_head %}
+<script type="text/javascript" charset="utf-8" src="/static/js/jquery.cookie.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/jquery.form.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/js/jstree.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/js/jstree.checkbox.js"></script>
-<!-- <script type="text/javascript" charset="utf-8" src="/static/js/jstree.hotkeys.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/static/js/jstree.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/js/jstree.themes.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/js/jstree.xml.js"></script>
@@ -17,8 +18,8 @@
 <script type="text/javascript" charset="utf-8" src="/static/js/jstree.json.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/js/jstree.state.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/js/jstree.unique.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/riskevaluation.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/js/riskfactor.tree.js"></script>
-<script type="text/javascript" charset="utf-8" src="/static/js/jquery.form.js"></script>
 {% endblock %}
 
 {% block title %}{% trans "Risks Evaluation Documents" %}{% endblock %}
@@ -33,6 +34,11 @@
     $(document).ready( function () {
     buildevaldocument();
     } );
+    jQuery(document).ajaxSend(function(event, xhr, settings) {
+    if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+    xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+    }
+    });
   </script>
 <div class="ui-helper-reset ui-widget">
   <h1 class="ui-helper-reset ui-widget-header">{% trans "Risks Evaluation Document" %}: {{ red.title }}</h1>
