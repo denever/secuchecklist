@@ -132,9 +132,9 @@ function buildevaldocument(){
 
                              }).bind("select_node.jstree", function (event, data){
                                          $.get("eval/" + data.rslt.obj.data("id"),
-                                               function(data){
+                                               function(data, success, xhr){
                                                    $("#riskfactorevaluation").html(data);
-                                               }
-                                              );
+                                                   risk_evaluation_interface();
+                                               });
                                          });
 }
