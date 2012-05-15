@@ -57,8 +57,8 @@ class RiskFactorEvaluation(models.Model):
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
     check = models.BooleanField(_('Checked'))
-    probability = models.PositiveSmallIntegerField(_('Probability'), choices=probability)
-    seriousness = models.PositiveSmallIntegerField(_('Seriousness'), choices=seriousness)
+    probability = models.PositiveSmallIntegerField(_('Probability'), choices=probability, blank=True, null=True)
+    seriousness = models.PositiveSmallIntegerField(_('Seriousness'), choices=seriousness, blank=True, null=True)
 
     class Meta:
         ordering = ['record_date']
