@@ -42,11 +42,11 @@
           </div>
           <input type="hidden" name="revision" id="id_revision" value="{{ document.revision }}"\>
           <input type="hidden" name="riskfactor" id="id_riskfactor" value="{{ riskfactor.id }}"\>
-          <label for="id_check">{{ form.check.label_tag }}</label>
-          {{ form.check }}
-          {% if form.check.errors %}
+          <label for="id_status">{{ form.status.label_tag }}</label>
+          {{ form.status }}
+          {% if form.status.errors %}
           <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-            {% for error in form.check.errors %}
+            {% for error in form.status.errors %}
             <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
             {{ error }}
           </div>
