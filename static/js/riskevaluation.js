@@ -52,27 +52,25 @@ function risk_evaluation_interface() {
                                              $("#dlg-sugg-no").dialog('open');
                                          });
 
-    $( "#id_check" ).button().change(
+    $( "#id_status" ).change(
         function(){
-            if($("#id_check").is(':checked')){
-                var postdata={
-                    'revision_id': $('#id_revision').val(),
-                    'riskfactor_id': $('#id_riskfactor').val(),
-                };
-                $.post('check', postdata);
+            if($("#id_status").val() == 2){
                 $( "#tabs" ).tabs("enable", 1);
+                $( "#tabs" ).tabs("enable", 2);
             }else{
                 $( "#tabs" ).tabs("disable", 1);
-                var postdata={
-                    'revision_id': $('#id_revision').val(),
-                    'riskfactor_id': $('#id_riskfactor').val(),
-                };
-                $.post('uncheck', postdata);
+                $( "#tabs" ).tabs("disable", 2);
             }
+            var postdata={
+                'revision_id': $('#id_revision').val(),
+                'riskfactor_id': $('#id_riskfactor').val(),
+                'status': $('#id_status').val(),
+            };
+            $.post('status', postdata);
         }
     );
 
-    $( "#id_measure_taken" ).button().change(
+    $( "#id_measure_taken" ).change(
         function(){
             if($("#id_measure_taken").is(':checked')){
                 var postdata={
@@ -112,8 +110,12 @@ function risk_evaluation_interface() {
         }
     );
 
-    if($("#id_check").is(':checked')){
+    if($("#id_status").val() == 2){
         $( "#tabs" ).tabs("enable", 1);
+        $( "#tabs" ).tabs("enable", 2);
+    }else{
+        $( "#tabs" ).tabs("disable", 1);
+        $( "#tabs" ).tabs("disable", 2);
     }
 
     $( "#dlg-notes" ).dialog({ autoOpen: false });

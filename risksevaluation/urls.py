@@ -9,7 +9,7 @@ from risksevaluation.views import RisksEvaluationDocumentDeleteView
 from risksevaluation.views import RisksEvaluationDocumentListView
 from risksevaluation.views import AllRisksEvaluationDocumentView
 from risksevaluation.views import RiskFactorEvaluationView
-from risksevaluation.views import UncheckRiskFactorView, CheckRiskFactorView
+from risksevaluation.views import EvalRiskFactorStatusView
 from risksevaluation.views import EvalRiskFactorProbabilityView, EvalRiskFactorSeriousnessView
 from risksevaluation.views import UntakeMeasureView, TakeMeasureView
 # red stands for Risks Evaluation Document
@@ -43,13 +43,9 @@ urlpatterns = patterns('risksevaluation.views',
                            login_required(RiskFactorEvaluationView.as_view()),
                            name = 'eval'),
 
-                       url(r'^(?P<company>\d+)/revision/(?P<revision>\d+)/uncheck$',
-                           login_required(csrf_exempt(UncheckRiskFactorView.as_view())),
-                           name = 'uncheck'),
-
-                       url(r'^(?P<company>\d+)/revision/(?P<revision>\d+)/check$',
-                           login_required(csrf_exempt(CheckRiskFactorView.as_view())),
-                           name = 'check'),
+                       url(r'^(?P<company>\d+)/revision/(?P<revision>\d+)/status$',
+                           login_required(csrf_exempt(EvalRiskFactorStatusView.as_view())),
+                           name = 'status'),
 
                        url(r'^(?P<company>\d+)/revision/(?P<revision>\d+)/probeval$',
                            login_required(csrf_exempt(EvalRiskFactorProbabilityView.as_view())),

@@ -137,7 +137,7 @@ class RiskFactorEvaluationView(SingleObjectTemplateResponseMixin, ModelFormMixin
             self.object = None
         return super(RiskFactorEvaluationView, self).post(request, *args, **kwargs)
 
-class CheckRiskFactorView(View):
+class EvalRiskFactorStatusView(View):
     def get(self, request, *args, **kwargs):
         pass
 
@@ -149,32 +149,17 @@ class CheckRiskFactorView(View):
         try:
             rfe = RiskFactorEvaluation.objects.get(document=document,
                                                    risk_factor=riskfactor)
-            rfe.check = True
+            rfe.status = self.request.POST['status']
             rfe.lastupdate_by = self.request.user.get_profile()
             rfe.save()
         except:
-            rfe = RiskFactorEvaluation(document=document, risk_factor=riskfactor, check=True)
+            rfe = RiskFactorEvaluation(document=document,
+                                       risk_factor=riskfactor,
+                                       status=self.request.POST['status'])
             rfe.record_by = self.request.user.get_profile()
             rfe.lastupdate_by = self.request.user.get_profile()
             rfe.save()
         return HttpResponse('Ok')
-
-class UncheckRiskFactorView(View):
-    def get(self, request, *args, **kwargs):
-        pass
-
-    def post(self, request, *args, **kwargs):
-        document = get_object_or_404(RisksEvaluationDocument,
-                                     revision=self.request.POST['revision_id'])
-        riskfactor = get_object_or_404(RiskFactor,
-                                       id=self.request.POST['riskfactor_id'])
-
-        rfe = RiskFactorEvaluation.objects.get(document=document,
-                                               risk_factor=riskfactor)
-        rfe.check = False
-        rfe.save()
-        return HttpResponse('Ok')
-
 
 class EvalRiskFactorProbabilityView(View):
     def get(self, request, *args, **kwargs):
@@ -189,6 +174,7 @@ class EvalRiskFactorProbabilityView(View):
         rfe = RiskFactorEvaluation.objects.get(document=document,
                                                risk_factor=riskfactor)
         rfe.probability = self.request.POST['probability']
+        rfe.lastupdate_by = self.request.user.get_profile()
         rfe.save()
         return HttpResponse('Ok')
 
@@ -205,6 +191,7 @@ class EvalRiskFactorSeriousnessView(View):
         rfe = RiskFactorEvaluation.objects.get(document=document,
                                                risk_factor=riskfactor)
         rfe.seriousness = self.request.POST['seriousness']
+        rfe.lastupdate_by = self.request.user.get_profile()
         rfe.save()
         return HttpResponse('Ok')
 
@@ -243,5 +230,6 @@ class UntakeMeasureView(View):
         rfe = RiskFactorEvaluation.objects.get(document=document,
                                                risk_factor=riskfactor)
         rfe.measure_taken = False
+        rfe.lastupdate_by = self.request.user.get_profile()
         rfe.save()
         return HttpResponse('Ok')
