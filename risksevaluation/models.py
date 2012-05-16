@@ -44,6 +44,13 @@ seriousness = (
     (4, _('Severe')),
     )
 
+statuses = (
+    (1, _('Not Checked')),
+    (2, _('Checked')),
+    (3, _('Suspended')),
+    (4, _('Not applicable')),
+    )
+
 class RiskFactorEvaluation(models.Model):
     document = models.ForeignKey(RisksEvaluationDocument)
     risk_factor = models.ForeignKey('riskfactors.RiskFactor')
@@ -56,9 +63,11 @@ class RiskFactorEvaluation(models.Model):
                                       verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
-    check = models.BooleanField(_('Checked'))
+    status = models.PositiveSmallIntegerField(_('Status'), choices=statuses)
+
     probability = models.PositiveSmallIntegerField(_('Probability'), choices=probability, blank=True, null=True)
     seriousness = models.PositiveSmallIntegerField(_('Seriousness'), choices=seriousness, blank=True, null=True)
+    measure_taken = models.BooleanField(_('Measure Taken'))
 
     class Meta:
         ordering = ['record_date']
