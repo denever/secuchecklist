@@ -188,8 +188,6 @@ class EvalRiskFactorProbabilityView(View):
 
         rfe = RiskFactorEvaluation.objects.get(document=document,
                                                risk_factor=riskfactor)
-        print rfe
-        print self.request.POST['probability']
         rfe.probability = self.request.POST['probability']
         rfe.save()
         return HttpResponse('Ok')
@@ -204,11 +202,46 @@ class EvalRiskFactorSeriousnessView(View):
         riskfactor = get_object_or_404(RiskFactor,
                                        id=self.request.POST['riskfactor_id'])
 
-        print document.revision, riskfactor.id
         rfe = RiskFactorEvaluation.objects.get(document=document,
                                                risk_factor=riskfactor)
-        print rfe
-        print self.request.POST['seriousness']
         rfe.seriousness = self.request.POST['seriousness']
+        rfe.save()
+        return HttpResponse('Ok')
+
+class TakeMeasureView(View):
+    def get(self, request, *args, **kwargs):
+        pass
+
+    def post(self, request, *args, **kwargs):
+        document = get_object_or_404(RisksEvaluationDocument,
+                                     revision=self.request.POST['revision_id'])
+        riskfactor = get_object_or_404(RiskFactor,
+                                       id=self.request.POST['riskfactor_id'] )
+        try:
+            rfe = RiskFactorEvaluation.objects.get(document=document,
+                                                   risk_factor=riskfactor)
+            rfe.measure_taken = True
+            rfe.lastupdate_by = self.request.user.get_profile()
+            rfe.save()
+        except:
+            rfe = RiskFactorEvaluation(document=document, risk_factor=riskfactor, measure_taken=True)
+            rfe.record_by = self.request.user.get_profile()
+            rfe.lastupdate_by = self.request.user.get_profile()
+            rfe.save()
+        return HttpResponse('Ok')
+
+class UntakeMeasureView(View):
+    def get(self, request, *args, **kwargs):
+        pass
+
+    def post(self, request, *args, **kwargs):
+        document = get_object_or_404(RisksEvaluationDocument,
+                                     revision=self.request.POST['revision_id'])
+        riskfactor = get_object_or_404(RiskFactor,
+                                       id=self.request.POST['riskfactor_id'])
+
+        rfe = RiskFactorEvaluation.objects.get(document=document,
+                                               risk_factor=riskfactor)
+        rfe.measure_taken = False
         rfe.save()
         return HttpResponse('Ok')
