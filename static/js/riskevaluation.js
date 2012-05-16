@@ -72,6 +72,24 @@ function risk_evaluation_interface() {
         }
     );
 
+    $( "#id_measure_taken" ).button().change(
+        function(){
+            if($("#id_measure_taken").is(':checked')){
+                var postdata={
+                    'revision_id': $('#id_revision').val(),
+                    'riskfactor_id': $('#id_riskfactor').val(),
+                };
+                $.post('take', postdata);
+            }else{
+                var postdata={
+                    'revision_id': $('#id_revision').val(),
+                    'riskfactor_id': $('#id_riskfactor').val(),
+                };
+                $.post('untake', postdata);
+            }
+        }
+    );
+
     $( "#id_probability" ).change(
         function(){
             var postdata={
