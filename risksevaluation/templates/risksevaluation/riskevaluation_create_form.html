@@ -94,6 +94,16 @@
         </div>
         <div id="tabs-3">
           <p>{{riskfactor.measure}}</p>
+	  <label for="id_measure_taken">{{ form.measure_taken.label_tag }}</label>
+          {{ form.measure_taken }}
+          {% if form.measure_taken.errors %}
+          <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+            {% for error in form.measure_taken.errors %}
+            <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+            {{ error }}
+          </div>
+          {% endfor %}
+          {% endif %}
         </div>
       </div>
     </div>
