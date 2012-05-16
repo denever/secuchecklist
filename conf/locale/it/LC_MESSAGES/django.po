@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 20:07+0200\n"
+"POT-Creation-Date: 2012-05-16 12:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -576,7 +576,7 @@ msgstr "Ultima modifica di"
 
 #: customers/models.py:167 customers/models.py:205 customers/models.py:248
 #: customers/models.py:283 risksevaluation/models.py:57
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:50
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:56
 msgid "Recorded on"
 msgstr "Registato il"
 
@@ -782,23 +782,12 @@ msgid "Equipments"
 msgstr "Attrezzature"
 
 #: customers/templates/customers/base-company.html:43
-#: risksevaluation/models.py:30
-#: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:4
-#: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:5
-#: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:12
-#: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:17
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:24
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:25
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:9
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:10
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:40
-msgid "Risks Evaluation Documents"
-msgstr "Lista DVR"
+msgid "RED Revisions"
+msgstr "Revisioni DVR"
 
 #: customers/templates/customers/base-company.html:48
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:13
-msgid "New Risks Evaluation Document"
-msgstr "Nuovo DVR"
+msgid "New RED Revision"
+msgstr "Nuova Revisione"
 
 #: customers/templates/customers/base-customers.html:22
 msgid "Add Customer Company"
@@ -842,7 +831,6 @@ msgstr "Registrazione Figure prevenzione"
 #: customers/templates/customers/customercompany_create_form.html:35
 #: customers/templates/customers/department_create_form.html:49
 #: customers/templates/customers/equipment_create_form.html:50
-#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:29
 msgid "Save"
 msgstr "Registra"
 
@@ -900,7 +888,7 @@ msgstr "Modifica Figura prevenzione"
 #: customers/templates/customers/customercompany_update_form.html:36
 #: customers/templates/customers/department_update_form.html:49
 #: customers/templates/customers/equipment_update_form.html:48
-#: customers/templates/customers/staff_update_form.html:49
+#: customers/templates/customers/staff_update_form.html:51
 #: customers/templates/customers/workingenvironment_create_form.html:56
 #: riskfactors/templates/riskfactors/riskfactor_create_form.html:37
 #: riskfactors/templates/riskfactors/riskfactor_update_form.html:37
@@ -918,7 +906,7 @@ msgstr "Aggiungi Azienda"
 #: customers/templates/customers/customercompany_archive_year.html:21
 #: customers/templates/customers/customercompany_list.html:53
 #: customers/templates/customers/staff_detail.html:24
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:46
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:52
 msgid "Company"
 msgstr "Azienda"
 
@@ -1068,8 +1056,8 @@ msgstr "con mansione omogenea"
 msgid "from company"
 msgstr "Azienda"
 
-#: customers/templates/customers/staff_create_form.html:19
-#: customers/templates/customers/staff_create_form.html:23
+#: customers/templates/customers/staff_create_form.html:20
+#: customers/templates/customers/staff_create_form.html:24
 msgid "Staff Registration"
 msgstr "Registrazione Personale"
 
@@ -1085,8 +1073,8 @@ msgstr "Nazionalità"
 msgid "Add staff"
 msgstr "Aggiungi personale"
 
-#: customers/templates/customers/staff_update_form.html:20
-#: customers/templates/customers/staff_update_form.html:24
+#: customers/templates/customers/staff_update_form.html:22
+#: customers/templates/customers/staff_update_form.html:26
 msgid "Staff Edit"
 msgstr "Modifica Personale"
 
@@ -1106,12 +1094,14 @@ msgstr "Descrizione generale dell'ambiente di lavoro"
 #: riskfactors/models.py:9
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:45
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:35
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:26
 msgid "Question"
 msgstr "Domanda"
 
 #: riskfactors/models.py:10
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:49
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:39
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:28
 msgid "Measure"
 msgstr "Misura"
 
@@ -1122,28 +1112,33 @@ msgstr "Suggerimento si"
 #: riskfactors/models.py:12
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:57
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:47
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:62
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:14
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:40
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:68
 msgid "Suggestion No"
 msgstr "Suggerimento No"
 
 #: riskfactors/models.py:13
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:61
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:51
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:66
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:4
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:34
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:120
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:72
 msgid "Notes"
 msgstr "Note"
 
 #: riskfactors/models.py:14
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:65
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:55
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:70
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:76
 msgid "Link"
 msgstr ""
 
 #: riskfactors/models.py:15
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:69
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:59
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:74
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:80
 msgid "Filename"
 msgstr ""
 
@@ -1204,13 +1199,15 @@ msgstr "Modifica fattore di rischio"
 
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:53
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:43
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:58
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:9
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:37
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:64
 msgid "Suggestion Yes"
 msgstr "Suggerimento Si"
 
 #: riskfactors/templates/riskfactors/riskfactor_detail.html:73
 #: riskfactors/templates/riskfactors/riskfactor_edit.html:64
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:78
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:84
 msgid "Parent"
 msgstr ""
 
@@ -1224,13 +1221,13 @@ msgid "Add a new risk factor"
 msgstr "Aggiungi un nuovo fattore di rischio"
 
 #: risksevaluation/models.py:9
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:42
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:48
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:45
 msgid "Revision"
 msgstr "Revisione"
 
 #: risksevaluation/models.py:10
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:54
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:60
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:47
 msgid "Revision description"
 msgstr "Commento Revisione"
@@ -1254,9 +1251,22 @@ msgid "Company Owner check"
 msgstr "Verifica Datore di Lavoro"
 
 #: risksevaluation/models.py:29
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:38
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:44
 msgid "Risks Evaluation Document"
 msgstr "DVR"
+
+#: risksevaluation/models.py:30
+#: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:4
+#: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:5
+#: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:12
+#: risksevaluation/templates/risksevaluation/base-risksevaluationdocument.html:17
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:25
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:26
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:9
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:10
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:40
+msgid "Risks Evaluation Documents"
+msgstr "Lista DVR"
 
 #: risksevaluation/models.py:34
 msgid "Low"
@@ -1302,18 +1312,34 @@ msgstr "Probabilità"
 msgid "Seriousness"
 msgstr "Gravità"
 
-#: risksevaluation/models.py:65
-#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:3
+#: risksevaluation/models.py:62
+msgid "Measure Taken"
+msgstr "Misura Presa"
+
+#: risksevaluation/models.py:66
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:19
 msgid "Risk Factor Evaluation"
 msgstr "Valutazione Fattore Di Rischio"
 
-#: risksevaluation/models.py:66
+#: risksevaluation/models.py:67
 msgid "Risk Factor Evaluations"
 msgstr "Valutazioni Fattore Di Rischio"
 
-#: risksevaluation/models.py:70
+#: risksevaluation/models.py:71
 msgid "Valued"
 msgstr "Valutato"
+
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:27
+msgid "Evaluation"
+msgstr "Valutazione Fattore Di Rischio"
+
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:57
+msgid "Risk Evaluation"
+msgstr "Valutazione Fattore Di Rischio"
+
+#: risksevaluation/templates/risksevaluation/riskevaluation_create_form.html:113
+msgid "No risk factor question found"
+msgstr ""
 
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_confirm_delete.html:10
 msgid "for company"
@@ -1328,17 +1354,21 @@ msgstr "Crea DVR"
 msgid "Create"
 msgstr "Creato"
 
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:28
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:29
 msgid "Edit Risks Evaluation Document"
 msgstr "Modifica DVR"
 
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:83
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:89
 msgid "Reds"
 msgstr "Revisioni DVR"
 
-#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:92
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_detail.html:98
 msgid "Risks Factors"
 msgstr "Fattori di Rischio"
+
+#: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:13
+msgid "New Risks Evaluation Document"
+msgstr "Nuovo DVR"
 
 #: risksevaluation/templates/risksevaluation/risksevaluationdocument_list.html:46
 msgid "Record on"
