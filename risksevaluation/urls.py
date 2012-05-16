@@ -11,6 +11,7 @@ from risksevaluation.views import AllRisksEvaluationDocumentView
 from risksevaluation.views import RiskFactorEvaluationView
 from risksevaluation.views import UncheckRiskFactorView, CheckRiskFactorView
 from risksevaluation.views import EvalRiskFactorProbabilityView, EvalRiskFactorSeriousnessView
+from risksevaluation.views import UntakeMeasureView, TakeMeasureView
 # red stands for Risks Evaluation Document
 
 urlpatterns = patterns('risksevaluation.views',
@@ -57,4 +58,12 @@ urlpatterns = patterns('risksevaluation.views',
                        url(r'^(?P<company>\d+)/revision/(?P<revision>\d+)/sereval$',
                            login_required(csrf_exempt(EvalRiskFactorSeriousnessView.as_view())),
                            name = 'eval-seriousness'),
+
+                       url(r'^(?P<company>\d+)/revision/(?P<revision>\d+)/take$',
+                           login_required(csrf_exempt(TakeMeasureView.as_view())),
+                           name = 'take'),
+
+                       url(r'^(?P<company>\d+)/revision/(?P<revision>\d+)/untake$',
+                           login_required(csrf_exempt(UntakeMeasureView.as_view())),
+                           name = 'untake'),
                        )
