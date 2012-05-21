@@ -33,6 +33,11 @@
   "aoColumns": [/* Azienda */ null,
   /* Settore ATECO 2007 */ null,
   /* Data registrazione */ null,
+  /* Status */ { "bSearchable": false,
+  "bVisible": true,
+  "bSortable": false,
+  "mDataProp": null,
+  },
   /* Azioni */ { "bSearchable": false,
   "bVisible": true,
   "bSortable": false,
@@ -53,6 +58,7 @@
           <th>{% trans "Company" %}</th>
           <th>{% trans "ATECO Sector 2007" %}</th>
           <th>{% trans "Record date" %}</th>
+          <th>{% trans "Status" %}</th>
           <th>{% trans "Actions" %}</th>
         </tr>
       </thead>
@@ -68,6 +74,15 @@
           <td>
             {{ cc.record_date }}
           </td>
+          {% if cc.newrevision_needed %}
+          <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+            <a href="{% url red-create cc.id %}">
+	      {% trans "There are changes since last revision" %}
+            </a>
+          </td>
+          {% else %}
+          <td>{% trans "No changes since last revision" %}</td>
+          {% endif %}
           <td>
             <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}"></a>
             <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url company-delete cc.id %}"></a>
