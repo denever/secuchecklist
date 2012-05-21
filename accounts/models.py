@@ -12,6 +12,7 @@ from django.dispatch import receiver
 from django.utils.encoding import force_unicode
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+import customers.models as customers_models
 
 LOGIN, LOGOUT, CREATE, EDIT, DELETE = range(5)
 
@@ -53,7 +54,7 @@ class Activity(models.Model):
     def get_content_type_name(self):
         return self.content_type.model_class()._meta.verbose_name
 
-@receiver(post_save)
+@receiver(post_save, sender=customers_models)
 def post_save_cb(sender, **kwargs):
     instance = kwargs['instance']
     if hasattr(instance, 'record_by'):
@@ -64,7 +65,7 @@ def post_save_cb(sender, **kwargs):
                      )
         a.save()
 
-@receiver(post_delete)
+@receiver(post_delete, sender=customers_models)
 def post_delete_cb(sender, **kwargs):
     instance = kwargs['instance']
     if hasattr(instance, 'record_by'):
