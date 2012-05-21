@@ -166,6 +166,8 @@ class CustomerCompany(models.Model):
                                     verbose_name=_('Last update by'))
     record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
+    newrevision_needed = models.BooleanField(_('New Revision Needed'), default=True)
+
     # def departments(self):
     #     return list(set([staff.department for staff in self.staff_set.all()]))
 
