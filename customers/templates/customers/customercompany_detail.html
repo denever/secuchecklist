@@ -126,6 +126,17 @@
         <td class="fieldname">{% trans "Numbers of workers" %}</td>
         <td>{{ company.workers_count }}</td>
       </tr>
+      <tr class="odd">
+        <td class="fieldname">{% trans "New Revision Needed" %}</td>
+        {% if company.newrevision_needed %}
+        <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+          <a href="{% url red-create company.id %}">{% trans "A new revision is needed there are changes since last revision" %}
+            </a>
+        </td>
+        {% else %}
+        <td>{% trans "No changes since last revision" %}</td>
+        {% endif %}
+      </tr>
     </table>
   </div>
 </div>
