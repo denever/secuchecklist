@@ -3,10 +3,12 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 
+from reversion.models import Revision
+
 # Create your models here.
 class RisksEvaluationDocument(models.Model):
     company = models.ForeignKey('customers.CustomerCompany')
-    revision = models.AutoField(_('Revision'), primary_key=True)
+    revision = models.OneToOneField(Revision)
     revision_description = models.TextField(_('Revision description'))
     record_date = models.DateTimeField(_('Revision Date'), auto_now_add=True)
 
@@ -81,5 +83,4 @@ class RiskFactorEvaluation(models.Model):
 
 import reversion
 
-reversion.register(RisksEvaluationDocument)
 reversion.register(RiskFactorEvaluation)
