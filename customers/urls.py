@@ -35,6 +35,8 @@ from customers.views import EquipmentDetailView
 from customers.views import EquipmentUpdateView
 from customers.views import EquipmentDeleteView
 
+from customers.views import DiffView
+
 urlpatterns = patterns('customers.views',
                        url(r'^$', login_required(CustomerCompanyListView.as_view()),
                            name='customers'),
@@ -166,6 +168,11 @@ urlpatterns = patterns('customers.views',
                        url(r'^(?P<company>\d+)/delete_equipment/(?P<pk>\d+)/$',
                            login_required(EquipmentDeleteView.as_view()),
                            name = 'equipment-delete'
+                           ),
+
+                       url(r'(?P<company>\d+)/diff_view/$',
+                           login_required(DiffView.as_view()),
+                           name = 'diff-view'
                            ),
 
                        )
