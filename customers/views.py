@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.views.generic import DetailView
 from django.views.generic import ListView
+from django.views.generic import TemplateView
 from django.views.generic import YearArchiveView
 from django.views.generic import MonthArchiveView
 from django.views.generic import CreateView
@@ -374,4 +375,27 @@ class EquipmentDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(EquipmentDetailView, self).get_context_data(**kwargs)
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
+
+import reversion
+
+class DiffView(TemplateView):
+    template_name = 'customers/diff_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DiffView, self).get_context_data(**kwargs)
+        cc = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        version_list = reversion.get_for_object(cc)
+        last_rev = version_list[0]
+        diff_list = dict()
+        for field in cc._meta.fields:
+            if last_rev.field_dict[field.name] != getattr(cc, field.attname):
+                if isinstance(field, models.ForeignKey):
+                    last_rev_val = field.related.parent_model.objects.get(id=last_rev.field_dict[field.name])
+                    diff_list[field.verbose_name] = unicode(last_rev_val) + ' -> ' + unicode(getattr(cc, field.name))
+                else:
+                    diff_list[field.verbose_name] = unicode(last_rev.field_dict[field.name]) + ' -> ' + unicode(getattr(cc, field.attname))
+        context['diff_list'] = diff_list
+        context['company'] = cc
         return context
