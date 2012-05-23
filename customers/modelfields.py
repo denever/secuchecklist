@@ -12,11 +12,32 @@ class Address(object):
         self.province = province
 
     def __unicode__(self):
-        return "%s, N %s, %s, %s, %s" % (self.street,
-                                         self.number,
-                                         self.postcode,
-                                         self.town,
-                                         self.province)
+        return "%s, %s, %s, %s, %s" % (self.street,
+                                       self.number,
+                                       self.postcode,
+                                       self.town,
+                                       self.province)
+
+    def __repr__(self):
+        return self.__unicode__()
+
+    def __eq__(self, other):
+        print self
+        print other
+
+        if (isinstance(other, Address)):
+            eq = self.street == other.street
+            eq = eq and self.number == other.number
+            eq = eq and self.postcode == other.postcode
+            eq = eq and self.town == other.town
+            eq = eq and self.province == other.province
+            return eq
+        else:
+            return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def decompress(self):
         return [self.street,
                 self.number,
