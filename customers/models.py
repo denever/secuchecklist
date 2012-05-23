@@ -183,6 +183,15 @@ class CustomerCompany(models.Model):
     def workers_count(self):
         return self.staff_set.filter(workers_count=True).count()
 
+    def save_revision(self):
+        # save a revision for
+        objects = [self]
+        objects.extend(self.staff_set.all())
+        objects.extend(self.department_set.all())
+        objects.extend(self.companysecurityduty_set.all())
+        revision = reversion.revision.save_revision(objects=objects)
+        return revision
+    
     def __unicode__(self):
         return self.firm
 
@@ -325,7 +334,7 @@ class DPI(models.Model):
 
 import reversion
 
-reversion.register(CustomerCompany)
+reversion.register(CustomerCompany, follow=['staff_set', 'companysecurityduty_set', 'department_set'])
 reversion.register(Staff)
 reversion.register(Equipment)
 reversion.register(Department)
