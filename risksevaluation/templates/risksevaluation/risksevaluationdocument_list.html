@@ -56,7 +56,7 @@
         {% for red in reds %}
         <tr>
           <td>
-            <a href="{% url red-detail company.id red.revision %}">{{ red.revision }}</a>
+            <a href="{% url red-detail company.id red.revision.id %}">{{ red.revision.id }}</a>
           </td>
           <td>
             {{ red.record_date }}
@@ -77,8 +77,8 @@
             {{ red.companyowner_check }}
           </td>
           <td>
-            <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.revision %}">
-              <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url red-delete company.id red.revision %}"></a>
+            <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.revision.id %}">
+              <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url red-delete company.id red.revision.id %}"></a>
           </td>
         </tr>
         {% endfor %}
