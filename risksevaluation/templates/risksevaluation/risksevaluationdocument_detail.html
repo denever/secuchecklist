@@ -26,7 +26,7 @@
 {% block title2 %}{% trans "Risks Evaluation Documents" %}{% endblock %}
 
 {% block content-top %}
-  <a title="{% trans "Edit Risks Evaluation Document" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.revision %}"></a>
+  <a title="{% trans "Edit Risks Evaluation Document" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url red-edit company.id red.revision.id %}"></a>
 {% endblock %}
 
 {% block content %}
@@ -46,7 +46,7 @@
     <table class="detail">
       <tr class="even">
         <td class="fieldname">{% trans "Revision" %}</td>
-        <td> {{ red.revision }}</td>
+        <td> {{ red.revision.id }}</td>
       </tr>
       <tr class="odd">
         <td class="fieldname">{% trans "Company" %}</td>
