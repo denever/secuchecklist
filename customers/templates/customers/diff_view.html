@@ -1,0 +1,41 @@
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+<link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
+<script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+{% endblock %}
+
+{% block title %}{% trans "Customer Companies" %}{% endblock %}
+{% block title2 %}{% trans "Customer Companies" %}{% endblock %}
+
+{% block submenu %}
+      <ul class="menu">
+        {% for year in years %}
+        <li>
+          <a href="{% url company-year year %}">{{ year }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+{% endblock %}
+
+{% block content-top %}
+      <a title="{% trans "Add a new customer company" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url company-create %}"></a>
+{% endblock %}
+
+{% block content %}
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Difference Details for" %}: {{ company.firm }}</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <table class="detail">
+      {% for fieldname, value in diff_list.items %}
+      <tr class="{% cycle 'even' 'odd' %}">
+        <td class="fieldname">{% trans fieldname %}</td>
+        <td>{{ value }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}
