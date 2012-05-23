@@ -22,9 +22,6 @@ class Address(object):
         return self.__unicode__()
 
     def __eq__(self, other):
-        print self
-        print other
-
         if (isinstance(other, Address)):
             eq = self.street == other.street
             eq = eq and self.number == other.number
