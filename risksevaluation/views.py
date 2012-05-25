@@ -38,12 +38,13 @@ class RisksEvaluationDocumentCreateView(CreateView):
     context_object_name = 'risksevaluationdocument'
 
     def form_valid(self, form):
-        cc = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         self.risksevaluationdocument = form.save(commit=False)
         self.risksevaluationdocument.record_by = self.request.user.get_profile()
         self.risksevaluationdocument.lastupdate_by = self.request.user.get_profile()
-        self.risksevaluationdocument.company = cc
-        self.risksevaluationdocument.revision = cc.save_revision()
+        self.risksevaluationdocument.company = get_object_or_404(CustomerCompany,
+                                                                 id=self.kwargs['company'])
+        self.risksevaluationdocument.revision = get_object_or_404(Revision,
+                                                                  id=self.kwargs['change'])
         self.success_url = reverse('red-list', args=self.kwargs['company'])
         return super(RisksEvaluationDocumentCreateView, self).form_valid(form)
 
