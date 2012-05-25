@@ -1,0 +1,75 @@
+{% extends "customers/base-customers.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+<link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
+<script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+{% endblock %}
+
+{% block title %}{% trans "Changes to company" %} {{ company }}{% endblock %}
+{% block title2 %}{% trans "Changes to company" %} {{ company }}{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+  $(document).ready( function () {
+  $('#changes).dataTable({
+  "bJQueryUI": true,
+  "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
+  "aoColumns": [
+  /* Change id */ null,
+  /* Author */ null,
+  /* Data */ null,
+  /* Status */ { "bSearchable": false,
+  "bVisible": true,
+  "bSortable": false,
+  "mDataProp": null,
+  },
+  /* Azioni */ { "bSearchable": false,
+  "bVisible": true,
+  "bSortable": false,
+  "mDataProp": null,
+  },
+  ],
+  }
+  );
+  } );
+</script>
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Changes list" %}</h1>
+  <div style="margin: 10px">
+    {% if changes %}
+    <table id="changes" class="display">
+      <thead>
+	<tr>
+	  <th>{% trans "Change id" %}</th>
+	  <th>{% trans "Author" %}</th>
+	  <th>{% trans "Change date" %}</th>
+	  <th>{% trans "Status" %}</th>
+	  <th>{% trans "Actions" %}</th>
+	</tr>
+      </thead>
+      <tbody>
+	{% for change in changes %}
+	<tr>
+	  <td>
+	    <a class="tablelink" href="{% url diff-view change.id %}">{{ change.id }}</a>
+	  </td>
+	  <td>
+	    ({{ change.user }})
+	  </td>
+	  <td>
+	    {{ change.date }}
+	  </td>
+	  <td>
+	    <a title="{% trans "Create a new RED" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url red-create company.id change.id%}"></a>
+	  </td>
+	</tr>
+	{% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>{% trans "No changes are available." %}</p>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
