@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block content-top %}
-      <a title="{% trans "Create a new RED" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url red-create company.id %}"></a>
+      <a title="{% trans "Create a new RED" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url red-create company.id change.id%}"></a>
 {% endblock %}
 
 {% block content %}
