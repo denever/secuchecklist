@@ -15,10 +15,12 @@ from risksevaluation.views import UntakeMeasureView, TakeMeasureView
 # red stands for Risks Evaluation Document
 
 urlpatterns = patterns('risksevaluation.views',
-		       url(r'^$', login_required(AllRisksEvaluationDocumentView.as_view()),
+		       url(r'^$',
+			   login_required(AllRisksEvaluationDocumentView.as_view()),
 			   name='red'),
 
-		       url(r'^company/(?P<company>\d+)$', login_required(RisksEvaluationDocumentListView.as_view()),
+		       url(r'^company/(?P<company>\d+)$',
+			   login_required(RisksEvaluationDocumentListView.as_view()),
 			   name='red-list'),
 
 		       url(r'^(?P<company>\d+)/revision/(?P<pk>\d+)/$',
