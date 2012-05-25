@@ -11,12 +11,12 @@
 
 {% block submenu %}
       <ul class="menu">
-        {% for year in years %}
-        <li>
-          <a href="{% url company-year year %}">{{ year }}
-          </a>
-        </li>
-        {% endfor %}
+	{% for year in years %}
+	<li>
+	  <a href="{% url company-year year %}">{{ year }}
+	  </a>
+	</li>
+	{% endfor %}
       </ul>
 {% endblock %}
 
@@ -54,41 +54,41 @@
     {% if companies %}
     <table id="companies" class="display">
       <thead>
-        <tr>
-          <th>{% trans "Company" %}</th>
-          <th>{% trans "ATECO Sector 2007" %}</th>
-          <th>{% trans "Record date" %}</th>
-          <th>{% trans "Status" %}</th>
-          <th>{% trans "Actions" %}</th>
-        </tr>
+	<tr>
+	  <th>{% trans "Company" %}</th>
+	  <th>{% trans "ATECO Sector 2007" %}</th>
+	  <th>{% trans "Record date" %}</th>
+	  <th>{% trans "Status" %}</th>
+	  <th>{% trans "Actions" %}</th>
+	</tr>
       </thead>
       <tbody>
-        {% for cc in companies %}
-        <tr>
-          <td>
-            <a class="tablelink" href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
-          </td>
-          <td>
-            ({{ cc.ateco_sector }})
-          </td>
-          <td>
-            {{ cc.record_date }}
-          </td>
-          {% if cc.newrevision_needed %}
-          <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-            <a href="{% url diff-view cc.id %}">
-	      {% trans "There are changes since last revision" %}
-            </a>
-          </td>
-          {% else %}
-          <td>{% trans "No changes since last revision" %}</td>
-          {% endif %}
-          <td>
-            <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}"></a>
-            <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url company-delete cc.id %}"></a>
-          </td>
-        </tr>
-        {% endfor %}
+	{% for cc in companies %}
+	<tr>
+	  <td>
+	    <a class="tablelink" href="{% url company-detail cc.id %}">{{ cc.firm }}</a>
+	  </td>
+	  <td>
+	    ({{ cc.ateco_sector }})
+	  </td>
+	  <td>
+	    {{ cc.record_date }}
+	  </td>
+	  {% if cc.newrevision_needed %}
+	  <td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+	    <a href="{% url changes-list cc.id %}">
+	     {% trans "There are changes since last revision" %}
+	    </a>
+	  </td>
+	  {% else %}
+	  <td>{% trans "No changes since last revision" %}</td>
+	  {% endif %}
+	  <td>
+	    <a title="{% trans "Edit" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil" href="{% url company-edit cc.id %}"></a>
+	    <a title="{% trans "Delete" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-trash" href="{% url company-delete cc.id %}"></a>
+	  </td>
+	</tr>
+	{% endfor %}
       </tbody>
     </table>
     {% else %}
