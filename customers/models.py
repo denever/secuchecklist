@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
 
 from customers.modelfields import AddressField
+import reversion
 
 # Create your models here.
 
@@ -191,7 +192,7 @@ class CustomerCompany(models.Model):
         objects.extend(self.companysecurityduty_set.all())
         revision = reversion.revision.save_revision(objects=objects)
         return revision
-    
+
     def __unicode__(self):
         return self.firm
 
@@ -332,10 +333,8 @@ class DPI(models.Model):
         verbose_name = _('Individual Protection Equipment')
         verbose_name_plural = _('Individual Protection Equipments')
 
-import reversion
-
 reversion.register(CustomerCompany, follow=['staff_set', 'companysecurityduty_set', 'department_set'])
 reversion.register(Staff)
-reversion.register(Equipment)
 reversion.register(Department)
 reversion.register(CompanySecurityDuty)
+reversion.register(Equipment)
