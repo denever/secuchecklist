@@ -11,12 +11,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/denever/tmp/mess/db/secuchecklist.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+	'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+	'NAME': '/home/denever/tmp/mess/db/secuchecklist.db',                      # Or path to database file if using sqlite3.
+	'USER': '',                      # Not used with sqlite3.
+	'PASSWORD': '',                  # Not used with sqlite3.
+	'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+	'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -102,7 +102,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-#    'reversion.middleware.RevisionMiddleware',
+    'django.middleware.transaction.TransactionMiddleware',
+    'reversion.middleware.RevisionMiddleware',
 )
 
 ROOT_URLCONF = 'secuchecklist.urls'
@@ -141,17 +142,17 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
+	'mail_admins': {
+	    'level': 'ERROR',
+	    'class': 'django.utils.log.AdminEmailHandler'
+	}
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
+	'django.request': {
+	    'handlers': ['mail_admins'],
+	    'level': 'ERROR',
+	    'propagate': True,
+	},
     }
 }
 
