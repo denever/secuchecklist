@@ -10,42 +10,42 @@
   <ul class="menu">
     <li>
       <a href="{% url customers %}">
-        {% trans "Customer companies" %}
+	{% trans "Customer companies" %}
       </a>
     </li>
     <li>
       <a href="{% url company-detail company.id %}">
-        {% trans "Current company" %}
+	{% trans "Current company" %}
       </a>
     </li>
     <li>
       <a href="{% url set-working-env company.id %}">
-        {% trans "Working env" %}
+	{% trans "Working env" %}
       </a>
     </li>
     <li>
       <a href="{% url staff-list company.id %}">
-        {% trans "Staff" %}
+	{% trans "Staff" %}
       </a>
     </li>
     <li>
       <a href="{% url companysecurityduty-list company.id %}">
-        {% trans "Security Duties" %}
+	{% trans "Security Duties" %}
       </a>
     </li>
     <li>
       <a href="{% url equipment-list company.id %}">
-        {% trans "Equipments" %}
+	{% trans "Equipments" %}
       </a>
     </li>
     <li>
       <a href="{% url red-list company.id %}">
-        {% trans "RED Revisions" %}
+	{% trans "RED Revisions" %}
       </a>
     </li>
     <li>
-      <a href="{% url red-create company.id %}">
-        {% trans "New RED Revision" %}
+      <a href="{% url changes-list company.id %}">
+	{% trans "Changes" %}
       </a>
     </li>
   </ul>
