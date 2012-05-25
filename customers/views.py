@@ -393,9 +393,14 @@ class DiffView(TemplateView):
             if last_rev.field_dict[field.name] != getattr(cc, field.attname):
                 if isinstance(field, models.ForeignKey):
                     last_rev_val = field.related.parent_model.objects.get(id=last_rev.field_dict[field.name])
-                    diff_list[field.verbose_name] = unicode(last_rev_val) + ' -> ' + unicode(getattr(cc, field.name))
+                    diff_list[field.verbose_name] = '%s -> %s' % (last_rev_val,
+                                                                  getattr(cc, field.name))
+                elif isinstance(field, models.DateTimeField):
+                    diff_list[field.verbose_name] = '%s -> %s' % (last_rev.field_dict[field.name],
+                                                                  getattr(cc, field.name))
                 else:
-                    diff_list[field.verbose_name] = unicode(last_rev.field_dict[field.name]) + ' -> ' + unicode(getattr(cc, field.attname))
+                    diff_list[field.verbose_name] = '%s -> %s' % (last_rev.field_dict[field.name],
+                                                                  getattr(cc, field.name))
         context['diff_list'] = diff_list
         context['company'] = cc
         return context
