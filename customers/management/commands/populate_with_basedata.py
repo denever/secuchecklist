@@ -16,6 +16,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         duties = [_('Datore di lavoro'),
+                  _('Datore di lavoro con funzioni RSPP'),                  
                   _('RSPP'),
                   _('Dirigente'),
                   _('Preposto'),
