@@ -18,6 +18,8 @@ from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 
+from reversion.models import Revision
+
 from risksevaluation.forms import RisksEvaluationDocumentForm, RiskFactorEvaluationForm
 
 class RisksEvaluationDocumentDetailView(DetailView):
