@@ -10,7 +10,6 @@
 {% block title2 %}{% trans "Risks Evaluation Documents" %}: {{ company.firm }} {% endblock %}
 
 {% block content-top %}
-<a title="{% trans "New Risks Evaluation Document" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url red-create company.id %}"></a>
 {% endblock %}
 {% block content %}
 <script type="text/javascript">
@@ -24,7 +23,7 @@
                                                          /* record_by */ null,
                                                          /* rls_check */ null,
                                                          /* doctor_check */ null,
-                                                         /* owner_check */ null,    
+                                                         /* owner_check */ null,
                                                          /* Azioni */ { "bSearchable": false,
                                                                         "bVisible": true,
                                                                         "bSortable": false,
@@ -48,7 +47,7 @@
           <th>{% trans "Record by" %}</th>
           <th>{% trans "RLS check" %}</th>
           <th>{% trans "Doctor check" %}</th>
-	  <th>{% trans "Company Owner" %}</th>
+          <th>{% trans "Company Owner" %}</th>
           <th>{% trans "Actions" %}</th>
         </tr>
       </thead>
@@ -56,7 +55,7 @@
         {% for red in reds %}
         <tr>
           <td>
-            <a href="{% url red-detail company.id red.revision.id %}">{{ red.revision.id }}</a>
+            <a href="{% url red-detail company.id red.red_revision %}">{{ red.red_revision }}</a>
           </td>
           <td>
             {{ red.record_date }}
