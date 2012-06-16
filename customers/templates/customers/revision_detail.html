@@ -1,0 +1,75 @@
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+{% block title %}{% trans "Revision detail" %}: {{ revision.id }} {{ company.firm }} {% endblock %}
+
+{% block extra_head %}
+<link href="/static/datatables/css/demo_table_jui.css" type="text/css" media="all" rel="stylesheet"/>
+<script type="text/javascript" charset="utf-8" src="/static/datatables/js/jquery.dataTables.js"></script>
+{% endblock %}
+
+{% block content %}
+  <script type="text/javascript">
+  $(document).ready( function () {
+  $('#versions').dataTable({
+  "bJQueryUI": true,
+  "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
+  "aoColumns": [
+  /* Version id */ null,
+  /* Object */ null,
+  /* Azioni */ { "bSearchable": false,
+  "bVisible": true,
+  "bSortable": false,
+  "mDataProp": null,
+  },
+  ],
+  }
+  );
+  } );
+</script>
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Revision detail" %}: {{ revision.id }} {{ company.firm }}</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <table class="detail">
+      <tr class="even">
+	<td class="fieldname">{% trans "Date/Time created" %}</td>
+	<td> {{ revision.date_created }}</td>
+      </tr>
+      <tr class="odd">
+	<td class="fieldname">{% trans "Author" %}</td>
+	<td> {{ revision.user }}</td>
+      </tr>
+      <tr class="even">
+	<td class="fieldname">{% trans "Comment" %}</td>
+	<td> {{ revision.comment }} </td>
+      </tr>
+    </table>
+  </div>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Versions list" %}</h1>
+  <div style="margin: 10px">
+    <table id="versions" class="display">
+      <thead>
+	<tr>
+	  <th>{% trans "Version id" %}</th>
+	  <th>{% trans "Object" %}</th>
+	  <th>{% trans "Actions" %}</th>
+	</tr>
+      </thead>
+      <tbody>
+	{% for version in revision.version_set.all %}
+	<tr>
+	  <td>
+	    {{ version.id }}
+	  </td>
+	  <td>
+	    {{ version.content_type }}
+	  </td>
+	  <td>
+	    <a title="{% trans "Detail" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url diff-view company.id version.id%}"></a>
+	  </td>
+	</tr>
+	{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
