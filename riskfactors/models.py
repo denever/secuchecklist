@@ -28,7 +28,3 @@ class RiskFactor(models.Model):
         ordering = ['code']
         verbose_name = _('Risk Factor')
         verbose_name_plural = _('Risk Factors')
-
-import reversion
-
-reversion.register(RiskFactor)
