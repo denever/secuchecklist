@@ -37,7 +37,7 @@
 <div class="ui-helper-reset ui-widget">
   <h1 class="ui-helper-reset ui-widget-header">{% trans "Changes list" %}</h1>
   <div style="margin: 10px">
-    {% if changes %}
+    {% if revisions %}
     <table id="changes" class="display">
       <thead>
 	<tr>
@@ -49,22 +49,22 @@
 	</tr>
       </thead>
       <tbody>
-	{% for change in changes %}
+	{% for revision in revisions %}
 	<tr>
 	  <td>
-	    <a class="tablelink" href="{% url diff-view company.id change.id %}">{{ change.id }}</a>
+	    <a class="tablelink" href="{% url revision-detail company.id revision.id %}">{{ revision.id }}</a>
 	  </td>
 	  <td>
-	    {{ change.revision.user }}
+	    {{ revision.user }}
 	  </td>
 	  <td>
-	    {{ change.revision.date_created }}
+	    {{ revision.date_created }}
 	  </td>
 	  <td>
-	    {{ change.revision.risksevalutiondocument }}
+	    {{ revision.risksevalutiondocument }}
 	  </td>
 	  <td>
-	    <a title="{% trans "Create a new RED" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url red-create company.id change.id%}"></a>
+	    <a title="{% trans "Create a new RED" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url red-create company.id revision.id%}"></a>
 	  </td>
 	</tr>
 	{% endfor %}
@@ -73,6 +73,6 @@
     {% else %}
     <p>{% trans "No changes are available." %}</p>
     {% endif %}
-</div>
+  </div>
 </div>
 {% endblock %}
