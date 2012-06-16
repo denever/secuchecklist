@@ -130,8 +130,7 @@
 	<td class="fieldname">{% trans "New Revision Needed" %}</td>
 	{% if company.newrevision_needed %}
 	<td class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-	  <a href="{% url changes-list company.id %}">{% trans "A new revision is needed there are changes since last revision" %}
-	    </a>
+	    {% trans "A new revision is needed there are changes since last revision" %}
 	</td>
 	{% else %}
 	<td>{% trans "No changes since last revision" %}</td>
