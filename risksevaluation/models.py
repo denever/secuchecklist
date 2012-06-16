@@ -3,13 +3,10 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 
-from reversion.models import Revision
-
 # Create your models here.
 class RisksEvaluationDocument(models.Model):
     company = models.ForeignKey('customers.CustomerCompany')
     red_revision = models.PositiveSmallIntegerField(_('Revision'), primary_key=True)
-    revision = models.OneToOneField(Revision)
     revision_description = models.TextField(_('Revision description'))
     record_date = models.DateTimeField(_('Revision Date'), auto_now_add=True)
 
@@ -31,7 +28,7 @@ class RisksEvaluationDocument(models.Model):
 	ordering = ['record_date']
 	verbose_name = _('Risks Evaluation Document')
 	verbose_name_plural = _('Risks Evaluation Documents')
-	unique_together = ('company','revision', 'record_date')
+	unique_together = ('company', 'record_date')
 
 probability = (
     (1, _('Low')),
@@ -80,7 +77,3 @@ class RiskFactorEvaluation(models.Model):
 
     def __unicode__(self):
 	return '%s %s' % (self.risk_factor.description, _('Valued'))
-
-import reversion
-
-reversion.register(RiskFactorEvaluation)

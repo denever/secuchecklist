@@ -18,8 +18,6 @@ from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 
-from reversion.models import Revision
-
 from risksevaluation.forms import RisksEvaluationDocumentForm, RiskFactorEvaluationForm
 
 class RisksEvaluationDocumentDetailView(DetailView):
@@ -45,8 +43,6 @@ class RisksEvaluationDocumentCreateView(CreateView):
         self.risksevaluationdocument.lastupdate_by = self.request.user.get_profile()
         self.risksevaluationdocument.company = get_object_or_404(CustomerCompany,
                                                                  id=self.kwargs['company'])
-        self.risksevaluationdocument.revision = get_object_or_404(Revision,
-                                                                  id=self.kwargs['change'])
         self.success_url = reverse('red-list', args=self.kwargs['company'])
         return super(RisksEvaluationDocumentCreateView, self).form_valid(form)
 
