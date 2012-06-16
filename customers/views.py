@@ -21,8 +21,6 @@ from customers.forms import DepartmentForm
 from customers.forms import CompanySecurityDutyForm
 from customers.forms import EquipmentForm
 
-from reversion.models import Version, Revision
-
 class CustomerCompanyYearView(YearArchiveView):
     queryset = CustomerCompany.objects.all()
     date_field = 'record_date'
@@ -376,65 +374,5 @@ class EquipmentDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
 	context = super(EquipmentDetailView, self).get_context_data(**kwargs)
-	context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
-	return context
-
-
-import reversion
-
-class DiffView(TemplateView):
-    template_name = 'customers/diff_view.html'
-
-    def get_diff_list(self, version):
-	diff_list = dict()
-	for field in version.object._meta.fields:
-	    if version.field_dict[field.name] != getattr(version.object, field.attname):
-		if isinstance(field, models.ForeignKey):
-		    version_val = field.related.parent_model.objects.get(id=version.field_dict[field.name])
-		    diff_list[field.verbose_name] = '%s -> %s' % (getattr(version.object, field.name),
-								  version_val)
-		elif isinstance(field, models.DateTimeField):
-		    diff_list[field.verbose_name] = '%s -> %s' % (version.field_dict[field.name],
-								  getattr(version.object, field.name))
-		else:
-		    diff_list[field.verbose_name] = '%s -> %s' % (version.field_dict[field.name],
-								  getattr(version.object, field.name))
-	return diff_list
-
-
-    def get_context_data(self, **kwargs):
-	context = super(DiffView, self).get_context_data(**kwargs)
-	cc = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
-	change = get_object_or_404(Version, id=self.kwargs['change'])
-	context['diff_list'] = self.get_diff_list(change)
-	context['company'] = cc
-	context['change'] = change
-	return context
-
-class ChangesListView(ListView):
-    context_object_name = 'revisions'
-    template_name = 'customers/changes_list.html'
-
-    def get_queryset(self):
-	company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
-	last_red = company.get_last_red()
-	if last_red:
-	    revision_list = Revision.objects.filter(date_created__gte=last_red.revision.date_created)
-	else:
-	    revision_list = reversion.get_for_object(company)
-	return revision_list
-
-    def get_context_data(self, **kwargs):
-	context = super(ChangesListView, self).get_context_data(**kwargs)
-	context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
-	return context
-
-class RevisionDetailView(DetailView):
-    template_name = 'customers/revision_detail.html'
-    model = Revision
-    context_object_name = 'revision'
-
-    def get_context_data(self, **kwargs):
-	context = super(RevisionDetailView, self).get_context_data(**kwargs)
 	context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
 	return context
