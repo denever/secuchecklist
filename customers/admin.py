@@ -31,23 +31,23 @@ class StaffAdmin(admin.ModelAdmin):
     date_hierarchy = 'birth_date'
 
     fieldsets = [
-        (None, {'fields': ['surname',
-                           'name',
-                           'birth_date',
-                           'gender',
-                           'nationality',
-                           'employ_date',
-                           'collagreement',
-                           'health_surveillance',
-                           'workers_count',
-                           'company',
-                           'standard_task',
-                           'department',
-                           'role',
-                           ]
-                }
-         ),
-        ]
+	(None, {'fields': ['surname',
+			   'name',
+			   'birth_date',
+			   'gender',
+			   'nationality',
+			   'employ_date',
+			   'collagreement',
+			   'health_surveillance',
+			   'workers_count',
+			   'company',
+			   'standard_task',
+			   'department',
+			   'role',
+			   ]
+		}
+	 ),
+	]
 
 admin.site.register(Staff, StaffAdmin)
 
@@ -58,44 +58,37 @@ class CustomerCompanyAdmin(admin.ModelAdmin):
     date_hierarchy = 'record_date'
 
     fieldsets = [
-        (None, {'fields': ['record_by',
-                           'firm',
-                           'phone',
-                           'fax',
-                           'email'
-                           ]
-                }
-         ),
-        ('Dati legali', {'fields': ['registered_office',
-                                    'settlement',
-                                    'ciiaa',
-                                    'tax_code',
-                                    'vat_code',
-                                    'inail_pos',
-                                    'inps_pos',
-                                    'ccnl',
-                                    'ateco_sector',
-                                    'certifications'
-                                    ],
-                          'classes': ['collapse']
-                         }
-         ),
-        ('Insediamento', {'fields': ['settlement_size',
-                                     'cpi',
-                                     'machine_use',
-                                     'dangerous_substances',
-                                     'health_surveillance'
-                                     ],
-                          'classes': ['collapse']
-                          }
-         ),
-        ]
+	(None, {'fields': ['record_by',
+			   'firm',
+			   'phone',
+			   'fax',
+			   'email'
+			   ]
+		}
+	 ),
+	('Dati legali', {'fields': ['registered_office',
+				    'settlement',
+				    'ciiaa',
+				    'tax_code',
+				    'vat_code',
+				    'inail_pos',
+				    'inps_pos',
+				    'ccnl',
+				    'ateco_sector',
+				    'certifications'
+				    ],
+			  'classes': ['collapse']
+			 }
+	 ),
+	('Insediamento', {'fields': ['settlement_size',
+				     'cpi',
+				     'machine_use',
+				     'dangerous_substances',
+				     'health_surveillance'
+				     ],
+			  'classes': ['collapse']
+			  }
+	 ),
+	]
 
 admin.site.register(CustomerCompany, CustomerCompanyAdmin)
-
-# import reversion
-
-# class CustomerCompanyRevAdmin(reversion.VersionAdmin):
-#     pass
-
-# admin.site.register(CustomerCompany, CustomerCompanyRevAdmin)
