@@ -12,7 +12,7 @@ class Address(object):
         self.province = province
 
     def __unicode__(self):
-        return "%s, %s, %s, %s, %s" % (self.street,
+        return "%s,%s,%s,%s,%s" % (self.street,
                                        self.number,
                                        self.postcode,
                                        self.town,
