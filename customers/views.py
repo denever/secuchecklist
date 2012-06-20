@@ -350,6 +350,9 @@ class EquipmentUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(EquipmentUpdateView, self).get_context_data(**kwargs)
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        context['form'].fields['department'].queryset = Department.objects.filter(company=context['company'])
+        context['form'].fields['operator'].queryset = Staff.objects.filter(company=context['company'])
+        context['form'].fields['exposed_staff'].queryset = Staff.objects.filter(company=context['company'])
         return context
 
     def form_valid(self, form):
