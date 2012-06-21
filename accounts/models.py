@@ -6,13 +6,14 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 
 # importing for signals and logging
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_save, pre_delete
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.dispatch import receiver
 from django.utils.encoding import force_unicode
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-import customers.models as customers_models
+from customers.models import CustomerCompany, Department, Staff, CompanySecurityDuty, Equipment
+from risksevaluation.models import RisksEvaluationDocument
 
 LOGIN, LOGOUT, CREATE, EDIT, DELETE = range(5)
 
@@ -39,6 +40,7 @@ class Activity(models.Model):
     object_repr = models.CharField(_('Object name'), max_length=50)
     content_type = models.ForeignKey(ContentType)
     content_object = generic.GenericForeignKey('content_type', 'object_id')
+    in_revision = models.ForeignKey(RisksEvaluationDocument, blank=True, null=True)
 
     class Meta:
         ordering = ['-date']
@@ -54,8 +56,15 @@ class Activity(models.Model):
     def get_content_type_name(self):
         return self.content_type.model_class()._meta.verbose_name
 
-@receiver(post_save, sender=customers_models)
+
+@receiver(post_save)
 def post_save_cb(sender, **kwargs):
+    if sender in (CustomerCompany, Department, Staff, CompanySecurityDuty, Equipment):
+        customers_post_save_cb(sender, **kwargs)
+    else:
+        print '#'*10, 'Save', sender
+
+def customers_post_save_cb(sender, **kwargs):
     instance = kwargs['instance']
     if hasattr(instance, 'record_by'):
         a = Activity(userprofile=instance.record_by if kwargs['created'] else instance.lastupdate_by,
@@ -65,8 +74,15 @@ def post_save_cb(sender, **kwargs):
                      )
         a.save()
 
-@receiver(post_delete, sender=customers_models)
-def post_delete_cb(sender, **kwargs):
+@receiver(pre_delete)
+def pre_delete_cb(sender, **kwargs):
+    if sender in (CustomerCompany, Department, Staff, CompanySecurityDuty, Equipment):
+        customers_pre_delete_cb(sender, **kwargs)
+    else:
+        print '#'*10, 'Save', sender
+
+
+def customers_pre_delete_cb(sender, **kwargs):
     instance = kwargs['instance']
     if hasattr(instance, 'record_by'):
         a = Activity(userprofile = instance.record_by,
