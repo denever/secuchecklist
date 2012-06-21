@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf.urls.defaults import patterns, include, url
-from accounts.views import ProfileView, ActivityListView
+from accounts.views import ProfileView, ActivityListView, ActivityDetailView
 
 urlpatterns = patterns('accounts.views',
                        url(r'^profile/$',
@@ -10,7 +10,11 @@ urlpatterns = patterns('accounts.views',
 
                        url(r'^activity/$',
                            login_required(ActivityListView.as_view()),
-                           name='activity'),
+                           name='activities'),
+
+                       url(r'^activity/(?P<pk>\d+)$',
+                           login_required(ActivityDetailView.as_view()),
+                           name='activity-detail'),
                        )
 
 urlpatterns += patterns('',
