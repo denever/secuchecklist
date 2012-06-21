@@ -34,11 +34,17 @@
             {{ activity.date }}
           </td>
           <td>
+            {% if activity.action == 2 or activity.action == 3 %}
+            <a href="{% url activity-detail activity.id %}">
             {{ activity.get_action_description }}
+            </a>
+            {% else %}
+            {{ activity.get_action_description }}
+            {% endif %}
           </td>
           <td>
             {{ activity.get_content_type_name }}
-            {{ activity.content_object }}
+            {{ activity.object_repr }}
           </td>
         </tr>
         {% endfor %}
