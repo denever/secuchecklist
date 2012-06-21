@@ -215,7 +215,8 @@ class DepartmentUpdateView(UpdateView):
         self.department = form.save(commit=False)
         self.department.lastupdate_by = self.request.user.get_profile()
         self.department.company.newrevision_needed = True
-        self.success_url = reverse('department-detail', args=self.kwargs['company'])
+        self.success_url = reverse('department-detail', args=[self.kwargs['company'],
+                                                              self.department.id])
         return super(DepartmentUpdateView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
