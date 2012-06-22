@@ -11,6 +11,7 @@ from django.views.generic import MonthArchiveView
 from django.views.generic import CreateView
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView
+from django.utils import simplejson
 
 from customers.models import *
 
@@ -20,6 +21,8 @@ from customers.forms import WorkingEnvironmentForm
 from customers.forms import DepartmentForm
 from customers.forms import CompanySecurityDutyForm
 from customers.forms import EquipmentForm
+
+from accounts.models import Activity
 
 class CustomerCompanyYearView(YearArchiveView):
     queryset = CustomerCompany.objects.all()
@@ -359,7 +362,7 @@ class EquipmentUpdateView(UpdateView):
     def form_valid(self, form):
         self.equipment = form.save(commit=False)
         self.equipment.lastupdate_by = self.request.user.get_profile()
-        self.equipment.company.newrevision_needed = True
+        self.equipment.department.company.newrevision_needed = True
         self.success_url = reverse('equipment-list', args=self.kwargs['company'])
         return super(EquipmentUpdateView, self).form_valid(form)
 
@@ -395,4 +398,19 @@ class ChangesListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ChangesListView, self).get_context_data(**kwargs)
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
+
+class ChangeDetailView(DetailView):
+    model = Activity
+    context_object_name = 'change'
+    template_name = 'customers/change_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ChangeDetailView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        change = context['change']
+        try:
+            context['diff_list'] = simplejson.loads(change.serialized_data)
+        except Exception, e:
+            print e
         return context
