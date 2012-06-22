@@ -44,13 +44,13 @@
       </tr>
       <tr class="even">
         <td class="fieldname">{% trans "Exposed Staff" %}</td>
-        <!-- <td> -->
-        <!--   <ul> -->
-        <!--     {% for cert in equipment.compliance_requirement.all %} -->
-        <!--     <li>{{ cert }}</li> -->
-        <!--     {% endfor %} -->
-        <!--   </ul> -->
-        <!-- </td> -->
+        <td>
+          <ul>
+            {% for staff in equipment.exposed_staff.all %}
+            <li>{{ staff }}</li>
+            {% endfor %}
+          </ul>
+        </td>
       </tr>
     </table>
   </div>
