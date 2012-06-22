@@ -195,6 +195,14 @@ class CustomerCompany(models.Model):
         else:
             return None
 
+    @property
+    def last_revision(self):
+        reds = self.risksevaluationdocument_set.order_by('-record_date')
+        if reds:
+            return reds[0].revision
+        else:
+            return 0
+
     def get_changes(self):
         from accounts.models import Activity
         cc = ContentType.objects.get(app_label='customers', model='customercompany')
