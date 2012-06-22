@@ -36,6 +36,7 @@ from customers.views import EquipmentUpdateView
 from customers.views import EquipmentDeleteView
 
 from customers.views import ChangesListView
+from customers.views import ChangeDetailView
 
 urlpatterns = patterns('customers.views',
                        url(r'^$', login_required(CustomerCompanyListView.as_view()),
@@ -173,5 +174,10 @@ urlpatterns = patterns('customers.views',
                        url(r'^(?P<company>\d+)/changes/$',
                            login_required(ChangesListView.as_view()),
                            name = 'changes-list'
+                           ),
+
+                       url(r'^(?P<company>\d+)/change/(?P<pk>\d+)$',
+                           login_required(ChangeDetailView.as_view()),
+                           name = 'change-detail'
                            ),
                        )
