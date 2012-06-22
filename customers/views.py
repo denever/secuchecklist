@@ -21,9 +21,6 @@ from customers.forms import DepartmentForm
 from customers.forms import CompanySecurityDutyForm
 from customers.forms import EquipmentForm
 
-from accounts.models import Activity
-from django.db.models import Q
-
 class CustomerCompanyYearView(YearArchiveView):
     queryset = CustomerCompany.objects.all()
     date_field = 'record_date'
@@ -387,53 +384,15 @@ class EquipmentDetailView(DetailView):
         context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         return context
 
-from django.contrib.contenttypes.models import ContentType
-
 class ChangesListView(ListView):
-#    context_object_name = 'changes'
+    context_object_name = 'changes'
+    template_name = 'customers/changes_list.html'
 
     def get_queryset(self):
         company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return company.get_changes()
 
-        cc = ContentType.objects.get(app_label='customers', model='customercompany')
-        staff = ContentType.objects.get(app_label='customers', model='staff')
-        dep = ContentType.objects.get(app_label='customers', model='department')
-        secduty = ContentType.objects.get(app_label='customers', model='companysecurityduty')
-        equip = ContentType.objects.get(app_label='customers', model='equipment')
-
-        acts_on_cc = Activity.objects.filter(in_revision=None,
-                                             content_type=cc,
-                                             object_id=company.id)
-
-        staff_ids = [value['id'] for value in company.staff_set.values('id')]
-        acts_on_staff = Activity.objects.filter(in_revision=None,
-                                             content_type=staff,
-                                             object_id__in=staff_ids)
-
-        dep_ids = [value['id'] for value in company.department_set.values('id')]
-        acts_on_deps = Activity.objects.filter(in_revision=None,
-                                               content_type=dep,
-                                               object_id__in=dep_ids)
-
-        secduty_ids = [value['id'] for value in company.companysecurityduty_set.values('id')]
-        acts_on_secdutys = Activity.objects.filter(in_revision=None,
-                                               content_type=secduty,
-                                               object_id__in=secduty_ids)
-
-        equip_ids = list()
-        for dep in company.department_set.all():
-            equip_ids.extend([value['id'] for value in dep.equipment_set.values('id')])
-        acts_on_equips = Activity.objects.filter(in_revision=None,
-                                                 content_type=equip,
-                                                 object_id__in=equip_ids)
-
-        acts = list()
-        if acts_on_cc:
-            acts.extend(acts_on_cc)
-        if acts_on_staff:
-            acts.extend(acts_on_staff)
-        if acts_on_deps:
-            acts.extend(acts_on_deps)
-        if acts_on_equips:
-            acts.extend(acts_on_equips)
-        return [1,2]
+    def get_context_data(self, **kwargs):
+        context = super(ChangesListView, self).get_context_data(**kwargs)
+        context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        return context
