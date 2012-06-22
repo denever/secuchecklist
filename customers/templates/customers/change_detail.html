@@ -1,0 +1,50 @@
+{% extends "customers/base-company.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Change Detail" %} {{ user }}{% endblock %}
+{% block title2 %}{% trans "Change Detail" %} {{ user }}{% endblock %}
+
+{% block content %}
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Change" %}</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <table class="detail">
+      <tr class="even">
+        <td class="fieldname">{% trans "Author" %}</td>
+        <td>{{ change.userprofile }}</td>
+      </tr>
+      <tr class="odd">
+        <td class="fieldname">{% trans "Date" %}</td>
+        <td>{{ change.date }}</td>
+      </tr>
+      <tr class="even">
+        <td class="fieldname">{% trans "Action" %}</td>
+        <td>{{ change.get_action_description }}</td>
+      </tr>
+      <tr class="odd">
+        <td class="fieldname">{% trans "Object" %}</td>
+        <td>{{ change.object_repr }}</td>
+      </tr>
+      <tr class="even">
+        <td class="fieldname">{% trans "Revision" %}</td>
+        <td>{{ change.in_revision }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+{% if diff_list %}
+<div class="ui-helper-reset ui-widget">
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Difference Details for change" %}</h1>
+  <div class="ui-helper-reset ui-widget-content">
+    <table class="detail">
+      {% for fieldname, values in diff_list.items %}
+      <tr class="{% cycle 'even' 'odd' %}">
+        <td class="fieldname">{% trans fieldname %}</td>
+        <td>{{ values.old_value }} -> {{ values.new_value }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
