@@ -16,9 +16,9 @@
   "bJQueryUI": true,
   "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
   "aoColumns": [
-  /* Change id */ null,
-  /* Author */ null,
-  /* Data */ null,
+  /* Date */ null,
+  /* Action */ null,
+  /* On */ null,
   /* RED */ { "bSearchable": false,
   "bVisible": true,
   "bSortable": true,
@@ -35,39 +35,46 @@
   } );
 </script>
 <div class="ui-helper-reset ui-widget">
-  <h1 class="ui-helper-reset ui-widget-header">{% trans "Changes list" %}</h1>
+  <h1 class="ui-helper-reset ui-widget-header">{% trans "Changes list for" %} {{ company }}</h1>
   <div style="margin: 10px">
-    {% if revisions %}
+    {% if changes %}
     <table id="changes" class="display">
       <thead>
-	<tr>
-	  <th>{% trans "Change id" %}</th>
-	  <th>{% trans "Author" %}</th>
-	  <th>{% trans "Change date" %}</th>
-	  <th>{% trans "Risk Evaluation Document" %}</th>
-	  <th>{% trans "Actions" %}</th>
-	</tr>
+        <tr>
+          <th>{% trans "Date" %}</th>
+          <th>{% trans "Action" %}</th>
+          <th>{% trans "On" %}</th>
+          <th>{% trans "Risk Evaluation Document" %}</th>
+          <th>{% trans "Actions" %}</th>
+        </tr>
       </thead>
       <tbody>
-	{% for revision in revisions %}
-	<tr>
-	  <td>
-	    <a class="tablelink" href="{% url revision-detail company.id revision.id %}">{{ revision.id }}</a>
-	  </td>
-	  <td>
-	    {{ revision.user }}
-	  </td>
-	  <td>
-	    {{ revision.date_created }}
-	  </td>
-	  <td>
-	    {{ revision.risksevalutiondocument }}
-	  </td>
-	  <td>
-	    <a title="{% trans "Create a new RED" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href="{% url red-create company.id revision.id%}"></a>
-	  </td>
-	</tr>
-	{% endfor %}
+        {% for change in changes %}
+        <tr>
+          <td>
+            {{ change.date }}
+          </td>
+          <td>
+            {% if change.action == 2 or change.action == 3 %}
+            <a href="{% url activity-detail change.id %}">
+            {{ change.get_action_description }}
+            </a>
+            {% else %}
+            {{ change.get_action_description }}
+            {% endif %}
+          </td>
+          <td>
+            {{ change.get_content_type_name }}
+            {{ change.object_repr }}
+          </td>
+          <td>
+            {{ change.in_revision }}
+          </td>
+         <td>
+           <a title="{% trans "Create a new RED" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href=""></a>
+         </td>
+        </tr>
+        {% endfor %}
       </tbody>
     </table>
     {% else %}
