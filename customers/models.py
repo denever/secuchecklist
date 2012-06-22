@@ -359,6 +359,13 @@ class Equipment(models.Model):
                                            related_name='exposed_to'
                                            )
     compliance_requirement = models.CharField(_('Compliance Requirements'), max_length=255)
+    record_by = models.ForeignKey('accounts.UserProfile',
+                                  related_name='equipment_created',
+                                  verbose_name=_('Recorded by'))
+    lastupdate_by = models.ForeignKey('accounts.UserProfile',
+                                    related_name='equipment_edited',
+                                    verbose_name=_('Last update by'))
+    record_date = models.DateTimeField(_('Recorded on'), auto_now_add=True)
 
     def __unicode__(self):
         return u'%s (%s)' % (self.name, self.code)
