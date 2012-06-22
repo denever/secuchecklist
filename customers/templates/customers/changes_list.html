@@ -12,6 +12,7 @@
 {% block content %}
 <script type="text/javascript">
   $(document).ready( function () {
+  $("#createred").button();
   $('#changes').dataTable({
   "bJQueryUI": true,
   "oLanguage": { "sUrl": "/static/dataTables.italian.txt" },
@@ -24,11 +25,6 @@
   "bSortable": true,
   "mDataProp": null,
   },
-  /* Azioni */ { "bSearchable": false,
-  "bVisible": true,
-  "bSortable": false,
-  "mDataProp": null,
-  },
   ],
   }
   );
@@ -36,6 +32,9 @@
 </script>
 <div class="ui-helper-reset ui-widget">
   <h1 class="ui-helper-reset ui-widget-header">{% trans "Changes list for" %} {{ company }}</h1>
+  <div id="toolbar"  class="ui-widget-header ui-corner-all">
+    <a id="createred" href="{% url red-create company.id %}">{% trans "Create a new RED" %}</a>
+  </div>
   <div style="margin: 10px">
     {% if changes %}
     <table id="changes" class="display">
@@ -45,7 +44,6 @@
           <th>{% trans "Action" %}</th>
           <th>{% trans "On" %}</th>
           <th>{% trans "Risk Evaluation Document" %}</th>
-          <th>{% trans "Actions" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -70,9 +68,6 @@
           <td>
             {{ change.in_revision }}
           </td>
-         <td>
-           <a title="{% trans "Create a new RED" %}" class="ui-state-default ui-corner-all ui-icon ui-icon-plusthick" href=""></a>
-         </td>
         </tr>
         {% endfor %}
       </tbody>
