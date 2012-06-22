@@ -44,6 +44,9 @@ class RisksEvaluationDocumentCreateView(CreateView):
         self.risksevaluationdocument.company = get_object_or_404(CustomerCompany,
                                                                  id=self.kwargs['company'])
         self.success_url = reverse('red-list', args=self.kwargs['company'])
+        for change in self.risksevaluationdocument.company.get_changes():
+            change.in_revision = self.risksevaluationdocument
+            change.save()
         return super(RisksEvaluationDocumentCreateView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -51,6 +54,13 @@ class RisksEvaluationDocumentCreateView(CreateView):
             context = super(RisksEvaluationDocumentCreateView, self).get_context_data(**kwargs)
             context['company'] = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
             return context
+
+    def get_initial(self):
+        self.initial = super(RisksEvaluationDocumentCreateView, self).get_initial()
+        company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
+        self.initial['revision'] = company.last_revision + 1
+        return self.initial
+
 
 class RisksEvaluationDocumentUpdateView(UpdateView):
     model = RisksEvaluationDocument
