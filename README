@@ -1,5 +1,29 @@
 Depends:
 
-python-pip
-django-autocomplete
-django-simple-history
+apt-get install python-odbc libmdbodbc1 mdbtools 
+# apt-get install unixodbc libmdbodbc
+apt-get install python-pip
+pip install django-autocomplete
+pip install django-simple-history
+
+Configure Odbc:
+
+In /etc/odbcinst.ini
+
+[MDBTools]
+Description		= MDBTools Driver
+Driver		= libmdbodbc.so.1
+Setup		= libmdbodbc.so.1
+FileUsage		= 1
+UsageCount		= 1
+
+
+Initialize db:
+
+rm ~/tmp/mess/db/secuchecklist.db
+python manage.py syncdb
+python manage.py populate_with_basedata
+python manage.py import_mdb import_epc/epcstradivari.mdb
+python manage.py populate_with_fakedata
+python manage.py import_riskfactors import_epc/epcstradivari.mdb
+python manage.py import_topology ~/tmp/mess/sql/trovacap.sql
