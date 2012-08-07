@@ -55,7 +55,7 @@
         {% for red in reds %}
         <tr>
           <td>
-            <a href=" url red-detail company.id red.id">{{ red.revision }} {{red.id }}</a>
+            <a href="{% url red-detail company.id red.id %}">{{ red.revision }}</a>
           </td>
           <td>
             {{ red.record_date }}
