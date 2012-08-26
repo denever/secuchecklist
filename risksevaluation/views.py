@@ -41,9 +41,9 @@ class RisksEvaluationDocumentCreateView(CreateView):
         self.risksevaluationdocument = form.save(commit=False)
         self.risksevaluationdocument.record_by = self.request.user.get_profile()
         self.risksevaluationdocument.lastupdate_by = self.request.user.get_profile()
-        company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])        
+        company = get_object_or_404(CustomerCompany, id=self.kwargs['company'])
         self.risksevaluationdocument.company = company
-        self.risksevaluationdocument.revision = company.last_revision + 1        
+        self.risksevaluationdocument.revision = company.last_revision + 1
         self.success_url = reverse('red-list', args=self.kwargs['company'])
         for change in self.risksevaluationdocument.company.get_changes():
             change.in_revision = self.risksevaluationdocument
@@ -121,8 +121,10 @@ class RiskFactorEvaluationView(SingleObjectTemplateResponseMixin, ModelFormMixin
 
     def get_context_data(self, **kwargs):
         context = super(RiskFactorEvaluationView, self).get_context_data(**kwargs)
+
         context['document'] = get_object_or_404(RisksEvaluationDocument,
-                                                    revision=self.kwargs['revision'])
+                                                id=self.kwargs['revision'])
+
         context['riskfactor'] = get_object_or_404(RiskFactor,
                                                   id=self.kwargs['riskfactor'])
         context['company'] = get_object_or_404(CustomerCompany,
@@ -133,8 +135,8 @@ class RiskFactorEvaluationView(SingleObjectTemplateResponseMixin, ModelFormMixin
         document_id = self.kwargs['revision']
         risk_factor_id = self.kwargs['riskfactor']
         try:
-            self.object = RiskFactorEvaluation.objects.get(document_id=document_id,
-                                                   risk_factor_id=risk_factor_id)
+            self.object = RiskFactorEvaluation.objects.get(document=document_id,
+                                                       risk_factor=risk_factor_id)
         except:
             self.object = None
         return super(RiskFactorEvaluationView, self).get(request, *args, **kwargs)
@@ -143,8 +145,9 @@ class RiskFactorEvaluationView(SingleObjectTemplateResponseMixin, ModelFormMixin
         document_id = self.kwargs['revision']
         risk_factor_id = self.kwargs['riskfactor']
         try:
-            self.object = RiskFactorEvaluation.objects.get(document_id=document_id,
-                                                   risk_factor_id=risk_factor_id)
+            self.object = RiskFactorEvaluation.objects.get(document=document_id,
+                                                           risk_factor=risk_factor_id)
+            print self.object
         except:
             self.object = None
         return super(RiskFactorEvaluationView, self).post(request, *args, **kwargs)
@@ -155,7 +158,7 @@ class EvalRiskFactorStatusView(View):
 
     def post(self, request, *args, **kwargs):
         document = get_object_or_404(RisksEvaluationDocument,
-                                     revision=self.request.POST['revision_id'])
+                                     id=self.request.POST['revision_id'])
         riskfactor = get_object_or_404(RiskFactor,
                                        id=self.request.POST['riskfactor_id'] )
         try:
@@ -179,7 +182,7 @@ class EvalRiskFactorProbabilityView(View):
 
     def post(self, request, *args, **kwargs):
         document = get_object_or_404(RisksEvaluationDocument,
-                                     revision=self.request.POST['revision_id'])
+                                     id=self.request.POST['revision_id'])
         riskfactor = get_object_or_404(RiskFactor,
                                        id=self.request.POST['riskfactor_id'])
 
@@ -196,7 +199,7 @@ class EvalRiskFactorSeriousnessView(View):
 
     def post(self, request, *args, **kwargs):
         document = get_object_or_404(RisksEvaluationDocument,
-                                     revision=self.request.POST['revision_id'])
+                                     id=self.request.POST['revision_id'])
         riskfactor = get_object_or_404(RiskFactor,
                                        id=self.request.POST['riskfactor_id'])
 
@@ -213,7 +216,7 @@ class TakeMeasureView(View):
 
     def post(self, request, *args, **kwargs):
         document = get_object_or_404(RisksEvaluationDocument,
-                                     revision=self.request.POST['revision_id'])
+                                     id=self.request.POST['revision_id'])
         riskfactor = get_object_or_404(RiskFactor,
                                        id=self.request.POST['riskfactor_id'] )
         try:
@@ -235,7 +238,7 @@ class UntakeMeasureView(View):
 
     def post(self, request, *args, **kwargs):
         document = get_object_or_404(RisksEvaluationDocument,
-                                     revision=self.request.POST['revision_id'])
+                                     id=self.request.POST['revision_id'])
         riskfactor = get_object_or_404(RiskFactor,
                                        id=self.request.POST['riskfactor_id'])
 
