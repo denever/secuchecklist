@@ -17,6 +17,9 @@ Setup		= libmdbodbc.so.1
 FileUsage		= 1
 UsageCount		= 1
 
+Internazionalizzazione su ubuntu:
+
+sudo apt-get install gettext
 
 Initialize db:
 
@@ -27,3 +30,5 @@ python manage.py import_mdb import_epc/epcstradivari.mdb
 python manage.py populate_with_fakedata
 python manage.py import_riskfactors import_epc/epcstradivari.mdb
 python manage.py import_topology ~/tmp/mess/sql/trovacap.sql
+python manage.py compilemessages
+cp -av conf/locale ./
