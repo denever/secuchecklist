@@ -30,7 +30,7 @@ class Command(BaseCommand):
 
         src_cur.execute('select * from InsediamentiCPI')
         for desc in src_cur:
-            obj = CPISettlement(name=desc[1], description=desc[1])
+            obj = CPISettlement(name=desc[1][:255], description=desc[1])
             obj.save()
 
         src_cur.execute('select * from SorvSani')
