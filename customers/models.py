@@ -123,8 +123,8 @@ class HealthSurveillance(models.Model):
         verbose_name_plural = _('Health surveillance')
 
 class CPISettlement(models.Model):
-    name = models.CharField(_('CPI Settlement'), max_length=200, unique=True)
-    description = models.CharField(_('Description'), max_length=200)
+    name = models.CharField(_('CPI Settlement'), max_length=255, unique=True)
+    description = models.TextField(_('Description'))
 
     def __unicode__(self):
         return self.name
