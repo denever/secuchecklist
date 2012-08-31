@@ -32,3 +32,15 @@ python manage.py import_riskfactors import_epc/epcstradivari.mdb
 python manage.py import_topology ~/tmp/mess/sql/trovacap.sql
 python manage.py compilemessages
 cp -av conf/locale ./
+
+
+Installazione con Mysql
+
+aptitude install python-mysqldb
+
+Creare con phpmyadmin o manualmente un db.
+
+Assicurasi di dare:
+CREATE DATABASE <dbname> CHARACTER SET utf8;
+
+Oppure specificare collation in phpmyadmin utf8_bin.
