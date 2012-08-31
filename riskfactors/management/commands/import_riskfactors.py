@@ -32,6 +32,9 @@ class Command(BaseCommand):
         conn = pyodbc.connect(connect_str)
         src_cur = conn.cursor()
 
+        root_rf = RiskFactor(description='Fattori di Rischio', parent=None)
+        root_rf.save()
+
         src_cur.execute(QUERY_IMPORT)
         for desc in src_cur:
             codice_padre = str(desc[9]).split('/')[int(desc[10])]
@@ -47,10 +50,8 @@ class Command(BaseCommand):
                              parent_code=codice_padre.strip('/'))
             obj.save()
 
-        root_rf = RiskFactor(id=0, description='Fattori di Rischio', parent=None)
-        root_rf.save()
-        for risk_factor in RiskFactor.objects.exclude(id__exact=0):
-            if risk_factor.parent_code != '':
+        for risk_factor in RiskFactor.objects.exclude(id__exact=root_rf.id):
+            if risk_factor.parent_code != '' and risk_factor.parent_code is not None:
                 risk_factor.parent = RiskFactor.objects.get(code=risk_factor.parent_code)
             elif risk_factor != root_rf:
                 risk_factor.parent = root_rf
